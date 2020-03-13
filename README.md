@@ -21,7 +21,7 @@ Reminder that this link will take you to our *low* fidelity ui prototype. This m
 Here is a link to our low fidelity ui prototype of our product:
 https://www.figma.com/file/bCjy3f0dNlwiW40UZvqV74/Second-UI-Prototype?node-id=0%3A1
 
-Our partners in CSC 310-01 created a *mid-high* fidelity ui prototype for us to base our design choices on.
+Some graphic design knowledgable team members created a *mid-high* fidelity ui prototype for us to base our design choices on.
 
 Here is the link to their ui prototype:
 http://tinyurl.com/vg9dc3q
