@@ -180,6 +180,45 @@ export default StyleSheet.create({
     paddingTop: 12
   },
 
+
+  NotificationCardContainer: {
+    flexDirection:'row',
+    backgroundColor: "#ffbc26",
+    height: 60,
+    marginHorizontal: 15,
+    marginVertical: 0,
+    borderColor: "rgba(0,0,0,0.05)",
+    borderWidth: 2,
+    borderRadius: 5
+  },
+  NotificationCardTimeStamp: {
+    fontWeight: "400",
+    fontStyle: "italic",
+    fontSize: 13,
+    textAlign: "left",
+    paddingTop: 33,
+    marginLeft: 15,
+  },
+  NotificationCardMainText: {
+    fontWeight: "400",
+    fontSize: 15,
+    textAlign: "left",
+    paddingTop: 12,
+    marginLeft: -65
+  },
+  NotificationUserProfile:{
+    justifyContent: 'center',
+    //this needs work
+  },
+  NotificationTypeIcon:{
+    justifyContent: 'center',
+    marginLeft: 35,
+    marginTop: 0,
+    //this needs work
+  },
+
+
+
   postCardLocation: {
     fontWeight: "bold",
     fontSize: 20,
