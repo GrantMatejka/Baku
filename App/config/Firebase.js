@@ -27,8 +27,8 @@ const firebaseConfig = {
 // admin.initializeApp(functions.config().firebase);
 
 // let db = admin.firestore();
-firebase.initializeApp(firebaseConfig);
+let Firebase = firebase.initializeApp(firebaseConfig);
 // let db = firebase.firestore();
-firebase.collection("users");
-// export default Firebase;
+// firebase.collection("users");
+export default Firebase;
 // export const Firestore = firebase.firestore();
