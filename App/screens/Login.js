@@ -23,9 +23,8 @@ class Login extends React.Component {
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       //Redirect on sucessful login
       .then(
-        () =>
-        {
-          this.props.navigation.navigate("Tabs", 
+        () => {
+          this.props.navigation.navigate("Tabs",
             {
               screen: "FeedTab"
             });
@@ -43,13 +42,13 @@ class Login extends React.Component {
   render() {
     return (
       <ScrollView
-        style={styleSheet.container}
+        style={styles.container}
         contentContainerStyle={[styles.mt_2, styles.mb_1]}
       >
-        <View style={[styleSheet.container_content]}>
+        <View style={[styles.container_content]}>
           <Image
             source={require("../assets/images/baku2-full-blue.png")}
-            style={styleSheet.welcomeImage}
+            style={styles.image_header}
           />
         </View>
 
@@ -73,55 +72,48 @@ class Login extends React.Component {
           secureTextEntry={true}
         />
 
-        <View
-          style={{
-            alignItems: "center"
-          }}
-        >
-          <Text
-            style={{
-              color: "red",
-              marginVertical: 10,
-              fontSize: 15
-            }}
-          >
+        <View style={styles.container_content}>
+          <Text style={styles.text_error} >
             {this.state.error}
           </Text>
-        </View>
 
-        <View style={{ alignItems: "center", padding: 10 }}>
-          <AwesomeButton
-            progress
-            progressLoadingTime={2000000}
-            backgroundColor={"#A5D6D9"}
-            width={200}
-            height={50}
-            onPress={next => {
-              this.setState({ error: "" });
-              this.handleLogin();
-
-              next();
-            }}
-          >
-            Login
+          <View style={styles.p_2}>
+            <AwesomeButton
+              progress
+              progressLoadingTime={2000000}
+              backgroundColor={"#A5D6D9"}
+              width={200}
+              height={50}
+              onPress={() => {
+                this.setState({ error: "" });
+                this.handleLogin();
+              }}
+            >
+              Login
           </AwesomeButton>
+          </View>
+
+          <View style={styles.p_2}>
+            <AwesomeButton
+              backgroundColor={"#ffbc26"}
+              width={200}
+              height={50}
+              onPress={
+                () => {
+                  this.setState({ email: "", password: "", error: "" });
+                  this.props.navigation.navigate("Create");
+                }}
+            >
+              Sign Up!
+          </AwesomeButton>
+
+            <Text style={styles.p_2}>
+              New user? Sign up now!
+            </Text>
+          </View>
+
         </View>
 
-        <View style={{ alignItems: "center", padding: 10 }}>
-          <AwesomeButton
-            backgroundColor={"#ffbc26"}
-            width={200}
-            height={50}
-            onPress={() => {
-              this.setState({ email: "", password: "", error: "" }),
-                this.props.navigation.navigate("Create");
-            }}
-          >
-            Sign Up!
-          </AwesomeButton>
-          <Text style={{ padding: 10 }}>New user? Sign up now!</Text>
-        </View>
-        
       </ScrollView>
     );
   }

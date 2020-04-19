@@ -4,15 +4,13 @@ export default StyleSheet.create({
   //Container styles
   container: {
     flex: 1,
-    backgroundColor: "#e9f6f3"
+    backgroundColor: "#e9f6f3",
   },
+  //Container for any horizontally centered child content
   container_content: {
-    paddingTop: 10
-  },
-  welcomeContainer: {
-    alignItems: "center",
-    marginTop: 10,
-    marginBottom: 5
+    paddingTop: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 
   //Generic header style
@@ -181,13 +179,6 @@ export default StyleSheet.create({
     resizeMode: "contain",
   },
 
-  
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  },
   inputBox: {
     width: "85%",
     margin: 10,
@@ -215,7 +206,7 @@ export default StyleSheet.create({
   },
   buttonSignup: {
     fontSize: 12
-  }
+  },
 
   contentContainer: {
     paddingTop: 10
