@@ -8,6 +8,7 @@ import SearchTab from "../screens/tabs/SearchTab";
 import CreatePostTab from "../screens/tabs/CreatePostTab";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Drawer from "./DrawerNav";
+import HideWithKeyboard from "react-native-hide-with-keyboard";
 
 const Tab = createBottomTabNavigator();
 
