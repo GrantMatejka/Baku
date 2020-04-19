@@ -1,17 +1,13 @@
 import React from "react";
-import {
-  View,
-  TextInput,
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-  Button
-} from "react-native";
+import { View, Text, } from "react-native";
+
 import Firebase from "../config/Firebase";
-import styles from "../styles/styles";
-import { Fumi, Makiko } from "react-native-textinput-effects";
+import { Fumi } from "react-native-textinput-effects";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 import AwesomeButton from "react-native-really-awesome-button";
+
+import styles from "../styles/styles";
+import colors from "../styles/colors";
 
 class Signup extends React.Component {
   state = {
@@ -34,12 +30,6 @@ class Signup extends React.Component {
       return false;
     }
 
-    //TODO take out code under here and uncomment firebase authentication when done
-    this.props.navigation.navigate("Additional Info", {
-      state: this.state,
-    });
-
-    /*
     if(this.state.password !== this.state.confirmPassword){
         this.setState({ error: "Passwords don't match" });
         return false;
@@ -58,7 +48,7 @@ class Signup extends React.Component {
       })
       .catch(error => {
         console.log(error), this.setState({ error: "Invalid Credentials" });
-      });*/
+      });
   };
 
   render() {
@@ -93,7 +83,7 @@ class Signup extends React.Component {
           value={this.state.password} 
           secureTextEntry={true}
           iconClass={FontAwesomeIcon} 
-          iconName={"lock"}
+          iconName={"unlock-alt"}
           onChangeText={password => this.setState({ password })} 
         />
 
@@ -118,12 +108,10 @@ class Signup extends React.Component {
 
         </View>
 
-        <View style={{ alignItems: "center", marginVertical: 10 }}>
+        <View style={styles.container_content}>
 
           <AwesomeButton
-            progress
-            progressLoadingTime={1000000}
-            backgroundColor={"#ffbc26"}
+            backgroundColor={colors.warning}
             width={200}
             height={50}
             onPress={
