@@ -7,13 +7,56 @@ import {
   Text,
   Button
 } from "react-native";
-import Firebase from "../config/Firebase";
+import firebase from "../config/Firebase";
 import styles from "../styles/styles";
 import { Fumi, Makiko } from "react-native-textinput-effects";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 import AwesomeButton from "react-native-really-awesome-button";
 
 class Signup extends React.Component {
+  constructor() {
+    super();
+    this.dbRef = firebase.firestore().collection('users');
+    this.state = {
+      name: '',
+      email: '',
+      isLoading: false
+    };
+  }
+
+  inputValueUpdate = (val, prop) => {
+    const state = this.state;
+    state[prop] = val;
+    this.setState(state);
+  }
+
+  storeUser() {
+    if(this.state.name === ''){
+     alert('Fill at least your name!')
+    } else {
+      this.setState({
+        isLoading: true,
+      });      
+      this.dbRef.add({
+        name: this.state.name,
+        email: this.state.email,
+      }).then((res) => {
+        this.setState({
+          name: '',
+          email: '',
+          isLoading: false,
+        });
+        //this.props.navigation.navigate('Login')
+      })
+      .catch((err) => {
+        console.error("Error found: ", err);
+        this.setState({
+          isLoading: false,
+        });
+      });
+    }
+  }  
+
   state = {
     name: "",
     email: "",
@@ -35,11 +78,11 @@ class Signup extends React.Component {
     }
 
     //TODO take out code under here and uncomment firebase authentication when done
-    this.props.navigation.navigate("Additional Info", {
-      state: this.state,
-    });
+//    this.props.navigation.navigate("Additional Info", {
+//      state: this.state,
+//    });
 
-    /*
+    
     if(this.state.password !== this.state.confirmPassword){
         this.setState({ error: "Passwords don't match" });
         return false;
@@ -49,16 +92,16 @@ class Signup extends React.Component {
       return false;
     }
 
-    Firebase.auth()
+    firebase.auth()
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
-        this.props.navigation.navigate("Additional Info", {
+        this.props.navigation.navigate("FeedTab", {
           state: this.state,
         });
       })
       .catch(error => {
         console.log(error), this.setState({ error: "Invalid Credentials" });
-      });*/
+      });
   };
 
   render() {
@@ -76,7 +119,9 @@ class Signup extends React.Component {
           value={this.state.name}
           iconClass={FontAwesomeIcon} 
           iconName={"user"}
-          onChangeText={name => this.setState({ name })} 
+          onChangeText={name => this.setState({ name })}
+          //onChangeText={(val) => this.inputValueUpdate(val, 'name')}
+ 
         />
 
         <Fumi 
@@ -130,6 +175,7 @@ class Signup extends React.Component {
               () => {
                 this.setState({ error: "" });
                 this.handleSignUp();
+                this.storeUser()
               }
             }
           >

@@ -1,5 +1,7 @@
-import firebase from "firebase";
-import firestore from 'firebase/firestore';
+//import firebase from "firebase";
+//import firestore from 'firebase/firestore';
+import * as firebase from 'firebase';
+import firestore from 'firebase/firestore'
 
 import {
   API_KEY,
@@ -21,7 +23,8 @@ const firebaseConfig = {
   appId: APP_ID
 };
 
-
 let Firebase = firebase.initializeApp(firebaseConfig);
+
+firebase.firestore();
 
 export default Firebase;
