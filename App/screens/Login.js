@@ -10,6 +10,9 @@ import AwesomeButton from "react-native-really-awesome-button";
 
 //Custom imports
 import styles from "../styles/styles";
+import colors from "../styles/colors";
+
+//TODO make state persist between components
 
 class Login extends React.Component {
   state = {
@@ -56,7 +59,7 @@ class Login extends React.Component {
           label={"Email"}
           value={this.state.email}
           onChangeText={email => this.setState({ email })}
-          borderColor={"#A5D6D9"}
+          borderColor={colors.info}
           borderHeight={5}
           inputPadding={18}
           autoCapitalize="none"
@@ -66,7 +69,7 @@ class Login extends React.Component {
           label={"Password"}
           value={this.state.password}
           onChangeText={password => this.setState({ password })}
-          borderColor={"#ffbc26"}
+          borderColor={colors.warning}
           borderHeight={5}
           inputPadding={16}
           secureTextEntry={true}
@@ -79,9 +82,7 @@ class Login extends React.Component {
 
           <View style={styles.p_2}>
             <AwesomeButton
-              progress
-              progressLoadingTime={2000000}
-              backgroundColor={"#A5D6D9"}
+              backgroundColor={colors.info}
               width={200}
               height={50}
               onPress={() => {
@@ -95,7 +96,7 @@ class Login extends React.Component {
 
           <View style={styles.p_2}>
             <AwesomeButton
-              backgroundColor={"#ffbc26"}
+              backgroundColor={colors.warning}
               width={200}
               height={50}
               onPress={
@@ -105,15 +106,14 @@ class Login extends React.Component {
                 }}
             >
               Sign Up!
-          </AwesomeButton>
-
-            <Text style={styles.p_2}>
-              New user? Sign up now!
-            </Text>
+            </AwesomeButton>
           </View>
 
-        </View>
+          <Text style={styles.text_centered}>
+            New user? Sign up now!
+          </Text>
 
+        </View>
       </ScrollView>
     );
   }
