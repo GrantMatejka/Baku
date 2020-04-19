@@ -12,46 +12,19 @@ import {
 import { ScrollView } from "react-native-gesture-handler";
 import Form from "../components/Form";
 import * as WebBrowser from "expo-web-browser";
-import { Fumi, Makiko } from "react-native-textinput-effects";
+import { Fumi } from "react-native-textinput-effects";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 
 import styles from "../styles/styles";
 
 import { MonoText } from "../components/StyledText";
 
-export default function CreateProfile({ navigation }) {
+export default function CreateProfile({ route, navigation }) {
+  const { state } = route.params;
+
   return (
     <View style={styles.container}>
-      <Text style={styles.mainHeader}>Welcome to Baku!</Text>
-      <Fumi
-        label={"Name"}
-        iconClass={FontAwesomeIcon}
-        iconName={"user"}
-        iconColor={"#b0cfe8"}
-        iconSize={20}
-        iconWidth={40}
-        inputPadding={16}
-      />
-      <Fumi
-        label={"Username"}
-        iconClass={FontAwesomeIcon}
-        iconName={"user-plus"}
-        iconColor={"#b0e8b8"}
-        iconSize={20}
-        iconWidth={40}
-        inputPadding={16}
-        inputStyle={{ padding: 5 }}
-      />
-      <Fumi
-        label={"Email"}
-        iconClass={FontAwesomeIcon}
-        iconName={"envelope-square"}
-        iconColor={"#bfb0e8"}
-        iconSize={20}
-        iconWidth={40}
-        inputPadding={16}
-        inputStyle={{ padding: 5 }}
-      />
+      <Text style={[styles.header, styles.text_medium]}>Hey {state.name}! Now it's your chance to show who you really are!</Text>
       <Fumi
         label={"Phone-Number"}
         iconClass={FontAwesomeIcon}
@@ -62,26 +35,52 @@ export default function CreateProfile({ navigation }) {
         inputPadding={16}
         inputStyle={{ padding: 5 }}
       />
+
       <Fumi
-        label={"Password"}
+        label={"Birthday"}
         iconClass={FontAwesomeIcon}
-        iconName={"unlock"}
-        iconColor={"#e34a42"}
+        iconName={"birthday-cake"}
+        iconColor={"#e1b0e8"}
         iconSize={20}
         iconWidth={40}
         inputPadding={16}
         inputStyle={{ padding: 5 }}
       />
+
       <Fumi
-        label={"Confirm Password"}
+        label={"Short BIO"}
         iconClass={FontAwesomeIcon}
-        iconName={"lock"}
-        iconColor={"#43e650"}
+        iconName={"pencil"}
+        iconColor={"#e1b0e8"}
         iconSize={20}
         iconWidth={40}
         inputPadding={16}
         inputStyle={{ padding: 5 }}
       />
+
+      <Fumi
+        label={"Photo of Yourself :)"}
+        iconClass={FontAwesomeIcon}
+        iconName={"camera"}
+        iconColor={"#e1b0e8"}
+        iconSize={20}
+        iconWidth={40}
+        inputPadding={16}
+        inputStyle={{ padding: 5 }}
+      />
+
+      <Fumi
+        label={"Some Places You've Been"}
+        iconClass={FontAwesomeIcon}
+        iconName={"location-arrow"}
+        iconColor={"#e1b0e8"}
+        iconSize={20}
+        iconWidth={40}
+        inputPadding={16}
+        inputStyle={{ padding: 5 }}
+      />
+
+
       <View style={styles.SignupButton}>
         <Button
           title="Create Profile"
