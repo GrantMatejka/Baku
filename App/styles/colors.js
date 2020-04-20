@@ -7,6 +7,7 @@ const colors = {
    lighter: "#e9f6f3",
    background: "#f0efef",
    dark: "#010101",
+   danger: "#cc0022",
 };
 
 export default colors;
