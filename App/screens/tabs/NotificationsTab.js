@@ -16,37 +16,8 @@ export default function NotificationsTab() {
         style={styles.container}
         contentContainerStyle={styles.contentContainer}
       >
-        <Text style={styles.mainHeader}>Notifications</Text>
-        <View style={styles.NotificationCardContainer}>
-          <Image style={styles.NotificationUserProfile} source={require( '../../assets/images/splash.png')}
-              style = {{
-                width:50,
-                height: 50,
-                marginVertical: 3,
-                marginHorizontal: 7}}>
-          </Image>
-          <Text style={styles.NotificationCardTimeStamp}>48 min ago</Text>
-          <Text style={styles.NotificationCardMainText}>Baku_User has liked your post</Text>
-          <Icon style = {styles.NotificationTypeIcon} 
-                name="md-thumbs-up" 
-                size={55}
-                ></Icon>
-        </View>
-
-        <View style={styles.NotificationCardContainer}>
-          <Image style={styles.NotificationUserProfile} source={require( '../../assets/images/splash.png')}
-              style = {{
-                width:50,
-                height: 50,
-                marginVertical: 3,
-                marginHorizontal: 7}}>
-          </Image>
-          <Text style={styles.NotificationCardTimeStamp}>2 hr ago</Text>
-          <Text style={styles.NotificationCardMainText}>Traveling_Beast has followed you</Text>
-          <Icon style = {styles.NotificationTypeIcon} 
-                name="ios-man" 
-                size={55}
-                ></Icon>
+        <View>
+          <NotificationList />
         </View>
       </ScrollView>
     </View>
