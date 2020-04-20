@@ -1,8 +1,244 @@
 import { StyleSheet } from "react-native";
+import colors from './colors';
+
+
 export default StyleSheet.create({
+  //Container styles
   container: {
     flex: 1,
-    backgroundColor: "#e9f6f3"
+    backgroundColor: colors.background,
+  },
+  //Container for any horizontally centered child content
+  //Useful for with StackView
+  container_content: {
+    paddingTop: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
+  //Generic header style
+  header: {
+    fontStyle: "normal",
+    padding: 30,
+    color: colors.dark,
+    lineHeight: 30,
+    textAlign: "center"
+  },
+  header_postcard: {
+    fontWeight: "bold",
+    fontStyle: "italic",
+    textAlign: "center",
+    paddingTop: 10
+  },
+
+  //Text Stylings
+  text_large: {
+    fontSize: 35,
+  },
+  text_medium: {
+    fontSize: 25,
+  },
+  text_small: {
+    fontSize: 15,
+  },
+  text_xsmall: {
+    fontSize: 10,
+  },
+  text_error: {
+    color: "red", 
+    marginVertical: 10, 
+    fontSize: 15
+  },
+  text_button: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: colors.dark,
+  },
+  text_centered: {
+    textAlign: 'center',
+  },
+
+  //Button Stylings
+  button: {
+    marginTop: 30,
+    marginBottom: 20,
+    paddingVertical: 5,
+    alignItems: "center",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    backgroundColor: colors.warning,
+    borderColor: colors.warning,
+    borderWidth: 1,
+    borderRadius: 5,
+  },
+  testButton: {
+    display: "flex",
+    height: 50,
+    borderRadius: 5,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: colors.success,
+    shadowColor: colors.success,
+    shadowOpacity: 0.4,
+    shadowOffset: { height: 10, width: 0 },
+    shadowRadius: 20
+  },
+  postButtonsContainer: {
+    flexDirection: "row",
+    marginTop: 36,
+    marginLeft: 16
+  },
+  postItineraryButton: {
+    marginHorizontal: 18
+  },
+
+  //Padding Levels
+  p_1: {
+    padding: 5
+  },
+  p_2: {
+    padding: 10
+  },
+  p_3: {
+    padding: 15
+  },
+  p_4: {
+    padding: 20
+  },
+  p_5: {
+    padding: 25
+  },
+
+  //Padding Top Levels
+  pt_1: {
+    paddingTop: 5
+  },
+  pt_2: {
+    paddingTop: 10
+  },
+  pt_3: {
+    paddingTop: 15
+  },
+  pt_4: {
+    paddingTop: 20
+  },
+  pt_5: {
+    paddingTop: 25
+  },
+
+  //Margin Levels
+  m_1: {
+    margin: 5
+  },
+  m_2: {
+    margin: 10
+  },
+  m_3: {
+    margin: 15
+  },
+  m_4: {
+    margin: 20
+  },
+  m_5: {
+    margin: 25
+  },
+
+  //Margin Top Levels
+  mt_1: {
+    marginTop: 5
+  },
+  mt_2: {
+    marginTop: 10
+  },
+  mt_3: {
+    marginTop: 15
+  },
+  mt_4: {
+    marginTop: 20
+  },
+  mt_5: {
+    marginTop: 25
+  },
+
+  //Margin Bottom Levels
+  mb_1: {
+    marginBottom: 5
+  },
+  mb_2: {
+    marginBottom: 10
+  },
+  mb_3: {
+    marginBottom: 15
+  },
+  mb_4: {
+    marginBottom: 20
+  },
+  mb_5: {
+    marginBottom: 25
+  },
+
+  //Image stylings
+  image_header: {
+    width: 300,
+    height: 200,
+    resizeMode: "contain",
+  },
+
+  inputBox: {
+    width: "85%",
+    margin: 10,
+    padding: 15,
+    fontSize: 16,
+    borderColor: "#d3d3d3",
+    borderBottomWidth: 1,
+    textAlign: "center"
+  },
+  button: {
+    marginTop: 30,
+    marginBottom: 20,
+    paddingVertical: 5,
+    alignItems: "center",
+    backgroundColor: "#F6820D",
+    borderColor: "#F6820D",
+    borderWidth: 1,
+    borderRadius: 5,
+    width: 200
+  },
+  buttonText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#fff"
+  },
+  buttonSignup: {
+    fontSize: 12
+  },
+
+  contentContainer: {
+    paddingTop: 10
+  },
+  welcomeContainer: {
+    alignItems: "center",
+    marginTop: 10,
+    marginBottom: 5
+  },
+  welcomeImage: {
+    width: 300,
+    height: 200,
+    resizeMode: "contain",
+    marginTop: 3,
+    marginLeft: -10
+  },
+
+
+
+  inputBox: {
+    width: "85%",
+    margin: 10,
+    padding: 15,
+    fontSize: 16,
+    borderColor: "#d3d3d3",
+    borderBottomWidth: 1,
+    textAlign: "center"
   },
   formStyle: {
     display: "flex",
@@ -11,14 +247,6 @@ export default StyleSheet.create({
     marginBottom: 12,
     flexDirection: "column"
     // justifyContent: "center"
-  },
-  mainHeader: {
-    fontSize: 35,
-    fontStyle: "normal",
-    padding: 30,
-    color: "rgba(96,100,109, 1)",
-    lineHeight: 40,
-    textAlign: "center"
   },
   profileTextTitle: {
     padding: 20,
@@ -41,14 +269,6 @@ export default StyleSheet.create({
     borderWidth: 1
   },
 
-  SignupButton: {
-    flexDirection: "column",
-    justifyContent: "space-between",
-    marginTop: 60
-  },
-  contentContainer: {
-    paddingTop: 10
-  },
   getStartedContainer: {
     alignItems: "center",
     marginHorizontal: 50
@@ -96,25 +316,10 @@ export default StyleSheet.create({
     lineHeight: 19,
     textAlign: "center"
   },
-  contentContainer: {
-    paddingTop: 10
-  },
-  welcomeContainer: {
-    alignItems: "center",
-    marginTop: 10,
-    marginBottom: 5
-  },
   signUpText: {
     textAlign: "center",
     marginTop: 10,
     marginBottom: 5
-  },
-  welcomeImage: {
-    width: 300,
-    height: 200,
-    resizeMode: "contain",
-    marginTop: 3,
-    marginLeft: -10
   },
   getStartedContainer: {
     alignItems: "center",
@@ -146,24 +351,6 @@ export default StyleSheet.create({
     backgroundColor: "#fbfbfb",
     paddingVertical: 20
   },
-  LoginButton: {
-    flexDirection: "column",
-    justifyContent: "space-between",
-    marginTop: 60
-  },
-  testButton: {
-    display: "flex",
-    height: 50,
-    borderRadius: 5,
-    justifyContent: "center",
-    alignItems: "center",
-
-    backgroundColor: "#2AC062",
-    shadowColor: "#2AC062",
-    shadowOpacity: 0.4,
-    shadowOffset: { height: 10, width: 0 },
-    shadowRadius: 20
-  },
   postCardContainer: {
     backgroundColor: "#FFF9F1",
     height: 450,
@@ -171,13 +358,6 @@ export default StyleSheet.create({
     marginVertical: 30,
     borderColor: "rgba(0,0,0,0.05)",
     borderWidth: 2
-  },
-  postCardHeader: {
-    fontWeight: "400",
-    fontStyle: "italic",
-    fontSize: 13,
-    textAlign: "center",
-    paddingTop: 12
   },
 
 
@@ -230,15 +410,7 @@ export default StyleSheet.create({
     marginRight: 15,
     marginTop: -40
   },
-  postButtonsContainer: {
-    flexDirection: "row",
-    marginTop: 36,
-    marginLeft: 16
-  },
   postHeartContainer: {
     marginHorizontal: 5
   },
-  postItineraryButton: {
-    marginHorizontal: 18
-  }
 });
