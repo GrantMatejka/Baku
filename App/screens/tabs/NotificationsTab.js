@@ -7,6 +7,7 @@ import { ScrollView } from "react-native-gesture-handler";
 
 import styles from "../../styles/styles";
 import Header from "../../components/Header";
+import NotificationList from "../../components/NotificationList";
 
 export default function NotificationsTab() {
   return (
