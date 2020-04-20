@@ -18,7 +18,8 @@ class Login extends React.Component {
   state = {
     email: "",
     password: "",
-    error: ""
+    error: "",
+    rememberMe: false
   };
   handleLogin = () => {
     const { email, password } = this.state;
@@ -33,11 +34,9 @@ class Login extends React.Component {
         this.setState({ error: "" })
       )
       .catch(error => {
-        console.log(error), this.setState({ error: "Login Failed" });
+        console.log(error), this.setState({ error: "Invalid Username or Password" });
       });
-    passwordReset: email => {
-      return Firebase.auth().sendPasswordResetEmail(email);
-    }
+
   };
 
   render() {
@@ -70,6 +69,11 @@ class Login extends React.Component {
           inputPadding={16}
           secureTextEntry={true}
         />
+        <div className="form-group">
+          <label htmlFor="rememberMe">Remember me</label>
+          <input type="checkbox" className="form-control" id="rememberMe" ref="rememberMe" placeholder="Remember Me" onChange={this.toggleRememberMe} />
+        </div>
+
         <View
           style={{
             alignItems: "center"
