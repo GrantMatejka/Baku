@@ -1,6 +1,8 @@
 import React from "react";
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+
 import CreateProfileScreen from "../screens/CreateProfileScreen";
 import Tabs from "../components/Tabs";
 import Login from "../screens/Login";
@@ -11,11 +13,7 @@ const Stack = createStackNavigator();
 export default Navigator = ({ loggedIn }) => {
   if (loggedIn) {
     return (
-      <NavigationContainer
-        screenOptions={{ gestureEnabled: false }}
-        initialRouteName="Welcome"
-      >
-
+      <NavigationContainer initialRouteName="LoggedIn">
         <Stack.Navigator screenOptions={{ gestureEnabled: false }}>
           <Stack.Screen
             name="Tabs"
@@ -51,10 +49,8 @@ export default Navigator = ({ loggedIn }) => {
     );
   } else {
     return (
-      <NavigationContainer initialRouteName="Welcome">
-        <Stack.Navigator 
-          screenOptions={{ gestureEnabled: false }}
-        >
+      <NavigationContainer initialRouteName="NotLoggedIn">
+        <Stack.Navigator screenOptions={{ gestureEnabled: false }}>
           <Stack.Screen
             name="Login"
             component={Login}
@@ -76,7 +72,8 @@ export default Navigator = ({ loggedIn }) => {
             name="Additional Info"
             component={CreateProfileScreen}
             options={{
-              title: "Create Profile"
+              title: "Create Profile",
+              headerShown: false
 
             }}
           />

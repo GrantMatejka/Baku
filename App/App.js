@@ -1,7 +1,5 @@
 import "react-native-gesture-handler";
-// import * as React from "react";
 import React from "react";
-import ReactDom from "react-dom";
 import { SplashScreen } from "expo";
 import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
@@ -29,11 +27,15 @@ export default function App(props) {
         SplashScreen.hide();
       }
     }
+    
     loadResourcesAndDataAsync();
   }, []);
+
   if (!isLoadingComplete && !props.skipLoadingScreen) {
     return null;
+
   } else {
     return <AppNavigator loggedIn={false} />;
+
   }
 }
