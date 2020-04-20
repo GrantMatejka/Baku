@@ -1,24 +1,44 @@
 import * as React from "react";
-import {
-  Image,
-  Platform,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  TextInput,
-  Button
-} from "react-native";
+import { Text, View, FlatList } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { ScrollView } from "react-native-gesture-handler";
 import { Fumi, Makiko } from "react-native-textinput-effects";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
-// import * as WebBrowser from "expo-web-browser";
 import styles from "../../styles/styles";
 import { MonoText } from "../../components/StyledText";
 import Header from "../../components/Header";
+import firebase from "../../config/Firebase";
+//import firestore from "@react-native-firebase/firestore";
+import AwesomeButton from "react-native-really-awesome-button";
 
-export default function SearchTab() {
+function SearchTab() {
+  const [locValue, setLoc] = React.useState("");
+  const [locSearch, setSearch] = React.useState("");
+  const [loading, setLoading] = React.useState(true);
+  const [locations, setLocations] = React.useState([]);
+  const db = firebase.firestore().collection("location_test");
+
+  async function getLocation() {
+    await db
+      .where(locSearch, "==", locValue)
+      .get()
+      .then(snapshot => {
+        const list = [];
+        snapshot.docs.forEach(doc => {
+          const { city, country } = doc.data();
+          list.push({
+            id: doc.id,
+            city,
+            country
+          });
+        });
+        setLocations(list);
+        if (loading) {
+          setLoading(false);
+        }
+      });
+  }
+
   return (
     <View style={styles.container}>
       <Header headerTitle="Search" />
@@ -43,7 +63,9 @@ export default function SearchTab() {
         </View>
         <View style={{ padding: 16 }}>
           <Fumi
-            label={"Location"}
+            label={"Search by..."}
+            onChangeText={text => setLoc(text)}
+            value={locValue}
             iconClass={FontAwesomeIcon}
             iconName={"search"}
             iconColor={"#346CD5"}
@@ -53,10 +75,112 @@ export default function SearchTab() {
             inputStyle={{ padding: 5 }}
           />
         </View>
+        <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
+          <AwesomeButton
+            backgroundColor={"#ffbc26"}
+            width={150}
+            height={40}
+            onPress={() => {
+              setSearch("country");
+              getLocation();
+            }}
+          >
+            Country
+          </AwesomeButton>
+          <AwesomeButton
+            backgroundColor={"#ffbc26"}
+            width={150}
+            height={40}
+            onPress={() => {
+              setSearch("city");
+              getLocation();
+            }}
+          >
+            City
+          </AwesomeButton>
+        </View>
+        <FlatList
+          data={locations}
+          renderItem={({ item }) => (
+            <View
+              style={{
+                height: 50,
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "center"
+              }}
+            >
+              <Text>City: {item.city}</Text>
+              <Text>Country: {item.country}</Text>
+            </View>
+          )}
+        />
       </ScrollView>
     </View>
   );
 }
+
+export default SearchTab;
+
+// import * as React from "react";
+// import {
+//   Image,
+//   Platform,
+//   StyleSheet,
+//   Text,
+//   TouchableOpacity,
+//   View,
+//   TextInput,
+//   Button
+// } from "react-native";
+// import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+// import { ScrollView } from "react-native-gesture-handler";
+// import { Fumi, Makiko } from "react-native-textinput-effects";
+// import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
+// // import * as WebBrowser from "expo-web-browser";
+// import styles from "../../styles/styles";
+// import { MonoText } from "../../components/StyledText";
+// import Header from "../../components/Header";
+
+// export default function SearchTab() {
+//   return (
+//     <View style={styles.container}>
+//       <Header headerTitle="Search" />
+//       <ScrollView
+//         style={styles.container}
+//         contentContainerStyle={styles.contentContainer}
+//       >
+//         <View style={styles.getStartedContainer}>
+//           <Text
+//             style={{
+//               fontSize: 35,
+//               fontStyle: "normal",
+//               padding: 30,
+//               color: "rgba(96,100,109, 1)",
+//               lineHeight: 40,
+//               textAlign: "center",
+//               paddingTop: 100
+//             }}
+//           >
+//             Where would you like to go?
+//           </Text>
+//         </View>
+//         <View style={{ padding: 16 }}>
+//           <Fumi
+//             label={"Location"}
+//             iconClass={FontAwesomeIcon}
+//             iconName={"search"}
+//             iconColor={"#346CD5"}
+//             iconSize={18}
+//             iconWidth={40}
+//             inputPadding={16}
+//             inputStyle={{ padding: 5 }}
+//           />
+//         </View>
+//       </ScrollView>
+//     </View>
+//   );
+// }
 
 /*const styles = StyleSheet.create({
   container: {
