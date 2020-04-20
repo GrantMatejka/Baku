@@ -60,7 +60,7 @@ export default function ProfileTab({ navigation }) {
             backgroundColor={"#ffbc26"}
             width={340}
             height={40}
-            onPress={() => navigation.navigate("Welcome")}
+            onPress={() => navigation.navigate("EditProfile")}
           >
             Edit Profile
           </AwesomeButton>
