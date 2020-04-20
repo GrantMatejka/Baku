@@ -7,12 +7,15 @@ import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
 import AppNavigator from "./navigation/AppNavigator";
 
-import {decode, encode} from 'base-64';
+import { decode, encode } from "base-64";
 
-if (!global.btoa) {  global.btoa = encode }
+if (!global.btoa) {
+  global.btoa = encode;
+}
 
-if (!global.atob) { global.atob = decode } 
-
+if (!global.atob) {
+  global.atob = decode;
+}
 
 export default function App(props) {
   const [loggedIn] = React.useState(false);
@@ -41,6 +44,6 @@ export default function App(props) {
   if (!isLoadingComplete && !props.skipLoadingScreen) {
     return null;
   } else {
-    return <AppNavigator loggedIn={true} />;
+    return <AppNavigator loggedIn={false} />;
   }
 }
