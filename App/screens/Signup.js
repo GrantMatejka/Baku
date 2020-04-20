@@ -29,7 +29,12 @@ class Signup extends React.Component {
       this.setState({ error: "Necessary to enter name" });
       return false;
     }
-    
+
+    //TODO take out code under here and uncomment firebase authentication when done
+    this.props.navigation.navigate("Additional Info", {
+      state: this.state,
+    });
+
     if(this.state.password !== this.state.confirmPassword){
         this.setState({ error: "Passwords don't match" });
         return false;
