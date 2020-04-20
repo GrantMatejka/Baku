@@ -29,7 +29,7 @@ class Signup extends React.Component {
       this.setState({ error: "Necessary to enter name" });
       return false;
     }
-
+    
     if(this.state.password !== this.state.confirmPassword){
         this.setState({ error: "Passwords don't match" });
         return false;
@@ -53,11 +53,9 @@ class Signup extends React.Component {
 
   render() {
     return (
-      <View 
-        style={styles.container}>
+      <View style={styles.container}>
 
-        <Text 
-          style={[styles.header, styles.text_large]}>
+        <Text style={[styles.header, styles.text_large]}>
             Welcome to Baku!
         </Text>
 
@@ -96,20 +94,13 @@ class Signup extends React.Component {
             onChangeText={confirmPassword => this.setState({ confirmPassword })}
         />
 
-        <View
-          style={{ alignItems: "center" }}
-        >
-          
-          <Text
-            style={styles.text_error}
-          >
+        <View style={styles.container_content}>
+          <Text style={styles.text_error}>
             {this.state.error}
           </Text>
-
         </View>
 
         <View style={styles.container_content}>
-
           <AwesomeButton
             backgroundColor={colors.warning}
             width={200}
@@ -123,7 +114,6 @@ class Signup extends React.Component {
           >
             Submit
           </AwesomeButton>
-
         </View>
 
       </View>
