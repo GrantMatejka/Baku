@@ -142,7 +142,7 @@ class Signup extends React.Component {
           value={this.state.password}
           secureTextEntry={true}
           iconClass={FontAwesomeIcon}
-          iconName={"lock"}
+          iconName={"unlock-alt"}
           onChangeText={password => this.setState({ password })}
         />
 
@@ -155,15 +155,13 @@ class Signup extends React.Component {
           onChangeText={confirmPassword => this.setState({ confirmPassword })}
         />
 
-        <View style={{ alignItems: "center" }}>
+        <View style={styles.container_content}>
           <Text style={styles.text_error}>{this.state.error}</Text>
         </View>
 
-        <View style={{ alignItems: "center", marginVertical: 10 }}>
+        <View style={styles.container_content}>
           <AwesomeButton
-            progress
-            progressLoadingTime={1000000}
-            backgroundColor={"#ffbc26"}
+            backgroundColor={colors.warning}
             width={200}
             height={50}
             onPress={() => {

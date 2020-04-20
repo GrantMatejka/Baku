@@ -5,6 +5,8 @@ import CreateProfileScreen from "../screens/CreateProfileScreen";
 import Tabs from "../components/Tabs";
 import Login from "../screens/Login";
 import Signup from "../screens/Signup";
+import ResetPass from "../screens/ResetPass";
+import EditProfile from "../screens/EditProfile";
 
 const Stack = createStackNavigator();
 
@@ -52,7 +54,7 @@ export default Navigator = ({ loggedIn }) => {
   } else {
     return (
       <NavigationContainer initialRouteName="Welcome">
-        <Stack.Navigator 
+        <Stack.Navigator
           screenOptions={{ gestureEnabled: false }}
         >
           <Stack.Screen
@@ -80,7 +82,14 @@ export default Navigator = ({ loggedIn }) => {
 
             }}
           />
+            <Stack.Screen
+                name="EditProfile"
+                component={EditProfile}
+                options={{
+                    title: "Edit Profile"
 
+                }}
+            />
           <Stack.Screen
             name="Tabs"
             children={Tabs}
@@ -92,6 +101,17 @@ export default Navigator = ({ loggedIn }) => {
               )
             }}
           />
+            <Stack.Screen
+                name="Reset"
+                component={ResetPass}
+                options={{
+                    title: "Reset Password Screen"
+                    // headerShown: false
+                    // tabBarIcon: ({ focused }) => (
+                    //   <TabBarIcon focused={focused} name="md-book" />
+                    // )
+                }}
+            />
         </Stack.Navigator>
       </NavigationContainer>
     );

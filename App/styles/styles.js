@@ -1,11 +1,14 @@
 import { StyleSheet } from "react-native";
+import colors from "./colors";
+
 export default StyleSheet.create({
   //Container styles
   container: {
     flex: 1,
-    backgroundColor: "#e9f6f3"
+    backgroundColor: colors.background
   },
   //Container for any horizontally centered child content
+  //Useful for with StackView
   container_content: {
     paddingTop: 10,
     justifyContent: "center",
@@ -16,7 +19,7 @@ export default StyleSheet.create({
   header: {
     fontStyle: "normal",
     padding: 30,
-    color: "rgba(96,100,109, 1)",
+    color: colors.dark,
     lineHeight: 30,
     textAlign: "center"
   },
@@ -48,7 +51,10 @@ export default StyleSheet.create({
   text_button: {
     fontSize: 20,
     fontWeight: "bold",
-    color: "#fff"
+    color: colors.dark
+  },
+  text_centered: {
+    textAlign: "center"
   },
 
   //Button Stylings
@@ -59,8 +65,8 @@ export default StyleSheet.create({
     alignItems: "center",
     flexDirection: "column",
     justifyContent: "space-between",
-    backgroundColor: "#FFA611",
-    borderColor: "#FFA611",
+    backgroundColor: colors.warning,
+    borderColor: colors.warning,
     borderWidth: 1,
     borderRadius: 5
   },
@@ -70,9 +76,8 @@ export default StyleSheet.create({
     borderRadius: 5,
     justifyContent: "center",
     alignItems: "center",
-
-    backgroundColor: "#2AC062",
-    shadowColor: "#2AC062",
+    backgroundColor: colors.success,
+    shadowColor: colors.success,
     shadowOpacity: 0.4,
     shadowOffset: { height: 10, width: 0 },
     shadowRadius: 20
@@ -354,7 +359,7 @@ export default StyleSheet.create({
 
   NotificationCardContainer: {
     flexDirection: "row",
-    backgroundColor: "#ffbc26",
+    backgroundColor: "#a0c9cf",
     height: 60,
     marginHorizontal: 15,
     marginVertical: 0,
@@ -368,23 +373,31 @@ export default StyleSheet.create({
     fontSize: 13,
     textAlign: "left",
     paddingTop: 33,
-    marginLeft: 15
+    marginLeft: 20
   },
   NotificationCardMainText: {
+    flex: 4,
     fontWeight: "400",
     fontSize: 15,
     textAlign: "left",
     paddingTop: 12,
-    marginLeft: -65
+    marginLeft: -195,
+    marginRight: -15
   },
   NotificationUserProfile: {
-    justifyContent: "center"
+    flex: 0.75,
+    alignItems: "center",
+    height: 55,
+    borderRadius: 2,
+    borderWidth: 1,
+    borderColor: "black"
     //this needs work
   },
   NotificationTypeIcon: {
-    justifyContent: "center",
-    marginLeft: 35,
-    marginTop: 0
+    flex: 0.8,
+    color: "black",
+    marginTop: 10,
+    marginRight: 0
     //this needs work
   },
 

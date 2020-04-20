@@ -1,25 +1,15 @@
 import * as React from "react";
-import {
-  Image,
-  Platform,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  TextInput,
-  Button
-} from "react-native";
+import { Image, StyleSheet, Text, View, } from "react-native";
+
 import { ScrollView } from "react-native-gesture-handler";
-import Form from "../../components/Form";
+import { DrawerActions } from "@react-navigation/native";
+import Icon from "react-native-vector-icons/FontAwesome";
+import AwesomeButton from "react-native-really-awesome-button";
+
 import Header from "../../components/Header";
 import styles from "../../styles/styles";
-import { DrawerActions } from "@react-navigation/native";
-import { MonoText } from "../../components/StyledText";
-import Icon from "react-native-vector-icons/FontAwesome";
 import Drawer from "../../components/DrawerNav";
-import AwesomeButton from "react-native-really-awesome-button";
 import ProfileTopTab from "../../components/ProfileTopTab";
-// import { Icon } from "react-native-paper/lib/typescript/src/components/Avatar/Avatar";
 
 export default function ProfileTab({ navigation }) {
   return (
@@ -60,7 +50,7 @@ export default function ProfileTab({ navigation }) {
             backgroundColor={"#ffbc26"}
             width={340}
             height={40}
-            onPress={() => navigation.navigate("Welcome")}
+            onPress={() => navigation.navigate("EditProfile")}
           >
             Edit Profile
           </AwesomeButton>
