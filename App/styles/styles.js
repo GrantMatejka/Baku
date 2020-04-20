@@ -1,16 +1,15 @@
 import { StyleSheet } from "react-native";
 export default StyleSheet.create({
-
   //Container styles
   container: {
     flex: 1,
-    backgroundColor: "#e9f6f3",
+    backgroundColor: "#e9f6f3"
   },
   //Container for any horizontally centered child content
   container_content: {
     paddingTop: 10,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center"
   },
 
   //Generic header style
@@ -30,20 +29,20 @@ export default StyleSheet.create({
 
   //Text Stylings
   text_large: {
-    fontSize: 35,
+    fontSize: 35
   },
   text_medium: {
-    fontSize: 25,
+    fontSize: 25
   },
   text_small: {
-    fontSize: 15,
+    fontSize: 15
   },
   text_xsmall: {
-    fontSize: 10,
+    fontSize: 10
   },
   text_error: {
-    color: "red", 
-    marginVertical: 10, 
+    color: "red",
+    marginVertical: 10,
     fontSize: 15
   },
   text_button: {
@@ -63,7 +62,7 @@ export default StyleSheet.create({
     backgroundColor: "#FFA611",
     borderColor: "#FFA611",
     borderWidth: 1,
-    borderRadius: 5,
+    borderRadius: 5
   },
   testButton: {
     display: "flex",
@@ -176,7 +175,7 @@ export default StyleSheet.create({
   image_header: {
     width: 300,
     height: 200,
-    resizeMode: "contain",
+    resizeMode: "contain"
   },
 
   inputBox: {
@@ -223,8 +222,6 @@ export default StyleSheet.create({
     marginTop: 3,
     marginLeft: -10
   },
-
-
 
   inputBox: {
     width: "85%",
@@ -355,9 +352,8 @@ export default StyleSheet.create({
     borderWidth: 2
   },
 
-
   NotificationCardContainer: {
-    flexDirection:'row',
+    flexDirection: "row",
     backgroundColor: "#ffbc26",
     height: 60,
     marginHorizontal: 15,
@@ -372,7 +368,7 @@ export default StyleSheet.create({
     fontSize: 13,
     textAlign: "left",
     paddingTop: 33,
-    marginLeft: 15,
+    marginLeft: 15
   },
   NotificationCardMainText: {
     fontWeight: "400",
@@ -381,18 +377,16 @@ export default StyleSheet.create({
     paddingTop: 12,
     marginLeft: -65
   },
-  NotificationUserProfile:{
-    justifyContent: 'center',
+  NotificationUserProfile: {
+    justifyContent: "center"
     //this needs work
   },
-  NotificationTypeIcon:{
-    justifyContent: 'center',
+  NotificationTypeIcon: {
+    justifyContent: "center",
     marginLeft: 35,
-    marginTop: 0,
+    marginTop: 0
     //this needs work
   },
-
-
 
   postCardLocation: {
     fontWeight: "bold",
@@ -408,4 +402,10 @@ export default StyleSheet.create({
   postHeartContainer: {
     marginHorizontal: 5
   },
+  testDBContainer: {
+    height: 50,
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
+  }
 });
