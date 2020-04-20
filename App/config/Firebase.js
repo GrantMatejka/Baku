@@ -17,7 +17,6 @@ const firebaseConfig = {
     messagingSenderId: MESSAGE_SENDER_ID,
     appId: APP_ID
 }
-
 // Initialize Firebase
 let Firebase = firebase.initializeApp(firebaseConfig)
 
