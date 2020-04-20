@@ -1,4 +1,6 @@
-import firebase from "firebase";
+//import firebase from "firebase";
+//import firestore from 'firebase/firestore';
+import * as firebase from "firebase";
 import firestore from "firebase/firestore";
 
 import {
@@ -6,6 +8,7 @@ import {
   AUTH_DOMAIN,
   DATABASE_URL,
   PROJECT_ID,
+  STORAGE_BUCKET,
   MESSAGE_SENDER_ID,
   APP_ID,
   STORAGE_BUCKET
@@ -16,11 +19,14 @@ const firebaseConfig = {
   authDomain: AUTH_DOMAIN,
   databaseURL: DATABASE_URL,
   projectId: PROJECT_ID,
-  storageBucket: "",
+  storageBucket: STORAGE_BUCKET,
   messagingSenderId: MESSAGE_SENDER_ID,
   appId: APP_ID,
   storageBucket: STORAGE_BUCKET
 };
 
 let Firebase = firebase.initializeApp(firebaseConfig);
+
+firebase.firestore();
+
 export default Firebase;
