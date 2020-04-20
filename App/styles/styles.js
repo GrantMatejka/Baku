@@ -363,7 +363,7 @@ export default StyleSheet.create({
 
   NotificationCardContainer: {
     flexDirection:'row',
-    backgroundColor: "#ffbc26",
+    backgroundColor: "#a0c9cf",
     height: 60,
     marginHorizontal: 15,
     marginVertical: 0,
@@ -377,23 +377,31 @@ export default StyleSheet.create({
     fontSize: 13,
     textAlign: "left",
     paddingTop: 33,
-    marginLeft: 15,
+    marginLeft: 20,
   },
   NotificationCardMainText: {
+    flex: 4,
     fontWeight: "400",
     fontSize: 15,
     textAlign: "left",
     paddingTop: 12,
-    marginLeft: -65
+    marginLeft: -195,
+    marginRight: -15
   },
   NotificationUserProfile:{
-    justifyContent: 'center',
+    flex: .75,
+    alignItems: 'center',
+    height: 55,
+    borderRadius: 2,
+    borderWidth: 1,
+    borderColor: 'black'
     //this needs work
   },
   NotificationTypeIcon:{
-    justifyContent: 'center',
-    marginLeft: 35,
-    marginTop: 0,
+    flex: .8,
+    color: "black",
+    marginTop: 10,
+    marginRight: 0
     //this needs work
   },
 
