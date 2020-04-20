@@ -10,26 +10,25 @@ import styles from "../styles/styles";
 import colors from "../styles/colors";
 
 class Signup extends React.Component {
-  state = {
-    name: "",
-    email: "",
-    password: "",
-    error: ""
-  };
+    state = {
+        name: "",
+        email: "",
+        password: "",
+        error: ""
+    };
 
-  clear = () => {
-    this.setState({ name: "", error: "", email: "", password: "", confirmPassword: "", error: "" });
-  };
+    clear = () => {
+        this.setState({ name: "", error: "", email: "", password: "", confirmPassword: "", error: "" });
+    };
 
-  handleSignUp = () => {
-    const { name, email, password, confirmPassword } = this.state;
-    this.setState({ name: name });
+    handleSignUp = () => {
+        const { name, email, password, confirmPassword } = this.state;
+        this.setState({ name: name });
 
-    if (this.state.name.length == 0) {
-      this.setState({ error: "Necessary to enter name" });
-      return false;
-    }
-
+        if (this.state.name.length == 0) {
+            this.setState({ error: "Necessary to enter name" });
+            return false;
+        }
 
     if(this.state.password !== this.state.confirmPassword){
         this.setState({ error: "Passwords don't match" });
