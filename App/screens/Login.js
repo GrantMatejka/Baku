@@ -1,18 +1,15 @@
-import React from "react";
-import {
-  View,
-  TextInput,
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-  Button,
-  Image
-} from "react-native";
-import Firebase from "../config/Firebase";
-import styleSheet from "../styles/styles";
+//Built in imports
+import * as React from "react";
+import { Image, Text, View, } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import AwesomeButton from "react-native-really-awesome-button";
+
+//Downloaded imports
+import Firebase from "../config/Firebase";
 import { Hoshi } from "react-native-textinput-effects";
+import AwesomeButton from "react-native-really-awesome-button";
+
+//Custom imports
+import styles from "../styles/styles";
 
 class Login extends React.Component {
   state = {
@@ -20,35 +17,41 @@ class Login extends React.Component {
     password: "",
     error: ""
   };
-  handleLogin = () => {
-    const { email, password } = this.state;
 
+  handleLogin = () => {
     Firebase.auth()
-      .signInWithEmailAndPassword(email, password)
+      .signInWithEmailAndPassword(this.state.email, this.state.password)
+      //Redirect on sucessful login
       .then(
-        () =>
-          this.props.navigation.navigate("Tabs", {
-            screen: "FeedTab"
-          }),
-        this.setState({ error: "" })
+        () => {
+          this.props.navigation.navigate("Tabs",
+            {
+              screen: "FeedTab"
+            });
+
+          this.setState({ error: "" });
+        }
       )
+      //Firebase authentication error handling, renders error message returned by firebase
       .catch(error => {
-        console.log(error), this.setState({ error: "Login Failed" });
+        console.log(error);
+        this.setState({ error: error.message });
       });
   };
 
   render() {
     return (
       <ScrollView
-        style={styleSheet.container}
-        contentContainerStyle={styles.contentContainer}
+        style={styles.container}
+        contentContainerStyle={[styles.mt_2, styles.mb_1]}
       >
-        <View style={styleSheet.welcomeContainer}>
+        <View style={[styles.container_content]}>
           <Image
             source={require("../assets/images/baku2-full-blue.png")}
-            style={styleSheet.welcomeImage}
+            style={styles.image_header}
           />
         </View>
+
         <Hoshi
           label={"Email"}
           value={this.state.email}
@@ -58,6 +61,7 @@ class Login extends React.Component {
           inputPadding={18}
           autoCapitalize="none"
         />
+
         <Hoshi
           label={"Password"}
           value={this.state.password}
@@ -67,92 +71,52 @@ class Login extends React.Component {
           inputPadding={16}
           secureTextEntry={true}
         />
-        <View
-          style={{
-            alignItems: "center"
-          }}
-        >
-          <Text
-            style={{
-              color: "red",
-              marginVertical: 10,
-              fontSize: 15
-            }}
-          >
+
+        <View style={styles.container_content}>
+          <Text style={styles.text_error} >
             {this.state.error}
           </Text>
-        </View>
-        <View style={{ alignItems: "center", padding: 10 }}>
-          <AwesomeButton
-            progress
-            progressLoadingTime={2000000}
-            backgroundColor={"#A5D6D9"}
-            width={200}
-            height={50}
-            onPress={next => {
-              this.setState({ error: "" });
-              this.handleLogin();
 
-              next();
-            }}
-          >
-            Login
+          <View style={styles.p_2}>
+            <AwesomeButton
+              progress
+              progressLoadingTime={2000000}
+              backgroundColor={"#A5D6D9"}
+              width={200}
+              height={50}
+              onPress={() => {
+                this.setState({ error: "" });
+                this.handleLogin();
+              }}
+            >
+              Login
           </AwesomeButton>
-        </View>
-        <View style={{ alignItems: "center", padding: 10 }}>
-          <AwesomeButton
-            backgroundColor={"#ffbc26"}
-            width={200}
-            height={50}
-            onPress={() => {
-              this.setState({ email: "", password: "", error: "" }),
-                this.props.navigation.navigate("Create");
-            }}
-          >
-            Sign Up!
+          </View>
+
+          <View style={styles.p_2}>
+            <AwesomeButton
+              backgroundColor={"#ffbc26"}
+              width={200}
+              height={50}
+              onPress={
+                () => {
+                  this.setState({ email: "", password: "", error: "" });
+                  this.props.navigation.navigate("Create");
+                }}
+            >
+              Sign Up!
           </AwesomeButton>
-          <Text style={{ padding: 10 }}>New user? Sign up now!</Text>
+
+            <Text style={styles.p_2}>
+              New user? Sign up now!
+            </Text>
+          </View>
+
         </View>
+
       </ScrollView>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  inputBox: {
-    width: "85%",
-    margin: 10,
-    padding: 15,
-    fontSize: 16,
-    borderColor: "#d3d3d3",
-    borderBottomWidth: 1,
-    textAlign: "center"
-  },
-  button: {
-    marginTop: 30,
-    marginBottom: 20,
-    paddingVertical: 5,
-    alignItems: "center",
-    backgroundColor: "#F6820D",
-    borderColor: "#F6820D",
-    borderWidth: 1,
-    borderRadius: 5,
-    width: 200
-  },
-  buttonText: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "#fff"
-  },
-  buttonSignup: {
-    fontSize: 12
-  }
-});
 
 export default Login;
