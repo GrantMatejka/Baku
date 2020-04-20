@@ -8,6 +8,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Tabs from "../components/Tabs";
 import Login from "../screens/Login";
 import Signup from "../screens/Signup";
+import ResetPass from "../screens/ResetPass";
 
 const Stack = createStackNavigator();
 
@@ -54,6 +55,17 @@ export default Navigator = ({ loggedIn }) => {
               // )
             }}
           />
+            <Stack.Screen
+                name="Reset"
+                component={ResetPass}
+                options={{
+                    title: "Reset Password Screen"
+                    // headerShown: false
+                    // tabBarIcon: ({ focused }) => (
+                    //   <TabBarIcon focused={focused} name="md-book" />
+                    // )
+                }}
+            />
         </Stack.Navigator>
       </NavigationContainer>
     );
@@ -95,6 +107,17 @@ export default Navigator = ({ loggedIn }) => {
               )
             }}
           />
+            <Stack.Screen
+                name="Reset"
+                component={ResetPass}
+                options={{
+                    title: "Reset Password Screen"
+                    // headerShown: false
+                    // tabBarIcon: ({ focused }) => (
+                    //   <TabBarIcon focused={focused} name="md-book" />
+                    // )
+                }}
+            />
         </Stack.Navigator>
       </NavigationContainer>
     );

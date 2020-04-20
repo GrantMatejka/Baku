@@ -35,6 +35,9 @@ class Login extends React.Component {
       .catch(error => {
         console.log(error), this.setState({ error: "Login Failed" });
       });
+    passwordReset: email => {
+      return Firebase.auth().sendPasswordResetEmail(email);
+    }
   };
 
   render() {
@@ -112,6 +115,16 @@ class Login extends React.Component {
             Sign Up!
           </AwesomeButton>
           <Text style={{ padding: 10 }}>New user? Sign up now!</Text>
+          <AwesomeButton
+              backgroundColor={"#039BE5"}
+              width={160}
+              height={30}
+              onPress={() => {
+                    this.props.navigation.navigate("Reset");
+              }}
+          >
+            Forgot Password?
+          </AwesomeButton>
         </View>
       </ScrollView>
     );

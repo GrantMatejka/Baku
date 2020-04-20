@@ -34,16 +34,17 @@ class Signup extends React.Component {
       this.setState({ error: "Password should be at least 6 characters" });
       return false;
     }
-    Firebase.auth()
+      Firebase.auth()
       .createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        this.clear();
+      .then(userData => {
+          userData.user.sendEmailVerification();
+          this.clear();
         this.props.navigation.navigate("Tabs", {
           screen: "FeedTab"
         });
       })
       .catch(error => {
-        console.log(error), this.setState({ error: "Invalid Credentials" });
+        console.log(error), this.setState({ error: "The email address is already in use by another account." });
       });
   };
 
@@ -155,5 +156,4 @@ const styles = StyleSheet.create({
     fontSize: 12
   }
 });
-
 export default Signup;
