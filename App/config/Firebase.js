@@ -1,5 +1,5 @@
 import firebase from "firebase";
-import "firebase/firestore";
+import firestore from "firebase/firestore";
 
 import {
   API_KEY,
@@ -7,7 +7,8 @@ import {
   DATABASE_URL,
   PROJECT_ID,
   MESSAGE_SENDER_ID,
-  APP_ID
+  APP_ID,
+  STORAGE_BUCKET
 } from "react-native-dotenv";
 
 const firebaseConfig = {
@@ -17,18 +18,9 @@ const firebaseConfig = {
   projectId: PROJECT_ID,
   storageBucket: "",
   messagingSenderId: MESSAGE_SENDER_ID,
-  appId: APP_ID
+  appId: APP_ID,
+  storageBucket: STORAGE_BUCKET
 };
 
-// Initialize Firebase
-// const admin = require("firebase-admin");
-// const functions = require("firebase-functions");
-
-// admin.initializeApp(functions.config().firebase);
-
-// let db = admin.firestore();
 let Firebase = firebase.initializeApp(firebaseConfig);
-// let db = firebase.firestore();
-// firebase.collection("users");
 export default Firebase;
-// export const Firestore = firebase.firestore();
