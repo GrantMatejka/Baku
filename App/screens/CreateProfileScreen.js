@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, View,  Button } from "react-native";
+import { Text, View, Button } from "react-native";
 
 import { Fumi } from "react-native-textinput-effects";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
@@ -12,10 +12,10 @@ export default function CreateProfile({ route, navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={[styles.header, styles.text_medium]}>
-        Hey {state.name}! Now it's your chance to show who you really are!
+      <Text style={[styles.header, styles.text_medium, styles.mt_5]}>
+          Hey {state.name}! Now it's your chance to show who you really are!
       </Text>
-      
+
       <Fumi
         label={"Phone-Number"}
         iconClass={FontAwesomeIcon}
