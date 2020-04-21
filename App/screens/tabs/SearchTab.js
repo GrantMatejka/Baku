@@ -7,7 +7,6 @@ import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 import styles from "../../styles/styles";
 import Header from "../../components/Header";
 import firebase from "../../config/Firebase";
-//import firestore from "@react-native-firebase/firestore";
 import AwesomeButton from "react-native-really-awesome-button";
 
 function SearchTab() {
@@ -118,3 +117,5 @@ function SearchTab() {
     </View>
   );
 }
+
+export default SearchTab;
