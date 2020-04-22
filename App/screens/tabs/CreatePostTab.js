@@ -3,8 +3,8 @@ import { Text, View, } from "react-native";
 
 import { ScrollView } from "react-native-gesture-handler";
 
-import styles from "../../styles/styles";
-import colors from "../../styles/colors";
+import styles from "../../styles/Styles";
+import colors from "../../styles/Colors";
 
 export default function CreatePost() {
   return (

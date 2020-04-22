@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   View,
   TextInput,
@@ -7,36 +7,35 @@ import {
   Text,
   Button,
   Image
-} from "react-native";
-import Firebase from "../config/Firebase";
-import styleSheet from "../styles/styles";
-import { ScrollView } from "react-native-gesture-handler";
-import AwesomeButton from "react-native-really-awesome-button";
-import { Hoshi } from "react-native-textinput-effects";
+} from 'react-native';
+import Firebase from '../config/Firebase';
+import styleSheet from '../styles/Styles';
+import {ScrollView} from 'react-native-gesture-handler';
+import AwesomeButton from 'react-native-really-awesome-button';
+import {Hoshi} from 'react-native-textinput-effects';
 
 class Login extends React.Component {
   state = {
-    email: "",
-    password: "",
-    error: "",
+    email: '',
+    password: '',
+    error: '',
     rememberMe: false
   };
   handleLogin = () => {
-    const { email, password } = this.state;
+    const {email, password} = this.state;
 
     Firebase.auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(
-        () =>
-          this.props.navigation.navigate("Tabs", {
-            screen: "FeedTab"
-          }),
-        this.setState({ error: "" })
-      )
-      .catch(error => {
-        console.log(error), this.setState({ error: "Invalid Username or Password" });
-      });
-
+        .signInWithEmailAndPassword(email, password)
+        .then(
+            () =>
+              this.props.navigation.navigate('Tabs', {
+                screen: 'FeedTab'
+              }),
+            this.setState({error: ''})
+        )
+        .catch((error) => {
+          console.log(error), this.setState({error: 'Invalid Username or Password'});
+        });
   };
 
   render() {
@@ -47,41 +46,42 @@ class Login extends React.Component {
       >
         <View style={styleSheet.welcomeContainer}>
           <Image
-            source={require("../assets/images/baku2-full-blue.png")}
+            source={require('../assets/images/baku2-full-blue.png')}
             style={styleSheet.welcomeImage}
           />
         </View>
         <Hoshi
-          label={"Email"}
+          label={'Email'}
           value={this.state.email}
-          onChangeText={email => this.setState({ email })}
-          borderColor={"#A5D6D9"}
+          onChangeText={(email) => this.setState({email})}
+          borderColor={'#A5D6D9'}
           borderHeight={5}
           inputPadding={18}
           autoCapitalize="none"
         />
         <Hoshi
-          label={"Password"}
+          label={'Password'}
           value={this.state.password}
-          onChangeText={password => this.setState({ password })}
-          borderColor={"#ffbc26"}
+          onChangeText={(password) => this.setState({password})}
+          borderColor={'#ffbc26'}
           borderHeight={5}
           inputPadding={16}
           secureTextEntry={true}
         />
-        <div className="form-group">
+
+        {/* <div className="form-group">
           <label htmlFor="rememberMe">Remember me</label>
           <input type="checkbox" className="form-control" id="rememberMe" ref="rememberMe" placeholder="Remember Me" onChange={this.toggleRememberMe} />
-        </div>
+        </div>*/}
 
         <View
           style={{
-            alignItems: "center"
+            alignItems: 'center'
           }}
         >
           <Text
             style={{
-              color: "red",
+              color: 'red',
               marginVertical: 10,
               fontSize: 15
             }}
@@ -89,15 +89,15 @@ class Login extends React.Component {
             {this.state.error}
           </Text>
         </View>
-        <View style={{ alignItems: "center", padding: 10 }}>
+        <View style={{alignItems: 'center', padding: 10}}>
           <AwesomeButton
             progress
             progressLoadingTime={2000000}
-            backgroundColor={"#A5D6D9"}
+            backgroundColor={'#A5D6D9'}
             width={200}
             height={50}
-            onPress={next => {
-              this.setState({ error: "" });
+            onPress={(next) => {
+              this.setState({error: ''});
               this.handleLogin();
 
               next();
@@ -106,26 +106,26 @@ class Login extends React.Component {
             Login
           </AwesomeButton>
         </View>
-        <View style={{ alignItems: "center", padding: 10 }}>
+        <View style={{alignItems: 'center', padding: 10}}>
           <AwesomeButton
-            backgroundColor={"#ffbc26"}
+            backgroundColor={'#ffbc26'}
             width={200}
             height={50}
             onPress={() => {
-              this.setState({ email: "", password: "", error: "" }),
-                this.props.navigation.navigate("Create");
+              this.setState({email: '', password: '', error: ''}),
+              this.props.navigation.navigate('Create');
             }}
           >
             Sign Up!
           </AwesomeButton>
-          <Text style={{ padding: 10 }}>New user? Sign up now!</Text>
+          <Text style={{padding: 10}}>New user? Sign up now!</Text>
           <AwesomeButton
-              backgroundColor={"#039BE5"}
-              width={160}
-              height={30}
-              onPress={() => {
-                    this.props.navigation.navigate("Reset");
-              }}
+            backgroundColor={'#039BE5'}
+            width={160}
+            height={30}
+            onPress={() => {
+              this.props.navigation.navigate('Reset');
+            }}
           >
             Forgot Password?
           </AwesomeButton>
@@ -138,34 +138,34 @@ class Login extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   inputBox: {
-    width: "85%",
+    width: '85%',
     margin: 10,
     padding: 15,
     fontSize: 16,
-    borderColor: "#d3d3d3",
+    borderColor: '#d3d3d3',
     borderBottomWidth: 1,
-    textAlign: "center"
+    textAlign: 'center'
   },
   button: {
     marginTop: 30,
     marginBottom: 20,
     paddingVertical: 5,
-    alignItems: "center",
-    backgroundColor: "#F6820D",
-    borderColor: "#F6820D",
+    alignItems: 'center',
+    backgroundColor: '#F6820D',
+    borderColor: '#F6820D',
     borderWidth: 1,
     borderRadius: 5,
     width: 200
   },
   buttonText: {
     fontSize: 20,
-    fontWeight: "bold",
-    color: "#fff"
+    fontWeight: 'bold',
+    color: '#fff'
   },
   buttonSignup: {
     fontSize: 12
