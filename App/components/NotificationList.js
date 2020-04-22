@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Text, View, ScrollView } from "react-native";
-import NotificationCard from "./NotificationCard";
-import datas from "../assets/data/data";
+import React, {Component} from 'react';
+import {Text, View, ScrollView} from 'react-native';
+import NotificationCard from './NotificationCard';
+import datas from '../assets/data/data';
 
 export default class NotificationList extends Component {
   state = {
@@ -9,7 +9,7 @@ export default class NotificationList extends Component {
   };
 
   listNotifs = () => {
-    return this.state.datas.map(data => {
+    return this.state.datas.map((data) => {
       return <NotificationCard detail={data} key={data.id} />;
     });
   };
