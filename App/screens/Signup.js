@@ -8,21 +8,32 @@ import {
   Button
 } from "react-native";
 import firebase from "../config/Firebase";
-import styles from "../styles/styles";
 import { Fumi, Makiko } from "react-native-textinput-effects";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 import AwesomeButton from "react-native-really-awesome-button";
+import colors from "../styles/colors";
+import styles from "../styles/styles";
 
 class Signup extends React.Component {
-  constructor() {
-    super();
-    this.dbRef = firebase.firestore().collection("users");
-    this.state = {
-      name: "",
-      email: "",
-      isLoading: false
-    };
-  }
+  // constructor() {
+  //   super();
+  //   this.dbRef = firebase.firestore().collection("users");
+  //   this.state = {
+  //     name: "",
+  //     email: "",
+  //     isLoading: false
+  //   };
+  // }
+  dbRef = firebase.firestore().collection("users");
+
+  state = {
+    name: "",
+    email: "",
+    password: "",
+    error: "",
+    isLoading: false,
+    dbRef: this.dbRef
+  };
 
   inputValueUpdate = (val, prop) => {
     const state = this.state;
@@ -30,52 +41,46 @@ class Signup extends React.Component {
     this.setState(state);
   };
 
-  storeUser() {
-    if (this.state.name === "") {
-      alert("Fill at least your name!");
-    } else {
-      this.setState({
-        isLoading: true
-      });
-      this.dbRef
-        .add({
-          name: this.state.name,
-          email: this.state.email
-        })
-        .then(res => {
-          this.setState({
-            name: "",
-            email: "",
-            isLoading: false
-          });
-          //this.props.navigation.navigate('Login')
-        })
-        .catch(err => {
-          console.error("Error found: ", err);
-          this.setState({
-            isLoading: false
-          });
-        });
-    }
-  }
-
-  state = {
-    name: "",
-    email: "",
-    password: "",
-    error: ""
-  };
-
-  clear = () => {
+  storeUser = () => {
+    const { name, email, isLoading } = this.state;
+    // if (this.state.name === "") {
+    //   alert("Fill at least your name!");
+    // } else {
     this.setState({
-      name: "",
-      error: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-      error: ""
+      isLoading: true
     });
+    this.dbRef
+      .add({
+        name: this.state.name,
+        email: this.state.email
+      })
+      .then(res => {
+        this.setState({
+          name: "",
+          email: "",
+          isLoading: false
+        });
+        //this.props.navigation.navigate('Login')
+      })
+      .catch(err => {
+        console.error("Error found: ", err);
+        this.setState({
+          isLoading: false
+        });
+      });
+    // }
   };
+
+  // clear = () => {
+  //   this.setState({
+  //     name: "",
+  //     error: "",
+  //     email: "",
+  //     password: "",
+  //     confirmPassword: "",
+  //     error: ""
+  //   });
+  // };
 
   handleSignUp = () => {
     const { name, email, password, confirmPassword } = this.state;
@@ -85,11 +90,6 @@ class Signup extends React.Component {
       this.setState({ error: "Necessary to enter name" });
       return false;
     }
-
-    //TODO take out code under here and uncomment firebase authentication when done
-    //    this.props.navigation.navigate("Additional Info", {
-    //      state: this.state,
-    //    });
 
     if (this.state.password !== this.state.confirmPassword) {
       this.setState({ error: "Passwords don't match" });
@@ -105,8 +105,8 @@ class Signup extends React.Component {
       .createUserWithEmailAndPassword(email, password)
 
       .then(() => {
-        this.props.navigation.navigate("Tabs", {
-          screen: "FeedTab"
+        this.props.navigation.navigate("Additional Info", {
+          state: this.state
         });
       })
       .catch(error => {
