@@ -1,93 +1,78 @@
-import * as React from "react";
-import {
-  Image,
-  Platform,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  TextInput,
-  Button
-} from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
-import Form from "../components/Form";
-import * as WebBrowser from "expo-web-browser";
-import { Fumi, Makiko } from "react-native-textinput-effects";
-import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
+import * as React from 'react';
+import {Text, View, Button} from 'react-native';
 
-import styles from "../styles/styles";
+import {Fumi} from 'react-native-textinput-effects';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
-import { MonoText } from "../components/StyledText";
+import styles from '../styles/Styles';
+import colors from '../styles/Colors';
 
-export default function CreateProfile({ navigation }) {
+export default function CreateProfile({route, navigation}) {
+  const {state} = route.params;
+
   return (
     <View style={styles.container}>
-      <Text style={styles.mainHeader}>Welcome to Baku!</Text>
+      <Text style={[styles.header, styles.text_medium, styles.mt_5]}>
+          Hey {state.name}! Now it's your chance to show who you really are!
+      </Text>
+
       <Fumi
-        label={"Name"}
+        label={'Phone-Number'}
         iconClass={FontAwesomeIcon}
-        iconName={"user"}
-        iconColor={"#b0cfe8"}
+        iconName={'phone'}
         iconSize={20}
         iconWidth={40}
         inputPadding={16}
+        inputStyle={{padding: 5}}
       />
+
       <Fumi
-        label={"Username"}
+        label={'Birthday'}
         iconClass={FontAwesomeIcon}
-        iconName={"user-plus"}
-        iconColor={"#b0e8b8"}
+        iconName={'birthday-cake'}
         iconSize={20}
         iconWidth={40}
         inputPadding={16}
-        inputStyle={{ padding: 5 }}
+        inputStyle={{padding: 5}}
       />
+
       <Fumi
-        label={"Email"}
+        label={'Short BIO'}
         iconClass={FontAwesomeIcon}
-        iconName={"envelope-square"}
-        iconColor={"#bfb0e8"}
+        iconName={'pencil'}
         iconSize={20}
         iconWidth={40}
         inputPadding={16}
-        inputStyle={{ padding: 5 }}
+        inputStyle={{padding: 5}}
       />
+
       <Fumi
-        label={"Phone-Number"}
+        label={'Photo of Yourself :)'}
         iconClass={FontAwesomeIcon}
-        iconName={"phone"}
-        iconColor={"#e1b0e8"}
+        iconName={'camera'}
         iconSize={20}
         iconWidth={40}
         inputPadding={16}
-        inputStyle={{ padding: 5 }}
+        inputStyle={{padding: 5}}
       />
+
       <Fumi
-        label={"Password"}
+        label={'Some Places You\'ve Been'}
         iconClass={FontAwesomeIcon}
-        iconName={"unlock"}
-        iconColor={"#e34a42"}
+        iconName={'location-arrow'}
         iconSize={20}
         iconWidth={40}
         inputPadding={16}
-        inputStyle={{ padding: 5 }}
+        inputStyle={{padding: 5}}
       />
-      <Fumi
-        label={"Confirm Password"}
-        iconClass={FontAwesomeIcon}
-        iconName={"lock"}
-        iconColor={"#43e650"}
-        iconSize={20}
-        iconWidth={40}
-        inputPadding={16}
-        inputStyle={{ padding: 5 }}
-      />
+
+
       <View style={styles.SignupButton}>
         <Button
           title="Create Profile"
           onPress={() =>
-            navigation.navigate("Tabs", {
-              screen: "FeedTab"
+            navigation.navigate('Tabs', {
+              screen: 'FeedTab'
             })
           }
         />

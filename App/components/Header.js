@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Text, View } from "react-native";
+import React, {Component} from 'react';
+import {Text, View} from 'react-native';
 
 export default class Header extends Component {
   render() {
@@ -8,18 +8,18 @@ export default class Header extends Component {
         style={{
           marginVertical: 0,
           borderRadius: 2,
-          backgroundColor: "#478a91",
+          backgroundColor: '#478a91',
           height: 58
         }}
       >
         <Text
           style={{
-            textAlign: "center",
+            textAlign: 'center',
             fontSize: 16,
-            fontWeight: "bold",
+            fontWeight: 'bold',
             height: 220,
             marginVertical: 34,
-            color: "#f0efef"
+            color: '#f0efef'
           }}
         >
           {this.props.headerTitle}

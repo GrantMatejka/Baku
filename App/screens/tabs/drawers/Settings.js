@@ -1,42 +1,49 @@
-import React, { Component } from "react";
+import React from "react";
 import { Text, View, ScrollView } from "react-native";
-import styles from "../../../styles/styles";
-import Header from "../../../components/Header";
+
 import AwesomeButton from "react-native-really-awesome-button";
+
+import styles from "../../../styles/Styles";
+import colors from "../../../styles/Colors";
 
 export default function Settings({ navigation }) {
   return (
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.container_content}
+    >
+      <View style={styles.container_content}>
 
-    <View style={styles.container}>
-      <Header headerTitle="Settings" />
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}
-      >
-        <View style={styles.getStartedContainer}>
-          <Text style={styles.mainHeader}>Settings</Text>
+        <View style={styles.p_3}>
+          <Text style={styles.header, styles.text_large}>
+            Settings
+            </Text>
         </View>
-        <View style={{ alignItems: "center" }}>
-            <AwesomeButton
-                backgroundColor={"#cc0022"}
-                width={120}
-                height={40}
-                onPress={() => navigation.navigate("Profile")}
-            >
-                Back
+
+        <View style={styles.p_3}>
+          <AwesomeButton
+            backgroundColor={colors.danger}
+            width={120}
+            height={40}
+            onPress={() => navigation.navigate("Profile")}
+          >
+            Back
             </AwesomeButton>
         </View>
-          <View style={{ alignItems: "center", padding: 60 }}>
+
+        <View style={styles.p_3}>
           <AwesomeButton
-              backgroundColor={"#cc0033"}
-              width={120}
-              height={40}
-              onPress={() => navigation.navigate("Welcome")}
+            backgroundColor={colors.danger}
+            width={120}
+            height={40}
+            onPress={() => navigation.navigate("Login")}
           >
-              Log Out
+            Log Out
           </AwesomeButton>
-          </View>
-      </ScrollView>
-    </View>
+        </View>
+
+      </View>
+
+    </ScrollView>
   );
 }

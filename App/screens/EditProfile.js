@@ -9,7 +9,7 @@ import AwesomeButton from 'react-native-really-awesome-button';
 import styles from '../styles/Styles';
 import colors from '../styles/Colors';
 
-class Signup extends React.Component {
+class EditProfile extends React.Component {
     state = {
       name: '',
       email: '',
@@ -17,46 +17,14 @@ class Signup extends React.Component {
       error: ''
     };
 
-    clear = () => {
-      this.setState({name: '', error: '', email: '', password: '', confirmPassword: '', error: ''});
-    };
-
-    handleSignUp = () => {
-      const {name, email, password, confirmPassword} = this.state;
-      this.setState({name: name});
-
-      if (this.state.name.length == 0) {
-        this.setState({error: 'Necessary to enter name'});
-        return false;
-      }
-
-      if (this.state.password !== this.state.confirmPassword) {
-        this.setState({error: 'Passwords don\'t match'});
-        return false;
-      }
-      if ((this.state.password.length < 6)) {
-        this.setState({error: 'Password should be at least 6 characters'});
-        return false;
-      }
-
-      Firebase.auth()
-          .createUserWithEmailAndPassword(email, password)
-          .then(() => {
-            this.props.navigation.navigate('Additional Info', {
-              state: this.state,
-            });
-          })
-          .catch((error) => {
-            console.log(error), this.setState({error: 'Invalid Credentials'});
-          });
-    };
 
     render() {
       return (
-        <View style={styles.container}>
+        <View
+          style={styles.container}>
 
-          <Text style={[styles.header, styles.text_large]}>
-            Welcome to Baku!
+          <Text
+            style={[styles.header, styles.text_large]}>
           </Text>
 
           <Fumi
@@ -93,27 +61,85 @@ class Signup extends React.Component {
             iconName={'lock'}
             onChangeText={(confirmPassword) => this.setState({confirmPassword})}
           />
+          <Fumi
+            label={'Phone-Number'}
+            iconClass={FontAwesomeIcon}
+            iconName={'phone'}
+            iconSize={20}
+            iconWidth={40}
+            inputPadding={16}
+            inputStyle={{padding: 5}}
+          />
 
-          <View style={styles.container_content}>
-            <Text style={styles.text_error}>
+          <Fumi
+            label={'Birthday'}
+            iconClass={FontAwesomeIcon}
+            iconName={'birthday-cake'}
+            iconSize={20}
+            iconWidth={40}
+            inputPadding={16}
+            inputStyle={{padding: 5}}
+          />
+
+          <Fumi
+            label={'Short BIO'}
+            iconClass={FontAwesomeIcon}
+            iconName={'pencil'}
+            iconSize={20}
+            iconWidth={40}
+            inputPadding={16}
+            inputStyle={{padding: 5}}
+          />
+
+          <Fumi
+            label={'Photo of Yourself :)'}
+            iconClass={FontAwesomeIcon}
+            iconName={'camera'}
+            iconSize={20}
+            iconWidth={40}
+            inputPadding={16}
+            inputStyle={{padding: 5}}
+          />
+
+          <Fumi
+            label={'Some Places You\'ve Been'}
+            iconClass={FontAwesomeIcon}
+            iconName={'location-arrow'}
+            iconSize={20}
+            iconWidth={40}
+            inputPadding={16}
+            inputStyle={{padding: 5}}
+          />
+
+          <View
+            style={{alignItems: 'center'}}
+          >
+
+            <Text
+              style={styles.text_error}
+            >
               {this.state.error}
             </Text>
+
           </View>
 
           <View style={styles.container_content}>
+
             <AwesomeButton
               backgroundColor={colors.warning}
               width={200}
               height={50}
               onPress={
                 () => {
-                  this.setState({error: ''});
-                  this.handleSignUp();
+                  this.props.navigation.navigate('Tabs', {
+                    screen: 'ProfileTab'
+                  });
                 }
               }
             >
-            Submit
+                        Submit
             </AwesomeButton>
+
           </View>
 
         </View>
@@ -121,4 +147,4 @@ class Signup extends React.Component {
     }
 }
 
-export default Signup;
+export default EditProfile;
