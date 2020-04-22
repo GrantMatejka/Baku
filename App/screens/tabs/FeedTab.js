@@ -3,7 +3,7 @@ import { View, } from "react-native";
 
 import { ScrollView } from "react-native-gesture-handler";
 
-import styles from "../../styles/styles";
+import styles from "../../styles/Styles";
 import FeedList from "../../components/FeedList";
 import Header from "../../components/Header";
 

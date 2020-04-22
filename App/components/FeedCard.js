@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { Image, Text, View, TouchableWithoutFeedback } from "react-native";
-import styles from "../styles/styles";
-import AwesomeButton from "react-native-really-awesome-button";
-import AwesomeIcon from "react-native-vector-icons/FontAwesome";
+import React, {Component} from 'react';
+import {Image, Text, View, TouchableWithoutFeedback} from 'react-native';
+import styles from '../styles/Styles';
+import AwesomeButton from 'react-native-really-awesome-button';
+import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
 export default class FeedCard extends Component {
   state = {
-    heartIcon: "heart-o",
-    saveIcon: "bookmark-o",
+    heartIcon: 'heart-o',
+    saveIcon: 'bookmark-o',
     like: false,
     save: false
   };
@@ -18,11 +18,11 @@ export default class FeedCard extends Component {
     });
     if (!this.state.like) {
       this.setState({
-        heartIcon: "heart"
+        heartIcon: 'heart'
       });
     } else {
       this.setState({
-        heartIcon: "heart-o"
+        heartIcon: 'heart-o'
       });
     }
   };
@@ -33,11 +33,11 @@ export default class FeedCard extends Component {
     });
     if (!this.state.save) {
       this.setState({
-        saveIcon: "bookmark"
+        saveIcon: 'bookmark'
       });
     } else {
       this.setState({
-        saveIcon: "bookmark-o"
+        saveIcon: 'bookmark-o'
       });
     }
   };
@@ -62,19 +62,19 @@ export default class FeedCard extends Component {
           />
         </View>
 
-        <View style={{ alignSelf: "flex-end", marginRight: 15 }}>
+        <View style={{alignSelf: 'flex-end', marginRight: 15}}>
           <Text
             style={{
-              fontWeight: "bold",
+              fontWeight: 'bold',
               fontSize: 12,
-              textAlign: "center"
+              textAlign: 'center'
             }}
           >
             {this.props.detail.username}
           </Text>
         </View>
 
-        <View style={{ marginVertical: 8, marginHorizontal: 10 }}>
+        <View style={{marginVertical: 8, marginHorizontal: 10}}>
           <Image
             style={{
               height: 270,
@@ -93,7 +93,7 @@ export default class FeedCard extends Component {
               onPress={this.toggleLike}
               style={{
                 marginRight: 10,
-                color: this.state.heartIcon === "heart-o" ? "black" : "red"
+                color: this.state.heartIcon === 'heart-o' ? 'black' : 'red'
               }}
               size={32}
             />
@@ -106,13 +106,13 @@ export default class FeedCard extends Component {
                 marginRight: 50,
                 fontWeight: 2,
                 color:
-                  this.state.saveIcon === "bookmark-o" ? "black" : "#ffbc26"
+                  this.state.saveIcon === 'bookmark-o' ? 'black' : '#ffbc26'
               }}
               size={32}
             />
           </TouchableWithoutFeedback>
           <AwesomeButton
-            backgroundColor={"#A5D6D9"}
+            backgroundColor={'#A5D6D9'}
             width={120}
             height={30}
             style={styles.postItineraryButton}

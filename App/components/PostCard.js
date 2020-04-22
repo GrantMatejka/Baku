@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 import {
   Image,
   Text,
@@ -6,11 +6,11 @@ import {
   StyleSheet,
   ScrollView,
   TouchableWithoutFeedback
-} from "react-native";
-import styles from "../styles/styles";
-import Icon from "react-native-vector-icons/Ionicons";
-import AwesomeButton from "react-native-really-awesome-button";
-import AwesomeIcon from "react-native-vector-icons/FontAwesome";
+} from 'react-native';
+import styles from '../styles/Styles';
+import Icon from 'react-native-vector-icons/Ionicons';
+import AwesomeButton from 'react-native-really-awesome-button';
+import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
 export default class PostCard extends Component {
   // state = {
@@ -70,19 +70,19 @@ export default class PostCard extends Component {
           />
         </View>
 
-        <View style={{ alignSelf: "flex-end", marginRight: 15 }}>
+        <View style={{alignSelf: 'flex-end', marginRight: 15}}>
           <Text
             style={{
-              fontWeight: "bold",
+              fontWeight: 'bold',
               fontSize: 12,
-              textAlign: "center"
+              textAlign: 'center'
             }}
           >
             {this.props.detail.username}
           </Text>
         </View>
 
-        <View style={{ marginVertical: 8, marginHorizontal: 10 }}>
+        <View style={{marginVertical: 8, marginHorizontal: 10}}>
           <Image
             style={{
               height: 270,
@@ -94,9 +94,9 @@ export default class PostCard extends Component {
             }}
           />
         </View>
-        <View style={{ marginVertical: 16, marginHorizontal: 172 }}>
+        <View style={{marginVertical: 16, marginHorizontal: 172}}>
           <AwesomeButton
-            backgroundColor={"#A5D6D9"}
+            backgroundColor={'#A5D6D9'}
             width={120}
             height={30}
             style={styles.postItineraryButton}
