@@ -5,7 +5,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import { Fumi } from "react-native-textinput-effects";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 
-import styles from "../../styles/styles";
+import styles from "../../styles/Styles";
 import Header from "../../components/Header";
 
 export default function SearchTab() {

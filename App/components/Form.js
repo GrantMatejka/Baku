@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-//import { Form } from "react-bulma-components/full";
+// import { Form } from "react-bulma-components/full";
 
 function Form(props) {
   const {
