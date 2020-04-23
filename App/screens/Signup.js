@@ -1,147 +1,143 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
+import Fumi from 'react-native-textinput-effects';
+import AwesomeButton from 'react-native-really-awesome-button';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import * as firebase from 'firebase';
+
+import Colors from '../styles/Colors.js';
+import Styles from '../styles/styles.js';
 
 class Signup extends React.Component {
-  // constructor() {
-  //   super();
-  //   this.dbRef = firebase.firestore().collection("users");
-  //   this.state = {
-  //     name: "",
-  //     email: "",
-  //     isLoading: false
-  //   };
-  // }
-  dbRef = firebase.firestore().collection("users");
+  dbRef = firebase.firestore().collection('users');
 
   state = {
-    name: "",
-    email: "",
-    password: "",
-    error: "",
+    name: '',
+    email: '',
+    password: '',
+    error: '',
     isLoading: false,
-    dbRef: this.dbRef
+    dbRef: Signup.dbRef
   };
 
-  inputValueUpdate = (val, prop) => {
+  inputValueUpdate(val, prop) {
     const state = this.state;
     state[prop] = val;
     this.setState(state);
-  };
+  }
 
-  storeUser = () => {
-    const { name, email, isLoading } = this.state;
+  storeUser() {
     this.setState({
       isLoading: true
     });
     this.dbRef
-      .add({
-        name: this.state.name,
-        email: this.state.email
-      })
-      .catch(err => {
-        console.error("Error found: ", err);
-        this.setState({
-          isLoading: false
+        .add({
+          name: this.state.name,
+          email: this.state.email
+        })
+        .catch((err) => {
+          this.setState({
+            isLoading: false,
+            error: err
+          });
         });
-      });
-  };
+  }
 
-  clear = () => {
+  clear() {
     this.setState({
-      name: "",
-      error: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-      error: ""
+      name: '',
+      error: '',
+      email: '',
+      password: '',
+      confirmPassword: ''
     });
-  };
+  }
 
-  handleSignUp = () => {
-    const { name, email, password, confirmPassword } = this.state;
-    this.setState({ name: name });
+  handleSignUp() {
+    const {name, email, password} = this.state;
+    this.setState({name: name});
 
     if (this.state.name.length == 0) {
-      this.setState({ error: "Necessary to enter name" });
+      this.setState({error: 'Necessary to enter name'});
       return false;
     }
 
     if (this.state.password !== this.state.confirmPassword) {
-      this.setState({ error: "Passwords don't match" });
+      this.setState({error: 'Passwords don\'t match'});
       return false;
     }
     if (this.state.password.length < 6) {
-      this.setState({ error: "Password should be at least 6 characters" });
+      this.setState({error: 'Password should be at least 6 characters'});
       return false;
     }
 
     firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
 
-      .then(() => {
-        this.props.navigation.navigate("Additional Info", {
-          state: this.state
+        .then(() => {
+          this.props.navigation.navigate('Additional Info', {
+            state: this.state
+          });
+        })
+        .catch((error) => {
+          this.setState({error: error.message});
         });
-      })
-      .catch(error => {
-        console.log(error), this.setState({ error: "Invalid Credentials" });
-      });
-  };
+  }
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={[styles.header, styles.text_large]}>Welcome to Baku!</Text>
+      <View style={Styles.container}>
+        <Text style={[Styles.header, Styles.text_large]}>Welcome to Baku!</Text>
 
         <Fumi
-          label={"Full Name"}
+          label={'Full Name'}
           value={this.state.name}
           iconClass={FontAwesomeIcon}
-          iconName={"user"}
-          onChangeText={name => this.setState({ name })}
-          //onChangeText={(val) => this.inputValueUpdate(val, 'name')}
+          iconName={'user'}
+          onChangeText={(name) => this.setState({name})}
+          // onChangeText={(val) => this.inputValueUpdate(val, 'name')}
         />
 
         <Fumi
-          label={"Email"}
+          label={'Email'}
           value={this.state.email}
           autoCapitalize="none"
           iconClass={FontAwesomeIcon}
-          iconName={"envelope-square"}
-          onChangeText={email => this.setState({ email })}
+          iconName={'envelope-square'}
+          onChangeText={(email) => this.setState({email})}
         />
 
         <Fumi
-          label={"Password"}
+          label={'Password'}
           value={this.state.password}
           secureTextEntry={true}
           iconClass={FontAwesomeIcon}
-          iconName={"unlock-alt"}
-          onChangeText={password => this.setState({ password })}
+          iconName={'unlock-alt'}
+          onChangeText={(password) => this.setState({password})}
         />
 
         <Fumi
-          label={"Confirm Password"}
+          label={'Confirm Password'}
           value={this.state.confirmPassword}
           secureTextEntry={true}
           iconClass={FontAwesomeIcon}
-          iconName={"lock"}
-          onChangeText={confirmPassword => this.setState({ confirmPassword })}
+          iconName={'lock'}
+          onChangeText={(confirmPassword) => this.setState({confirmPassword})}
         />
 
-        <View style={styles.container_content}>
-          <Text style={styles.text_error}>{this.state.error}</Text>
+        <View style={Styles.container_content}>
+          <Text style={Styles.text_error}>{this.state.error}</Text>
         </View>
 
-        <View style={styles.container_content}>
+        <View style={Styles.container_content}>
           <AwesomeButton
-            backgroundColor={colors.warning}
+            backgroundColor={Colors.warning}
             width={200}
             height={50}
             onPress={() => {
-              this.setState({ error: "" });
+              this.setState({error: ''});
               this.handleSignUp();
               this.storeUser();
             }}

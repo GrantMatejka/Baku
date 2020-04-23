@@ -1,7 +1,7 @@
-//import firebase from "firebase";
-//import firestore from 'firebase/firestore';
-import * as firebase from "firebase";
-import firestore from "firebase/firestore";
+// import firebase from "firebase";
+// import firestore from 'firebase/firestore';
+import * as firebase from 'firebase';
+
 import {
   API_KEY,
   AUTH_DOMAIN,
@@ -10,7 +10,7 @@ import {
   MESSAGE_SENDER_ID,
   APP_ID,
   STORAGE_BUCKET
-} from "react-native-dotenv";
+} from 'react-native-dotenv';
 
 
 const firebaseConfig = {
@@ -20,11 +20,10 @@ const firebaseConfig = {
   projectId: PROJECT_ID,
   storageBucket: STORAGE_BUCKET,
   messagingSenderId: MESSAGE_SENDER_ID,
-  appId: APP_ID,
-  storageBucket: STORAGE_BUCKET
+  appId: APP_ID
 };
 
-let Firebase = firebase.initializeApp(firebaseConfig);
+const Firebase = firebase.initializeApp(firebaseConfig);
 
 firebase.firestore();
 

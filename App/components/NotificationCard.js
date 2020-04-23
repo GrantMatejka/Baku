@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Image, Text, View} from 'react-native';
-import styles from '../styles/Styles';
+import styles from '../styles/styles';
 import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
 export default class NotificationCard extends Component {

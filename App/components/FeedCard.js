@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Image, Text, View, TouchableWithoutFeedback} from 'react-native';
-import styles from '../styles/Styles';
+import styles from '../styles/styles';
 import AwesomeButton from 'react-native-really-awesome-button';
 import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
