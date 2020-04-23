@@ -120,3 +120,4 @@ const Navigator = ({loggedIn}) => {
 };
 
 export default Navigator;
+

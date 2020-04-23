@@ -7,6 +7,16 @@ import {Ionicons} from '@expo/vector-icons';
 // eslint-disable-next-line no-unused-vars
 import AppNavigator from './navigation/AppNavigator';
 
+import { decode, encode } from "base-64";
+
+if (!global.btoa) {
+  global.btoa = encode;
+}
+
+if (!global.atob) {
+  global.atob = decode;
+}
+
 export default function App(props) {
   // Uncomment this when we figure out what to do about device based state
   // const [loggedIn] = React.useState(false);

@@ -65,7 +65,6 @@ export default function CreateProfile({route, navigation}) {
         inputStyle={{padding: 5}}
       />
 
-
       <View style={styles.SignupButton}>
         <Button
           title="Create Profile"

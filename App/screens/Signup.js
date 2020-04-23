@@ -1,119 +1,157 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
-import Firebase from '../config/Firebase';
-import {Fumi} from 'react-native-textinput-effects';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import AwesomeButton from 'react-native-really-awesome-button';
-
-import styles from '../styles/Styles';
-import colors from '../styles/Colors';
 
 class Signup extends React.Component {
-    state = {
-      name: '',
-      email: '',
-      password: '',
-      error: ''
-    };
+  // constructor() {
+  //   super();
+  //   this.dbRef = firebase.firestore().collection("users");
+  //   this.state = {
+  //     name: "",
+  //     email: "",
+  //     isLoading: false
+  //   };
+  // }
+  dbRef = firebase.firestore().collection("users");
 
-    handleSignUp(state) {
-      const {name, email, password, confirmPassword} = state;
+  state = {
+    name: "",
+    email: "",
+    password: "",
+    error: "",
+    isLoading: false,
+    dbRef: this.dbRef
+  };
 
-      if (name.length == 0) {
-        this.setState({error: 'Necessary to enter name'});
-        return false;
-      }
+  inputValueUpdate = (val, prop) => {
+    const state = this.state;
+    state[prop] = val;
+    this.setState(state);
+  };
 
-      if (password !== confirmPassword) {
-        this.setState({error: 'Password don\'t match'});
-        return false;
-      }
-      if ((password.length < 6)) {
-        this.setState({error: 'Password should be at least 6 characters'});
-        return false;
-      }
+  storeUser = () => {
+    const { name, email, isLoading } = this.state;
+    this.setState({
+      isLoading: true
+    });
+    this.dbRef
+      .add({
+        name: this.state.name,
+        email: this.state.email
+      })
+      .catch(err => {
+        console.error("Error found: ", err);
+        this.setState({
+          isLoading: false
+        });
+      });
+  };
 
-      Firebase.auth()
-          .createUserWithEmailAndPassword(email, password)
-          .then(() => {
-            this.props.navigation.navigate('Additional Info', {
-              state: state,
-            });
-          })
-          .catch((error) => {
-            this.setState({error: error.message});
-          });
+  clear = () => {
+    this.setState({
+      name: "",
+      error: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      error: ""
+    });
+  };
+
+  handleSignUp = () => {
+    const { name, email, password, confirmPassword } = this.state;
+    this.setState({ name: name });
+
+    if (this.state.name.length == 0) {
+      this.setState({ error: "Necessary to enter name" });
+      return false;
     }
 
-    render() {
-      return (
-        <View style={styles.container}>
+    if (this.state.password !== this.state.confirmPassword) {
+      this.setState({ error: "Passwords don't match" });
+      return false;
+    }
+    if (this.state.password.length < 6) {
+      this.setState({ error: "Password should be at least 6 characters" });
+      return false;
+    }
 
-          <Text style={[styles.header, styles.text_large]}>
-            Welcome to Baku!
-          </Text>
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
 
-          <Fumi
-            label={'Full Name'}
-            value={this.state.name}
-            iconClass={FontAwesomeIcon}
-            iconName={'user'}
-            onChangeText={(name) => this.setState({name})}
-          />
+      .then(() => {
+        this.props.navigation.navigate("Additional Info", {
+          state: this.state
+        });
+      })
+      .catch(error => {
+        console.log(error), this.setState({ error: "Invalid Credentials" });
+      });
+  };
 
-          <Fumi
-            label={'Email'}
-            value={this.state.email}
-            autoCapitalize="none"
-            iconClass={FontAwesomeIcon}
-            iconName={'envelope-square'}
-            onChangeText={(email) => this.setState({email})}
-          />
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={[styles.header, styles.text_large]}>Welcome to Baku!</Text>
 
-          <Fumi
-            label={'Password'}
-            value={this.state.password}
-            secureTextEntry={true}
-            iconClass={FontAwesomeIcon}
-            iconName={'unlock-alt'}
-            onChangeText={(password) => this.setState({password})}
-          />
+        <Fumi
+          label={"Full Name"}
+          value={this.state.name}
+          iconClass={FontAwesomeIcon}
+          iconName={"user"}
+          onChangeText={name => this.setState({ name })}
+          //onChangeText={(val) => this.inputValueUpdate(val, 'name')}
+        />
 
-          <Fumi
-            label={'Confirm Password'}
-            value = {this.state.confirmPassword}
-            secureTextEntry={true}
-            iconClass={FontAwesomeIcon}
-            iconName={'lock'}
-            onChangeText={(confirmPassword) => this.setState({confirmPassword})}
-          />
+        <Fumi
+          label={"Email"}
+          value={this.state.email}
+          autoCapitalize="none"
+          iconClass={FontAwesomeIcon}
+          iconName={"envelope-square"}
+          onChangeText={email => this.setState({ email })}
+        />
 
-          <View style={styles.container_content}>
-            <Text style={styles.text_error}>
-              {this.state.error}
-            </Text>
-          </View>
+        <Fumi
+          label={"Password"}
+          value={this.state.password}
+          secureTextEntry={true}
+          iconClass={FontAwesomeIcon}
+          iconName={"unlock-alt"}
+          onChangeText={password => this.setState({ password })}
+        />
 
-          <View style={styles.container_content}>
-            <AwesomeButton
-              backgroundColor={colors.warning}
-              width={200}
-              height={50}
-              onPress={
-                () => {
-                  this.setState({error: ''});
-                  this.handleSignUp(this.state);
-                }
-              }
-            >
-            Submit
-            </AwesomeButton>
-          </View>
+        <Fumi
+          label={"Confirm Password"}
+          value={this.state.confirmPassword}
+          secureTextEntry={true}
+          iconClass={FontAwesomeIcon}
+          iconName={"lock"}
+          onChangeText={confirmPassword => this.setState({ confirmPassword })}
+        />
 
+        <View style={styles.container_content}>
+          <Text style={styles.text_error}>{this.state.error}</Text>
         </View>
-      );
-    }
+
+        <View style={styles.container_content}>
+          <AwesomeButton
+            backgroundColor={colors.warning}
+            width={200}
+            height={50}
+            onPress={() => {
+              this.setState({ error: "" });
+              this.handleSignUp();
+              this.storeUser();
+            }}
+          >
+            Submit
+          </AwesomeButton>
+        </View>
+      </View>
+    );
+  }
 }
 
 export default Signup;
