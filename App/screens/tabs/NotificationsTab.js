@@ -5,7 +5,7 @@ import { Firebase } from "../../config/Firebase";
 import Icon from "react-native-vector-icons/Ionicons";
 import { ScrollView } from "react-native-gesture-handler";
 
-import styles from "../../styles/Styles";
+import styles from "../../styles/styles";
 import Header from "../../components/Header";
 import NotificationList from "../../components/NotificationList";
 
