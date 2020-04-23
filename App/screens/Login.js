@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  View,
-  TextInput,
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-  Button,
-  Image
-} from 'react-native';
+import {View, StyleSheet, Text, Image} from 'react-native';
 import Firebase from '../config/Firebase';
 import styleSheet from '../styles/Styles';
 import {ScrollView} from 'react-native-gesture-handler';
@@ -21,8 +13,9 @@ class Login extends React.Component {
     error: '',
     rememberMe: false
   };
-  handleLogin = () => {
-    const {email, password} = this.state;
+
+  handleLogin(state) {
+    const {email, password} = state;
 
     Firebase.auth()
         .signInWithEmailAndPassword(email, password)
@@ -34,9 +27,9 @@ class Login extends React.Component {
             this.setState({error: ''})
         )
         .catch((error) => {
-          console.log(error), this.setState({error: 'Invalid Username or Password'});
+          this.setState({error: error.message});
         });
-  };
+  }
 
   render() {
     return (
@@ -69,11 +62,6 @@ class Login extends React.Component {
           secureTextEntry={true}
         />
 
-        {/* <div className="form-group">
-          <label htmlFor="rememberMe">Remember me</label>
-          <input type="checkbox" className="form-control" id="rememberMe" ref="rememberMe" placeholder="Remember Me" onChange={this.toggleRememberMe} />
-        </div>*/}
-
         <View
           style={{
             alignItems: 'center'
@@ -98,7 +86,7 @@ class Login extends React.Component {
             height={50}
             onPress={(next) => {
               this.setState({error: ''});
-              this.handleLogin();
+              this.handleLogin(this.state);
 
               next();
             }}

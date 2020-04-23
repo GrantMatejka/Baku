@@ -8,7 +8,7 @@
     "eject": "expo eject",
     "test": "jest --watchAll",
     "lint": "eslint *.js **/*.js",
-    "fixlint": "eslint *.js **/*.js --fix"
+    "lint:fix": "eslint *.js **/*.js --fix"
   },
   "jest": {
     "preset": "jest-expo"
@@ -28,6 +28,7 @@
     "@react-navigation/native": "^5.1.5",
     "@react-navigation/stack": "^5.2.10",
     "@react-navigation/web": "~1.0.0-alpha.9",
+    "eslint-plugin-react-native": "^3.8.1",
     "expo": "~36.0.0",
     "expo-asset": "~8.0.0",
     "expo-constants": "~8.0.0",

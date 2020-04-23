@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, ScrollView} from 'react-native';
+import {ScrollView} from 'react-native';
 import FeedCard from './FeedCard';
 import datas from '../assets/data/data';
 
@@ -8,11 +8,12 @@ export default class PhotoList extends Component {
     datas: datas
   };
 
-  getPhotos = () => {
+  getPhotos() {
     return this.state.datas.map((data) => {
       return <FeedCard detail={data} key={data.id} />;
     });
-  };
+  }
+
   render() {
     return <ScrollView>{this.getPhotos()}</ScrollView>;
   }

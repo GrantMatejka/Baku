@@ -193,17 +193,6 @@ export default StyleSheet.create({
     borderBottomWidth: 1,
     textAlign: 'center'
   },
-  button: {
-    marginTop: 30,
-    marginBottom: 20,
-    paddingVertical: 5,
-    alignItems: 'center',
-    backgroundColor: '#F6820D',
-    borderColor: '#F6820D',
-    borderWidth: 1,
-    borderRadius: 5,
-    width: 200
-  },
   buttonText: {
     fontSize: 20,
     fontWeight: 'bold',
@@ -227,17 +216,6 @@ export default StyleSheet.create({
     resizeMode: 'contain',
     marginTop: 3,
     marginLeft: -10
-  },
-
-
-  inputBox: {
-    width: '85%',
-    margin: 10,
-    padding: 15,
-    fontSize: 16,
-    borderColor: '#d3d3d3',
-    borderBottomWidth: 1,
-    textAlign: 'center'
   },
   formStyle: {
     display: 'flex',
@@ -319,27 +297,6 @@ export default StyleSheet.create({
     textAlign: 'center',
     marginTop: 10,
     marginBottom: 5
-  },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50
-  },
-  homeScreenFilename: {
-    marginVertical: 7
-  },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)'
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4
-  },
-  getStartedText: {
-    fontSize: 30,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 40,
-    textAlign: 'center'
   },
   tabBarInfoContainer: {
     position: 'absolute',

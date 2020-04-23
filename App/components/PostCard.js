@@ -1,54 +1,9 @@
 import React, {Component} from 'react';
-import {
-  Image,
-  Text,
-  View,
-  StyleSheet,
-  ScrollView,
-  TouchableWithoutFeedback
-} from 'react-native';
+import {Image, Text, View} from 'react-native';
 import styles from '../styles/Styles';
-import Icon from 'react-native-vector-icons/Ionicons';
 import AwesomeButton from 'react-native-really-awesome-button';
-import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
 export default class PostCard extends Component {
-  // state = {
-  //   heartIcon: "heart-o",
-  //   saveIcon: "bookmark-o",
-  //   like: false,
-  //   save: false
-  // };
-
-  // toggleLike = () => {
-  //   this.setState({
-  //     like: !this.state.like
-  //   });
-  //   if (!this.state.like) {
-  //     this.setState({
-  //       heartIcon: "heart"
-  //     });
-  //   } else {
-  //     this.setState({
-  //       heartIcon: "heart-o"
-  //     });
-  //   }
-  // };
-
-  // toggleSave = () => {
-  //   this.setState({
-  //     save: !this.state.save
-  //   });
-  //   if (!this.state.save) {
-  //     this.setState({
-  //       saveIcon: "bookmark"
-  //     });
-  //   } else {
-  //     this.setState({
-  //       saveIcon: "bookmark-o"
-  //     });
-  //   }
-  // };
   render() {
     return (
       <View style={styles.postCardContainer}>
