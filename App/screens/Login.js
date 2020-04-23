@@ -108,11 +108,11 @@ class Login extends React.Component {
           </AwesomeButton>
           <Text style={{padding: 10}}>New user? Sign up now!</Text>
           <AwesomeButton
-            backgroundColor={'#039BE5'}
+            backgroundColor={"#039BE5"}
             width={160}
             height={30}
             onPress={() => {
-              this.props.navigation.navigate('Reset');
+              this.props.navigation.navigate("Reset");
             }}
           >
             Forgot Password?

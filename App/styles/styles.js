@@ -1,7 +1,6 @@
+
 import {StyleSheet} from 'react-native';
 import Colors from './Colors';
-
-
 export default StyleSheet.create({
   // Container styles
   container: {
@@ -12,8 +11,8 @@ export default StyleSheet.create({
   // Useful for with StackView
   container_content: {
     paddingTop: 10,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center"
   },
 
   // Generic header style
@@ -33,29 +32,31 @@ export default StyleSheet.create({
 
   // Text Stylings
   text_large: {
-    fontSize: 35,
+    fontSize: 35
   },
   text_medium: {
-    fontSize: 25,
+    fontSize: 25
   },
   text_small: {
-    fontSize: 15,
+    fontSize: 15
   },
   text_xsmall: {
-    fontSize: 10,
+    fontSize: 10
   },
   text_error: {
+
     color: 'red',
     marginVertical: 10,
     fontSize: 15
   },
   text_button: {
     fontSize: 20,
+
     fontWeight: 'bold',
     color: Colors.dark,
   },
   text_centered: {
-    textAlign: 'center',
+    textAlign: "center"
   },
 
   // Button Stylings
@@ -69,7 +70,7 @@ export default StyleSheet.create({
     backgroundColor: Colors.warning,
     borderColor: Colors.warning,
     borderWidth: 1,
-    borderRadius: 5,
+    borderRadius: 5
   },
   testButton: {
     display: 'flex',
@@ -316,8 +317,8 @@ export default StyleSheet.create({
     borderWidth: 2
   },
 
-
   NotificationCardContainer: {
+
     flexDirection: 'row',
     backgroundColor: '#a0c9cf',
     height: 60,
@@ -333,7 +334,7 @@ export default StyleSheet.create({
     fontSize: 13,
     textAlign: 'left',
     paddingTop: 33,
-    marginLeft: 20,
+    marginLeft: 20
   },
   NotificationCardMainText: {
     flex: 4,
@@ -345,6 +346,7 @@ export default StyleSheet.create({
     marginRight: -15
   },
   NotificationUserProfile: {
+
     flex: .75,
     alignItems: 'center',
     height: 55,
@@ -360,8 +362,6 @@ export default StyleSheet.create({
     marginRight: 0
     // this needs work
   },
-
-
   postCardLocation: {
     fontWeight: 'bold',
     fontSize: 20,
@@ -376,4 +376,10 @@ export default StyleSheet.create({
   postHeartContainer: {
     marginHorizontal: 5
   },
+  testDBContainer: {
+    height: 50,
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
+  }
 });
