@@ -1,17 +1,17 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 import {
   Text,
   View,
   StyleSheet,
   Image,
   TouchableWithoutFeedback
-} from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
-import data from "../assets/data/data";
+} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import data from '../assets/data/data';
 
 export default class PhotoSection extends Component {
   state = {
-    heartIcon: "ios-heart-empty",
+    heartIcon: 'ios-heart-empty',
     like: false
   };
 
@@ -21,11 +21,11 @@ export default class PhotoSection extends Component {
     });
     if (!this.state.like) {
       this.setState({
-        heartIcon: "ios-heart"
+        heartIcon: 'ios-heart'
       });
     } else {
       this.setState({
-        heartIcon: "ios-heart-empty"
+        heartIcon: 'ios-heart-empty'
       });
     }
   };
@@ -35,7 +35,7 @@ export default class PhotoSection extends Component {
       <View style={styles.container}>
         <View style={styles.thumbnailSection}>
           <Image
-            source={{ uri: this.props.detail.user_avatar }}
+            source={{uri: this.props.detail.user_avatar}}
             style={styles.thumbnail}
           />
           <Text style={styles.user}> {this.props.detail.username} </Text>
@@ -59,7 +59,7 @@ export default class PhotoSection extends Component {
               onPress={this.toggleLike}
               style={{
                 color:
-                  this.state.heartIcon === "ios-heart-empty" ? "black" : "red"
+                  this.state.heartIcon === 'ios-heart-empty' ? 'black' : 'red'
               }}
               size={32}
             />
@@ -80,9 +80,9 @@ const styles = StyleSheet.create({
     margin: 10
   },
   thumbnailSection: {
-    flexDirection: "row",
+    flexDirection: 'row',
     padding: 5,
-    alignItems: "center"
+    alignItems: 'center'
   },
   thumbnail: {
     width: 50,
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     borderRadius: 25
   },
   user: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 19,
     marginLeft: 10
   },
@@ -98,11 +98,11 @@ const styles = StyleSheet.create({
     paddingVertical: 12
   },
   imageMeta: {
-    display: "flex",
-    flexDirection: "row"
+    display: 'flex',
+    flexDirection: 'row'
   },
   userName: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     paddingRight: 10
   }
 });

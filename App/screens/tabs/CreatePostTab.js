@@ -8,6 +8,7 @@ import {
 } from "react-native";
 //import { ScrollView, FlatList } from "react-native-gesture-handler";
 import styles from "../../styles/styles";
+import colors from "../../styles/Colors";
 import Header from "../../components/Header";
 import AwesomeButton from "react-native-really-awesome-button";
 import { Fumi } from "react-native-textinput-effects";
@@ -68,6 +69,7 @@ export default function CreatePost({ navigation: { navigate } }) {
       </View>
     );
   }
+
 
   return (
     <View style={styles.container}>

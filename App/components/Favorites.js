@@ -1,31 +1,31 @@
-import * as React from "react";
+import * as React from 'react';
 import {
-    Image, Platform, StyleSheet, Text,
-    TouchableOpacity, View, TextInput, Button
-} from "react-native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { ScrollView } from "react-native-gesture-handler";
-import * as WebBrowser from "expo-web-browser";
+  Image, Platform, StyleSheet, Text,
+  TouchableOpacity, View, TextInput, Button
+} from 'react-native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {ScrollView} from 'react-native-gesture-handler';
+import * as WebBrowser from 'expo-web-browser';
 
-import styles from "../styles/styles";
+import styles from '../styles/Styles';
 
 
 export default function Favorites() {
-    return (
-        <View style={styles.container}>
-            <ScrollView
-                style={styles.container}
-                contentContainerStyle={styles.contentContainer}
-            >
-                <View style={styles.getStartedContainer}>
-                    <Text style={styles.mainHeader}>Favorites!</Text>
-                </View>
-            </ScrollView>
+  return (
+    <View style={styles.container}>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={styles.contentContainer}
+      >
+        <View style={styles.getStartedContainer}>
+          <Text style={styles.mainHeader}>Favorites!</Text>
         </View>
-    );
+      </ScrollView>
+    </View>
+  );
 }
 
-/*const styles = StyleSheet.create({
+/* const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#E8F8F5"

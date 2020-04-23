@@ -1,31 +1,31 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import CreateProfileScreen from "../screens/CreateProfileScreen";
-import Tabs from "../components/Tabs";
-import Login from "../screens/Login";
-import Signup from "../screens/Signup";
-import ResetPass from "../screens/ResetPass";
-import EditProfile from "../screens/EditProfile";
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import CreateProfileScreen from '../screens/CreateProfileScreen';
+import Tabs from '../components/Tabs';
+import Login from '../screens/Login';
+import Signup from '../screens/Signup';
+import ResetPass from '../screens/ResetPass';
+import EditProfile from '../screens/EditProfile';
 
 const Stack = createStackNavigator();
 
-export default Navigator = ({ loggedIn }) => {
+export default Navigator = ({loggedIn}) => {
   if (loggedIn) {
     return (
       <NavigationContainer
-        screenOptions={{ gestureEnabled: false }}
+        screenOptions={{gestureEnabled: false}}
         initialRouteName="Welcome"
       >
 
-        <Stack.Navigator screenOptions={{ gestureEnabled: false }}>
+        <Stack.Navigator screenOptions={{gestureEnabled: false}}>
           <Stack.Screen
             name="Tabs"
             children={Tabs}
             options={{
-              title: "Tabs",
+              title: 'Tabs',
               headerShown: false,
-              tabBarIcon: ({ focused }) => (
+              tabBarIcon: ({focused}) => (
                 <TabBarIcon focused={focused} name="md-book" />
               )
             }}
@@ -35,7 +35,7 @@ export default Navigator = ({ loggedIn }) => {
             name="Welcome"
             component={Login}
             options={{
-              title: "Welcome to Baku",
+              title: 'Welcome to Baku',
               headerShown: false
             }}
           />
@@ -44,7 +44,7 @@ export default Navigator = ({ loggedIn }) => {
             name="Create"
             component={Signup}
             options={{
-              title: "Create Profile Screen"
+              title: 'Create Profile Screen'
             }}
           />
         </Stack.Navigator>
@@ -55,13 +55,13 @@ export default Navigator = ({ loggedIn }) => {
     return (
       <NavigationContainer initialRouteName="Welcome">
         <Stack.Navigator
-          screenOptions={{ gestureEnabled: false }}
+          screenOptions={{gestureEnabled: false}}
         >
           <Stack.Screen
             name="Login"
             component={Login}
             options={{
-              title: "Welcome to Baku",
+              title: 'Welcome to Baku',
               headerShown: false
             }}
           />
@@ -70,7 +70,7 @@ export default Navigator = ({ loggedIn }) => {
             name="Create"
             component={Signup}
             options={{
-              title: "Create Account"
+              title: 'Create Account'
             }}
           />
 
@@ -78,40 +78,40 @@ export default Navigator = ({ loggedIn }) => {
             name="Additional Info"
             component={CreateProfileScreen}
             options={{
-              title: "Create Profile"
+              title: 'Create Profile'
 
             }}
           />
-            <Stack.Screen
-                name="EditProfile"
-                component={EditProfile}
-                options={{
-                    title: "Edit Profile"
+          <Stack.Screen
+            name="EditProfile"
+            component={EditProfile}
+            options={{
+              title: 'Edit Profile'
 
-                }}
-            />
+            }}
+          />
           <Stack.Screen
             name="Tabs"
             children={Tabs}
             options={{
-              title: "Tabs",
+              title: 'Tabs',
               headerShown: false,
-              tabBarIcon: ({ focused }) => (
+              tabBarIcon: ({focused}) => (
                 <TabBarIcon focused={focused} name="md-book" />
               )
             }}
           />
-            <Stack.Screen
-                name="Reset"
-                component={ResetPass}
-                options={{
-                    title: "Reset Password Screen"
-                    // headerShown: false
-                    // tabBarIcon: ({ focused }) => (
-                    //   <TabBarIcon focused={focused} name="md-book" />
-                    // )
-                }}
-            />
+          <Stack.Screen
+            name="Reset"
+            component={ResetPass}
+            options={{
+              title: 'Reset Password Screen'
+              // headerShown: false
+              // tabBarIcon: ({ focused }) => (
+              //   <TabBarIcon focused={focused} name="md-book" />
+              // )
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     );
