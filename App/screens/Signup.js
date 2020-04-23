@@ -43,9 +43,6 @@ class Signup extends React.Component {
 
   storeUser = () => {
     const { name, email, isLoading } = this.state;
-    // if (this.state.name === "") {
-    //   alert("Fill at least your name!");
-    // } else {
     this.setState({
       isLoading: true
     });
@@ -54,33 +51,24 @@ class Signup extends React.Component {
         name: this.state.name,
         email: this.state.email
       })
-      .then(res => {
-        this.setState({
-          name: "",
-          email: "",
-          isLoading: false
-        });
-        //this.props.navigation.navigate('Login')
-      })
       .catch(err => {
         console.error("Error found: ", err);
         this.setState({
           isLoading: false
         });
       });
-    // }
   };
 
-  // clear = () => {
-  //   this.setState({
-  //     name: "",
-  //     error: "",
-  //     email: "",
-  //     password: "",
-  //     confirmPassword: "",
-  //     error: ""
-  //   });
-  // };
+  clear = () => {
+    this.setState({
+      name: "",
+      error: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      error: ""
+    });
+  };
 
   handleSignUp = () => {
     const { name, email, password, confirmPassword } = this.state;
