@@ -5,12 +5,13 @@ import CreateProfileScreen from '../screens/CreateProfileScreen';
 import Tabs from '../components/Tabs';
 import Login from '../screens/Login';
 import Signup from '../screens/Signup';
-import ResetPass from '../screens/ResetPass';
+import ResetPassword from '../screens/ResetPassword';
 import EditProfile from '../screens/EditProfile';
+import TabBarIcon from '../components/TabBarIcon';
 
 const Stack = createStackNavigator();
 
-export default Navigator = ({loggedIn}) => {
+const Navigator = ({loggedIn}) => {
   if (loggedIn) {
     return (
       <NavigationContainer
@@ -103,7 +104,7 @@ export default Navigator = ({loggedIn}) => {
           />
           <Stack.Screen
             name="Reset"
-            component={ResetPass}
+            component={ResetPassword}
             options={{
               title: 'Reset Password Screen'
               // headerShown: false
@@ -117,3 +118,5 @@ export default Navigator = ({loggedIn}) => {
     );
   }
 };
+
+export default Navigator;

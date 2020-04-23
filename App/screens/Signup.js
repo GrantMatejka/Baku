@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, } from 'react-native';
+import {View, Text} from 'react-native';
 
 import Firebase from '../config/Firebase';
 import {Fumi} from 'react-native-textinput-effects';
@@ -17,24 +17,19 @@ class Signup extends React.Component {
       error: ''
     };
 
-    clear = () => {
-      this.setState({name: '', error: '', email: '', password: '', confirmPassword: '', error: ''});
-    };
+    handleSignUp(state) {
+      const {name, email, password, confirmPassword} = state;
 
-    handleSignUp = () => {
-      const {name, email, password, confirmPassword} = this.state;
-      this.setState({name: name});
-
-      if (this.state.name.length == 0) {
+      if (name.length == 0) {
         this.setState({error: 'Necessary to enter name'});
         return false;
       }
 
-      if (this.state.password !== this.state.confirmPassword) {
-        this.setState({error: 'Passwords don\'t match'});
+      if (password !== confirmPassword) {
+        this.setState({error: 'Password don\'t match'});
         return false;
       }
-      if ((this.state.password.length < 6)) {
+      if ((password.length < 6)) {
         this.setState({error: 'Password should be at least 6 characters'});
         return false;
       }
@@ -43,13 +38,13 @@ class Signup extends React.Component {
           .createUserWithEmailAndPassword(email, password)
           .then(() => {
             this.props.navigation.navigate('Additional Info', {
-              state: this.state,
+              state: state,
             });
           })
           .catch((error) => {
-            console.log(error), this.setState({error: 'Invalid Credentials'});
+            this.setState({error: error.message});
           });
-    };
+    }
 
     render() {
       return (
@@ -108,7 +103,7 @@ class Signup extends React.Component {
               onPress={
                 () => {
                   this.setState({error: ''});
-                  this.handleSignUp();
+                  this.handleSignUp(this.state);
                 }
               }
             >
