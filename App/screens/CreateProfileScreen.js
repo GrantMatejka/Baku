@@ -13,7 +13,7 @@ export default function CreateProfile({route, navigation}) {
   return (
     <View style={styles.container}>
       <Text style={[styles.header, styles.text_medium, styles.mt_5]}>
-          Hey {state.name}! Now it's your chance to show who you really are!
+        Hey {state.name}! Now it's your chance to show who you really are!
       </Text>
 
       <Fumi
@@ -65,7 +65,6 @@ export default function CreateProfile({route, navigation}) {
         inputPadding={16}
         inputStyle={{padding: 5}}
       />
-
 
       <View style={styles.SignupButton}>
         <Button

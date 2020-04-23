@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Image, Text, View, } from "react-native";
+import { Image, Text, View } from "react-native";
 
-import { Firebase } from "../../config/Firebase"
+import { Firebase } from "../../config/Firebase";
 import Icon from "react-native-vector-icons/Ionicons";
 import { ScrollView } from "react-native-gesture-handler";
 
@@ -24,4 +24,3 @@ export default function NotificationsTab() {
     </View>
   );
 }
-

@@ -25,17 +25,20 @@ class Login extends React.Component {
     const {email, password} = this.state;
 
     Firebase.auth()
-        .signInWithEmailAndPassword(email, password)
-        .then(
-            () =>
-              this.props.navigation.navigate('Tabs', {
-                screen: 'FeedTab'
-              }),
-            this.setState({error: ''})
-        )
-        .catch((error) => {
-          console.log(error), this.setState({error: 'Invalid Username or Password'});
-        });
+
+      .signInWithEmailAndPassword(email, password)
+      .then(
+        () =>
+          this.props.navigation.navigate("Tabs", {
+            screen: "FeedTab"
+          }),
+        this.setState({ error: "" })
+      )
+      .catch(error => {
+        console.log(error),
+          this.setState({ error: "Invalid Username or Password" });
+      });
+
   };
 
   render() {
@@ -68,11 +71,11 @@ class Login extends React.Component {
           inputPadding={16}
           secureTextEntry={true}
         />
-
         {/* <div className="form-group">
           <label htmlFor="rememberMe">Remember me</label>
           <input type="checkbox" className="form-control" id="rememberMe" ref="rememberMe" placeholder="Remember Me" onChange={this.toggleRememberMe} />
-        </div>*/}
+        </div> */}
+
 
         <View
           style={{
@@ -120,11 +123,11 @@ class Login extends React.Component {
           </AwesomeButton>
           <Text style={{padding: 10}}>New user? Sign up now!</Text>
           <AwesomeButton
-            backgroundColor={'#039BE5'}
+            backgroundColor={"#039BE5"}
             width={160}
             height={30}
             onPress={() => {
-              this.props.navigation.navigate('Reset');
+              this.props.navigation.navigate("Reset");
             }}
           >
             Forgot Password?
