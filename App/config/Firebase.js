@@ -2,7 +2,6 @@
 //import firestore from 'firebase/firestore';
 import * as firebase from "firebase";
 import firestore from "firebase/firestore";
-
 import {
   API_KEY,
   AUTH_DOMAIN,
@@ -12,6 +11,7 @@ import {
   APP_ID,
   STORAGE_BUCKET
 } from "react-native-dotenv";
+
 
 const firebaseConfig = {
   apiKey: API_KEY,
@@ -27,5 +27,6 @@ const firebaseConfig = {
 let Firebase = firebase.initializeApp(firebaseConfig);
 
 firebase.firestore();
+
 
 export default Firebase;

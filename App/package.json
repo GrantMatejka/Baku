@@ -6,7 +6,9 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "lint": "eslint *.js **/*.js",
+    "fixlint": "eslint *.js **/*.js --fix"
   },
   "jest": {
     "preset": "jest-expo"
@@ -52,14 +54,21 @@
     "react-navigation": "^4.3.7"
   },
   "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "babel-eslint": "^10.1.0",
     "babel-jest": "^25.3.0",
+    "babel-preset-expo": "~8.0.0",
     "babel-preset-react-native": "^4.0.1",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
     "jest": "^25.3.0",
+    "jest-expo": "~36.0.1",
     "jest-react-native": "^18.0.0",
     "react-test-renderer": "^16.13.1",
-    "@babel/core": "^7.9.0",
-    "babel-preset-expo": "~8.0.0",
-    "jest-expo": "~36.0.1",
     "shortid": "^2.2.15"
   },
   "private": true

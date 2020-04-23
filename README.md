@@ -31,3 +31,24 @@ The Orange And Blue Color Scheme palette has 4 primary colors and 2 secondary co
 
 ## Iconography
 We will be utilizing react native vector icons and specifically the FontAwesome icons offered. A link to the directory of possible icons is below. https://oblador.github.io/react-native-vector-icons/
+
+# Code Contributor Style Guide
+We're following Google's JavaScript style guidelines, which can be found here: https://google.github.io/styleguide/jsguide.html
+
+## File Naming
+- all lowercase
+- may include underscores (_) or dashes (-)
+
+## Naming
+- be descriptive
+- no unambiguous abbreviations
+- parameters and local variable are all lowerCamelCase
+- package names are all lowerCamelCase
+- class names are all UpperCamelCase
+- method names are all lowerCamelCase
+- @private methods must have trailing underscore (_), lowerCamelCase_
+
+## Formatting
+- required for all loops/conditionals
+- empty blocks should be on same line, function doNothing() {}
+- 2 space indentation
