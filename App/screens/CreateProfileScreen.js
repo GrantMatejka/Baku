@@ -5,7 +5,6 @@ import {Fumi} from 'react-native-textinput-effects';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
 import styles from '../styles/Styles';
-import colors from '../styles/Colors';
 
 export default function CreateProfile({route, navigation}) {
   const {state} = route.params;
@@ -13,7 +12,7 @@ export default function CreateProfile({route, navigation}) {
   return (
     <View style={styles.container}>
       <Text style={[styles.header, styles.text_medium, styles.mt_5]}>
-        Hey {state.name}! Now it's your chance to show who you really are!
+        Hey {state.name}! Now it&apos;s your chance to show who you really are!
       </Text>
 
       <Fumi
