@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, Text, Image} from 'react-native';
 import Firebase from '../config/Firebase';
-import styleSheet from '../styles/Styles';
 import {ScrollView} from 'react-native-gesture-handler';
 import AwesomeButton from 'react-native-really-awesome-button';
 import {Hoshi} from 'react-native-textinput-effects';
@@ -34,13 +33,13 @@ class Login extends React.Component {
   render() {
     return (
       <ScrollView
-        style={styleSheet.container}
+        style={styles.container}
         contentContainerStyle={styles.contentContainer}
       >
-        <View style={styleSheet.welcomeContainer}>
+        <View style={styles.welcomeContainer}>
           <Image
             source={require('../assets/images/baku2-full-blue.png')}
-            style={styleSheet.welcomeImage}
+            style={styles.welcomeImage}
           />
         </View>
         <Hoshi
@@ -108,11 +107,11 @@ class Login extends React.Component {
           </AwesomeButton>
           <Text style={{padding: 10}}>New user? Sign up now!</Text>
           <AwesomeButton
-            backgroundColor={"#039BE5"}
+            backgroundColor={'#039BE5'}
             width={160}
             height={30}
             onPress={() => {
-              this.props.navigation.navigate("Reset");
+              this.props.navigation.navigate('Reset');
             }}
           >
             Forgot Password?

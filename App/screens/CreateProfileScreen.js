@@ -4,14 +4,14 @@ import {Text, View, Button} from 'react-native';
 import {Fumi} from 'react-native-textinput-effects';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
-import styles from '../styles/Styles';
+import Styles from '../styles/styles';
 
 export default function CreateProfile({route, navigation}) {
   const {state} = route.params;
 
   return (
-    <View style={styles.container}>
-      <Text style={[styles.header, styles.text_medium, styles.mt_5]}>
+    <View style={Styles.container}>
+      <Text style={[Styles.header, Styles.text_medium, Styles.mt_5]}>
         Hey {state.name}! Now it&apos;s your chance to show who you really are!
       </Text>
 
@@ -65,7 +65,7 @@ export default function CreateProfile({route, navigation}) {
         inputStyle={{padding: 5}}
       />
 
-      <View style={styles.SignupButton}>
+      <View style={Styles.SignupButton}>
         <Button
           title="Create Profile"
           onPress={() =>

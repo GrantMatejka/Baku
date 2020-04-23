@@ -7,7 +7,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import AwesomeButton from "react-native-really-awesome-button";
 
 import Header from "../../components/Header";
-import styles from "../../styles/Styles";
+import styles from "../../styles/styles";
 import Drawer from "../../components/DrawerNav";
 import ProfileTopTab from "../../components/ProfileTopTab";
 

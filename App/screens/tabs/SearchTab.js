@@ -1,10 +1,9 @@
 import * as React from "react";
 import { Text, View, FlatList } from "react-native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { ScrollView } from "react-native-gesture-handler";
 import { Fumi } from "react-native-textinput-effects";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
-import styles from "../../styles/Styles";
+import styles from "../../styles/styles";
 import Header from "../../components/Header";
 import firebase from "../../config/Firebase";
 import AwesomeButton from "react-native-really-awesome-button";

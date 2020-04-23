@@ -1,7 +1,8 @@
 
 import {StyleSheet} from 'react-native';
 import Colors from './Colors';
-export default StyleSheet.create({
+
+const Styles = StyleSheet.create({
   // Container styles
   container: {
     flex: 1,
@@ -11,8 +12,8 @@ export default StyleSheet.create({
   // Useful for with StackView
   container_content: {
     paddingTop: 10,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 
   // Generic header style
@@ -56,7 +57,7 @@ export default StyleSheet.create({
     color: Colors.dark,
   },
   text_centered: {
-    textAlign: "center"
+    textAlign: 'center'
   },
 
   // Button Stylings
@@ -379,7 +380,9 @@ export default StyleSheet.create({
   testDBContainer: {
     height: 50,
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });
+
+export default Styles;

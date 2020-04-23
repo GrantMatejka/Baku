@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Image, Text, View} from 'react-native';
-import styles from '../styles/Styles';
+import styles from '../styles/styles';
 import AwesomeButton from 'react-native-really-awesome-button';
 
 export default class PostCard extends Component {

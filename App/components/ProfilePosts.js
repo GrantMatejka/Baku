@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import datas from '../assets/data/data';
-import styles from '../styles/Styles';
+import styles from '../styles/styles';
 import PostCard from './PostCard';
 
 export default class ProfilePosts extends Component {
