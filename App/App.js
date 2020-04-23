@@ -1,4 +1,5 @@
 /* eslint-disable require-jsdoc */
+/* eslint-env node*/
 import 'react-native-gesture-handler';
 import React, {console} from 'react';
 import {SplashScreen} from 'expo';
@@ -7,7 +8,7 @@ import {Ionicons} from '@expo/vector-icons';
 // eslint-disable-next-line no-unused-vars
 import AppNavigator from './navigation/AppNavigator';
 
-import { decode, encode } from "base-64";
+import {decode, encode} from 'base-64';
 
 if (!global.btoa) {
   global.btoa = encode;

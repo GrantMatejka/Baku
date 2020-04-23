@@ -3,7 +3,7 @@ import { Text, View, ScrollView } from "react-native";
 
 import AwesomeButton from "react-native-really-awesome-button";
 
-import styles from "../../../styles/Styles";
+import styles from "../../../styles/styles";
 import colors from "../../../styles/Colors";
 
 export default function Settings({ navigation }) {

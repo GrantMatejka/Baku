@@ -8,7 +8,7 @@ import {Fumi} from 'react-native-textinput-effects';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import AwesomeButton from 'react-native-really-awesome-button';
 
-import styles from '../styles/Styles';
+import styles from '../styles/styles';
 import colors from '../styles/Colors';
 
 class EditProfile extends React.Component {

@@ -3,7 +3,7 @@ import {View, Text} from 'react-native';
 import Firebase from '../config/Firebase';
 import {Fumi} from 'react-native-textinput-effects';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import styles from '../styles/Styles';
+import styles from '../styles/styles';
 import AwesomeButton from 'react-native-really-awesome-button';
 
 class ResetPassword extends React.Component {
