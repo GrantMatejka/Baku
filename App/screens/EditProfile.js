@@ -1,7 +1,9 @@
 import React from 'react';
-import {View, Text, } from 'react-native';
+import {View, Text} from 'react-native';
 
-import Firebase from '../config/Firebase';
+// TODO Implement Firebase into this page
+// TODO import Firebase from '../config/Firebase';
+
 import {Fumi} from 'react-native-textinput-effects';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import AwesomeButton from 'react-native-really-awesome-button';

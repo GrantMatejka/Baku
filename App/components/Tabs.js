@@ -1,18 +1,15 @@
 import React from 'react';
 import FeedTab from '../screens/tabs/FeedTab';
-import ProfileTab from '../screens/tabs/ProfileTab';
-import {DrawerActions} from '@react-navigation/native';
 import NotificationsTab from '../screens/tabs/NotificationsTab';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import SearchTab from '../screens/tabs/SearchTab';
 import CreatePostTab from '../screens/tabs/CreatePostTab';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Drawer from './DrawerNav';
-import HideWithKeyboard from 'react-native-hide-with-keyboard';
 
 const Tab = createBottomTabNavigator();
 
-export default Navigator = () => {
+const Navigator = () => {
   return (
     <Tab.Navigator
       tabBarOptions={{
@@ -80,3 +77,5 @@ export default Navigator = () => {
     </Tab.Navigator>
   );
 };
+
+export default Navigator;

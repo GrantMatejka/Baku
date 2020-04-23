@@ -1,20 +1,7 @@
 import * as React from 'react';
-import {
-  Image,
-  Platform,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  TextInput,
-  Button
-} from 'react-native';
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {ScrollView} from 'react-native-gesture-handler';
-import * as WebBrowser from 'expo-web-browser';
+import {createMaterialTopTabNavigator}
+  from '@react-navigation/material-top-tabs';
 
-import styles from '../styles/Styles';
 import ProfilePosts from './ProfilePosts';
 import Favorites from './Favorites';
 

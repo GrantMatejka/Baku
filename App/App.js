@@ -1,8 +1,10 @@
+/* eslint-disable require-jsdoc */
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, {console} from 'react';
 import {SplashScreen} from 'expo';
 import * as Font from 'expo-font';
 import {Ionicons} from '@expo/vector-icons';
+// eslint-disable-next-line no-unused-vars
 import AppNavigator from './navigation/AppNavigator';
 
 import { decode, encode } from "base-64";
@@ -16,10 +18,11 @@ if (!global.atob) {
 }
 
 export default function App(props) {
-  const [loggedIn] = React.useState(false);
+  // Uncomment this when we figure out what to do about device based state
+  // const [loggedIn] = React.useState(false);
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
-  const [initialNavigationState] = React.useState();
-  const containerRef = React.useRef();
+  // const [initialNavigationState] = React.useState();
+  // const containerRef = React.useRef();
 
   React.useEffect(() => {
     async function loadResourcesAndDataAsync() {
@@ -30,7 +33,6 @@ export default function App(props) {
           'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf')
         });
       } catch (e) {
-        // We might want to provide this error information to an error reporting service
         console.warn(e);
       } finally {
         setLoadingComplete(true);

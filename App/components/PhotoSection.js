@@ -1,13 +1,7 @@
 import React, {Component} from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  TouchableWithoutFeedback
-} from 'react-native';
+import {Text, View, StyleSheet, Image, TouchableWithoutFeedback}
+  from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import data from '../assets/data/data';
 
 export default class PhotoSection extends Component {
   state = {
@@ -15,7 +9,7 @@ export default class PhotoSection extends Component {
     like: false
   };
 
-  toggleLike = () => {
+  toggleLike() {
     this.setState({
       like: !this.state.like
     });
@@ -28,7 +22,7 @@ export default class PhotoSection extends Component {
         heartIcon: 'ios-heart-empty'
       });
     }
-  };
+  }
 
   render() {
     return (

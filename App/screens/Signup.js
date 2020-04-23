@@ -1,18 +1,6 @@
-import React from "react";
-import {
-  View,
-  TextInput,
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-  Button
-} from "react-native";
-import firebase from "../config/Firebase";
-import { Fumi, Makiko } from "react-native-textinput-effects";
-import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
-import AwesomeButton from "react-native-really-awesome-button";
-import colors from "../styles/colors";
-import styles from "../styles/styles";
+import React from 'react';
+import {View, Text} from 'react-native';
+
 
 class Signup extends React.Component {
   // constructor() {

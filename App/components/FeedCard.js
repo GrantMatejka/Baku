@@ -12,7 +12,7 @@ export default class FeedCard extends Component {
     save: false
   };
 
-  toggleLike = () => {
+  toggleLike() {
     this.setState({
       like: !this.state.like
     });
@@ -25,9 +25,9 @@ export default class FeedCard extends Component {
         heartIcon: 'heart-o'
       });
     }
-  };
+  }
 
-  toggleSave = () => {
+  toggleSave() {
     this.setState({
       save: !this.state.save
     });
@@ -40,7 +40,8 @@ export default class FeedCard extends Component {
         saveIcon: 'bookmark-o'
       });
     }
-  };
+  }
+
   render() {
     return (
       <View style={styles.postCardContainer}>
