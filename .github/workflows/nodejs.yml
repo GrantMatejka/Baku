@@ -24,11 +24,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - working-directory: ./app
+    - working-directory: ./App
       run: npm ci
-    - working-directory: ./app
+    - working-directory: ./App
       run: npm start
-    - working-directory: ./app
+    - working-directory: ./App
       run: npm test
 
       env:
