@@ -35,7 +35,7 @@ We will be utilizing react native vector icons and specifically the FontAwesome 
 # Code Contributor Style Guide
 We're following Google's JavaScript style guidelines, which can be found here: https://google.github.io/styleguide/jsguide.html
 
-* *NOTE: The contributors are transitioning to this guide and are currently refactoring the code* *
+ *NOTE: The contributors are transitioning to this guide and are currently refactoring the code* *
 
 ## File Naming
 - all lowercase
