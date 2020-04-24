@@ -1,12 +1,12 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
-import Fumi from 'react-native-textinput-effects';
+import {Fumi} from 'react-native-textinput-effects';
 import AwesomeButton from 'react-native-really-awesome-button';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import * as firebase from 'firebase';
 
-import Colors from '../styles/Colors.js';
+import Colors from '../styles/colors.js';
 import Styles from '../styles/styles.js';
 
 class Signup extends React.Component {
