@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {ScrollView} from 'react-native';
-import FeedCard from './FeedCard';
+
+import FeedCard from './feedCard';
+// We need to replace this
 import datas from '../assets/data/data';
 
 export default class PhotoList extends Component {

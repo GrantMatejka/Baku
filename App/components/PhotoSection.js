@@ -3,6 +3,8 @@ import {Text, View, StyleSheet, Image, TouchableWithoutFeedback}
   from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+// Why do we have this component
+
 export default class PhotoSection extends Component {
   state = {
     heartIcon: 'ios-heart-empty',

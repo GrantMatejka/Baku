@@ -1,13 +1,15 @@
 import React from 'react';
+
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+
 import CreateProfileScreen from '../screens/createProfileScreen';
 import Tabs from '../components/tabs';
 import Login from '../screens/loginScreen';
 import Signup from '../screens/signupScreen';
 import ResetPassword from '../screens/resetPasswordScreen';
 import EditProfile from '../screens/editProfileScreen';
-import TabBarIcon from '../components/TabBarIcon';
+import TabBarIcon from '../components/tabBarIcon';
 
 const Stack = createStackNavigator();
 

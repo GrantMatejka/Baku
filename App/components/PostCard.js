@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import {Image, Text, View} from 'react-native';
-import styles from '../styles/styles';
+
 import AwesomeButton from 'react-native-really-awesome-button';
+
+import styles from '../styles/styles';
+import Colors from '../styles/colors';
 
 export default class PostCard extends Component {
   render() {
@@ -51,7 +54,7 @@ export default class PostCard extends Component {
         </View>
         <View style={{marginVertical: 16, marginHorizontal: 172}}>
           <AwesomeButton
-            backgroundColor={'#A5D6D9'}
+            backgroundColor={Colors.light}
             width={120}
             height={30}
             style={styles.postItineraryButton}

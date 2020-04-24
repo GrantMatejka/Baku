@@ -2,22 +2,24 @@ import * as React from 'react';
 import {createMaterialTopTabNavigator}
   from '@react-navigation/material-top-tabs';
 
-import ProfilePosts from './ProfilePosts';
-import Favorites from './Favorites';
+import ProfilePosts from './profilePosts';
+import Favorites from './favorites';
+import Colors from '../styles/colors';
 
 const TopTab = createMaterialTopTabNavigator();
+
 export default function ProfileViews() {
   return (
     <TopTab.Navigator
       tabBarOptions={{
         labelStyle: {fontWeight: 'bold', fontSize: 12},
-        indicatorStyle: {backgroundColor: '#ffbc26'},
+        indicatorStyle: {backgroundColor: Colors.background},
         style: {
-          backgroundColor: '#a0c9cf'
+          backgroundColor: Colors.info
         },
-        inactiveBackgroundColor: '#a0c9cf',
-        activeBackgroundColor: '#ffbc26',
-        inactiveTintColor: '#f0efef',
+        inactiveBackgroundColor: Colors.info,
+        activeBackgroundColor: Colors.warning,
+        inactiveTintColor: Colors.background,
         activeTintColor: 'white'
       }}
     >

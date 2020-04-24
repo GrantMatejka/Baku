@@ -1,8 +1,13 @@
+/* eslint-disable no-invalid-this */
+// It'd be great to figure out how to enable this again^^^
 import React, {Component} from 'react';
 import {Image, Text, View, TouchableWithoutFeedback} from 'react-native';
-import styles from '../styles/styles';
+
 import AwesomeButton from 'react-native-really-awesome-button';
 import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
+
+import Styles from '../styles/styles';
+import Colors from '../styles/colors';
 
 export default class FeedCard extends Component {
   state = {
@@ -12,45 +17,35 @@ export default class FeedCard extends Component {
     save: false
   };
 
-  toggleLike() {
+  toggleLike = () => {
+    this.state.like ?
+      this.setState({heartIcon: 'heart-o'}) :
+      this.setState({heartIcon: 'heart'});
+
     this.setState({
       like: !this.state.like
     });
-    if (!this.state.like) {
-      this.setState({
-        heartIcon: 'heart'
-      });
-    } else {
-      this.setState({
-        heartIcon: 'heart-o'
-      });
-    }
   }
 
-  toggleSave() {
+  toggleSave = () => {
+    this.state.save ?
+      this.setState({saveIcon: 'bookmark-o'}) :
+      this.setState({saveIcon: 'bookmark'});
+
     this.setState({
       save: !this.state.save
     });
-    if (!this.state.save) {
-      this.setState({
-        saveIcon: 'bookmark'
-      });
-    } else {
-      this.setState({
-        saveIcon: 'bookmark-o'
-      });
-    }
   }
 
   render() {
     return (
-      <View style={styles.postCardContainer}>
-        <Text style={styles.postCardHeader}>Greetings from</Text>
-        <Text style={styles.postCardLocation}>
+      <View style={Styles.postCardContainer}>
+        <Text style={Styles.postCardHeader}>Greetings from</Text>
+        <Text style={Styles.postCardLocation}>
           {this.props.detail.location}
         </Text>
 
-        <View style={styles.postCardUserContainer}>
+        <View style={Styles.postCardUserContainer}>
           <Image
             style={{
               width: 50,
@@ -87,14 +82,16 @@ export default class FeedCard extends Component {
             }}
           />
         </View>
-        <View style={styles.postButtonsContainer}>
+        <View style={Styles.postButtonsContainer}>
           <TouchableWithoutFeedback>
             <AwesomeIcon
               name={this.state.heartIcon}
               onPress={this.toggleLike}
               style={{
                 marginRight: 10,
-                color: this.state.heartIcon === 'heart-o' ? 'black' : 'red'
+                color:
+                  this.state.heartIcon === 'heart-o' ?
+                    Colors.dark : Colors.like
               }}
               size={32}
             />
@@ -107,7 +104,8 @@ export default class FeedCard extends Component {
                 marginRight: 50,
                 fontWeight: 2,
                 color:
-                  this.state.saveIcon === 'bookmark-o' ? 'black' : '#ffbc26'
+                  this.state.saveIcon === 'bookmark-o' ?
+                    Colors.dark : Colors.warning
               }}
               size={32}
             />
@@ -116,7 +114,7 @@ export default class FeedCard extends Component {
             backgroundColor={'#A5D6D9'}
             width={120}
             height={30}
-            style={styles.postItineraryButton}
+            style={Styles.postItineraryButton}
             onPress={() => {
               // this.props.navigation.navigate("Welcome");
             }}
