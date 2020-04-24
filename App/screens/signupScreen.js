@@ -97,7 +97,6 @@ class Signup extends React.Component {
           iconClass={FontAwesomeIcon}
           iconName={'user'}
           onChangeText={(name) => this.setState({name})}
-          // onChangeText={(val) => this.inputValueUpdate(val, 'name')}
         />
 
         <Fumi
@@ -128,7 +127,9 @@ class Signup extends React.Component {
         />
 
         <View style={Styles.container_content}>
-          <Text style={Styles.text_error}>{this.state.error}</Text>
+          <Text style={Styles.text_error}>
+            {this.state.error}
+          </Text>
         </View>
 
         <View style={Styles.container_content}>

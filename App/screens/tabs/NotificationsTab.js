@@ -1,24 +1,25 @@
 import * as React from "react";
 import { Image, Text, View } from "react-native";
 
-import { Firebase } from "../../config/Firebase";
 import Icon from "react-native-vector-icons/Ionicons";
 import { ScrollView } from "react-native-gesture-handler";
 
-import styles from "../../styles/styles";
+import firebase from "../../config/Firebase";
+import Styles from "../../styles/styles";
 import Header from "../../components/Header";
 import NotificationList from "../../components/NotificationList";
 
 export default function NotificationsTab() {
   return (
-    <View style={styles.container}>
+    <View style={Styles.container}>
       <Header headerTitle="Notifications" />
       <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}
+        style={Styles.container}
+        contentContainerStyle={Styles.container_content}
       >
         <View>
           <NotificationList />
+          
         </View>
       </ScrollView>
     </View>

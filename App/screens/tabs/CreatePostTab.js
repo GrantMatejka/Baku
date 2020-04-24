@@ -1,19 +1,14 @@
 import * as React from "../../node_modules/react";
-import {
-  Text,
-  View,
-  FlatList,
-  ScrollView,
-  ActivityIndicator
-} from "react-native";
-//import { ScrollView, FlatList } from "react-native-gesture-handler";
-import styles from "../../styles/styles";
-import Colors from "../../styles/colors";
-import Header from "../../components/Header";
+import { Text, View, FlatList, ScrollView, ActivityIndicator } from "react-native";
+
 import AwesomeButton from "react-native-really-awesome-button";
 import { Fumi } from "../../node_modules/react-native-textinput-effects/lib";
 import FontAwesomeIcon from "../../node_modules/react-native-vector-icons/FontAwesome";
+
+import Header from "../../components/Header";
 import firebase from "../../config/Firebase";
+import Styles from "../../styles/styles";
+import Colors from "../../styles/colors";
 
 export default function CreatePost({ navigation: { navigate } }) {
   const [cityLoc, setCity] = React.useState("");
@@ -21,9 +16,8 @@ export default function CreatePost({ navigation: { navigate } }) {
   const [loading, setLoading] = React.useState(true);
   const [locations, setLocations] = React.useState([]);
 
-  //const db = firebase.firestore().collection("location_test").orderBy("city", "asc");
   const db = firebase.firestore().collection("location_test");
-  //adds to db based on text input
+
   async function addLocation() {
     try {
       await db.add({
@@ -63,7 +57,7 @@ export default function CreatePost({ navigation: { navigate } }) {
 
   function Item({ city }, { country }) {
     return (
-      <View style={styles.testDBContainer}>
+      <View style={Styles.testDBContainer}>
         <Text>City: {city}</Text>
         <Text>Country: {country}</Text>
       </View>
@@ -72,32 +66,35 @@ export default function CreatePost({ navigation: { navigate } }) {
 
 
   return (
-    <View style={styles.container}>
+    <View style={Styles.container}>
       <Header headerTitle="Create Postcard" />
+
       <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}
+        style={Styles.container}
+        contentContainerStyle={Styles.container_content}
       >
-        <View style={styles.getStartedContainer}>
-          <Text style={styles.mainHeader}>
+        <View style={Styles.getStartedContainer}>
+          <Text style={Styles.mainHeader}>
             Let's test if we can add to the DB{" "}
           </Text>
-          <Text style={styles.mainHeader}> Tag your location! </Text>
+          <Text style={Styles.mainHeader}> Tag your location! </Text>
         </View>
-        <View style={{ padding: 16 }}>
+
+        <View style={Styles.p_3}>
           <Fumi
             label={"Enter city"}
             onChangeText={setCity}
             iconClass={FontAwesomeIcon}
             iconName={"map-pin"}
-            iconColor={"#346CD5"}
+            iconColor={Colors.warning}
             iconSize={18}
             iconWidth={40}
             inputPadding={16}
             inputStyle={{ padding: 5 }}
           />
         </View>
-        <View style={{ padding: 16 }}>
+
+        <View style={Colors.warning}>
           <Fumi
             label={"Enter Country"}
             onChangeText={setCountry}
@@ -110,7 +107,8 @@ export default function CreatePost({ navigation: { navigate } }) {
             inputStyle={{ padding: 5 }}
           />
         </View>
-        <View style={styles.getStartedContainer}>
+
+        <View style={Styles.getStartedContainer}>
           <AwesomeButton
             backgroundColor={"#ffbc26"}
             width={340}
@@ -125,12 +123,13 @@ export default function CreatePost({ navigation: { navigate } }) {
           //lists DB to screen in alphabetical order by city
           data={locations}
           renderItem={({ item }) => (
-            <View style={styles.testDBContainer}>
+            <View style={Styles.testDBContainer}>
               <Text>City: {item.city}</Text>
               <Text>Country: {item.country}</Text>
             </View>
           )}
         />
+        
       </ScrollView>
     </View>
   );
