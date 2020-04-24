@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from "../../node_modules/react";
 import {
   Text,
   View,
@@ -8,13 +8,13 @@ import {
 } from "react-native";
 //import { ScrollView, FlatList } from "react-native-gesture-handler";
 import styles from "../../styles/styles";
-import colors from "../../styles/Colors";
+import Colors from "../../styles/colors";
 import Header from "../../components/Header";
 import AwesomeButton from "react-native-really-awesome-button";
-import { Fumi } from "react-native-textinput-effects";
-import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
-import { List } from "react-native-paper";
+import { Fumi } from "../../node_modules/react-native-textinput-effects/lib";
+import FontAwesomeIcon from "../../node_modules/react-native-vector-icons/FontAwesome";
 import firebase from "../../config/Firebase";
+
 export default function CreatePost({ navigation: { navigate } }) {
   const [cityLoc, setCity] = React.useState("");
   const [countryLoc, setCountry] = React.useState("");

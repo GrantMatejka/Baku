@@ -9,7 +9,7 @@ import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import AwesomeButton from 'react-native-really-awesome-button';
 
 import styles from '../styles/styles';
-import colors from '../styles/Colors';
+import colors from '../styles/colors';
 
 class EditProfile extends React.Component {
     state = {
