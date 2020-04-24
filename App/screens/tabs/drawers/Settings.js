@@ -4,7 +4,7 @@ import { Text, View, ScrollView } from "react-native";
 import AwesomeButton from "react-native-really-awesome-button";
 
 import styles from "../../../styles/styles";
-import colors from "../../../styles/Colors";
+import colors from "../../../styles/colors";
 
 export default function Settings({ navigation }) {
   return (
@@ -13,11 +13,8 @@ export default function Settings({ navigation }) {
       contentContainerStyle={styles.container_content}
     >
       <View style={styles.container_content}>
-
         <View style={styles.p_3}>
-          <Text style={styles.header, styles.text_large}>
-            Settings
-            </Text>
+          <Text style={(styles.header, styles.text_large)}>Settings</Text>
         </View>
 
         <View style={styles.p_3}>
@@ -28,7 +25,7 @@ export default function Settings({ navigation }) {
             onPress={() => navigation.navigate("Profile")}
           >
             Back
-            </AwesomeButton>
+          </AwesomeButton>
         </View>
 
         <View style={styles.p_3}>
@@ -41,9 +38,7 @@ export default function Settings({ navigation }) {
             Log Out
           </AwesomeButton>
         </View>
-
       </View>
-
     </ScrollView>
   );
 }

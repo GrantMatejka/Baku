@@ -1,33 +1,32 @@
-
-import {StyleSheet} from 'react-native';
-import Colors from './Colors';
+import { StyleSheet } from "react-native";
+import Colors from "./colors";
 
 const Styles = StyleSheet.create({
   // Container styles
   container: {
     flex: 1,
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.background
   },
   // Container for any horizontally centered child content
   // Useful for with StackView
   container_content: {
     paddingTop: 10,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center"
   },
 
   // Generic header style
   header: {
-    fontStyle: 'normal',
+    fontStyle: "normal",
     padding: 30,
     color: Colors.dark,
     lineHeight: 30,
-    textAlign: 'center'
+    textAlign: "center"
   },
   header_postcard: {
-    fontWeight: 'bold',
-    fontStyle: 'italic',
-    textAlign: 'center',
+    fontWeight: "bold",
+    fontStyle: "italic",
+    textAlign: "center",
     paddingTop: 10
   },
 
@@ -45,19 +44,18 @@ const Styles = StyleSheet.create({
     fontSize: 10
   },
   text_error: {
-
-    color: 'red',
+    color: "red",
     marginVertical: 10,
     fontSize: 15
   },
   text_button: {
     fontSize: 20,
 
-    fontWeight: 'bold',
-    color: Colors.dark,
+    fontWeight: "bold",
+    color: Colors.dark
   },
   text_centered: {
-    textAlign: 'center'
+    textAlign: "center"
   },
 
   // Button Stylings
@@ -65,28 +63,28 @@ const Styles = StyleSheet.create({
     marginTop: 30,
     marginBottom: 20,
     paddingVertical: 5,
-    alignItems: 'center',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
+    alignItems: "center",
+    flexDirection: "column",
+    justifyContent: "space-between",
     backgroundColor: Colors.warning,
     borderColor: Colors.warning,
     borderWidth: 1,
     borderRadius: 5
   },
   testButton: {
-    display: 'flex',
+    display: "flex",
     height: 50,
     borderRadius: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: Colors.success,
     shadowColor: Colors.success,
     shadowOpacity: 0.4,
-    shadowOffset: {height: 10, width: 0},
+    shadowOffset: { height: 10, width: 0 },
     shadowRadius: 20
   },
   postButtonsContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginTop: 36,
     marginLeft: 16
   },
@@ -183,22 +181,22 @@ const Styles = StyleSheet.create({
   image_header: {
     width: 300,
     height: 200,
-    resizeMode: 'contain',
+    resizeMode: "contain"
   },
 
   inputBox: {
-    width: '85%',
+    width: "85%",
     margin: 10,
     padding: 15,
     fontSize: 16,
-    borderColor: '#d3d3d3',
+    borderColor: "#d3d3d3",
     borderBottomWidth: 1,
-    textAlign: 'center'
+    textAlign: "center"
   },
   buttonText: {
     fontSize: 20,
-    fontWeight: 'bold',
-    color: '#fff'
+    fontWeight: "bold",
+    color: "#fff"
   },
   buttonSignup: {
     fontSize: 12
@@ -208,169 +206,167 @@ const Styles = StyleSheet.create({
     paddingTop: 10
   },
   welcomeContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: 10,
     marginBottom: 5
   },
   welcomeImage: {
     width: 300,
     height: 200,
-    resizeMode: 'contain',
+    resizeMode: "contain",
     marginTop: 3,
     marginLeft: -10
   },
   formStyle: {
-    display: 'flex',
+    display: "flex",
     fontSize: 20,
     marginLeft: 12,
     marginBottom: 12,
-    flexDirection: 'column'
+    flexDirection: "column"
     // justifyContent: "center"
   },
   profileTextTitle: {
     padding: 20,
     fontSize: 20,
-    flexDirection: 'row',
-    color: 'rgba(96,100,109, 1)'
+    flexDirection: "row",
+    color: "rgba(96,100,109, 1)"
   },
   profileText: {
     fontSize: 10,
-    flexDirection: 'row',
-    color: 'rgba(96,100,109, 1)'
+    flexDirection: "row",
+    color: "rgba(96,100,109, 1)"
   },
   addToProfile: {
-    alignItems: 'center',
+    alignItems: "center",
     marginHorizontal: 50
   },
   inputText: {
     height: 40,
-    borderColor: 'gray',
+    borderColor: "gray",
     borderWidth: 1
   },
 
   getStartedContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     marginHorizontal: 50
   },
   homeScreenFilename: {
     marginVertical: 7
   },
   codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)'
+    color: "rgba(96,100,109, 0.8)"
   },
   codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
+    backgroundColor: "rgba(0,0,0,0.05)",
     borderRadius: 3,
     paddingHorizontal: 4
   },
   getStartedText: {
     fontSize: 30,
-    color: 'rgba(96,100,109, 1)',
+    color: "rgba(96,100,109, 1)",
     lineHeight: 40,
-    textAlign: 'center'
+    textAlign: "center"
   },
   tabBarInfoText: {
     fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    textAlign: 'center'
+    color: "rgba(96,100,109, 1)",
+    textAlign: "center"
   },
   navigationFilename: {
     marginTop: 5
   },
   helpContainer: {
     marginTop: 15,
-    alignItems: 'center'
+    alignItems: "center"
   },
   helpLink: {
     paddingVertical: 15
   },
   helpLinkText: {
     fontSize: 14,
-    color: '#2e78b7'
+    color: "#2e78b7"
   },
   developmentModeText: {
     marginBottom: 20,
-    color: 'rgba(0,0,0,0.4)',
+    color: "rgba(0,0,0,0.4)",
     fontSize: 14,
     lineHeight: 19,
-    textAlign: 'center'
+    textAlign: "center"
   },
   signUpText: {
-    textAlign: 'center',
+    textAlign: "center",
     marginTop: 10,
     marginBottom: 5
   },
   tabBarInfoContainer: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
+    alignItems: "center",
+    backgroundColor: "#fbfbfb",
     paddingVertical: 20
   },
   postCardContainer: {
-    backgroundColor: '#FFF9F1',
+    backgroundColor: "#FFF9F1",
     height: 450,
     marginHorizontal: 15,
     marginVertical: 30,
-    borderColor: 'rgba(0,0,0,0.05)',
+    borderColor: "rgba(0,0,0,0.05)",
     borderWidth: 2
   },
 
   NotificationCardContainer: {
-
-    flexDirection: 'row',
-    backgroundColor: '#a0c9cf',
+    flexDirection: "row",
+    backgroundColor: "#a0c9cf",
     height: 60,
     marginHorizontal: 15,
     marginVertical: 0,
-    borderColor: 'rgba(0,0,0,0.05)',
+    borderColor: "rgba(0,0,0,0.05)",
     borderWidth: 2,
     borderRadius: 5
   },
   NotificationCardTimeStamp: {
-    fontWeight: '400',
-    fontStyle: 'italic',
+    fontWeight: "400",
+    fontStyle: "italic",
     fontSize: 13,
-    textAlign: 'left',
+    textAlign: "left",
     paddingTop: 33,
     marginLeft: 20
   },
   NotificationCardMainText: {
     flex: 4,
-    fontWeight: '400',
+    fontWeight: "400",
     fontSize: 15,
-    textAlign: 'left',
+    textAlign: "left",
     paddingTop: 12,
     marginLeft: -195,
     marginRight: -15
   },
   NotificationUserProfile: {
-
-    flex: .75,
-    alignItems: 'center',
+    flex: 0.75,
+    alignItems: "center",
     height: 55,
     borderRadius: 2,
     borderWidth: 1,
-    borderColor: 'black'
+    borderColor: "black"
     // this needs work
   },
   NotificationTypeIcon: {
-    flex: .8,
-    color: 'black',
+    flex: 0.8,
+    color: "black",
     marginTop: 10,
     marginRight: 0
     // this needs work
   },
   postCardLocation: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 20,
-    textAlign: 'center',
-    color: '#DD8627'
+    textAlign: "center",
+    color: "#DD8627"
   },
   postCardUserContainer: {
-    alignSelf: 'flex-end',
+    alignSelf: "flex-end",
     marginRight: 15,
     marginTop: -40
   },
@@ -380,8 +376,8 @@ const Styles = StyleSheet.create({
   testDBContainer: {
     height: 50,
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: "center",
+    justifyContent: "center"
   }
 });
 
