@@ -1,4 +1,5 @@
-import * as firebase from 'firebase';
+import * as firebase from "firebase";
+import firestore from "firebase/firestore";
 
 import {
   API_KEY,
