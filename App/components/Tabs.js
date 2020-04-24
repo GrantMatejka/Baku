@@ -1,11 +1,14 @@
 import React from 'react';
-import FeedTab from '../screens/tabs/FeedTab';
-import NotificationsTab from '../screens/tabs/NotificationsTab';
+
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import SearchTab from '../screens/tabs/SearchTab';
-import CreatePostTab from '../screens/tabs/CreatePostTab';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Drawer from './DrawerNav';
+
+import NotificationsTab from '../screens/tabs/notificationsTab';
+import FeedTab from '../screens/tabs/feedTab';
+import SearchTab from '../screens/tabs/searchTab';
+import CreatePostTab from '../screens/tabs/createPostTab';
+import Drawer from './drawerNav';
+import Colors from '../styles/colors';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,14 +17,13 @@ const Navigator = () => {
     <Tab.Navigator
       tabBarOptions={{
         style: {
-          backgroundColor: '#478a91'
+          backgroundColor: Colors.primary
         },
 
-        inactiveBackgroundColor: '#478a91',
-        activeBackgroundColor: '#478a91',
-        inactiveTintColor: '#f0efef',
-        activeTintColor: '#ffbc26'
-        // showLabel: "false"
+        inactiveBackgroundColor: Colors.primary,
+        activeBackgroundColor: Colors.primary,
+        inactiveTintColor: Colors.background,
+        activeTintColor: Colors.background
       }}
     >
       <Tab.Screen
@@ -34,6 +36,7 @@ const Navigator = () => {
           title: 'Feed'
         }}
       />
+
       <Tab.Screen
         name="SearchTab"
         component={SearchTab}
@@ -74,6 +77,7 @@ const Navigator = () => {
           title: 'Profile'
         }}
       />
+      
     </Tab.Navigator>
   );
 };

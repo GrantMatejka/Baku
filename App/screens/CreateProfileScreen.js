@@ -5,6 +5,8 @@ import {Fumi} from 'react-native-textinput-effects';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
 import Styles from '../styles/styles';
+// Uncomment when needed
+// import Colors from '../styles/colors';
 
 export default function CreateProfile({route, navigation}) {
   const {state} = route.params;
