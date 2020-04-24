@@ -5,8 +5,8 @@ import AwesomeButton from "react-native-really-awesome-button";
 import { Fumi } from "../../node_modules/react-native-textinput-effects/lib";
 import FontAwesomeIcon from "../../node_modules/react-native-vector-icons/FontAwesome";
 
-import Header from "../../components/Header";
-import firebase from "../../config/Firebase";
+import Header from "../../components/header";
+import firebase from "../../config/firebase";
 import Styles from "../../styles/styles";
 import Colors from "../../styles/colors";
 

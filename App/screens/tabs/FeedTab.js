@@ -4,8 +4,8 @@ import { View, } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 
 import Styles from "../../styles/styles";
-import FeedList from "../../components/FeedList";
-import Header from "../../components/Header";
+import FeedList from "../../components/feedList";
+import Header from "../../components/header";
 
 export default function Feed({ navigation: { navigate } }) {
   return (

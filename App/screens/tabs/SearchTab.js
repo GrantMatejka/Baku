@@ -7,8 +7,8 @@ import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 import AwesomeButton from "react-native-really-awesome-button";
 
 import Styles from "../../styles/styles";
-import Header from "../../components/Header";
-import firebase from "../../config/Firebase";
+import Header from "../../components/header";
+import firebase from "../../config/firebase";
 
 function SearchTab() {
   const [locValue, setLoc] = React.useState("");

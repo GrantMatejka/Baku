@@ -5,7 +5,7 @@ import {ScrollView} from 'react-native-gesture-handler';
 import AwesomeButton from 'react-native-really-awesome-button';
 import {Hoshi} from 'react-native-textinput-effects';
 
-import Firebase from '../config/Firebase';
+import Firebase from '../config/firebase';
 import Styles from '../styles/styles';
 import Colors from '../styles/colors';
 
