@@ -8,8 +8,8 @@ import {Fumi} from 'react-native-textinput-effects';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import AwesomeButton from 'react-native-really-awesome-button';
 
-import styles from '../styles/styles';
-import colors from '../styles/colors';
+import Styles from '../styles/styles';
+import Colors from '../styles/colors';
 
 class EditProfile extends React.Component {
     state = {
@@ -19,14 +19,13 @@ class EditProfile extends React.Component {
       error: ''
     };
 
-
     render() {
       return (
         <View
-          style={styles.container}>
+          style={Styles.container}>
 
           <Text
-            style={[styles.header, styles.text_large]}>
+            style={[Styles.header, Styles.text_large]}>
           </Text>
 
           <Fumi
@@ -113,22 +112,15 @@ class EditProfile extends React.Component {
             inputStyle={{padding: 5}}
           />
 
-          <View
-            style={{alignItems: 'center'}}
-          >
-
-            <Text
-              style={styles.text_error}
-            >
+          <View style={Styles.container_content}>
+            <Text style={Styles.text_error}>
               {this.state.error}
             </Text>
-
           </View>
 
-          <View style={styles.container_content}>
-
+          <View style={Styles.container_content}>
             <AwesomeButton
-              backgroundColor={colors.warning}
+              backgroundColor={Colors.warning}
               width={200}
               height={50}
               onPress={
@@ -136,12 +128,10 @@ class EditProfile extends React.Component {
                   this.props.navigation.navigate('Tabs', {
                     screen: 'ProfileTab'
                   });
-                }
-              }
+                }}
             >
-                        Submit
+              Submit
             </AwesomeButton>
-
           </View>
 
         </View>

@@ -1,12 +1,14 @@
 import * as React from "react";
 import { Text, View, FlatList } from "react-native";
+
 import { ScrollView } from "react-native-gesture-handler";
 import { Fumi } from "react-native-textinput-effects";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
-import styles from "../../styles/styles";
+import AwesomeButton from "react-native-really-awesome-button";
+
+import Styles from "../../styles/styles";
 import Header from "../../components/Header";
 import firebase from "../../config/Firebase";
-import AwesomeButton from "react-native-really-awesome-button";
 
 function SearchTab() {
   const [locValue, setLoc] = React.useState("");
@@ -37,13 +39,14 @@ function SearchTab() {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={Styles.container}>
+
       <Header headerTitle="Search" />
+
       <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}
+        style={Styles.container}
+        contentContainerStyle={Styles.container_content}
       >
-        <View style={styles.getStartedContainer}>
           <Text
             style={{
               fontSize: 35,
@@ -57,8 +60,8 @@ function SearchTab() {
           >
             Where would you like to go?
           </Text>
-        </View>
-        <View style={{ padding: 16 }}>
+
+        <View style={Styles.p_3}>
           <Fumi
             label={"Search by..."}
             onChangeText={text => setLoc(text)}
@@ -72,6 +75,7 @@ function SearchTab() {
             inputStyle={{ padding: 5 }}
           />
         </View>
+
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
           <AwesomeButton
             backgroundColor={"#ffbc26"}
@@ -96,22 +100,17 @@ function SearchTab() {
             City
           </AwesomeButton>
         </View>
+
         <FlatList
           data={locations}
           renderItem={({ item }) => (
-            <View
-              style={{
-                height: 50,
-                flex: 1,
-                alignItems: "center",
-                justifyContent: "center"
-              }}
-            >
+            <View style={Styles.container_content}>
               <Text>City: {item.city}</Text>
               <Text>Country: {item.country}</Text>
             </View>
           )}
         />
+
       </ScrollView>
     </View>
   );
