@@ -11,7 +11,7 @@ Baku is intended to be a standalone mobile application that provides a source of
 While we may be prioritizing a mobile target, utilizing React Native and FireBase, Baku will be available on any platform, from iOS to Android to Web. So whatever device you own you can stay in touch and plan your trips with Baku.
 ![React Native Platform Support](https://www.itfirms.co/wp-content/uploads/2017/07/react-native-cross-platform.jpg)
 
-# Documents & Diagrams
+## Documents & Diagrams
 We have included multiple documents and diagrams in our documents folder to help anyone understand the design, flow and scope of our project. Some specific areas of importance are described additionally below.
 
 ## UI Prototype
