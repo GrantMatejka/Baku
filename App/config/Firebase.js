@@ -1,5 +1,3 @@
-// import firebase from "firebase";
-// import firestore from 'firebase/firestore';
 import * as firebase from 'firebase';
 
 import {
@@ -23,6 +21,7 @@ const firebaseConfig = {
   appId: APP_ID
 };
 
+// What is going on here? especially with firebase.firestore() line?
 const Firebase = firebase.initializeApp(firebaseConfig);
 
 firebase.firestore();

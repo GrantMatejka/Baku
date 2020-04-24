@@ -1,7 +1,9 @@
 import React from 'react';
-import profileTab from '../screens/tabs/profileTab';
+
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import settingsDrawer from '../screens/tabs/drawers/settingsDrawer';
+
+import ProfileTab from '../screens/tabs/profileTab';
+import SettingsDrawer from '../screens/tabs/drawers/settingsDrawer';
 
 const Drawer = createDrawerNavigator();
 
@@ -11,9 +13,11 @@ const Navigator = () => {
       <Drawer.Screen
         name="Profile"
         options={{gestureEnabled: false}}
-        component={profileTab}
+        component={ProfileTab}
       />
-      <Drawer.Screen name="Settings" component={settingsDrawer} />
+
+      <Drawer.Screen name="Settings" component={SettingsDrawer} />
+
     </Drawer.Navigator>
   );
 };

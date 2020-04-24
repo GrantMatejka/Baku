@@ -2,17 +2,19 @@ import * as React from 'react';
 import {Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 
-import styles from '../styles/styles';
+import Styles from '../styles/styles';
 
 export default function Favorites() {
   return (
-    <View style={styles.container}>
+    <View style={Styles.container}>
       <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}
+        style={Styles.container}
+        contentContainerStyle={Styles.contentContainer}
       >
-        <View style={styles.getStartedContainer}>
-          <Text style={styles.mainHeader}>Favorites!</Text>
+        <View style={Styles.getStartedContainer}>
+
+          <Text style={Styles.mainHeader}>Favorites!</Text>
+
         </View>
       </ScrollView>
     </View>
