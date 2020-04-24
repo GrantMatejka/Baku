@@ -1,10 +1,11 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
-import Firebase from '../config/Firebase';
+
 import {ScrollView} from 'react-native-gesture-handler';
 import AwesomeButton from 'react-native-really-awesome-button';
 import {Hoshi} from 'react-native-textinput-effects';
 
+import Firebase from '../config/Firebase';
 import Styles from '../styles/styles';
 import Colors from '../styles/colors';
 
@@ -44,11 +45,12 @@ class Login extends React.Component {
             style={Styles.image_header}
           />
         </View>
+
         <Hoshi
           label={'Email'}
           value={this.state.email}
           onChangeText={(email) => this.setState({email})}
-          borderColor={'#A5D6D9'}
+          borderColor={Colors.light}
           borderHeight={5}
           inputPadding={18}
           autoCapitalize="none"
@@ -57,7 +59,7 @@ class Login extends React.Component {
           label={'Password'}
           value={this.state.password}
           onChangeText={(password) => this.setState({password})}
-          borderColor={'#ffbc26'}
+          borderColor={Colors.warning}
           borderHeight={5}
           inputPadding={16}
           secureTextEntry={true}
@@ -98,7 +100,9 @@ class Login extends React.Component {
             </AwesomeButton>
           </View>
 
-          <Text style={{padding: 10}}>New user? Sign up now!</Text>
+          <Text style={Styles.p_2}>
+            New user? Sign up now!
+          </Text>
 
           <AwesomeButton
             backgroundColor={'#039BE5'}

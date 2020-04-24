@@ -7,14 +7,15 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import AwesomeButton from "react-native-really-awesome-button";
 
 import Header from "../../components/Header";
-import styles from "../../styles/styles";
-import Drawer from "../../components/DrawerNav";
+import Styles from "../../styles/styles";
+import Drawer from "../../components/drawerNav";
 import ProfileTopTab from "../../components/ProfileTopTab";
 
 export default function ProfileTab({ navigation }) {
   return (
-    <View style={styles.container}>
+    <View style={Styles.container}>
       <Header headerTitle="Profile" />
+
       <ScrollView>
         <View style={styles2.thumbnailSection}>
           <View>
@@ -25,16 +26,20 @@ export default function ProfileTab({ navigation }) {
               }}
               style={styles2.thumbnail}
             />
+
             <Text style={styles2.username}> ericzowie </Text>
           </View>
+
           <View style={styles2.postCardCont}>
             <Text style={styles2.postCount}> 100 </Text>
             <Text style={styles2.postCards}> PostCards </Text>
           </View>
+
           <View style={styles2.followerCont}>
             <Text style={styles2.followerCount}> 1000 </Text>
             <Text style={styles2.follower}> Followers </Text>
           </View>
+
           <Icon
             style={styles2.hambuger}
             name="bars"
@@ -55,9 +60,11 @@ export default function ProfileTab({ navigation }) {
             Edit Profile
           </AwesomeButton>
         </View>
+
         <View>
           <ProfileTopTab />
         </View>
+
       </ScrollView>
     </View>
   );

@@ -1,10 +1,13 @@
 import React, {alert, console} from 'react';
 import {View, Text} from 'react-native';
-import Firebase from '../config/Firebase';
+
 import {Fumi} from 'react-native-textinput-effects';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import styles from '../styles/styles';
 import AwesomeButton from 'react-native-really-awesome-button';
+
+import Firebase from '../config/Firebase';
+import Styles from '../styles/styles';
+import Colors from '../styles/colors';
 
 class ResetPassword extends React.Component {
     state = {
@@ -12,21 +15,35 @@ class ResetPassword extends React.Component {
       error: '',
     };
 
+    initiateResetPasswordEmail(state) {
+      Firebase.auth().sendPasswordResetEmail(state.email)
+          .then(
+              () => {
+                alert('Please check your email');
+                this.props.navigation.navigate('Login');
+              })
+          .catch((error) => {
+            this.props.navigation.navigate('Reset');
+          });
+    }
+
     render() {
       return (
-        <View style={styles.container}>
-          <Text style={[styles.header, styles.text_large]}>
+        <View style={Styles.container_content}>
+          <Text style={[Styles.header, Styles.text_large]}>
             Trouble Logging In?
           </Text>
-          <Text style={{padding: 10}}>
+
+          <Text style={Styles.p_2}>
             Enter your email below and we&apos;ll
             send you a link to reset your password.
           </Text>
+
           <Fumi
             label={'Email'}
             iconClass={FontAwesomeIcon}
             iconName={'envelope-square'}
-            iconColor={'#bfb0e8'}
+            iconColor={Colors.primary}
             iconSize={20}
             iconWidth={40}
             inputPadding={16}
@@ -34,25 +51,20 @@ class ResetPassword extends React.Component {
             value={this.state.email}
             onChangeText={(email) => this.setState({email})}
           />
+
+        <View style={Styles.p_2}>
           <AwesomeButton
-            backgroundColor={'#039BE5'}
+            backgroundColor={Colors.light}
             width={160}
             height={30}
             onPress={() => {
-              Firebase.auth().sendPasswordResetEmail(this.state.email)
-                  .then(
-                      () =>
-                        alert('Please check your email'),
-                      this.props.navigation.navigate('Login'),
-                  )
-                  .catch((error) => {
-                    console.log(error);
-                    this.props.navigation.navigate('Reset');
-                  });
+              this.initiateResetPasswordEmail(this.state);
             }}
           >
                     Submit
           </AwesomeButton>
+        </View>
+
         </View>
       );
     }
