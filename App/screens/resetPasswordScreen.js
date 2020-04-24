@@ -1,11 +1,11 @@
-import React, {alert, console} from 'react';
+import React, {alert} from 'react';
 import {View, Text} from 'react-native';
 
 import {Fumi} from 'react-native-textinput-effects';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import AwesomeButton from 'react-native-really-awesome-button';
 
-import Firebase from '../config/Firebase';
+import Firebase from '../config/firebase';
 import Styles from '../styles/styles';
 import Colors from '../styles/colors';
 
@@ -52,23 +52,22 @@ class ResetPassword extends React.Component {
             onChangeText={(email) => this.setState({email})}
           />
 
-        <View style={Styles.p_2}>
-          <AwesomeButton
-            backgroundColor={Colors.light}
-            width={160}
-            height={30}
-            onPress={() => {
-              this.initiateResetPasswordEmail(this.state);
-            }}
-          >
+          <View style={Styles.p_2}>
+            <AwesomeButton
+              backgroundColor={Colors.light}
+              width={160}
+              height={30}
+              onPress={() => {
+                this.initiateResetPasswordEmail(this.state);
+              }}
+            >
                     Submit
-          </AwesomeButton>
-        </View>
+            </AwesomeButton>
+          </View>
 
         </View>
       );
     }
 }
-
 
 export default ResetPassword;

@@ -77,7 +77,7 @@ const Navigator = () => {
           title: 'Profile'
         }}
       />
-      
+
     </Tab.Navigator>
   );
 };

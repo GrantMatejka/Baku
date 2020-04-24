@@ -6,10 +6,10 @@ import { DrawerActions } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import AwesomeButton from "react-native-really-awesome-button";
 
-import Header from "../../components/Header";
+import Header from "../../components/header";
 import Styles from "../../styles/styles";
 import Drawer from "../../components/drawerNav";
-import ProfileTopTab from "../../components/ProfileTopTab";
+import ProfileTopTab from "../../components/profileTopTab";
 
 export default function ProfileTab({ navigation }) {
   return (

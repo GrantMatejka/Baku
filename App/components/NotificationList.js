@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import {ScrollView} from 'react-native';
-import NotificationCard from './NotificationCard';
+
+import NotificationCard from './notificationCard';
 import datas from '../assets/data/data';
+
+// What is the point with this?
 
 export default class NotificationList extends Component {
   state = {
