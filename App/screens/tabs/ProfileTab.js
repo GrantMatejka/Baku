@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Image, StyleSheet, Text, View, } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 
 import { ScrollView } from "react-native-gesture-handler";
 import { DrawerActions } from "@react-navigation/native";
