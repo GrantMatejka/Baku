@@ -1,33 +1,27 @@
 import React from "react";
 import { View, Text } from "react-native";
-
-import Fumi from "react-native-textinput-effects";
-import AwesomeButton from "react-native-really-awesome-button";
+import firebase from "../config/Firebase";
+import { Fumi } from "react-native-textinput-effects";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
-import * as firebase from "firebase";
-
-import Colors from "../styles/colors.js";
-import Styles from "../styles/styles.js";
+import AwesomeButton from "react-native-really-awesome-button";
+import colors from "../styles/colors";
+import styles from "../styles/styles";
 
 class Signup extends React.Component {
   dbRef = firebase.firestore().collection("users");
 
   state = {
     name: "",
+    username: "",
     email: "",
     password: "",
     error: "",
     isLoading: false,
-    dbRef: Signup.dbRef
+    dbRef: this.dbRef
   };
 
-  inputValueUpdate(val, prop) {
-    const state = this.state;
-    state[prop] = val;
-    this.setState(state);
-  }
-
-  storeUser() {
+  storeUser = () => {
+    const { name, email, isLoading } = this.state;
     this.setState({
       isLoading: true
     });
@@ -37,37 +31,31 @@ class Signup extends React.Component {
         email: this.state.email
       })
       .catch(err => {
+        console.error("Error found: ", err);
         this.setState({
-          isLoading: false,
-          error: err
+          isLoading: false
         });
       });
-  }
+  };
 
-  clear() {
-    this.setState({
-      name: "",
-      error: "",
-      email: "",
-      password: "",
-      confirmPassword: ""
-    });
-  }
+  handleSignUp = () => {
+    const { name, username, email, password, confirmPassword } = this.state;
 
-  handleSignUp() {
-    const { name, email, password } = this.state;
-    this.setState({ name: name });
-
-    if (this.state.name.length == 0) {
+    if (name.length == 0) {
       this.setState({ error: "Necessary to enter name" });
       return false;
     }
 
-    if (this.state.password !== this.state.confirmPassword) {
+    if (username.length == 0) {
+      this.setState({ error: "Necessary to enter username" });
+      return false;
+    }
+
+    if (password !== confirmPassword) {
       this.setState({ error: "Passwords don't match" });
       return false;
     }
-    if (this.state.password.length < 6) {
+    if (password.length < 6) {
       this.setState({ error: "Password should be at least 6 characters" });
       return false;
     }
@@ -75,21 +63,26 @@ class Signup extends React.Component {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
-
+      .then(cred => {
+        this.dbRef.doc(cred.user.uid).set({
+          name: this.state.name,
+          username: this.state.username
+        });
+      })
       .then(() => {
         this.props.navigation.navigate("Additional Info", {
           state: this.state
         });
       })
       .catch(error => {
-        this.setState({ error: error.message });
+        console.log(error), this.setState({ error: "Invalid Credentials" });
       });
-  }
+  };
 
   render() {
     return (
-      <View style={Styles.container}>
-        <Text style={[Styles.header, Styles.text_large]}>Welcome to Baku!</Text>
+      <View style={styles.container}>
+        <Text style={[styles.header, styles.text_large]}>Welcome to Baku!</Text>
 
         <Fumi
           label={"Full Name"}
@@ -97,7 +90,13 @@ class Signup extends React.Component {
           iconClass={FontAwesomeIcon}
           iconName={"user"}
           onChangeText={name => this.setState({ name })}
-          // onChangeText={(val) => this.inputValueUpdate(val, 'name')}
+        />
+        <Fumi
+          label={"Username"}
+          value={this.state.username}
+          iconClass={FontAwesomeIcon}
+          iconName={"user"}
+          onChangeText={username => this.setState({ username })}
         />
 
         <Fumi
@@ -127,19 +126,19 @@ class Signup extends React.Component {
           onChangeText={confirmPassword => this.setState({ confirmPassword })}
         />
 
-        <View style={Styles.container_content}>
-          <Text style={Styles.text_error}>{this.state.error}</Text>
+        <View style={styles.container_content}>
+          <Text style={styles.text_error}>{this.state.error}</Text>
         </View>
 
-        <View style={Styles.container_content}>
+        <View style={styles.container_content}>
           <AwesomeButton
-            backgroundColor={Colors.warning}
+            backgroundColor={colors.warning}
             width={200}
             height={50}
             onPress={() => {
               this.setState({ error: "" });
               this.handleSignUp();
-              this.storeUser();
+              // this.storeUser();
             }}
           >
             Submit
