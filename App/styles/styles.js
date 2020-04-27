@@ -1,4 +1,6 @@
 import {StyleSheet} from 'react-native';
+import normalize from 'react-native-normalize';
+
 import Colors from './colors';
 
 const Styles = StyleSheet.create({
@@ -13,6 +15,24 @@ const Styles = StyleSheet.create({
     paddingTop: 10,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+
+  // Card styles WIP
+  card: {
+    alignItems: 'center',
+    marginHorizontal: 50
+  },
+  card_complex: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#353535',
+    fontSize: normalize(3),
+    color: '#fff',
+    flex: 1,
+    borderRadius: 4,
+    overflow: 'hidden'
   },
 
   // Generic header style
@@ -71,26 +91,6 @@ const Styles = StyleSheet.create({
     borderColor: Colors.warning,
     borderWidth: 1,
     borderRadius: 5
-  },
-  testButton: {
-    display: 'flex',
-    height: 50,
-    borderRadius: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: Colors.success,
-    shadowColor: Colors.success,
-    shadowOpacity: 0.4,
-    shadowOffset: {height: 10, width: 0},
-    shadowRadius: 20
-  },
-  postButtonsContainer: {
-    flexDirection: 'row',
-    marginTop: 36,
-    marginLeft: 16
-  },
-  postItineraryButton: {
-    marginHorizontal: 18
   },
 
   // Padding Levels
@@ -185,140 +185,12 @@ const Styles = StyleSheet.create({
     resizeMode: 'contain',
   },
 
-  inputBox: {
-    width: '85%',
-    margin: 10,
-    padding: 15,
-    fontSize: 16,
-    borderColor: '#d3d3d3',
-    borderBottomWidth: 1,
-    textAlign: 'center'
-  },
-  buttonText: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#fff'
-  },
-  buttonSignup: {
-    fontSize: 12
-  },
 
-  contentContainer: {
-    paddingTop: 10
-  },
-  welcomeContainer: {
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 5
-  },
-  welcomeImage: {
-    width: 300,
-    height: 200,
-    resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10
-  },
-  formStyle: {
-    display: 'flex',
-    fontSize: 20,
-    marginLeft: 12,
-    marginBottom: 12,
-    flexDirection: 'column'
-    // justifyContent: "center"
-  },
-  profileTextTitle: {
-    padding: 20,
-    fontSize: 20,
-    flexDirection: 'row',
-    color: 'rgba(96,100,109, 1)'
-  },
-  profileText: {
-    fontSize: 10,
-    flexDirection: 'row',
-    color: 'rgba(96,100,109, 1)'
-  },
-  addToProfile: {
-    alignItems: 'center',
-    marginHorizontal: 50
-  },
-  inputText: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1
-  },
 
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50
-  },
-  homeScreenFilename: {
-    marginVertical: 7
-  },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)'
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4
-  },
-  getStartedText: {
-    fontSize: 30,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 40,
-    textAlign: 'center'
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    textAlign: 'center'
-  },
-  navigationFilename: {
-    marginTop: 5
-  },
-  helpContainer: {
-    marginTop: 15,
-    alignItems: 'center'
-  },
-  helpLink: {
-    paddingVertical: 15
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7'
-  },
-  developmentModeText: {
-    marginBottom: 20,
-    color: 'rgba(0,0,0,0.4)',
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: 'center'
-  },
-  signUpText: {
-    textAlign: 'center',
-    marginTop: 10,
-    marginBottom: 5
-  },
-  tabBarInfoContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 20
-  },
-  postCardContainer: {
-    backgroundColor: '#FFF9F1',
-    height: 450,
-    marginHorizontal: 15,
-    marginVertical: 30,
-    borderColor: 'rgba(0,0,0,0.05)',
-    borderWidth: 2
-  },
+
+  // TODO continue transitioning these out
 
   NotificationCardContainer: {
-
     flexDirection: 'row',
     backgroundColor: '#a0c9cf',
     height: 60,
@@ -373,15 +245,15 @@ const Styles = StyleSheet.create({
     marginRight: 15,
     marginTop: -40
   },
-  postHeartContainer: {
-    marginHorizontal: 5
+  postCardContainer: {
+    backgroundColor: '#FFF9F1',
+    height: 450,
+    marginHorizontal: 15,
+    marginVertical: 30,
+    borderColor: 'rgba(0,0,0,0.05)',
+    borderWidth: 2
   },
-  testDBContainer: {
-    height: 50,
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
+
 });
 
 export default Styles;

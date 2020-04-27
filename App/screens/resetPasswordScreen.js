@@ -47,7 +47,7 @@ class ResetPassword extends React.Component {
             iconSize={20}
             iconWidth={40}
             inputPadding={16}
-            inputStyle={{padding: 5}}
+            inputStyle={Styles.p_2}
             value={this.state.email}
             onChangeText={(email) => this.setState({email})}
           />

@@ -7,18 +7,17 @@ import Styles from "../../styles/styles";
 import FeedList from "../../components/feedList";
 import Header from "../../components/header";
 
-export default function Feed({ navigation: { navigate } }) {
+export default function Feed() {
   return (
     <View style={Styles.container}>
       <Header headerTitle="Feed" />
-      <ScrollView
-        style={Styles.container}
-        contentContainerStyle={Styles.contentContainer}
-      >
+
+      <ScrollView style={Styles.container}>
         <View>
           <FeedList />
         </View>
       </ScrollView>
+      
     </View>
   );
 }

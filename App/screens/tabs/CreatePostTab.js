@@ -57,7 +57,7 @@ export default function CreatePost({ navigation: { navigate } }) {
 
   function Item({ city }, { country }) {
     return (
-      <View style={Styles.testDBContainer}>
+      <View style={Styles.container_content}>
         <Text>City: {city}</Text>
         <Text>Country: {country}</Text>
       </View>
@@ -73,7 +73,7 @@ export default function CreatePost({ navigation: { navigate } }) {
         style={Styles.container}
         contentContainerStyle={Styles.container_content}
       >
-        <View style={Styles.getStartedContainer}>
+        <View style={Styles.card}>
           <Text style={Styles.mainHeader}>
             Let's test if we can add to the DB{" "}
           </Text>
@@ -108,7 +108,7 @@ export default function CreatePost({ navigation: { navigate } }) {
           />
         </View>
 
-        <View style={Styles.getStartedContainer}>
+        <View style={Styles.card}>
           <AwesomeButton
             backgroundColor={"#ffbc26"}
             width={340}
@@ -123,7 +123,7 @@ export default function CreatePost({ navigation: { navigate } }) {
           //lists DB to screen in alphabetical order by city
           data={locations}
           renderItem={({ item }) => (
-            <View style={Styles.testDBContainer}>
+            <View style={Styles.container_content}>
               <Text>City: {item.city}</Text>
               <Text>Country: {item.country}</Text>
             </View>

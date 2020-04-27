@@ -5,8 +5,7 @@ import {Fumi} from 'react-native-textinput-effects';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
 import Styles from '../styles/styles';
-// Uncomment when needed
-// import Colors from '../styles/colors';
+import Colors from '../styles/colors';
 
 export default function CreateProfile({route, navigation}) {
   const {state} = route.params;
@@ -23,6 +22,7 @@ export default function CreateProfile({route, navigation}) {
         iconName={'phone'}
         iconSize={20}
         iconWidth={40}
+        iconColor={Colors.success}
         inputPadding={16}
         inputStyle={{padding: 5}}
       />
@@ -33,6 +33,7 @@ export default function CreateProfile({route, navigation}) {
         iconName={'birthday-cake'}
         iconSize={20}
         iconWidth={40}
+        iconColor={Colors.like}
         inputPadding={16}
         inputStyle={{padding: 5}}
       />
@@ -43,6 +44,7 @@ export default function CreateProfile({route, navigation}) {
         iconName={'pencil'}
         iconSize={20}
         iconWidth={40}
+        iconColor={Colors.light}
         inputPadding={16}
         inputStyle={{padding: 5}}
       />
@@ -53,6 +55,7 @@ export default function CreateProfile({route, navigation}) {
         iconName={'camera'}
         iconSize={20}
         iconWidth={40}
+        iconColor={Colors.danger}
         inputPadding={16}
         inputStyle={{padding: 5}}
       />
@@ -63,6 +66,7 @@ export default function CreateProfile({route, navigation}) {
         iconName={'location-arrow'}
         iconSize={20}
         iconWidth={40}
+        iconColor={Colors.info}
         inputPadding={16}
         inputStyle={{padding: 5}}
       />
