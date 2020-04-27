@@ -1,4 +1,5 @@
 /* eslint-disable require-jsdoc */
+/* eslint-disable no-unused-vars */
 /* eslint-env node*/
 import 'react-native-gesture-handler';
 import React, {console} from 'react';
@@ -34,7 +35,7 @@ export default function App(props) {
           'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf')
         });
       } catch (e) {
-        console.warn(e);
+        {/* console.warn(e);*/}
       } finally {
         setLoadingComplete(true);
         SplashScreen.hide();

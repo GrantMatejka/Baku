@@ -1,5 +1,7 @@
-import * as firebase from "firebase";
-import firestore from "firebase/firestore";
+/* eslint-disable no-unused-vars */
+
+import * as firebase from 'firebase';
+import firestore from 'firebase/firestore';
 
 import {
   API_KEY,
