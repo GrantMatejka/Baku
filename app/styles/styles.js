@@ -10,7 +10,7 @@ const Styles = StyleSheet.create({
     backgroundColor: Colors.background,
   },
   // Container for any horizontally centered child content
-  // Useful for with StackView
+  // Useful for with ScrollView
   container_content: {
     paddingTop: 10,
     justifyContent: 'center',
@@ -184,8 +184,6 @@ const Styles = StyleSheet.create({
     height: 200,
     resizeMode: 'contain',
   },
-
-
 
 
   // TODO continue transitioning these out

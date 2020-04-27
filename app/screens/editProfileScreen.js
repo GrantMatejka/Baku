@@ -4,7 +4,7 @@ import {View, Text} from 'react-native';
 // TODO Implement Firebase into this page
 // TODO import Firebase from '../config/Firebase';
 
-import { ScrollView } from 'react-native-gesture-handler';
+import {ScrollView} from 'react-native-gesture-handler';
 import {Fumi} from 'react-native-textinput-effects';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import AwesomeButton from 'react-native-really-awesome-button';
@@ -125,10 +125,10 @@ class EditProfile extends React.Component {
               width={200}
               height={50}
               onPress={() => {
-                  this.props.navigation.navigate('Tabs', {
-                    screen: 'ProfileTab'
-                  });
-                }}
+                this.props.navigation.navigate('Tabs', {
+                  screen: 'ProfileTab'
+                });
+              }}
             >
               Submit
             </AwesomeButton>
