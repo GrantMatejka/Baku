@@ -28,9 +28,8 @@ class Signup extends React.Component {
   }
 
   storeUser() {
-    this.setState({
-      isLoading: true
-    });
+    this.setState({ isLoading: true });
+
     this.dbRef
         .add({
           name: this.state.name,
@@ -58,16 +57,16 @@ class Signup extends React.Component {
     const {name, email, password} = this.state;
     this.setState({name: name});
 
+    // Have to check and make sure all necessary information is entered
     if (this.state.name.length == 0) {
       this.setState({error: 'Necessary to enter name'});
       return false;
-    }
 
-    if (this.state.password !== this.state.confirmPassword) {
+    } else if (this.state.password !== this.state.confirmPassword) {
       this.setState({error: 'Passwords don\'t match'});
       return false;
-    }
-    if (this.state.password.length < 6) {
+
+    } else if (this.state.password.length < 6) {
       this.setState({error: 'Password should be at least 6 characters'});
       return false;
     }
@@ -89,7 +88,9 @@ class Signup extends React.Component {
   render() {
     return (
       <View style={Styles.container}>
-        <Text style={[Styles.header, Styles.text_large]}>Welcome to Baku!</Text>
+        <Text style={[Styles.header, Styles.text_large]}>
+          Welcome to Baku!
+        </Text>
 
         <Fumi
           label={'Full Name'}
@@ -146,6 +147,7 @@ class Signup extends React.Component {
             Submit
           </AwesomeButton>
         </View>
+
       </View>
     );
   }

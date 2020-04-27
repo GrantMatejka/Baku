@@ -36,9 +36,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <ScrollView
-        style={Styles.container}
-      >
+      <ScrollView style={Styles.container}>
         <View style={Styles.container_content}>
           <Image
             source={require('../assets/images/baku2-full-blue.png')}
@@ -55,6 +53,7 @@ class Login extends React.Component {
           inputPadding={18}
           autoCapitalize="none"
         />
+
         <Hoshi
           label={'Password'}
           value={this.state.password}
@@ -75,11 +74,9 @@ class Login extends React.Component {
               backgroundColor={Colors.light}
               width={200}
               height={50}
-              onPress={(next) => {
+              onPress={() => {
                 this.setState({error: ''});
                 this.handleLogin(this.state);
-
-                next();
               }}
             >
               Login
@@ -105,7 +102,7 @@ class Login extends React.Component {
           </Text>
 
           <AwesomeButton
-            backgroundColor={'#039BE5'}
+            backgroundColor={Colors.primary}
             width={160}
             height={30}
             onPress={() => {
@@ -114,7 +111,6 @@ class Login extends React.Component {
           >
             Forgot Password?
           </AwesomeButton>
-
         </View>
       </ScrollView>
     );

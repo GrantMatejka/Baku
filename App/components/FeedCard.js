@@ -50,7 +50,7 @@ export default class FeedCard extends Component {
             style={{
               width: 50,
               height: 50,
-              borderRadius: 25
+              borderRadius: 25,
             }}
             source={{
               uri: this.props.detail.user_avatar
@@ -82,7 +82,7 @@ export default class FeedCard extends Component {
             }}
           />
         </View>
-        <View style={Styles.postButtonsContainer}>
+        <View style={Styles.mt_5, {flexDirection: 'row', marginLeft: 16}}>
           <TouchableWithoutFeedback>
             <AwesomeIcon
               name={this.state.heartIcon}
