@@ -11,7 +11,7 @@ Baku is intended to be a standalone mobile application that provides a source of
 While we may be prioritizing a mobile target, utilizing React Native and FireBase, Baku will be available on any platform, from iOS to Android to Web. So whatever device you own you can stay in touch and plan your trips with Baku.
 ![React Native Platform Support](https://www.itfirms.co/wp-content/uploads/2017/07/react-native-cross-platform.jpg)
 
-# Documents & Diagrams
+## Documents & Diagrams
 We have included multiple documents and diagrams in our documents folder to help anyone understand the design, flow and scope of our project. Some specific areas of importance are described additionally below.
 
 ## UI Prototype
@@ -35,6 +35,8 @@ We will be utilizing react native vector icons and specifically the FontAwesome 
 # Code Contributor Style Guide
 We're following Google's JavaScript style guidelines, which can be found here: https://google.github.io/styleguide/jsguide.html
 
+ *NOTE: The contributors are transitioning to this guide and are currently refactoring the code*
+
 ## File Naming
 - all lowercase
 - may include underscores (_) or dashes (-)
@@ -42,7 +44,7 @@ We're following Google's JavaScript style guidelines, which can be found here: h
 ## Naming
 - be descriptive
 - no unambiguous abbreviations
-- parameters and local variable are all lowerCamelCase
+- parameters and local variables are all lowerCamelCase
 - package names are all lowerCamelCase
 - class names are all UpperCamelCase
 - method names are all lowerCamelCase
