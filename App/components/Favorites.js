@@ -9,9 +9,9 @@ export default function Favorites() {
     <View style={Styles.container}>
       <ScrollView
         style={Styles.container}
-        contentContainerStyle={Styles.contentContainer}
+        contentContainerStyle={Styles.container_content}
       >
-        <View style={Styles.getStartedContainer}>
+        <View style={Styles.card}>
 
           <Text style={Styles.mainHeader}>Favorites!</Text>
 

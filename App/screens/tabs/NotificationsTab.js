@@ -18,9 +18,7 @@ export default function NotificationsTab() {
         contentContainerStyle={Styles.container_content}
       >
         <View>
-
           <NotificationList />
-
         </View>
       </ScrollView>
     </View>
