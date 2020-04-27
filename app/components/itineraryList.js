@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import {View} from 'react-native';
 
-import Activity from './activity';
+import ItineraryActivity from './itineraryActivity';
 
 export default class ItineraryList extends Component {
   render() {
     return (
       <View>
-        <Activity />
-        {/* <Activity /> */}
+
+        {/* Fill this in eventually, behave just like feedList */}
+        <ItineraryActivity />
       </View>
     );
   }

@@ -3,7 +3,7 @@ import {Text, View} from 'react-native';
 
 import Styles from '../styles/styles';
 
-export default class Activity extends Component {
+export default class ItineraryActivity extends Component {
   render() {
     return (
       <View style={Styles.container}>

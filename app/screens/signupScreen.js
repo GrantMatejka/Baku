@@ -28,7 +28,7 @@ class Signup extends React.Component {
   }
 
   storeUser() {
-    this.setState({ isLoading: true });
+    this.setState({isLoading: true});
 
     this.dbRef
         .add({
@@ -61,11 +61,9 @@ class Signup extends React.Component {
     if (this.state.name.length == 0) {
       this.setState({error: 'Necessary to enter name'});
       return false;
-
     } else if (this.state.password !== this.state.confirmPassword) {
       this.setState({error: 'Passwords don\'t match'});
       return false;
-
     } else if (this.state.password.length < 6) {
       this.setState({error: 'Password should be at least 6 characters'});
       return false;

@@ -2,6 +2,7 @@ import React from 'react';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import CreateProfileScreen from '../screens/createProfileScreen';
 import Tabs from '../components/tabs';
@@ -9,7 +10,6 @@ import Login from '../screens/loginScreen';
 import Signup from '../screens/signupScreen';
 import ResetPassword from '../screens/resetPasswordScreen';
 import EditProfile from '../screens/editProfileScreen';
-import TabBarIcon from '../components/tabBarIcon';
 
 const Stack = createStackNavigator();
 
@@ -29,7 +29,7 @@ const Navigator = ({loggedIn}) => {
               title: 'Tabs',
               headerShown: false,
               tabBarIcon: ({focused}) => (
-                <TabBarIcon focused={focused} name="md-book" />
+                <Icon name="md-book" size={25} focused={focused} />
               )
             }}
           />
@@ -100,7 +100,7 @@ const Navigator = ({loggedIn}) => {
               title: 'Tabs',
               headerShown: false,
               tabBarIcon: ({focused}) => (
-                <TabBarIcon focused={focused} name="md-book" />
+                <Icon name="md-book" size={25} focused={focused}/>
               )
             }}
           />
@@ -109,10 +109,6 @@ const Navigator = ({loggedIn}) => {
             component={ResetPassword}
             options={{
               title: 'Reset Password Screen'
-              // headerShown: false
-              // tabBarIcon: ({ focused }) => (
-              //   <TabBarIcon focused={focused} name="md-book" />
-              // )
             }}
           />
         </Stack.Navigator>
