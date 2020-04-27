@@ -16,27 +16,26 @@ class Signup extends React.Component {
     email: "",
     password: "",
     error: "",
-    isLoading: false,
     dbRef: this.dbRef
   };
 
-  storeUser = () => {
-    const { name, email, isLoading } = this.state;
-    this.setState({
-      isLoading: true
-    });
-    this.dbRef
-      .add({
-        name: this.state.name,
-        email: this.state.email
-      })
-      .catch(err => {
-        console.error("Error found: ", err);
-        this.setState({
-          isLoading: false
-        });
-      });
-  };
+  // storeUser = () => {
+  //   const { name, email, isLoading } = this.state;
+  //   this.setState({
+  //     isLoading: true
+  //   });
+  //   this.dbRef
+  //     .add({
+  //       name: this.state.name,
+  //       email: this.state.email
+  //     })
+  //     .catch(err => {
+  //       console.error("Error found: ", err);
+  //       this.setState({
+  //         isLoading: false
+  //       });
+  //     });
+  // };
 
   handleSignUp = () => {
     const { name, username, email, password, confirmPassword } = this.state;
@@ -138,7 +137,6 @@ class Signup extends React.Component {
             onPress={() => {
               this.setState({ error: "" });
               this.handleSignUp();
-              // this.storeUser();
             }}
           >
             Submit
