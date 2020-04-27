@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {ScrollView} from 'react-native';
 
-import FeedCard from './feedCard';
+import PostCard from './postCard';
 // We need to replace this
 import datas from '../assets/data/data';
 
@@ -12,7 +12,7 @@ export default class PhotoList extends Component {
 
   getPhotos() {
     return this.state.datas.map((data) => {
-      return <FeedCard detail={data} key={data.id} />;
+      return <PostCard detail={data} key={data.id} />;
     });
   }
 

@@ -14,7 +14,7 @@ export default function Favorites() {
         <View style={Styles.card}>
 
           <Text style={Styles.mainHeader}>Favorites!</Text>
-
+          {/* Populate this eventually with post cards */}
         </View>
       </ScrollView>
     </View>

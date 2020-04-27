@@ -5,11 +5,14 @@ import { ScrollView } from "react-native-gesture-handler";
 import { DrawerActions } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import AwesomeButton from "react-native-really-awesome-button";
+import { createMaterialTopTabNavigator }
+  from '@react-navigation/material-top-tabs';
 
 import Header from "../../components/header";
 import Styles from "../../styles/styles";
 import Drawer from "../../components/drawerNav";
-import ProfileTopTab from "../../components/profileTopTab";
+
+const TopTab = createMaterialTopTabNavigator();
 
 export default function ProfileTab({ navigation }) {
   return (
@@ -62,7 +65,21 @@ export default function ProfileTab({ navigation }) {
         </View>
 
         <View>
-          <ProfileTopTab />
+          {/* Tab to switch between profile posts and favorites */}
+          <TopTab.Navigator
+            tabBarOptions={{
+              labelStyle: { fontWeight: 'bold', fontSize: 12 },
+              indicatorStyle: { backgroundColor: Colors.background },
+              style: { backgroundColor: Colors.info },
+              inactiveBackgroundColor: Colors.info,
+              activeBackgroundColor: Colors.warning,
+              inactiveTintColor: Colors.background,
+              activeTintColor: 'white'
+            }}
+          >
+            <TopTab.Screen name="Post Cards" component={ProfilePosts} />
+            <TopTab.Screen name="Favs" component={Favorites} />
+          </TopTab.Navigator>
         </View>
 
       </ScrollView>
