@@ -4,6 +4,7 @@ import {View, Text} from 'react-native';
 // TODO Implement Firebase into this page
 // TODO import Firebase from '../config/Firebase';
 
+import { ScrollView } from 'react-native-gesture-handler';
 import {Fumi} from 'react-native-textinput-effects';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import AwesomeButton from 'react-native-really-awesome-button';
@@ -21,8 +22,7 @@ class EditProfile extends React.Component {
 
     render() {
       return (
-        <View
-          style={Styles.container}>
+        <ScrollView style={Styles.container}>
 
           <Text
             style={[Styles.header, Styles.text_large]}>
@@ -62,6 +62,7 @@ class EditProfile extends React.Component {
             iconName={'lock'}
             onChangeText={(confirmPassword) => this.setState({confirmPassword})}
           />
+
           <Fumi
             label={'Phone-Number'}
             iconClass={FontAwesomeIcon}
@@ -123,8 +124,7 @@ class EditProfile extends React.Component {
               backgroundColor={Colors.warning}
               width={200}
               height={50}
-              onPress={
-                () => {
+              onPress={() => {
                   this.props.navigation.navigate('Tabs', {
                     screen: 'ProfileTab'
                   });
@@ -134,7 +134,7 @@ class EditProfile extends React.Component {
             </AwesomeButton>
           </View>
 
-        </View>
+        </ScrollView>
       );
     }
 }
