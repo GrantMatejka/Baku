@@ -15,6 +15,7 @@ export default class ProfilePosts extends Component {
 
   getPhotos() {
     return this.state.datas.map(data => {
+
       return <PostCard detail={data} key={data.id} />;
     });
   }

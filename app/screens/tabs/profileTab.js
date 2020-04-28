@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
-
 import { ScrollView } from "react-native-gesture-handler";
 import { DrawerActions } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -14,10 +13,10 @@ import Header from "../../components/header";
 import Styles from "../../styles/styles";
 import Colors from "../../styles/colors";
 import Drawer from "../../components/drawerNav";
+import firebase from "../../config/firebase";
 
 const TopTab = createMaterialTopTabNavigator();
 
-import firebase from "../../config/firebase";
 export default function ProfileTab({ navigation }) {
   // let db = firebase.firestore();
   // let user = firebase.auth().currentUser;
@@ -67,6 +66,7 @@ export default function ProfileTab({ navigation }) {
           </AwesomeButton>
         </View>
         <View>
+          {/* Tab to switch between profile posts and favorites */}
           <TopTab.Navigator
             tabBarOptions={{
               labelStyle: { fontWeight: 'bold', fontSize: 12 },
@@ -82,6 +82,7 @@ export default function ProfileTab({ navigation }) {
             <TopTab.Screen name="Favs" component={Favorites} />
           </TopTab.Navigator>
         </View>
+
       </ScrollView>
     </View>
   );

@@ -16,6 +16,7 @@ export default function Settings({ navigation }) {
 
         <View style={Styles.p_3}>
           <Text style={(Styles.header, Styles.text_large)}>
+
             Settings
             </Text>
         </View>
@@ -29,6 +30,7 @@ export default function Settings({ navigation }) {
           >
             Back
           </AwesomeButton>
+
         </View>
 
         <View style={Styles.p_3}>

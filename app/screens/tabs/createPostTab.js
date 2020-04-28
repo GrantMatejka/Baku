@@ -64,6 +64,7 @@ export default function CreatePost({ navigation: { navigate } }) {
     );
   }
 
+
   return (
     <View style={Styles.container}>
       <Header headerTitle="Create Postcard" />
