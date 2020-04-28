@@ -82,7 +82,7 @@ export default class FeedCard extends Component {
             }}
           />
         </View>
-        <View style={Styles.mt_5, {flexDirection: 'row', marginLeft: 16}}>
+        <View style={(Styles.mt_5, {flexDirection: 'row', marginLeft: 16})}>
           <TouchableWithoutFeedback>
             <AwesomeIcon
               name={this.state.heartIcon}
