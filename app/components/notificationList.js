@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView } from 'react-native';
 
+
 import NotificationCard from './notificationCard';
 import datas from '../assets/data/data';
 
@@ -13,6 +14,7 @@ state = {
 
   listNotifs() {
     return this.state.datas.map(data => {
+
       return <NotificationCard detail={data} key={data.id} />;
     });
   }

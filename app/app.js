@@ -11,6 +11,7 @@ import AppNavigator from './navigation/appNavigator';
 
 import { decode, encode } from 'base-64';
 
+
 if (!global.btoa) {
   global.btoa = encode;
 }
@@ -35,7 +36,8 @@ export default function App(props) {
           'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf')
         });
       } catch (e) {
-        {/* console.warn(e);*/ }
+
+        {/* console.warn(e);*/}
       } finally {
         setLoadingComplete(true);
         SplashScreen.hide();

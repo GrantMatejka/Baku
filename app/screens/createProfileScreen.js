@@ -1,13 +1,14 @@
-import * as React from "react";
-import { Text, View, Button } from "react-native";
+import * as React from 'react';
+import {Text, View, Button} from 'react-native';
 
-import { Fumi } from "react-native-textinput-effects";
-import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
+import {Fumi} from 'react-native-textinput-effects';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
-import Styles from "../styles/styles";
+import Styles from '../styles/styles';
+import Colors from '../styles/colors';
 
-export default function CreateProfile({ route, navigation }) {
-  const { state } = route.params;
+export default function CreateProfile({route, navigation}) {
+  const {state} = route.params;
 
   return (
     <View style={Styles.container}>
@@ -16,61 +17,66 @@ export default function CreateProfile({ route, navigation }) {
       </Text>
 
       <Fumi
-        label={"Phone-Number"}
+        label={'Phone-Number'}
         iconClass={FontAwesomeIcon}
-        iconName={"phone"}
+        iconName={'phone'}
         iconSize={20}
         iconWidth={40}
+        iconColor={Colors.success}
         inputPadding={16}
-        inputStyle={{ padding: 5 }}
+        inputStyle={{padding: 5}}
       />
 
       <Fumi
-        label={"Birthday"}
+        label={'Birthday'}
         iconClass={FontAwesomeIcon}
-        iconName={"birthday-cake"}
+        iconName={'birthday-cake'}
         iconSize={20}
         iconWidth={40}
+        iconColor={Colors.like}
         inputPadding={16}
-        inputStyle={{ padding: 5 }}
+        inputStyle={{padding: 5}}
       />
 
       <Fumi
-        label={"Short BIO"}
+        label={'Short BIO'}
         iconClass={FontAwesomeIcon}
-        iconName={"pencil"}
+        iconName={'pencil'}
         iconSize={20}
         iconWidth={40}
+        iconColor={Colors.light}
         inputPadding={16}
-        inputStyle={{ padding: 5 }}
+        inputStyle={{padding: 5}}
       />
 
       <Fumi
-        label={"Photo of Yourself :)"}
+        label={'Photo of Yourself :)'}
         iconClass={FontAwesomeIcon}
-        iconName={"camera"}
+        iconName={'camera'}
         iconSize={20}
         iconWidth={40}
+        iconColor={Colors.danger}
         inputPadding={16}
-        inputStyle={{ padding: 5 }}
+        inputStyle={{padding: 5}}
       />
 
       <Fumi
-        label={"Some Places You've Been"}
+        label={'Some Places You\'ve Been'}
         iconClass={FontAwesomeIcon}
-        iconName={"location-arrow"}
+        iconName={'location-arrow'}
         iconSize={20}
         iconWidth={40}
+        iconColor={Colors.info}
         inputPadding={16}
-        inputStyle={{ padding: 5 }}
+        inputStyle={{padding: 5}}
       />
 
       <View style={Styles.SignupButton}>
         <Button
           title="Create Profile"
           onPress={() =>
-            navigation.navigate("Tabs", {
-              screen: "FeedTab"
+            navigation.navigate('Tabs', {
+              screen: 'FeedTab'
             })
           }
         />

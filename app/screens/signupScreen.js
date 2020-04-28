@@ -127,6 +127,7 @@ class Signup extends React.Component {
           iconClass={FontAwesomeIcon}
           iconName={"lock"}
           onChangeText={confirmPassword => this.setState({ confirmPassword })}
+         
         />
 
         <View style={Styles.container_content}>

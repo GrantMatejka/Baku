@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+
 import normalize from 'react-native-normalize';
 
 import Colors from './colors';
@@ -13,8 +14,8 @@ const Styles = StyleSheet.create({
   // Useful for with ScrollView
   container_content: {
     paddingTop: 10,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 
   // Card styles WIP
@@ -37,16 +38,16 @@ const Styles = StyleSheet.create({
 
   // Generic header style
   header: {
-    fontStyle: "normal",
+    fontStyle: 'normal',
     padding: 30,
     color: Colors.dark,
     lineHeight: 30,
-    textAlign: "center"
+    textAlign: 'center'
   },
   header_postcard: {
-    fontWeight: "bold",
-    fontStyle: "italic",
-    textAlign: "center",
+    fontWeight: 'bold',
+    fontStyle: 'italic',
+    textAlign: 'center',
     paddingTop: 10
   },
 
@@ -64,18 +65,17 @@ const Styles = StyleSheet.create({
     fontSize: 10
   },
   text_error: {
-    color: "red",
+    color: 'red',
     marginVertical: 10,
     fontSize: 15
   },
   text_button: {
     fontSize: 20,
-
-    fontWeight: "bold",
-    color: Colors.dark
+    fontWeight: 'bold',
+    color: Colors.dark,
   },
   text_centered: {
-    textAlign: "center"
+    textAlign: 'center'
   },
 
   // Button Stylings
@@ -83,9 +83,9 @@ const Styles = StyleSheet.create({
     marginTop: 30,
     marginBottom: 20,
     paddingVertical: 5,
-    alignItems: "center",
-    flexDirection: "column",
-    justifyContent: "space-between",
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
     backgroundColor: Colors.warning,
     borderColor: Colors.warning,
     borderWidth: 1,
@@ -181,7 +181,7 @@ const Styles = StyleSheet.create({
   image_header: {
     width: 300,
     height: 200,
-    resizeMode: "contain"
+    resizeMode: 'contain',
   },
 
 
@@ -193,51 +193,51 @@ const Styles = StyleSheet.create({
     height: 60,
     marginHorizontal: 15,
     marginVertical: 0,
-    borderColor: "rgba(0,0,0,0.05)",
+    borderColor: 'rgba(0,0,0,0.05)',
     borderWidth: 2,
     borderRadius: 5
   },
   NotificationCardTimeStamp: {
-    fontWeight: "400",
-    fontStyle: "italic",
+    fontWeight: '400',
+    fontStyle: 'italic',
     fontSize: 13,
-    textAlign: "left",
+    textAlign: 'left',
     paddingTop: 33,
     marginLeft: 20
   },
   NotificationCardMainText: {
     flex: 4,
-    fontWeight: "400",
+    fontWeight: '400',
     fontSize: 15,
-    textAlign: "left",
+    textAlign: 'left',
     paddingTop: 12,
     marginLeft: -195,
     marginRight: -15
   },
   NotificationUserProfile: {
-    flex: 0.75,
-    alignItems: "center",
+    flex: .75,
+    alignItems: 'center',
     height: 55,
     borderRadius: 2,
     borderWidth: 1,
-    borderColor: "black"
+    borderColor: 'black'
     // this needs work
   },
   NotificationTypeIcon: {
-    flex: 0.8,
-    color: "black",
+    flex: .8,
+    color: 'black',
     marginTop: 10,
     marginRight: 0
     // this needs work
   },
   postCardLocation: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 20,
-    textAlign: "center",
-    color: "#DD8627"
+    textAlign: 'center',
+    color: '#DD8627'
   },
   postCardUserContainer: {
-    alignSelf: "flex-end",
+    alignSelf: 'flex-end',
     marginRight: 15,
     marginTop: -40
   },
@@ -255,6 +255,7 @@ const Styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   }
+
 });
 
 export default Styles;
