@@ -15,7 +15,8 @@ export default function Settings({ navigation }) {
       <View style={Styles.container_content}>
 
         <View style={Styles.p_3}>
-          <Text style={Styles.header, Styles.text_large}>
+          <Text style={(Styles.header, Styles.text_large)}>
+
             Settings
             </Text>
         </View>
@@ -28,7 +29,8 @@ export default function Settings({ navigation }) {
             onPress={() => navigation.navigate("Profile")}
           >
             Back
-            </AwesomeButton>
+          </AwesomeButton>
+
         </View>
 
         <View style={Styles.p_3}>
@@ -41,7 +43,6 @@ export default function Settings({ navigation }) {
             Log Out
           </AwesomeButton>
         </View>
-
       </View>
     </ScrollView>
   );

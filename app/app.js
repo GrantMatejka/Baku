@@ -2,14 +2,15 @@
 /* eslint-disable no-unused-vars */
 /* eslint-env node*/
 import 'react-native-gesture-handler';
-import React, {console} from 'react';
-import {SplashScreen} from 'expo';
+import React, { console } from 'react';
+import { SplashScreen } from 'expo';
 import * as Font from 'expo-font';
-import {Ionicons} from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 // eslint-disable-next-line no-unused-vars
-import AppNavigator from './navigation/AppNavigator';
+import AppNavigator from './navigation/appNavigator';
 
-import {decode, encode} from 'base-64';
+import { decode, encode } from 'base-64';
+
 
 if (!global.btoa) {
   global.btoa = encode;
@@ -35,6 +36,7 @@ export default function App(props) {
           'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf')
         });
       } catch (e) {
+
         {/* console.warn(e);*/}
       } finally {
         setLoadingComplete(true);

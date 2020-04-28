@@ -129,7 +129,7 @@ export default function CreatePost({ navigation: { navigate } }) {
             </View>
           )}
         />
-        
+
       </ScrollView>
     </View>
   );

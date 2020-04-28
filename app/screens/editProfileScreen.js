@@ -1,8 +1,12 @@
+
+import React from "react";
+import { View, Text } from "react-native";
 import React from 'react';
 import {View, Text} from 'react-native';
 
 // TODO Implement Firebase into this page
 // TODO import Firebase from '../config/Firebase';
+
 
 import {ScrollView} from 'react-native-gesture-handler';
 import {Fumi} from 'react-native-textinput-effects';
@@ -13,6 +17,7 @@ import Styles from '../styles/styles';
 import Colors from '../styles/colors';
 
 class EditProfile extends React.Component {
+
     state = {
       name: '',
       email: '',

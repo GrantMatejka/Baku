@@ -1,4 +1,5 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
+
 import normalize from 'react-native-normalize';
 
 import Colors from './colors';
@@ -7,7 +8,7 @@ const Styles = StyleSheet.create({
   // Container styles
   container: {
     flex: 1,
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.background
   },
   // Container for any horizontally centered child content
   // Useful for with ScrollView
@@ -64,14 +65,12 @@ const Styles = StyleSheet.create({
     fontSize: 10
   },
   text_error: {
-
     color: 'red',
     marginVertical: 10,
     fontSize: 15
   },
   text_button: {
     fontSize: 20,
-
     fontWeight: 'bold',
     color: Colors.dark,
   },
@@ -216,7 +215,6 @@ const Styles = StyleSheet.create({
     marginRight: -15
   },
   NotificationUserProfile: {
-
     flex: .75,
     alignItems: 'center',
     height: 55,
@@ -251,6 +249,12 @@ const Styles = StyleSheet.create({
     borderColor: 'rgba(0,0,0,0.05)',
     borderWidth: 2
   },
+  testDBContainer: {
+    height: 50,
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
+  }
 
 });
 
