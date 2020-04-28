@@ -1,8 +1,6 @@
 
-import React from "react";
 import { View, Text } from "react-native";
 import React from 'react';
-import {View, Text} from 'react-native';
 
 // TODO Implement Firebase into this page
 // TODO import Firebase from '../config/Firebase';
