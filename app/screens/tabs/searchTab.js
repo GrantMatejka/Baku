@@ -40,27 +40,25 @@ function SearchTab() {
 
   return (
     <View style={Styles.container}>
-
       <Header headerTitle="Search" />
 
       <ScrollView
         style={Styles.container}
         contentContainerStyle={Styles.container_content}
       >
-          <Text
-            style={{
-              fontSize: 35,
-              fontStyle: "normal",
-              padding: 30,
-              color: "rgba(96,100,109, 1)",
-              lineHeight: 40,
-              textAlign: "center",
-              paddingTop: 100
-            }}
-          >
-            Where would you like to go?
-          </Text>
-
+        <Text
+          style={{
+            fontSize: 35,
+            fontStyle: "normal",
+            padding: 30,
+            color: "rgba(96,100,109, 1)",
+            lineHeight: 40,
+            textAlign: "center",
+            paddingTop: 100
+          }}
+        >
+          Where would you like to go?
+        </Text>
         <View style={Styles.p_3}>
           <Fumi
             label={"Search by..."}
@@ -104,7 +102,8 @@ function SearchTab() {
         <FlatList
           data={locations}
           renderItem={({ item }) => (
-            <View style={Styles.container_content}>
+            <View style={Styles.container_content}> {/* UGLY STYLE HERE */}
+
               <Text>City: {item.city}</Text>
               <Text>Country: {item.country}</Text>
             </View>

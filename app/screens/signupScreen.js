@@ -5,83 +5,80 @@ import {Fumi} from 'react-native-textinput-effects';
 import AwesomeButton from 'react-native-really-awesome-button';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import * as firebase from 'firebase';
-
+//import firebase from '../config/firebase'
 import Colors from '../styles/colors.js';
 import Styles from '../styles/styles.js';
 
 class Signup extends React.Component {
-  dbRef = firebase.firestore().collection('users');
+  dbRef = firebase.firestore().collection("users");
 
   state = {
-    name: '',
-    email: '',
-    password: '',
-    error: '',
-    isLoading: false,
-    dbRef: Signup.dbRef
+    name: "",
+    username: "",
+    email: "",
+    password: "",
+    error: "",
+    dbRef: this.dbRef
   };
 
-  inputValueUpdate(val, prop) {
-    const state = this.state;
-    state[prop] = val;
-    this.setState(state);
-  }
+  // storeUser = () => {
+  //   const { name, email, isLoading } = this.state;
+  //   this.setState({
+  //     isLoading: true
+  //   });
+  //   this.dbRef
+  //     .add({
+  //       name: this.state.name,
+  //       email: this.state.email
+  //     })
+  //     .catch(err => {
+  //       console.error("Error found: ", err);
+  //       this.setState({
+  //         isLoading: false
+  //       });
+  //     });
+  // };
 
-  storeUser() {
-    this.setState({isLoading: true});
+  handleSignUp = () => {
+    const { name, username, email, password, confirmPassword } = this.state;
 
-    this.dbRef
-        .add({
-          name: this.state.name,
-          email: this.state.email
-        })
-        .catch((err) => {
-          this.setState({
-            isLoading: false,
-            error: err
-          });
-        });
-  }
-
-  clear() {
-    this.setState({
-      name: '',
-      error: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    });
-  }
-
-  handleSignUp() {
-    const {name, email, password} = this.state;
-    this.setState({name: name});
-
-    // Have to check and make sure all necessary information is entered
-    if (this.state.name.length == 0) {
-      this.setState({error: 'Necessary to enter name'});
+    if (name.length == 0) {
+      this.setState({ error: "Necessary to enter name" });
       return false;
-    } else if (this.state.password !== this.state.confirmPassword) {
-      this.setState({error: 'Passwords don\'t match'});
+    }
+
+    if (username.length == 0) {
+      this.setState({ error: "Necessary to enter username" });
       return false;
-    } else if (this.state.password.length < 6) {
-      this.setState({error: 'Password should be at least 6 characters'});
+    }
+
+    if (password !== confirmPassword) {
+      this.setState({ error: "Passwords don't match" });
+      return false;
+    }
+    if (password.length < 6) {
+      this.setState({ error: "Password should be at least 6 characters" });
       return false;
     }
 
     firebase
-        .auth()
-        .createUserWithEmailAndPassword(email, password)
-
-        .then(() => {
-          this.props.navigation.navigate('Additional Info', {
-            state: this.state
-          });
-        })
-        .catch((error) => {
-          this.setState({error: error.message});
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(cred => {
+        this.dbRef.doc(cred.user.uid).set({
+          name: this.state.name,
+          username: this.state.username
         });
-  }
+      })
+      .then(() => {
+        this.props.navigation.navigate("Additional Info", {
+          state: this.state
+        });
+      })
+      .catch(error => {
+        console.log(error), this.setState({ error: "Invalid Credentials" });
+      });
+  };
 
   render() {
     return (
@@ -91,38 +88,46 @@ class Signup extends React.Component {
         </Text>
 
         <Fumi
-          label={'Full Name'}
+          label={"Full Name"}
           value={this.state.name}
           iconClass={FontAwesomeIcon}
-          iconName={'user'}
-          onChangeText={(name) => this.setState({name})}
+          iconName={"user"}
+          onChangeText={name => this.setState({ name })}
+        />
+        <Fumi
+          label={"Username"}
+          value={this.state.username}
+          iconClass={FontAwesomeIcon}
+          iconName={"user"}
+          onChangeText={username => this.setState({ username })}
         />
 
         <Fumi
-          label={'Email'}
+          label={"Email"}
           value={this.state.email}
           autoCapitalize="none"
           iconClass={FontAwesomeIcon}
-          iconName={'envelope-square'}
-          onChangeText={(email) => this.setState({email})}
+          iconName={"envelope-square"}
+          onChangeText={email => this.setState({ email })}
         />
 
         <Fumi
-          label={'Password'}
+          label={"Password"}
           value={this.state.password}
           secureTextEntry={true}
           iconClass={FontAwesomeIcon}
-          iconName={'unlock-alt'}
-          onChangeText={(password) => this.setState({password})}
+          iconName={"unlock-alt"}
+          onChangeText={password => this.setState({ password })}
         />
 
         <Fumi
-          label={'Confirm Password'}
+          label={"Confirm Password"}
           value={this.state.confirmPassword}
           secureTextEntry={true}
           iconClass={FontAwesomeIcon}
-          iconName={'lock'}
-          onChangeText={(confirmPassword) => this.setState({confirmPassword})}
+          iconName={"lock"}
+          onChangeText={confirmPassword => this.setState({ confirmPassword })}
+         
         />
 
         <View style={Styles.container_content}>
@@ -137,9 +142,8 @@ class Signup extends React.Component {
             width={200}
             height={50}
             onPress={() => {
-              this.setState({error: ''});
+              this.setState({ error: "" });
               this.handleSignUp();
-              this.storeUser();
             }}
           >
             Submit

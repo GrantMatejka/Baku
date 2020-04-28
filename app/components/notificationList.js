@@ -1,5 +1,6 @@
-import React, {Component} from 'react';
-import {ScrollView} from 'react-native';
+import React, { Component } from 'react';
+import { ScrollView } from 'react-native';
+
 
 import NotificationCard from './notificationCard';
 import datas from '../assets/data/data';
@@ -7,12 +8,13 @@ import datas from '../assets/data/data';
 // What is the point with this?
 
 export default class NotificationList extends Component {
-  state = {
-    datas: datas
-  };
+state = {
+  datas: datas
+};
 
   listNotifs() {
-    return this.state.datas.map((data) => {
+    return this.state.datas.map(data => {
+
       return <NotificationCard detail={data} key={data.id} />;
     });
   }
