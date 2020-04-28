@@ -13,7 +13,6 @@ import {
   STORAGE_BUCKET
 } from 'react-native-dotenv';
 
-
 const firebaseConfig = {
   apiKey: API_KEY,
   authDomain: AUTH_DOMAIN,
@@ -24,8 +23,7 @@ const firebaseConfig = {
   appId: APP_ID
 };
 
-// What is going on here? especially with firebase.firestore() line?
-const Firebase = firebase.initializeApp(firebaseConfig);
+let Firebase = firebase.initializeApp(firebaseConfig);
 
 firebase.firestore();
 
