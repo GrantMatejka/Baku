@@ -26,7 +26,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: npm install and test
-        run: |
       - working-directory: ./app
+        run: |
           npm ci
           npm test
