@@ -23,7 +23,7 @@ const firebaseConfig = {
   appId: APP_ID
 };
 
-let Firebase = firebase.initializeApp(firebaseConfig);
+const Firebase = firebase.initializeApp(firebaseConfig);
 
 firebase.firestore();
 
