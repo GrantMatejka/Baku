@@ -28,5 +28,5 @@ describe('App', () => {
 });
 
 afterAll(() => {
-  app.close();
+  App.close();
 });
