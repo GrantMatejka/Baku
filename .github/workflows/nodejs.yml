@@ -27,6 +27,5 @@ jobs:
 
       - working-directory: ./app
         run: |
-          npm install
           npm ci
           npm test
