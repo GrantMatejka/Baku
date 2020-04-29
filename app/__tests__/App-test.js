@@ -26,3 +26,7 @@ describe('App', () => {
     expect(tree).toMatchSnapshot();
   });
 });
+
+afterAll(() => {
+  app.close();
+});
