@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
+import React, {Component} from 'react';
+import {ScrollView} from 'react-native';
 
 
 import NotificationCard from './notificationCard';
@@ -12,14 +12,13 @@ state = {
   datas: datas
 };
 
-  listNotifs() {
-    return this.state.datas.map(data => {
+listNotifs() {
+  return this.state.datas.map((data) => {
+    return <NotificationCard detail={data} key={data.id} />;
+  });
+}
 
-      return <NotificationCard detail={data} key={data.id} />;
-    });
-  }
-
-  render() {
-    return <ScrollView>{this.listNotifs()}</ScrollView>;
-  }
+render() {
+  return <ScrollView>{this.listNotifs()}</ScrollView>;
+}
 }

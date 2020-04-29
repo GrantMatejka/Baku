@@ -1,5 +1,5 @@
 
-import { View, Text } from "react-native";
+import {View, Text} from 'react-native';
 import React from 'react';
 
 // TODO Implement Firebase into this page
@@ -15,7 +15,6 @@ import Styles from '../styles/styles';
 import Colors from '../styles/colors';
 
 class EditProfile extends React.Component {
-
     state = {
       name: '',
       email: '',
