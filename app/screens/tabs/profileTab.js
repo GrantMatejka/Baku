@@ -22,6 +22,7 @@ export default function ProfileTab({ navigation }) {
   // let user = firebase.auth().currentUser;
   //   return console.log("User email: ", user.email);
   // }
+  let user = firebase.auth().currentUser;
   return (
     <View style={Styles.container}>
       <Header headerTitle="Profile" />
@@ -35,7 +36,7 @@ export default function ProfileTab({ navigation }) {
               }}
               style={styles2.thumbnail}
             />
-            <Text style={styles2.username}> {firebase.auth().currentUser.username} </Text>
+            <Text style={styles2.username}>  {user.email} </Text>
           </View>
           <View style={styles2.postCardCont}>
             <Text style={styles2.postCount}> 100 </Text>
