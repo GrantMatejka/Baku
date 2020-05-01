@@ -19,10 +19,9 @@ const TopTab = createMaterialTopTabNavigator();
 
 export default function ProfileTab({ navigation }) {
   // let db = firebase.firestore();
-  // let user = firebase.auth().currentUser;
+  let user = firebase.auth().currentUser;
   //   return console.log("User email: ", user.email);
   // }
-  let user = firebase.auth().currentUser;
   return (
     <View style={Styles.container}>
       <Header headerTitle="Profile" />
@@ -36,7 +35,7 @@ export default function ProfileTab({ navigation }) {
               }}
               style={styles2.thumbnail}
             />
-            <Text style={styles2.username}>  {user.email} </Text>
+            <Text style={styles2.username}> {user.email} </Text>
           </View>
           <View style={styles2.postCardCont}>
             <Text style={styles2.postCount}> 100 </Text>
@@ -95,7 +94,6 @@ const styles2 = StyleSheet.create({
   },
   thumbnailSection: {
     flexDirection: "row",
-    // flex: 2,
     alignItems: "center",
     backgroundColor: "#A0C9CF",
     height: 114
@@ -149,7 +147,7 @@ const styles2 = StyleSheet.create({
     color: "white"
   },
   hambuger: {
-    marginLeft: 75,
+    marginLeft: 30,
     paddingBottom: 70
   }
 });
