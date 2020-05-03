@@ -18,10 +18,10 @@ import firebase from "../../config/firebase";
 const TopTab = createMaterialTopTabNavigator();
 
 export default function ProfileTab({ navigation }) {
-  // let db = firebase.firestore();
+  let db = firebase.firestore();
   let user = firebase.auth().currentUser;
-  //   return console.log("User email: ", user.email);
-  // }
+  let uid = user.uid
+  let profile = db.collection("users").doc(uid)
   return (
     <View style={Styles.container}>
       <Header headerTitle="Profile" />
@@ -35,7 +35,7 @@ export default function ProfileTab({ navigation }) {
               }}
               style={styles2.thumbnail}
             />
-            <Text style={styles2.username}> {user.email} </Text>
+            <Text style={styles2.username}> {profile.email} </Text>
           </View>
           <View style={styles2.postCardCont}>
             <Text style={styles2.postCount}> 100 </Text>
