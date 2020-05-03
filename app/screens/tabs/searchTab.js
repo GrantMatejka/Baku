@@ -44,7 +44,7 @@ function SearchTab() {
 
       <ScrollView
         style={Styles.container}
-        contentContainerStyle={Styles.container_content}
+      // contentContainerStyle={Styles.container_content}
       >
         <Text
           style={{
@@ -102,7 +102,7 @@ function SearchTab() {
         <FlatList
           data={locations}
           renderItem={({ item }) => (
-            <View style={Styles.container_content}> {/* UGLY STYLE HERE */}
+            <View style={Styles.container_content}>
 
               <Text>City: {item.city}</Text>
               <Text>Country: {item.country}</Text>
