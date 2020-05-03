@@ -158,7 +158,7 @@ const styles2 = StyleSheet.create({
     color: "white"
   },
   hambuger: {
-    marginLeft: 30,
+    marginLeft: 35,
     paddingBottom: 70
   }
 });
