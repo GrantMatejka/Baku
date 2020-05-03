@@ -71,7 +71,6 @@ export default function CreatePost({ navigation: { navigate } }) {
 
       <ScrollView
         style={Styles.container}
-        contentContainerStyle={Styles.container_content}
       >
         <View style={Styles.card}>
           <Text style={Styles.mainHeader}>
