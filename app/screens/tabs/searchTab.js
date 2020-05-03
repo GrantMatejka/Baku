@@ -124,7 +124,7 @@ async function getCountry() {
             color: "rgba(96,100,109, 1)",
             lineHeight: 40,
             textAlign: "center",
-            paddingTop: 100
+            paddingTop: 10
           }}
         >
           City
@@ -149,7 +149,7 @@ async function getCountry() {
             color: "rgba(96,100,109, 1)",
             lineHeight: 40,
             textAlign: "center",
-            paddingTop: 100
+            paddingTop: 50
           }}
         >
           Country
