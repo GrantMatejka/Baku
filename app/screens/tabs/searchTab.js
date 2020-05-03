@@ -17,6 +17,7 @@ function SearchTab() {
   const [locations, setLocations] = React.useState([]);
   const db = firebase.firestore().collection("location_test");
 
+  /*
   async function getLocation() {
     await db
       .where(locSearch, "==", locValue)
@@ -37,6 +38,33 @@ function SearchTab() {
         }
       });
   }
+  */
+
+  //locSearch set to either "country" or "city"
+  //locValue is user input
+ async function getLocation() {
+  const end = locValue.replace(/.$/, c => String.fromCharCode(c.charCodeAt(0) + 1));
+  await   
+    db
+    .where(locSearch, ">=", locValue)
+    .where(locSearch, "<", end)
+    .get()
+    .then(snapshot => {
+      const list = [];
+      snapshot.docs.forEach(doc => {
+        const { city, country } = doc.data();
+        list.push({
+          id: doc.id,
+          city,
+          country
+        });
+      });
+      setLocations(list);
+      if (loading) {
+        setLoading(false);
+      }
+    });
+}
 
   return (
     <View style={Styles.container}>
@@ -44,7 +72,7 @@ function SearchTab() {
 
       <ScrollView
         style={Styles.container}
-        contentContainerStyle={Styles.container_content}
+      // contentContainerStyle={Styles.container_content}
       >
         <Text
           style={{
@@ -102,7 +130,7 @@ function SearchTab() {
         <FlatList
           data={locations}
           renderItem={({ item }) => (
-            <View style={Styles.container_content}> {/* UGLY STYLE HERE */}
+            <View style={Styles.container_content}>
 
               <Text>City: {item.city}</Text>
               <Text>Country: {item.country}</Text>
