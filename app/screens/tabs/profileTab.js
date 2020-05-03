@@ -19,9 +19,20 @@ const TopTab = createMaterialTopTabNavigator();
 
 export default function ProfileTab({ navigation }) {
   let db = firebase.firestore();
-  let user = firebase.auth().currentUser;
-  let uid = user.uid
-  let profile = db.collection("users").doc(uid)
+  let uid = firebase.auth().currentUser.uid;
+  const [data, setData] = React.useState('');
+  const [username, setUsername] = React.useState('');
+
+
+  db.collection("users").doc(uid).get()
+    .then((doc) => {
+      setData(doc.data())
+    })
+    .then(() => { setUsername(data.username) })
+    .catch((error) => {
+      console.log("Error getting documents: ", error);
+    });
+
   return (
     <View style={Styles.container}>
       <Header headerTitle="Profile" />
@@ -35,7 +46,7 @@ export default function ProfileTab({ navigation }) {
               }}
               style={styles2.thumbnail}
             />
-            <Text style={styles2.username}> {profile.email} </Text>
+            <Text style={styles2.username}> {username} </Text>
           </View>
           <View style={styles2.postCardCont}>
             <Text style={styles2.postCount}> 100 </Text>
