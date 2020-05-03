@@ -34,6 +34,11 @@ class Login extends React.Component {
         });
   }
 
+  // hangleGoogle()
+  // {
+
+  // }
+
   render() {
     return (
       <ScrollView style={Styles.container}>
@@ -112,6 +117,22 @@ class Login extends React.Component {
             Forgot Password?
           </AwesomeButton>
         </View>
+
+        {/* <View style={Styles.p_3}>
+            <AwesomeButton
+              backgroundColor={Colors.dark}
+              width={200}
+              height={50}
+              onPress={() => {
+                this.setState({error: ''});
+                this.handleLogin(this.state);
+              }}
+            >
+              Google Signin
+            </AwesomeButton>
+          </View> */}
+
+
       </ScrollView>
     );
   }
