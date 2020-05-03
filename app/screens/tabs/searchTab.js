@@ -12,42 +12,18 @@ import firebase from "../../config/firebase";
 
 function SearchTab() {
   const [locValue, setLoc] = React.useState("");
-  const [locSearch, setSearch] = React.useState("");
+  //const [locSearch, setSearch] = React.useState("");
   const [loading, setLoading] = React.useState(true);
-  const [locations, setLocations] = React.useState([]);
+  const [cities, setCities] = React.useState([]);
+  const [countires, setCountries] = React.useState([]);
   const db = firebase.firestore().collection("location_test");
-
-  /*
-  async function getLocation() {
-    await db
-      .where(locSearch, "==", locValue)
-      .get()
-      .then(snapshot => {
-        const list = [];
-        snapshot.docs.forEach(doc => {
-          const { city, country } = doc.data();
-          list.push({
-            id: doc.id,
-            city,
-            country
-          });
-        });
-        setLocations(list);
-        if (loading) {
-          setLoading(false);
-        }
-      });
-  }
-  */
-
-  //locSearch set to either "country" or "city"
-  //locValue is user input
- async function getLocation() {
+ 
+ async function getCity() {
   const end = locValue.replace(/.$/, c => String.fromCharCode(c.charCodeAt(0) + 1));
   await   
     db
-    .where(locSearch, ">=", locValue)
-    .where(locSearch, "<", end)
+    .where("city", ">=", locValue)
+    .where("city", "<", end)
     .get()
     .then(snapshot => {
       const list = [];
@@ -59,7 +35,31 @@ function SearchTab() {
           country
         });
       });
-      setLocations(list);
+      setCities(list);
+      if (loading) {
+        setLoading(false);
+      }
+    });
+}
+
+async function getCountry() {
+  const end = locValue.replace(/.$/, c => String.fromCharCode(c.charCodeAt(0) + 1));
+  await   
+    db
+    .where("country", ">=", locValue)
+    .where("country", "<", end)
+    .get()
+    .then(snapshot => {
+      const list = [];
+      snapshot.docs.forEach(doc => {
+        const { city, country } = doc.data();
+        list.push({
+          id: doc.id,
+          city,
+          country
+        });
+      });
+      setCountries(list);
       if (loading) {
         setLoading(false);
       }
@@ -108,27 +108,55 @@ function SearchTab() {
             width={150}
             height={40}
             onPress={() => {
-              setSearch("country");
-              getLocation();
+              getCity();
+              getCountry();
             }}
           >
-            Country
-          </AwesomeButton>
-          <AwesomeButton
-            backgroundColor={"#ffbc26"}
-            width={150}
-            height={40}
-            onPress={() => {
-              setSearch("city");
-              getLocation();
-            }}
-          >
-            City
+            Search
           </AwesomeButton>
         </View>
 
+        <Text
+          style={{
+            fontSize: 15,
+            fontStyle: "normal",
+            //padding: 30,
+            color: "rgba(96,100,109, 1)",
+            lineHeight: 40,
+            textAlign: "center",
+            paddingTop: 100
+          }}
+        >
+          City
+        </Text>
+
         <FlatList
-          data={locations}
+          data={cities}
+          renderItem={({ item }) => (
+            <View style={Styles.container_content}>
+
+              <Text>City: {item.city}</Text>
+              <Text>Country: {item.country}</Text>
+            </View>
+          )}
+        />
+
+        <Text
+          style={{
+            fontSize: 15,
+            fontStyle: "normal",
+            //padding: 30,
+            color: "rgba(96,100,109, 1)",
+            lineHeight: 40,
+            textAlign: "center",
+            paddingTop: 100
+          }}
+        >
+          Country
+        </Text>
+
+        <FlatList
+          data={countires}
           renderItem={({ item }) => (
             <View style={Styles.container_content}>
 
