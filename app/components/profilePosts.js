@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import React, {Component} from 'react';
+import {View} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
 
 import datas from '../assets/data/data';
 import styles from '../styles/styles';
@@ -14,8 +14,7 @@ export default class ProfilePosts extends Component {
   };
 
   getPhotos() {
-    return this.state.datas.map(data => {
-
+    return this.state.datas.map((data) => {
       return <PostCard detail={data} key={data.id} />;
     });
   }
