@@ -21,7 +21,8 @@ const Styles = StyleSheet.create({
   // Card styles WIP
   card: {
     alignItems: 'center',
-    marginHorizontal: 50
+    marginHorizontal: 50,
+    marginBottom: 15
   },
   card_complex: {
     display: 'flex',
