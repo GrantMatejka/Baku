@@ -160,11 +160,11 @@ class Login extends React.Component {
           >
             Forgot Password?
           </AwesomeButton>
-        </View>
+        
 
         {<View style={Styles.p_3}>
             <AwesomeButton
-              backgroundColor={Colors.dark}
+              backgroundColor={Colors.like}
               width={200}
               height={50}
               onPress={() => {
@@ -177,7 +177,7 @@ class Login extends React.Component {
           </View> }
           {<View style={Styles.p_3}>
               <AwesomeButton
-                  backgroundColor={Colors.primary}
+                  backgroundColor={Colors.success}
                   width={200}
                   height={50}
                   onPress={() => {
@@ -188,6 +188,8 @@ class Login extends React.Component {
                   Sign in with Facebook!
               </AwesomeButton>
           </View> }
+
+          </View>
 
       </ScrollView>
     );
