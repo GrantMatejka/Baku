@@ -44,7 +44,6 @@ function SearchTab() {
 
       <ScrollView
         style={Styles.container}
-        contentContainerStyle={Styles.container_content}
       >
         <Text
           style={{

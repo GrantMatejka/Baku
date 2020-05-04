@@ -19,7 +19,7 @@ const TopTab = createMaterialTopTabNavigator();
 
 export default function ProfileTab({ navigation }) {
   // let db = firebase.firestore();
-  // let user = firebase.auth().currentUser;
+  // let user = firebase.auth().currentUser.uid;
   //   return console.log("User email: ", user.email);
   // }
   return (
