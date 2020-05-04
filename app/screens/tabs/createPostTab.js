@@ -1,5 +1,6 @@
 import * as React from "../../node_modules/react";
-import { Text, View, FlatList, ScrollView, ActivityIndicator } from "react-native";
+import { Text, View, FlatList, ScrollView, ActivityIndicator, Button, Image} from "react-native";
+import * as ImagePicker from "expo-image-picker";
 
 import AwesomeButton from "react-native-really-awesome-button";
 import { Fumi } from "../../node_modules/react-native-textinput-effects/lib";
@@ -11,24 +12,40 @@ import Styles from "../../styles/styles";
 import Colors from "../../styles/colors";
 
 export default function CreatePost({ navigation: { navigate } }) {
-  const [cityLoc, setCity] = React.useState("");
-  const [countryLoc, setCountry] = React.useState("");
+  const [cityx, setCity] = React.useState("");
+  const [countryx, setCountry] = React.useState("");
+  const [captionx, setCaption] = React.useState("");
+  const [photosx, setPhotos] = React.useState("");
+  const [post_timex, setPostTime] = React.useState("");
+  const [userx, setUserID] = React.useState("");
   const [loading, setLoading] = React.useState(true);
   const [locations, setLocations] = React.useState([]);
 
-  const db = firebase.firestore().collection("location_test");
+  const db = firebase.firestore().collection("posts");
 
-  async function addLocation() {
+
+  async function submitPost() {
     try {
       await db.add({
-        city: cityLoc,
-        country: countryLoc
+        city: cityx,
+        country: countryx,
+        caption: captionx,
+        photos: photosx,
+        post_time: new Date().toLocaleString(),
+        user: getUser()
       });
     } catch (error) {
       console.log(error);
     }
-    setCity("");
-    setCountry("");
+  }
+
+  function getUser(){
+    if (firebase.auth().currentUser.uid != null){
+      return firebase.auth().currentUser.uid
+    }
+    else{
+      return "n/a"
+    }
   }
 
   //adds docs from db to locations list
@@ -64,24 +81,59 @@ export default function CreatePost({ navigation: { navigate } }) {
     );
   }
 
+  async function pick_image(){
+    try {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+      if (result.uri) {
+        reults.uri = {setPhotos};
+      }
+
+      console.log(result);
+    } catch (E) {
+      console.log(E + "image not found");
+    }
+  };
+
 
   return (
     <View style={Styles.container}>
-      <Header headerTitle="Create Postcard" />
+      <Header headerTitle="Create Post" />
 
       <ScrollView
         style={Styles.container}
       >
+
+        <Image
+          source = {{uri: photosx.uri}}
+          style = {{width: 200, height: 300,
+              alignSelf: 'center',
+              borderRadius: 2,
+              borderWidth: 1,
+              borderColor: 'black',
+              marginBottom: 10,
+              marginTop: 10
+          }}
+        />
+
         <View style={Styles.card}>
-          <Text style={Styles.mainHeader}>
-            Let's test if we can add to the DB{" "}
-          </Text>
-          <Text style={Styles.mainHeader}> Tag your location! </Text>
+          <AwesomeButton
+            backgroundColor={"#478a91"}
+            width={340}
+            height={40}
+            onPress={() => pick_image()}
+          >
+            Choose Photo
+          </AwesomeButton>
         </View>
 
         <View style={Styles.p_3}>
           <Fumi
-            label={"Enter city"}
+            label={"City"}
             onChangeText={setCity}
             iconClass={FontAwesomeIcon}
             iconName={"map-pin"}
@@ -93,13 +145,13 @@ export default function CreatePost({ navigation: { navigate } }) {
           />
         </View>
 
-        <View style={Colors.warning}>
+        <View style={Styles.p_3}>
           <Fumi
-            label={"Enter Country"}
-            onChangeText={setCountry}
+            label={"Country"}
+            onChangeText={setCity}
             iconClass={FontAwesomeIcon}
             iconName={"globe"}
-            iconColor={"#346CD5"}
+            iconColor={Colors.warning}
             iconSize={18}
             iconWidth={40}
             inputPadding={16}
@@ -107,18 +159,38 @@ export default function CreatePost({ navigation: { navigate } }) {
           />
         </View>
 
+        <View style={Styles.p_3}>
+          <Fumi
+            label={"Caption"}
+            onChangeText={setCaption}
+            iconClass={FontAwesomeIcon}
+            iconName={"indent"}
+            iconColor={Colors.warning}
+            iconSize={18}
+            iconWidth={40}
+            inputPadding={16}
+            inputStyle={{ padding: 5 }}
+          />
+        </View>
+        
         <View style={Styles.card}>
           <AwesomeButton
             backgroundColor={"#ffbc26"}
             width={340}
             height={40}
-            onPress={() => addLocation()}
+            onPress={() => submitPost()}
           >
-            Add to Firebase
+            Post
           </AwesomeButton>
         </View>
 
-        <FlatList
+      </ScrollView>
+    </View>
+  );
+}
+
+/*
+<FlatList
           //lists DB to screen in alphabetical order by city
           data={locations}
           renderItem={({ item }) => (
@@ -128,8 +200,4 @@ export default function CreatePost({ navigation: { navigate } }) {
             </View>
           )}
         />
-
-      </ScrollView>
-    </View>
-  );
-}
+*/
