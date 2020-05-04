@@ -33,3 +33,7 @@ jobs:
 
       - working-directory: ./app
         run: npm ci
+
+      - working-directory: ./app
+        run: npm run lint:fix
+
