@@ -24,6 +24,7 @@ export default function ProfileTab({ navigation }) {
   const [username, setUsername] = React.useState('');
 
 
+  React.useEffect(() => {
   db.collection("users").doc(uid).get()
     .then((doc) => {
       setData(doc.data())
@@ -32,7 +33,7 @@ export default function ProfileTab({ navigation }) {
     .catch((error) => {
       console.log("Error getting documents: ", error);
     });
-
+  })
   return (
     <View style={Styles.container}>
       <Header headerTitle="Profile" />
