@@ -18,10 +18,21 @@ import firebase from "../../config/firebase";
 const TopTab = createMaterialTopTabNavigator();
 
 export default function ProfileTab({ navigation }) {
-  // let db = firebase.firestore();
-  // let user = firebase.auth().currentUser;
-  //   return console.log("User email: ", user.email);
-  // }
+  let db = firebase.firestore();
+  let uid = firebase.auth().currentUser.uid;
+  const [data, setData] = React.useState('');
+  const [username, setUsername] = React.useState('');
+
+
+  db.collection("users").doc(uid).get()
+    .then((doc) => {
+      setData(doc.data())
+    })
+    .then(() => { setUsername(data.username) })
+    .catch((error) => {
+      console.log("Error getting documents: ", error);
+    });
+
   return (
     <View style={Styles.container}>
       <Header headerTitle="Profile" />
@@ -35,7 +46,7 @@ export default function ProfileTab({ navigation }) {
               }}
               style={styles2.thumbnail}
             />
-            <Text style={styles2.username}> {firebase.auth().currentUser.username} </Text>
+            <Text style={styles2.username}> {username} </Text>
           </View>
           <View style={styles2.postCardCont}>
             <Text style={styles2.postCount}> 100 </Text>
@@ -94,7 +105,6 @@ const styles2 = StyleSheet.create({
   },
   thumbnailSection: {
     flexDirection: "row",
-    // flex: 2,
     alignItems: "center",
     backgroundColor: "#A0C9CF",
     height: 114
@@ -148,7 +158,7 @@ const styles2 = StyleSheet.create({
     color: "white"
   },
   hambuger: {
-    marginLeft: 75,
+    marginLeft: 35,
     paddingBottom: 70
   }
 });
