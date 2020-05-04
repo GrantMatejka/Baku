@@ -6,11 +6,12 @@ import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
 import Styles from '../styles/styles';
 import Colors from '../styles/colors';
-
+import Constants from "expo-constants"
+import * as Permissions from "expo-permissions"
+import * as ImagePicker from "expo-image-picker"
 import firebase from '../config/firebase';
 
 
-//export default function CreateProfile({route, navigation}) {
 class CreateProfile extends React.Component {
   //const {state} = route.params;
 
@@ -25,8 +26,32 @@ class CreateProfile extends React.Component {
     bio: '',
     places: '',
     // this.dbRef needs to be looked at as linter don't like it
-    dbRef: this.dbRef
+    dbRef: this.dbRef,
+    image: null
   };
+
+  getPhotoPermission = async () => {
+    if (Constants.platform.ios) {
+      const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+
+      if (status != "granted") {
+        alert("we need permission to access your camera roll")
+      }
+    }
+  }
+
+
+  pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3]
+    })
+    if (!result.cancelled) {
+      this.setState({ image: result.uri })
+    }
+  }
+
 
   handleProfile() {
     let uid = firebase.auth().currentUser.uid;
@@ -126,6 +151,17 @@ class CreateProfile extends React.Component {
           inputStyle={{ padding: 5 }}
           onChangeText={(places) => this.setState({ places })}
         />
+        <View style={Styles.SignupButton}>
+          <Button
+            title="Upload Photo"
+            onPress={() => {
+
+              this.getPhotoPermission().then(() => {
+              this.pickImage()})
+            }
+            }
+          />
+        </View>
 
         <View style={Styles.SignupButton}>
           <Button
