@@ -2,7 +2,7 @@ name: Baku run tests
 on:
   push:
     branches:
-      - davidj
+      - develop
       - master
 jobs:
   install-and-test:
