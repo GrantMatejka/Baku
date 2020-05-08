@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import { View, Text, Image } from 'react-native';
 
-import {ScrollView} from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native-gesture-handler';
 import AwesomeButton from 'react-native-really-awesome-button';
-import {Hoshi} from 'react-native-textinput-effects';
+import { Hoshi } from 'react-native-textinput-effects';
 
 import Firebase from '../config/firebase';
 import Styles from '../styles/styles';
@@ -18,20 +18,20 @@ class Login extends React.Component {
   };
 
   handleLogin(state) {
-    const {email, password} = state;
+    const { email, password } = state;
 
     Firebase.auth()
-        .signInWithEmailAndPassword(email, password)
-        .then(
-            () => {
-              this.props.navigation.navigate('Tabs', {
-                screen: 'FeedTab'
-              });
-              this.setState({error: ''});
-            })
-        .catch((error) => {
-          this.setState({error: error.message});
-        });
+      .signInWithEmailAndPassword(email, password)
+      .then(
+        () => {
+          this.props.navigation.navigate('Tabs', {
+            screen: 'FeedTab'
+          });
+          this.setState({ error: '' });
+        })
+      .catch((error) => {
+        this.setState({ error: error.message });
+      });
   }
 
   // hangleGoogle()
@@ -52,21 +52,23 @@ class Login extends React.Component {
         <Hoshi
           label={'Email'}
           value={this.state.email}
-          onChangeText={(email) => this.setState({email})}
+          onChangeText={(email) => this.setState({ email })}
           borderColor={Colors.light}
           borderHeight={5}
           inputPadding={18}
           autoCapitalize="none"
+          testID='email_text_box'
         />
 
         <Hoshi
           label={'Password'}
           value={this.state.password}
-          onChangeText={(password) => this.setState({password})}
+          onChangeText={(password) => this.setState({ password })}
           borderColor={Colors.warning}
           borderHeight={5}
           inputPadding={16}
           secureTextEntry={true}
+          testID='pass_text_box'
         />
 
         <View style={Styles.container_content}>
@@ -80,7 +82,7 @@ class Login extends React.Component {
               width={200}
               height={50}
               onPress={() => {
-                this.setState({error: ''});
+                this.setState({ error: '' });
                 this.handleLogin(this.state);
               }}
             >
@@ -88,13 +90,14 @@ class Login extends React.Component {
             </AwesomeButton>
           </View>
 
-          <View style={Styles.p_3}>
+          <View style={Styles.p_3} testID='signup_button'>
             <AwesomeButton
               backgroundColor={Colors.warning}
               width={200}
               height={50}
+              testID='signup_button'
               onPress={() => {
-                this.setState({email: '', password: '', error: ''});
+                this.setState({ email: '', password: '', error: '' });
                 this.props.navigation.navigate('Create');
               }}
             >
@@ -102,7 +105,7 @@ class Login extends React.Component {
             </AwesomeButton>
           </View>
 
-          <Text style={Styles.p_2}>
+          <Text style={Styles.p_2} testID="login">
             New user? Sign up now!
           </Text>
 
