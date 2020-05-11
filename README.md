@@ -2,7 +2,7 @@
 
 Team Members: Grant Matejka, Shreya Tumma, Abhishu Rawka, David Juliano, Shaurya Mago, Eric Zhou
 
-![Baku Logo](https://github.com/GrantMatejka/Baku/blob/master/Baku/app/assets/images/baku3-full-blue.png)
+![Baku Logo](https://raw.githubusercontent.com/GrantMatejka/Baku/master/app/assets/images/baku3-full-blue.png)
 
 # What is Baku?
 Baku is intended to be a standalone mobile application that provides a source of travel inspiration and real travel itineraries to its users. Each user will have the capability to share their travel itineraries with their followers, and to save itineraries from other users. They will also be able to filter their feed of travel posts based on a location of choice. The goal of the product is to create a platform where users can plan their next trip with the experience and tips from other travelers. In comparison to other current travel planning applications on the market, Baku is unique because it resembles popular social media platforms and allows for the engagement between its users. Not only are users documenting their travels and planning their next trip with this application, but they are also liking and favoriting posts on their feed.
