@@ -80,7 +80,7 @@ export default function ProfileTab({ navigation }) {
           <TopTab.Navigator
             tabBarOptions={{
               labelStyle: { fontWeight: 'bold', fontSize: 12 },
-              indicatorStyle: { backgroundColor: Colors.background },
+              indicatorStyle: { backgroundColor: Colors.warning },
               style: { backgroundColor: Colors.info },
               inactiveBackgroundColor: Colors.info,
               activeBackgroundColor: Colors.warning,
