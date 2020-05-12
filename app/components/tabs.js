@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import NotificationsTab from '../screens/tabs/notificationsTab';
@@ -23,14 +23,14 @@ const Navigator = () => {
         inactiveBackgroundColor: Colors.primary,
         activeBackgroundColor: Colors.primary,
         inactiveTintColor: Colors.background,
-        activeTintColor: Colors.background
+        activeTintColor: Colors.warning
       }}
     >
       <Tab.Screen
         name="FeedTab"
         component={FeedTab}
         options={{
-          tabBarIcon: ({color}) => (
+          tabBarIcon: ({ color }) => (
             <Icon name="list" size={25} color={color} />
           ),
           title: 'Feed'
@@ -41,7 +41,7 @@ const Navigator = () => {
         name="SearchTab"
         component={SearchTab}
         options={{
-          tabBarIcon: ({color}) => (
+          tabBarIcon: ({ color }) => (
             <Icon name="search" size={25} color={color} />
           ),
           title: 'Search'
@@ -51,7 +51,7 @@ const Navigator = () => {
         name="CreatePostTab"
         component={CreatePostTab}
         options={{
-          tabBarIcon: ({color}) => (
+          tabBarIcon: ({ color }) => (
             <Icon name="plus-circle" size={25} color={color} />
           ),
           title: 'New Post'
@@ -61,7 +61,7 @@ const Navigator = () => {
         name="NotificationsTab"
         component={NotificationsTab}
         options={{
-          tabBarIcon: ({color}) => (
+          tabBarIcon: ({ color }) => (
             <Icon name="clock-o" size={25} color={color} />
           ),
           title: 'Notifications'
@@ -71,7 +71,7 @@ const Navigator = () => {
         name="ProfileTab"
         children={Drawer}
         options={{
-          tabBarIcon: ({color}) => (
+          tabBarIcon: ({ color }) => (
             <Icon name="user-circle-o" size={25} color={color} />
           ),
           title: 'Profile'
