@@ -17,26 +17,8 @@ class Signup extends React.Component {
     email: '',
     password: '',
     error: '',
-    dbRef: this.db
   };
 
-  // storeUser = () => {
-  //   const { name, email, isLoading } = this.state;
-  //   this.setState({
-  //     isLoading: true
-  //   });
-  //   this.dbRef
-  //     .add({
-  //       name: this.state.name,
-  //       email: this.state.email
-  //     })
-  //     .catch(err => {
-  //       console.error("Error found: ", err);
-  //       this.setState({
-  //         isLoading: false
-  //       });
-  //     });
-  // };
 
   handleSignUp() {
     const { name, username, email,
@@ -65,7 +47,7 @@ class Signup extends React.Component {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((cred) => {
-        this.dbRef.doc(cred.user.uid).set({
+        this.db.doc(cred.user.uid).set({
           name: this.state.name,
           username: this.state.username
         });
