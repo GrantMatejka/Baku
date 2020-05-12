@@ -49,6 +49,6 @@ export default function App(props) {
   if (!isLoadingComplete && !props.skipLoadingScreen) {
     return null;
   } else {
-    return <AppNavigator loggedIn={true} />;
+    return <AppNavigator loggedIn={false} />;
   }
 }
