@@ -7,17 +7,23 @@ import Colors from './colors';
 const Styles = StyleSheet.create({
   // Container styles
   container: {
-    flex: 1,
+    display: 'flex',
     backgroundColor: Colors.background
   },
   // Container for any horizontally centered child content
   // Useful for with ScrollView
   container_content: {
     paddingTop: 10,
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
   },
-
+  row: {
+    flexDirection: 'row',
+  },
+  column: {
+    flexDirection: 'column',
+  },
   // Card styles WIP
   card: {
     alignItems: 'center',
@@ -90,7 +96,8 @@ const Styles = StyleSheet.create({
     backgroundColor: Colors.warning,
     borderColor: Colors.warning,
     borderWidth: 1,
-    borderRadius: 5
+    borderRadius: 5,
+    flex: 2
   },
 
   // Padding Levels
