@@ -87,7 +87,7 @@ export default function CreatePost({ navigation: { navigate } }) {
       const response = await fetch(uri);
       const file = await response.blob();
       let upload = Firebase.storage().ref(path).put(file);
-      console.log(path)
+      // console.log(path)
       upload.on("state_changed",
         snapshot => { },
         err => {
@@ -112,13 +112,11 @@ export default function CreatePost({ navigation: { navigate } }) {
       if (!result.cancelled) {
         uploadPhotoAsync(result.uri)
         setPhotos(result.uri)
-        console.log("OG:")
-        console.log(result.uri)
-        console.log("PHOT0:")
-        console.log(photosx)
+        // console.log("OG:")
+        // console.log(result.uri)
+        // console.log("PHOT0:")
+        // console.log(photosx)
       }
-
-      // console.log(result);
     } catch (E) {
       console.log(E + "image not found");
     }
