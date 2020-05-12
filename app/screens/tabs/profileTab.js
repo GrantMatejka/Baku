@@ -22,17 +22,16 @@ export default function ProfileTab({ navigation }) {
   let uid = firebase.auth().currentUser.uid;
   const [data, setData] = React.useState('');
   const [username, setUsername] = React.useState('');
-
-
-  db.collection("users").doc(uid).get()
-    .then((doc) => {
-      setData(doc.data())
-    })
-    .then(() => { setUsername(data.username) })
-    .catch((error) => {
-      console.log("Error getting documents: ", error);
-    });
-
+  React.useEffect(() => {
+    db.collection("users").doc(uid).get()
+      .then((doc) => {
+        setData(doc.data())
+      })
+      .then(() => { setUsername(data.username) })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+  })
   return (
     <View style={Styles.container}>
       <Header headerTitle="Profile" />
@@ -81,7 +80,7 @@ export default function ProfileTab({ navigation }) {
           <TopTab.Navigator
             tabBarOptions={{
               labelStyle: { fontWeight: 'bold', fontSize: 12 },
-              indicatorStyle: { backgroundColor: Colors.background },
+              indicatorStyle: { backgroundColor: Colors.warning },
               style: { backgroundColor: Colors.info },
               inactiveBackgroundColor: Colors.info,
               activeBackgroundColor: Colors.warning,
@@ -158,7 +157,7 @@ const styles2 = StyleSheet.create({
     color: "white"
   },
   hambuger: {
-    marginLeft: 35,
+    marginLeft: 0,
     paddingBottom: 70
   }
 });
