@@ -9,7 +9,7 @@ import Header from "../../components/header";
 
 export default function Feed() {
   return (
-    <View style={Styles.container}>
+    <View style={{flex: 1}}>
       <Header headerTitle="Feed" />
 
       <ScrollView style={Styles.container}>

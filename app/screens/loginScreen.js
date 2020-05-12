@@ -67,7 +67,7 @@ class Login extends React.Component {
     } catch (e) {
       return { error: true };
     }
-  }
+  };
   async loginWithFacebook() {
     await Facebook.initializeAsync('269105660797641');
     const { type, token } = await Facebook.logInWithReadPermissionsAsync(
@@ -80,9 +80,10 @@ class Login extends React.Component {
       const credential = Firebase.auth.FacebookAuthProvider.credential(token)
       Firebase.auth().signInWithCredential(credential).catch((error) => {
         console.log(error)
-      })
+      });
     }
-  }
+  };
+
   render() {
     return (
       <ScrollView style={Styles.container}>
@@ -120,7 +121,7 @@ class Login extends React.Component {
             {this.state.error}
           </Text>
 
-          <View style={Styles.p_3}>
+          <View style={Styles.p_2}>
             <AwesomeButton
               backgroundColor={Colors.light}
               width={200}
@@ -132,9 +133,44 @@ class Login extends React.Component {
             >
               Login
             </AwesomeButton>
+
+            <View style={Styles.p_1}>
+              <Text style={Styles.text_centered}>
+                Or login with these accounts
+              </Text>
+            </View>
+
+            <View style={Styles.row}>
+              <AwesomeButton
+                backgroundColor={"#666666"}
+                width={100}
+                height={50}
+                onPress={() => {
+                  this.setState({ error: '' });
+                  this.signInWithGoogleAsync();
+                }}
+              >
+                Google
+              </AwesomeButton>
+              <AwesomeButton
+                backgroundColor={"#333333"}
+                width={100}
+                height={50}
+                onPress={() => {
+                  this.setState({ error: '' });
+                  this.loginWithFacebook();
+                }}
+              >
+                Facebook
+              </AwesomeButton>
+            </View>
           </View>
 
-          <View style={Styles.p_3} testID='signup_button'>
+          <View style={Styles.p_2} testID='signup_button'>
+            <Text style={Styles.p_2, Styles.text_centered} testID="login">
+              New user? Sign up now!
+            </Text>
+
             <AwesomeButton
               backgroundColor={Colors.warning}
               width={200}
@@ -149,51 +185,20 @@ class Login extends React.Component {
             </AwesomeButton>
           </View>
 
-          <Text style={Styles.p_2} testID="login">
-            New user? Sign up now!
-          </Text>
-
-          <AwesomeButton
-            backgroundColor={Colors.primary}
-            width={160}
-            height={30}
-            onPress={() => {
-              this.props.navigation.navigate('Reset');
-            }}
-          >
-            Forgot Password?
+          <View style={Styles.p_3}>
+            <AwesomeButton
+              backgroundColor={Colors.lighter}
+              textColor={Colors.primary}
+              width={160}
+              height={30}
+              onPress={() => {
+                this.props.navigation.navigate('Reset');
+              }}
+            >
+              Forgot Password?
           </AwesomeButton>
-
-
-          {<View style={Styles.p_3}>
-            <AwesomeButton
-              backgroundColor={Colors.like}
-              width={200}
-              height={50}
-              onPress={() => {
-                this.setState({ error: '' });
-                this.signInWithGoogleAsync();
-              }}
-            >
-              Sign in with Google!
-            </AwesomeButton>
-          </View>}
-          {<View style={Styles.p_3}>
-            <AwesomeButton
-              backgroundColor={Colors.success}
-              width={200}
-              height={50}
-              onPress={() => {
-                //this.setState({error: ''});
-                this.loginWithFacebook();
-              }}
-            >
-              Sign in with Facebook!
-              </AwesomeButton>
-          </View>}
-
+          </View>
         </View>
-
       </ScrollView>
     );
   }
