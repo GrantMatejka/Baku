@@ -22,7 +22,7 @@ export default function CreatePost({ navigation: { navigate } }) {
   const [locations, setLocations] = React.useState([]);
 
   const db = Firebase.firestore().collection("posts");
-
+  const uid = Firebase.auth().currentUser.uid;
 
   async function submitPost() {
     try {
@@ -81,6 +81,26 @@ export default function CreatePost({ navigation: { navigate } }) {
     );
   }
 
+  uploadPhotoAsync = async uri => {
+    const path = 'photos/' + (uid) + '/' + Date.now();
+    return new Promise(async (res, rej) => {
+      const response = await fetch(uri);
+      const file = await response.blob();
+      let upload = Firebase.storage().ref(path).put(file);
+      console.log(path)
+      upload.on("state_changed",
+        snapshot => { },
+        err => {
+          rej(err)
+        },
+        async () => {
+          const url = await upload.snapshot.ref.getDownloadURL();
+          res(url);
+        }
+      )
+    })
+  }
+
   async function pick_image() {
     try {
       let result = await ImagePicker.launchImageLibraryAsync({
@@ -90,7 +110,9 @@ export default function CreatePost({ navigation: { navigate } }) {
         quality: 1,
       });
       if (!result.cancelled) {
+        uploadPhotoAsync(result.uri)
         setPhotos(result.uri)
+        console.log("OG:")
         console.log(result.uri)
         console.log("PHOT0:")
         console.log(photosx)
