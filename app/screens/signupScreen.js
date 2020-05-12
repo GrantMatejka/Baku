@@ -1,17 +1,15 @@
-/* eslint-disable no-invalid-this */
-
 import React, { console } from 'react';
 import { View, Text } from 'react-native';
 
 import { Fumi } from 'react-native-textinput-effects';
 import AwesomeButton from 'react-native-really-awesome-button';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import firebase from '../config/firebase'
+import firebase from '../config/firebase';
 import Colors from '../styles/colors.js';
 import Styles from '../styles/styles.js';
 
 class Signup extends React.Component {
-  dbRef = firebase.firestore().collection('users');
+  db = firebase.firestore().collection('users');
 
   state = {
     name: '',
@@ -19,29 +17,12 @@ class Signup extends React.Component {
     email: '',
     password: '',
     error: '',
-    dbRef: this.dbRef
   };
 
-  // storeUser = () => {
-  //   const { name, email, isLoading } = this.state;
-  //   this.setState({
-  //     isLoading: true
-  //   });
-  //   this.dbRef
-  //     .add({
-  //       name: this.state.name,
-  //       email: this.state.email
-  //     })
-  //     .catch(err => {
-  //       console.error("Error found: ", err);
-  //       this.setState({
-  //         isLoading: false
-  //       });
-  //     });
-  // };
 
   handleSignUp() {
-    const { name, username, email, password, confirmPassword } = this.state;
+    const { name, username, email,
+      password, confirmPassword, error } = this.state;
 
     if (name.length == 0) {
       this.setState({ error: 'Necessary to enter name' });
@@ -66,7 +47,7 @@ class Signup extends React.Component {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((cred) => {
-        this.dbRef.doc(cred.user.uid).set({
+        this.db.doc(cred.user.uid).set({
           name: this.state.name,
           username: this.state.username
         });
@@ -76,15 +57,16 @@ class Signup extends React.Component {
           state: this.state
         });
       })
-      .catch((error) => {
-        console.log(error), this.setState({ error: 'Invalid Credentials' });
+      .catch((err) => {
+        this.setState({ error: 'Invalid Credentials' }),
+          console.log(error);
       });
   }
 
   render() {
     return (
       <View style={Styles.container}>
-        <Text style={[Styles.header, Styles.text_large]}>
+        <Text testID='signup_sign' style={[Styles.header, Styles.text_large]}>
           Welcome to Baku!
         </Text>
 
