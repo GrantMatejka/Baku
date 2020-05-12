@@ -65,6 +65,7 @@ class CreateProfile extends React.Component {
       });
       if (!result.cancelled) {
         this.setState({ photo: result.uri });
+        this.uploadPhotoAsync(result.uri)
       }
     }
     catch (err) {
