@@ -1,7 +1,7 @@
 // /* eslint-disable no-unused-vars */
 
-// import * as firebase from 'firebase';
-// import firestore from 'firebase/firestore';
+// import firebase from 'firebase';
+// // import firestore from 'firebase/firestore';
 
 // import {
 //    API_KEY,
@@ -24,9 +24,28 @@
 // };
 
 
-// class fire {
+// class Fire {
 //    constructor() {
 //       firebase.initializeApp(firebaseConfig);
+
+//    }
+//    uploadTest = async uri => {
+//       const path = 'photos' / $(this.uid) / $(Date.now()).jpg;
+//       return new Promise(async (res, rej) => {
+//          const response = await fetch(uri);
+//          const file = await response.blob();
+//          let upload = firebase.storage().ref(path).put(file);
+//          upload.on("state_changed",
+//             snapshot => { },
+//             err => {
+//                rej(err)
+//             },
+//             async () => {
+//                const url = await upload.snapshot.ref.getDownloadURL();
+//                res(url);
+//             }
+//          )
+//       })
 //    }
 
 
@@ -50,18 +69,24 @@
 //    }
 
 //    get uid() {
-//       return firebase.firestore();
+//       return (firebase.auth().currentUser || {}).uid;
 //    }
 
 //    get firestore() {
 //       firebase.firestore();
 //    }
 
+//    get auth() {
+//       firebase.auth();
+//    }
+
+//    get timestamp() {
+//       return Date.now();
+//    }
+
 
 // }
 
 
-// export default Firebase
-// fire.shared = new fire()
-
-// export default fire;
+// Fire.shared = new Fire()
+// export default Fire;
