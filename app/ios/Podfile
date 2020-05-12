@@ -1,5 +1,7 @@
 target 'app' do
   # ...
   pod 'RNFBFirestore', :path => '../node_modules/@react-native-firebase/firestore'
+  pod 'Firebase/Storage'
+
 end
 
