@@ -16,8 +16,8 @@ export default function CreatePost({ navigation: { navigate } }) {
   const [countryx, setCountry] = React.useState("");
   const [captionx, setCaption] = React.useState("");
   const [photosx, setPhotos] = React.useState("");
-  const [post_timex, setPostTime] = React.useState("");
-  const [userx, setUserID] = React.useState("");
+  // const [post_timex, setPostTime] = React.useState("");
+  // const [userx, setUserID] = React.useState("");
   const [loading, setLoading] = React.useState(true);
   const [locations, setLocations] = React.useState([]);
 
@@ -26,11 +26,12 @@ export default function CreatePost({ navigation: { navigate } }) {
 
   async function submitPost() {
     try {
+      const photoRef = await uploadPhotoAsync(photosx);
       await db.add({
         city: cityx,
         country: countryx,
         caption: captionx,
-        photos: photosx,
+        photos: photoRef,
         post_time: new Date().toLocaleString(),
         user: getUser()
       });
@@ -110,12 +111,7 @@ export default function CreatePost({ navigation: { navigate } }) {
         quality: 1,
       });
       if (!result.cancelled) {
-        uploadPhotoAsync(result.uri)
         setPhotos(result.uri)
-        // console.log("OG:")
-        // console.log(result.uri)
-        // console.log("PHOT0:")
-        // console.log(photosx)
       }
     } catch (E) {
       console.log(E + "image not found");
@@ -173,7 +169,7 @@ export default function CreatePost({ navigation: { navigate } }) {
         <View style={Styles.p_3}>
           <Fumi
             label={"Country"}
-            onChangeText={setCity}
+            onChangeText={setCountry}
             iconClass={FontAwesomeIcon}
             iconName={"globe"}
             iconColor={Colors.warning}
@@ -203,7 +199,7 @@ export default function CreatePost({ navigation: { navigate } }) {
             backgroundColor={"#ffbc26"}
             width={340}
             height={40}
-            onPress={() => Fire.shared.uploadTest()}
+            onPress={() => submitPost()}
           >
             Post
           </AwesomeButton>
