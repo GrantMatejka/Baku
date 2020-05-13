@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, Button, Image } from 'react-native';
+import { Text, View, Button, Image, ScrollView } from 'react-native';
 
 import { Fumi } from 'react-native-textinput-effects';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
@@ -25,6 +25,7 @@ class CreateProfile extends React.Component {
     places: '',
     data: '',
     name: '',
+    uri: '',
     // this.dbRef needs to be looked at as linter don't like it
     // dbRef: this.dbRef,
     photo: ''
@@ -65,7 +66,6 @@ class CreateProfile extends React.Component {
       });
       if (!result.cancelled) {
         this.setState({ photo: result.uri });
-        this.uploadPhotoAsync(result.uri)
       }
     }
     catch (err) {
@@ -94,31 +94,37 @@ class CreateProfile extends React.Component {
     })
   }
 
-  handleProfile() {
-    this.dbRef.doc(this.uid).set(
-      {
-        mobile: this.state.mobile,
-        birthday: this.state.birthday,
-        photo: this.state.photo,
-        bio: this.state.bio,
-        places: this.state.places
+  handleProfile = async () => {
+    const photoRef = await this.uploadPhotoAsync(this.state.photo);
+    return new Promise((res, rej) => {
+      this.dbRef.doc(this.uid).set(
+        {
+          mobile: this.state.mobile,
+          birthday: this.state.birthday,
+          photo: this.state.photo,
+          bio: this.state.bio,
+          places: this.state.places,
+          photo: photoRef
 
-      },
-      {
-        merge: true
-      }
-    )
-
-      .then(() => {
+        },
+        {
+          merge: true
+        }
+      ).then(ref => {
+        res(ref)
+      }).then(() => {
         this.props.navigation.navigate('Tabs', {
           screen: 'FeedTab'
         }
         );
-      });
+      }).catch(err => {
+        rej(err)
+      })
+    })
   }
   render() {
     return (
-      <View style={Styles.container}>
+      <ScrollView style={Styles.container}>
 
         <Text style={[Styles.header, Styles.text_medium, Styles.mt_5]}>
           Hey {this.state.data.name}! Let&apos;s get to know who you really are!
@@ -214,7 +220,7 @@ class CreateProfile extends React.Component {
             }
           />
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
