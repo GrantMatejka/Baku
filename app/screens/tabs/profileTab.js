@@ -22,22 +22,16 @@ export default function ProfileTab({ navigation }) {
   let uid = firebase.auth().currentUser.uid;
   const [data, setData] = React.useState('');
   const [username, setUsername] = React.useState('');
-
-
-
-  React.useEffect( () => {db.collection("users").doc(uid).get()
-
   React.useEffect(() => {
-  db.collection("users").doc(uid).get()
-
-    .then((doc) => {
-      setData(doc.data())
-    })
-    .then(() => { setUsername(data.username) })
-    .catch((error) => {
-      console.log("Error getting documents: ", error);
-    });})
-
+    db.collection("users").doc(uid).get()
+      .then((doc) => {
+        setData(doc.data())
+      })
+      .then(() => { setUsername(data.username) })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+  })
   return (
     <View style={Styles.container}>
       <Header headerTitle="Profile" />
@@ -163,7 +157,7 @@ const styles2 = StyleSheet.create({
     color: "white"
   },
   hambuger: {
-    marginLeft: 35,
+    marginLeft: 0,
     paddingBottom: 70
   }
 });
