@@ -3,6 +3,7 @@
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
+    "cypress:open": "cypress open",
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
@@ -13,6 +14,7 @@
   "jest": {
     "preset": "jest-expo"
   },
+
   "dependencies": {
     "@expo/vector-icons": "~10.0.0",
     "@react-native-community/google-signin": "^4.0.0",
@@ -44,6 +46,7 @@
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
     "react-native-dotenv": "^0.2.0",
+    "react-native-fbsdk": "^1.1.2",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-google-signin": "^2.1.1",
     "react-native-hide-with-keyboard": "^1.2.1",
@@ -57,6 +60,7 @@
     "react-native-textinput-effects": "^0.5.1",
     "react-native-vector-icons": "^6.6.0",
     "react-native-web": "~0.11.7",
+    "react-native-webview": "^9.4.0",
     "react-navigation": "^4.3.7"
   },
   "devDependencies": {
@@ -65,13 +69,15 @@
     "babel-jest": "^25.3.0",
     "babel-preset-expo": "~8.0.0",
     "babel-preset-react-native": "^4.0.1",
+    "cypress": "^4.5.0",
+    "detox": "^16.4.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
-    "jest": "^25.3.0",
+    "jest": "^25.5.4",
     "jest-expo": "~36.0.1",
     "jest-react-native": "^18.0.0",
     "react-test-renderer": "^16.13.1",
