@@ -21,13 +21,13 @@ class Login extends React.Component {
     rememberMe: false
   };
 
-  componentDidMount(){
+  componentDidMount() {
     Firebase.auth().onAuthStateChanged((user)=> {
-        if (user!= null){
-            console.log(user)
-        }
-    })
-}
+      if (user!= null) {
+        console.log(user);
+      }
+    });
+  }
 
   handleLogin(state) {
     const {email, password} = state;
@@ -46,41 +46,41 @@ class Login extends React.Component {
         });
   }
 
-  //googleauth
-  signInWithGoogleAsync = async() => {
+  // googleauth
+  signInWithGoogleAsync = async () => {
     try {
-        const result = await Google.logInAsync({
-            behavior: 'web',
-            androidClientId: '476558328148-n6rbb0alhcqsvpav275rfm1aad61k5l5.apps.googleusercontent.com',
-            iosClientId: '476558328148-0r8ts2d7e9omad1lehn74vitq2vvccrn.apps.googleusercontent.com',
-            scopes: ['profile', 'email'],
-        });
+      const result = await Google.logInAsync({
+        behavior: 'web',
+        androidClientId: '476558328148-n6rbb0alhcqsvpav275rfm1aad61k5l5.apps.googleusercontent.com',
+        iosClientId: '476558328148-0r8ts2d7e9omad1lehn74vitq2vvccrn.apps.googleusercontent.com',
+        scopes: ['profile', 'email'],
+      });
 
-        if (result.type === 'success') {
-            return result.accessToken,
-            this.props.navigation.navigate('Tabs', {
-                screen: 'FeedTab'
-            });
-        } else {
-            return { cancelled: true };
-        }
+      if (result.type === 'success') {
+        return result.accessToken,
+        this.props.navigation.navigate('Tabs', {
+          screen: 'FeedTab'
+        });
+      } else {
+        return {cancelled: true};
+      }
     } catch (e) {
-        return { error: true };
+      return {error: true};
     }
   }
-  async loginWithFacebook(){
+  async loginWithFacebook() {
     await Facebook.initializeAsync('269105660797641');
-    const { type, token } = await Facebook.logInWithReadPermissionsAsync(
-        { permissions:['public_profile', 'email'] },
+    const {type, token} = await Facebook.logInWithReadPermissionsAsync(
+        {permissions: ['public_profile', 'email']},
     );
-    if (type === 'success'){
-        this.props.navigation.navigate('Tabs', {
-            screen: 'FeedTab'
-        });
-      const credential = Firebase.auth.FacebookAuthProvider.credential(token)
+    if (type === 'success') {
+      this.props.navigation.navigate('Tabs', {
+        screen: 'FeedTab'
+      });
+      const credential = Firebase.auth.FacebookAuthProvider.credential(token);
       Firebase.auth().signInWithCredential(credential).catch((error) => {
-          console.log(error)
-      })
+        console.log(error);
+      });
     }
   }
   render() {
@@ -160,36 +160,36 @@ class Login extends React.Component {
           >
             Forgot Password?
           </AwesomeButton>
-        
 
-        {<View style={Styles.p_3}>
+
+          {<View style={Styles.p_3}>
             <AwesomeButton
               backgroundColor={Colors.like}
               width={200}
               height={50}
               onPress={() => {
-                  this.setState({error: ''});
-                  this.signInWithGoogleAsync();
+                this.setState({error: ''});
+                this.signInWithGoogleAsync();
               }}
             >
               Sign in with Google!
             </AwesomeButton>
           </View> }
           {<View style={Styles.p_3}>
-              <AwesomeButton
-                  backgroundColor={Colors.success}
-                  width={200}
-                  height={50}
-                  onPress={() => {
-                      //this.setState({error: ''});
-                      this.loginWithFacebook();
-                  }}
-              >
+            <AwesomeButton
+              backgroundColor={Colors.success}
+              width={200}
+              height={50}
+              onPress={() => {
+                // this.setState({error: ''});
+                this.loginWithFacebook();
+              }}
+            >
                   Sign in with Facebook!
-              </AwesomeButton>
+            </AwesomeButton>
           </View> }
 
-          </View>
+        </View>
 
       </ScrollView>
     );
