@@ -6,7 +6,7 @@ import { Fumi } from "react-native-textinput-effects";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 import AwesomeButton from "react-native-really-awesome-button";
 
-//import Styles from "../../styles/styles";
+import Styles from "../../styles/styles";
 import Header from "../../components/header";
 import firebase from "../../config/firebase";
 
@@ -29,73 +29,40 @@ class SearchTab extends React.Component {
 
     return (
       
-      //<View style={Styles.container}>
-      //<Header headerTitle="Search" />}
-      //<View style={styles.autocompletesContainer}>
-      <View > 
-        
+      <View style={Styles.container}>
+      <Header headerTitle="Search" />  
+        <View style={Styles.container_content}> 
+          
             <Autocomplete
               key={shortid.generate()}
-              style={styles.input}
+              style={Styles.input}
               scrollToInput={ev => scrollToInput(ev)}
               handleSelectItem={(item, id) => this.handleSelectItem(item, id)}
               onDropdownClose={() => onDropdownClose()}
               onDropdownShow={() => onDropdownShow()}
               renderIcon={() => (
-                <FontAwesomeIcon name="search" size={20} color="#c7c6c1" style={styles.plus} />
+                <FontAwesomeIcon name="search" size={20} color="#c7c6c1" style={Styles.iconPos} />
               )}
               data={Countries}
               minimumCharactersCount={2}
               highlightText
               highLightColor={"#ffbc27"}
               spinnerColor={"#ffbc27"}
-              spinnerSize={50}
+              spinnerSize={35}
+              inputContainerStyle={Styles.autocompleteInputContainer}
               valueExtractor={item => item.label}
               rightContent
               rightTextExtractor={item => item.properties}
               
+              
             />
+          
          
-        
+        </View>
+     
       </View>
-      //</View>
     );
   }
 }
-const styles = StyleSheet.create({
-  autocompletesContainer: {
-    paddingTop: 0,
-    width: "100%",
-    paddingHorizontal: 20,
-  },
-  input: {
-    maxHeight: 40,
-    maxWidth: "100%"
-  },
-  inputContainer: {
-    display: "flex",
-    flexShrink: 0,
-    flexGrow: 0,
-    flexDirection: "row",
-    flexWrap: "wrap",
-    alignItems: "center",
-    borderBottomWidth: 1,
-    borderColor: "#c7c6c1",
-    paddingVertical: 13,
-    paddingLeft: 12,
-    paddingRight: "5%",
-    width: "100%",
-    justifyContent: "flex-start",
-  },
-  container: {
-    flex: 1,
-    backgroundColor: "#ffffff",
-  },
-  plus: {
-    position: "absolute",
-    left: 15,
-    top: 10,
-  },
-});
 
 export default withKeyboardAwareScrollView(SearchTab);
