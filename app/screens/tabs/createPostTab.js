@@ -1,5 +1,5 @@
 import * as React from "../../node_modules/react";
-import { Text, View, FlatList, ScrollView, ActivityIndicator, Button, Image} from "react-native";
+import { Text, View, FlatList, ScrollView, ActivityIndicator, Button, Image } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 
 import AwesomeButton from "react-native-really-awesome-button";
@@ -7,7 +7,7 @@ import { Fumi } from "../../node_modules/react-native-textinput-effects/lib";
 import FontAwesomeIcon from "../../node_modules/react-native-vector-icons/FontAwesome";
 
 import Header from "../../components/header";
-import firebase from "../../config/firebase";
+import Firebase from "../../config/firebase";
 import Styles from "../../styles/styles";
 import Colors from "../../styles/colors";
 
@@ -16,21 +16,22 @@ export default function CreatePost({ navigation: { navigate } }) {
   const [countryx, setCountry] = React.useState("");
   const [captionx, setCaption] = React.useState("");
   const [photosx, setPhotos] = React.useState("");
-  const [post_timex, setPostTime] = React.useState("");
-  const [userx, setUserID] = React.useState("");
+  // const [post_timex, setPostTime] = React.useState("");
+  // const [userx, setUserID] = React.useState("");
   const [loading, setLoading] = React.useState(true);
   const [locations, setLocations] = React.useState([]);
 
-  const db = firebase.firestore().collection("posts");
-
+  const db = Firebase.firestore().collection("posts");
+  const uid = Firebase.auth().currentUser.uid;
 
   async function submitPost() {
     try {
+      const photoRef = await uploadPhotoAsync(photosx);
       await db.add({
         city: cityx,
         country: countryx,
         caption: captionx,
-        photos: photosx,
+        photos: photoRef,
         post_time: new Date().toLocaleString(),
         user: getUser()
       });
@@ -39,11 +40,11 @@ export default function CreatePost({ navigation: { navigate } }) {
     }
   }
 
-  function getUser(){
-    if (firebase.auth().currentUser.uid != null){
-      return firebase.auth().currentUser.uid
+  function getUser() {
+    if (Firebase.auth().currentUser.uid != null) {
+      return Firebase.auth().currentUser.uid
     }
-    else{
+    else {
       return "n/a"
     }
   }
@@ -81,7 +82,27 @@ export default function CreatePost({ navigation: { navigate } }) {
     );
   }
 
-  async function pick_image(){
+  uploadPhotoAsync = async uri => {
+    const path = 'photos/' + (uid) + '/' + Date.now();
+    return new Promise(async (res, rej) => {
+      const response = await fetch(uri);
+      const file = await response.blob();
+      let upload = Firebase.storage().ref(path).put(file);
+      // console.log(path)
+      upload.on("state_changed",
+        snapshot => { },
+        err => {
+          rej(err)
+        },
+        async () => {
+          const url = await upload.snapshot.ref.getDownloadURL();
+          res(url);
+        }
+      )
+    })
+  }
+
+  async function pick_image() {
     try {
       let result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -89,11 +110,9 @@ export default function CreatePost({ navigation: { navigate } }) {
         aspect: [4, 3],
         quality: 1,
       });
-      if (result.uri) {
-        reults.uri = {setPhotos};
+      if (!result.cancelled) {
+        setPhotos(result.uri)
       }
-
-      console.log(result);
     } catch (E) {
       console.log(E + "image not found");
     }
@@ -107,18 +126,20 @@ export default function CreatePost({ navigation: { navigate } }) {
       <ScrollView
         style={Styles.container}
       >
-
-        <Image
-          source = {{uri: photosx.uri}}
-          style = {{width: 200, height: 300,
+        <View>
+          <Image
+            source={{ uri: photosx }}
+            style={{
+              width: 200, height: 300,
               alignSelf: 'center',
               borderRadius: 2,
               borderWidth: 1,
               borderColor: 'black',
               marginBottom: 10,
               marginTop: 10
-          }}
-        />
+            }}
+          />
+        </View>
 
         <View style={Styles.card}>
           <AwesomeButton
@@ -148,7 +169,7 @@ export default function CreatePost({ navigation: { navigate } }) {
         <View style={Styles.p_3}>
           <Fumi
             label={"Country"}
-            onChangeText={setCity}
+            onChangeText={setCountry}
             iconClass={FontAwesomeIcon}
             iconName={"globe"}
             iconColor={Colors.warning}
@@ -172,7 +193,7 @@ export default function CreatePost({ navigation: { navigate } }) {
             inputStyle={{ padding: 5 }}
           />
         </View>
-        
+
         <View style={Styles.card}>
           <AwesomeButton
             backgroundColor={"#ffbc26"}

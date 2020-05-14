@@ -20,32 +20,35 @@ const TopTab = createMaterialTopTabNavigator();
 export default function ProfileTab({ navigation }) {
   let db = firebase.firestore();
   let uid = firebase.auth().currentUser.uid;
+  // let path = 'photos/' + (uid) + '/profile';
+  // let store = firebase.storage().ref(path);
   const [data, setData] = React.useState('');
   const [username, setUsername] = React.useState('');
+  const [profilePic, setProfilePic] = React.useState('');
+
   React.useEffect(() => {
     db.collection("users").doc(uid).get()
       .then((doc) => {
         setData(doc.data())
       })
-      .then(() => { setUsername(data.username) })
+      .then(() => { setUsername(data.username), setProfilePic(data.photo) })
       .catch((error) => {
         console.log("Error getting documents: ", error);
       });
   })
   return (
     <View style={Styles.container}>
-      <Header headerTitle="Profile" />
+      <Header headerTitle={username} />
       <ScrollView>
         <View style={styles2.thumbnailSection}>
           <View>
             <Image
               source={{
                 uri:
-                  "https://drive.google.com/uc?id=1DTPPv-4QHmQfFo8IqjekH4EuSHgflPNr"
+                  profilePic
               }}
               style={styles2.thumbnail}
             />
-            <Text style={styles2.username}> {username} </Text>
           </View>
           <View style={styles2.postCardCont}>
             <Text style={styles2.postCount}> 100 </Text>
@@ -80,7 +83,7 @@ export default function ProfileTab({ navigation }) {
           <TopTab.Navigator
             tabBarOptions={{
               labelStyle: { fontWeight: 'bold', fontSize: 12 },
-              indicatorStyle: { backgroundColor: Colors.background },
+              indicatorStyle: { backgroundColor: Colors.warning },
               style: { backgroundColor: Colors.info },
               inactiveBackgroundColor: Colors.info,
               activeBackgroundColor: Colors.warning,
@@ -157,7 +160,7 @@ const styles2 = StyleSheet.create({
     color: "white"
   },
   hambuger: {
-    marginLeft: 0,
+    marginLeft: 80,
     paddingBottom: 70
   }
 });
