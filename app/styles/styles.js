@@ -78,6 +78,7 @@ const Styles = StyleSheet.create({
   text_centered: {
     textAlign: 'center'
   },
+  
 
   // Button Stylings
   button: {

@@ -31,6 +31,20 @@ class SearchTab extends React.Component {
       
       <View style={Styles.container}>
       <Header headerTitle="Search" />  
+      <Text
+          style={{
+            fontSize: 25,
+            fontStyle: "normal",
+            padding: 30,
+            color: "rgba(96,100,109, 1)",
+            lineHeight: 40,
+            textAlign: "center",
+            paddingTop: 100
+          }}
+        >
+          Where would you like to go?
+      </Text>
+      
         <View style={Styles.container_content}> 
           
             <Autocomplete
@@ -41,7 +55,8 @@ class SearchTab extends React.Component {
               onDropdownClose={() => onDropdownClose()}
               onDropdownShow={() => onDropdownShow()}
               renderIcon={() => (
-                <FontAwesomeIcon name="search" size={20} color="#c7c6c1" style={Styles.iconPos} />
+                <FontAwesomeIcon name="search" size={20} color="#c7c6c1" 
+                style={Styles.iconPos} />
               )}
               data={Countries}
               minimumCharactersCount={2}
@@ -51,15 +66,11 @@ class SearchTab extends React.Component {
               spinnerSize={35}
               inputContainerStyle={Styles.autocompleteInputContainer}
               valueExtractor={item => item.label}
-              rightContent
-              rightTextExtractor={item => item.properties}
-              
+              placeholder="Search by country"
               
             />
-          
-         
+
         </View>
-     
       </View>
     );
   }
