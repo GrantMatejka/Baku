@@ -88,15 +88,5 @@
     "react-test-renderer": "^16.13.1",
     "shortid": "^2.2.15"
   },
-  "private": true,
-  "detox": {
-    "test-runner": "jest",
-    "configurations": {
-      "ios.sim.debug": {
-        "binaryPath": "bin/Exponent.app",
-        "type": "ios.simulator",
-        "name": "iPhone 11 Pro"
-      }
-    }
-  }
+  "private": true
 }
