@@ -7,7 +7,7 @@ import Colors from './colors';
 const Styles = StyleSheet.create({
   // Container styles
   container: {
-    display: 'flex',
+    flex: 1,
     backgroundColor: Colors.background
   },
   // Container for any horizontally centered child content
@@ -198,6 +198,7 @@ const Styles = StyleSheet.create({
     borderRadius: 15,
   },
 
+
   // PostCard styles
   postCardContainer: {
     flexWrap: 'wrap',
@@ -218,52 +219,21 @@ const Styles = StyleSheet.create({
     fontSize: 35
   },
 
+  // Notification Styles
+  notificationCardContainer: {
+    height: 60,
+    width: '100%',
+    maxWidth: 500,
+    marginHorizontal: 5,
+    marginVertical: 10,
+    backgroundColor: Colors.primary,
+    borderRadius: 15,
+    borderColor: Colors.tandark,
+    borderWidth: 1,
+  },
+
 
   // TODO continue transitioning these out
-
-  NotificationCardContainer: {
-    flexDirection: 'row',
-    backgroundColor: '#a0c9cf',
-    height: 60,
-    marginHorizontal: 15,
-    marginVertical: 0,
-    borderColor: 'rgba(0,0,0,0.05)',
-    borderWidth: 2,
-    borderRadius: 5
-  },
-  NotificationCardTimeStamp: {
-    fontWeight: '400',
-    fontStyle: 'italic',
-    fontSize: 13,
-    textAlign: 'left',
-    paddingTop: 33,
-    marginLeft: 20
-  },
-  NotificationCardMainText: {
-    flex: 4,
-    fontWeight: '400',
-    fontSize: 15,
-    textAlign: 'left',
-    paddingTop: 12,
-    marginLeft: -195,
-    marginRight: -15
-  },
-  NotificationUserProfile: {
-    flex: .75,
-    alignItems: 'center',
-    height: 55,
-    borderRadius: 2,
-    borderWidth: 1,
-    borderColor: 'black'
-    // this needs work
-  },
-  NotificationTypeIcon: {
-    flex: .8,
-    color: 'black',
-    marginTop: 10,
-    marginRight: 0
-    // this needs work
-  },
   testDBContainer: {
     height: 50,
     flex: 1,
@@ -271,9 +241,7 @@ const Styles = StyleSheet.create({
     justifyContent: 'center'
   },
   // used for autocomplete dropdown box
-  input: {
-    maxHeight: 40,
-  },
+ 
   autocompleteInputContainer: {
     // display: "flex",
     flexShrink: 0,
