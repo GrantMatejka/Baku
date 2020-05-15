@@ -35,7 +35,7 @@ class SearchTab extends React.Component {
             fontSize: 25,
             fontStyle: 'normal',
             padding: 30,
-            // color: 'rgba(96,100,109, 1)',
+            color: 'rgba(96,100,109, 1)',
             lineHeight: 40,
             textAlign: 'center',
             paddingTop: 100
