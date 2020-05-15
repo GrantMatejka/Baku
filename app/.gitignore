@@ -13,3 +13,5 @@ web-report/
 env
 # macOS
 .DS_Store
+cypress
+cypress/**/*

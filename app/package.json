@@ -7,8 +7,8 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "jest --watchAll -u",
-    "lint": "eslint *.js **/*.js",
-    "lint:fix": "eslint *.js **/*.js --fix"
+    "lint": "eslint *.js styles/*.js screens/**/*.js navigation/*.js styles/*.js assets/**/*.js components/*.js",
+    "lint:fix": "eslint *.js styles/*.js screens/**/*.js navigation/*.js styles/*.js assets/**/*.js components/*.js --fix"
   },
   "jest": {
     "preset": "jest-expo"
