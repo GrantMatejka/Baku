@@ -17,6 +17,14 @@ export default class PhotoList extends Component {
   }
 
   render() {
-    return <ScrollView>{this.getPhotos()}</ScrollView>;
+    return <ScrollView
+      contentContainerStyle={
+        {
+          flexDirection: 'row',
+          justifyContent: 'space-around',
+          flexWrap: 'wrap'}
+      }>
+      {this.getPhotos()}
+    </ScrollView>;
   }
 }

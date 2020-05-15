@@ -1,27 +1,27 @@
-import * as React from "../../node_modules/react";
-import { Text, View, FlatList, ScrollView, ActivityIndicator, Button, Image } from "react-native";
-import * as ImagePicker from "expo-image-picker";
+import * as React from '../../node_modules/react';
+import {Text, View, FlatList, ScrollView, ActivityIndicator, Button, Image} from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 
-import AwesomeButton from "react-native-really-awesome-button";
-import { Fumi } from "../../node_modules/react-native-textinput-effects/lib";
-import FontAwesomeIcon from "../../node_modules/react-native-vector-icons/FontAwesome";
+import AwesomeButton from 'react-native-really-awesome-button';
+import {Fumi} from '../../node_modules/react-native-textinput-effects/lib';
+import FontAwesomeIcon from '../../node_modules/react-native-vector-icons/FontAwesome';
 
-import Header from "../../components/header";
-import Firebase from "../../config/firebase";
-import Styles from "../../styles/styles";
-import Colors from "../../styles/colors";
+import Header from '../../components/header';
+import Firebase from '../../config/firebase';
+import Styles from '../../styles/styles';
+import Colors from '../../styles/colors';
 
-export default function CreatePost({ navigation: { navigate } }) {
-  const [cityx, setCity] = React.useState("");
-  const [countryx, setCountry] = React.useState("");
-  const [captionx, setCaption] = React.useState("");
-  const [photosx, setPhotos] = React.useState("");
+export default function CreatePost({navigation: {navigate}}) {
+  const [cityx, setCity] = React.useState('');
+  const [countryx, setCountry] = React.useState('');
+  const [captionx, setCaption] = React.useState('');
+  const [photosx, setPhotos] = React.useState('');
   // const [post_timex, setPostTime] = React.useState("");
   // const [userx, setUserID] = React.useState("");
   const [loading, setLoading] = React.useState(true);
   const [locations, setLocations] = React.useState([]);
 
-  const db = Firebase.firestore().collection("posts");
+  const db = Firebase.firestore().collection('posts');
   const uid = Firebase.auth().currentUser.uid;
 
   async function submitPost() {
@@ -42,19 +42,18 @@ export default function CreatePost({ navigation: { navigate } }) {
 
   function getUser() {
     if (Firebase.auth().currentUser.uid != null) {
-      return Firebase.auth().currentUser.uid
-    }
-    else {
-      return "n/a"
+      return Firebase.auth().currentUser.uid;
+    } else {
+      return 'n/a';
     }
   }
 
-  //adds docs from db to locations list
+  // adds docs from db to locations list
   React.useEffect(() => {
-    return db.orderBy("city", "asc").onSnapshot(querySnapshot => {
+    return db.orderBy('city', 'asc').onSnapshot((querySnapshot) => {
       const list = [];
-      querySnapshot.forEach(doc => {
-        const { city, country } = doc.data();
+      querySnapshot.forEach((doc) => {
+        const {city, country} = doc.data();
         list.push({
           id: doc.id,
           city,
@@ -73,7 +72,7 @@ export default function CreatePost({ navigation: { navigate } }) {
     return <ActivityIndicator />;
   }
 
-  function Item({ city }, { country }) {
+  function Item({city}, {country}) {
     return (
       <View style={Styles.container_content}>
         <Text>City: {city}</Text>
@@ -82,41 +81,41 @@ export default function CreatePost({ navigation: { navigate } }) {
     );
   }
 
-  uploadPhotoAsync = async uri => {
+  uploadPhotoAsync = async (uri) => {
     const path = 'photos/' + (uid) + '/' + Date.now();
     return new Promise(async (res, rej) => {
       const response = await fetch(uri);
       const file = await response.blob();
-      let upload = Firebase.storage().ref(path).put(file);
+      const upload = Firebase.storage().ref(path).put(file);
       // console.log(path)
-      upload.on("state_changed",
-        snapshot => { },
-        err => {
-          rej(err)
-        },
-        async () => {
-          const url = await upload.snapshot.ref.getDownloadURL();
-          res(url);
-        }
-      )
-    })
-  }
+      upload.on('state_changed',
+          (snapshot) => { },
+          (err) => {
+            rej(err);
+          },
+          async () => {
+            const url = await upload.snapshot.ref.getDownloadURL();
+            res(url);
+          }
+      );
+    });
+  };
 
   async function pick_image() {
     try {
-      let result = await ImagePicker.launchImageLibraryAsync({
+      const result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.All,
         allowsEditing: true,
         aspect: [4, 3],
         quality: 1,
       });
       if (!result.cancelled) {
-        setPhotos(result.uri)
+        setPhotos(result.uri);
       }
     } catch (E) {
-      console.log(E + "image not found");
+      console.log(E + 'image not found');
     }
-  };
+  }
 
 
   return (
@@ -128,7 +127,7 @@ export default function CreatePost({ navigation: { navigate } }) {
       >
         <View>
           <Image
-            source={{ uri: photosx }}
+            source={{uri: photosx}}
             style={{
               width: 200, height: 300,
               alignSelf: 'center',
@@ -143,7 +142,7 @@ export default function CreatePost({ navigation: { navigate } }) {
 
         <View style={Styles.card}>
           <AwesomeButton
-            backgroundColor={"#478a91"}
+            backgroundColor={'#478a91'}
             width={340}
             height={40}
             onPress={() => pick_image()}
@@ -154,49 +153,49 @@ export default function CreatePost({ navigation: { navigate } }) {
 
         <View style={Styles.p_3}>
           <Fumi
-            label={"City"}
+            label={'City'}
             onChangeText={setCity}
             iconClass={FontAwesomeIcon}
-            iconName={"map-pin"}
+            iconName={'map-pin'}
             iconColor={Colors.warning}
             iconSize={18}
             iconWidth={40}
             inputPadding={16}
-            inputStyle={{ padding: 5 }}
+            inputStyle={{padding: 5}}
           />
         </View>
 
         <View style={Styles.p_3}>
           <Fumi
-            label={"Country"}
+            label={'Country'}
             onChangeText={setCountry}
             iconClass={FontAwesomeIcon}
-            iconName={"globe"}
+            iconName={'globe'}
             iconColor={Colors.warning}
             iconSize={18}
             iconWidth={40}
             inputPadding={16}
-            inputStyle={{ padding: 5 }}
+            inputStyle={{padding: 5}}
           />
         </View>
 
         <View style={Styles.p_3}>
           <Fumi
-            label={"Caption"}
+            label={'Caption'}
             onChangeText={setCaption}
             iconClass={FontAwesomeIcon}
-            iconName={"indent"}
+            iconName={'indent'}
             iconColor={Colors.warning}
             iconSize={18}
             iconWidth={40}
             inputPadding={16}
-            inputStyle={{ padding: 5 }}
+            inputStyle={{padding: 5}}
           />
         </View>
 
         <View style={Styles.card}>
           <AwesomeButton
-            backgroundColor={"#ffbc26"}
+            backgroundColor={'#ffbc26'}
             width={340}
             height={40}
             onPress={() => submitPost()}
