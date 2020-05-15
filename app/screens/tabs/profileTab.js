@@ -49,6 +49,7 @@ export default function ProfileTab({ navigation }) {
               }}
               style={styles2.thumbnail}
             />
+            {/* Displays Name as well as Username in feed */}
             <Text style={styles2.username}>  {data.name} </Text>
           </View>
           <View style={styles2.postCardCont}>
