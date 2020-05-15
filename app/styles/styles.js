@@ -14,7 +14,6 @@ const Styles = StyleSheet.create({
   // Useful for with ScrollView
   container_content: {
     paddingTop: 10,
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
   },
@@ -241,7 +240,7 @@ const Styles = StyleSheet.create({
     justifyContent: 'center'
   },
   // used for autocomplete dropdown box
- 
+
   autocompleteInputContainer: {
     // display: "flex",
     flexShrink: 0,
