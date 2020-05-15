@@ -21,7 +21,7 @@ export default function CreatePost({ navigation }) {
   const [loading, setLoading] = React.useState(true);
   const [locations, setLocations] = React.useState([]);
 
-  const db = Firebase.firestore().collection("posts");
+  const db = Firebase.firestore().collection('posts');
   const uid = Firebase.auth().currentUser.uid;
 
   // async function previewPost() {
@@ -52,12 +52,12 @@ export default function CreatePost({ navigation }) {
   // }
 
 
-  //adds docs from db to locations list
+  // adds docs from db to locations list
   React.useEffect(() => {
-    return db.orderBy("city", "asc").onSnapshot(querySnapshot => {
+    return db.orderBy('city', 'asc').onSnapshot((querySnapshot) => {
       const list = [];
-      querySnapshot.forEach(doc => {
-        const { city, country } = doc.data();
+      querySnapshot.forEach((doc) => {
+        const {city, country} = doc.data();
         list.push({
           id: doc.id,
           city,
@@ -107,19 +107,19 @@ export default function CreatePost({ navigation }) {
 
   async function pick_image() {
     try {
-      let result = await ImagePicker.launchImageLibraryAsync({
+      const result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.All,
         allowsEditing: true,
         aspect: [4, 3],
         quality: 1,
       });
       if (!result.cancelled) {
-        setPhotos(result.uri)
+        setPhotos(result.uri);
       }
     } catch (E) {
-      console.log(E + "image not found");
+      console.log(E + 'image not found');
     }
-  };
+  }
 
 
   return (
@@ -131,7 +131,7 @@ export default function CreatePost({ navigation }) {
       >
         <View>
           <Image
-            source={{ uri: photosx }}
+            source={{uri: photosx}}
             style={{
               width: 200, height: 300,
               alignSelf: 'center',
@@ -146,7 +146,7 @@ export default function CreatePost({ navigation }) {
 
         <View style={Styles.card}>
           <AwesomeButton
-            backgroundColor={"#478a91"}
+            backgroundColor={'#478a91'}
             width={340}
             height={40}
             onPress={() => pick_image()}
@@ -157,49 +157,49 @@ export default function CreatePost({ navigation }) {
 
         <View style={Styles.p_3}>
           <Fumi
-            label={"City"}
+            label={'City'}
             onChangeText={setCity}
             iconClass={FontAwesomeIcon}
-            iconName={"map-pin"}
+            iconName={'map-pin'}
             iconColor={Colors.warning}
             iconSize={18}
             iconWidth={40}
             inputPadding={16}
-            inputStyle={{ padding: 5 }}
+            inputStyle={{padding: 5}}
           />
         </View>
 
         <View style={Styles.p_3}>
           <Fumi
-            label={"Country"}
+            label={'Country'}
             onChangeText={setCountry}
             iconClass={FontAwesomeIcon}
-            iconName={"globe"}
+            iconName={'globe'}
             iconColor={Colors.warning}
             iconSize={18}
             iconWidth={40}
             inputPadding={16}
-            inputStyle={{ padding: 5 }}
+            inputStyle={{padding: 5}}
           />
         </View>
 
         <View style={Styles.p_3}>
           <Fumi
-            label={"Caption"}
+            label={'Caption'}
             onChangeText={setCaption}
             iconClass={FontAwesomeIcon}
-            iconName={"indent"}
+            iconName={'indent'}
             iconColor={Colors.warning}
             iconSize={18}
             iconWidth={40}
             inputPadding={16}
-            inputStyle={{ padding: 5 }}
+            inputStyle={{padding: 5}}
           />
         </View>
 
         <View style={Styles.card}>
           <AwesomeButton
-            backgroundColor={"#ffbc26"}
+            backgroundColor={'#ffbc26'}
             width={340}
             height={40}
             onPress={() => { navigation.navigate("Preview Post Screen", { captionx: captionx, photosx: photosx, cityx: cityx, countryx: countryx }) }}

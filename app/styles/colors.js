@@ -8,7 +8,9 @@ const Colors = {
   background: '#f0efef',
   dark: '#010101',
   danger: '#cc0022',
-  like: '#e06e9a'
+  like: '#e06e9a',
+  tan: '#fff9f1',
+  tandark: '#fff0db'
 };
 
 export default Colors;

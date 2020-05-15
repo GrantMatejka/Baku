@@ -68,7 +68,7 @@ class Login extends React.Component {
     } catch (e) {
       return { error: true };
     }
-  }
+  };
   async loginWithFacebook() {
     await Facebook.initializeAsync('269105660797641');
     const { type, token } = await Facebook.logInWithReadPermissionsAsync(
@@ -81,9 +81,10 @@ class Login extends React.Component {
       const credential = Firebase.auth.FacebookAuthProvider.credential(token)
       Firebase.auth().signInWithCredential(credential).catch((error) => {
         console.log(error)
-      })
+      });
     }
-  }
+  };
+
   render() {
     return (
       <ScrollView style={Styles.container}>
@@ -121,7 +122,7 @@ class Login extends React.Component {
             {this.state.error}
           </Text>
 
-          <View style={Styles.p_3}>
+          <View style={Styles.p_2}>
             <AwesomeButton
               backgroundColor={Colors.light}
               width={200}
@@ -135,7 +136,7 @@ class Login extends React.Component {
             </AwesomeButton>
           </View>
 
-          <View style={Styles.p_3} testID='signup_button'>
+          <View style={Styles.p_2} testID='signup_button'>
             <AwesomeButton
               backgroundColor={Colors.warning}
               width={200}
@@ -189,7 +190,6 @@ class Login extends React.Component {
             </View>
           </View>
         </View>
-
       </ScrollView >
     );
   }
