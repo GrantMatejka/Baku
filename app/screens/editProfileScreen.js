@@ -103,6 +103,8 @@ class EditProfile extends React.Component {
           );
         });
   }
+
+
     
     render() {
       return (
@@ -129,7 +131,7 @@ class EditProfile extends React.Component {
             iconName={'envelope-square'}
             onChangeText={(email) => this.setState({email})}
           />
-
+{/* 
           <Fumi
             label={'Password'}
             value={this.state.password}
@@ -147,7 +149,7 @@ class EditProfile extends React.Component {
             iconName={'lock'}
             onChangeText={(confirmPassword) => this.setState({confirmPassword})}
           />
-
+ */}
           <Fumi
             label={'Phone-Number'}
             value={this.state.data.mobile}
@@ -209,6 +211,7 @@ class EditProfile extends React.Component {
           </View>
 
           <View style={Styles.container_content}>
+            
             <AwesomeButton
               backgroundColor={Colors.warning}
               width={200}
@@ -219,6 +222,23 @@ class EditProfile extends React.Component {
             >
               Submit
             </AwesomeButton>
+
+            {<View style={Styles.p_3}>
+            <AwesomeButton
+              backgroundColor={Colors.success}
+              width={200}
+              height={50}
+              onPress={() => {
+                // this.setState({error: ''});
+                //this.loginWithFacebook();
+                //this.changePassword();
+                this.props.navigation.navigate('ChangePassword');
+              }}
+            >
+                  Change Password
+            </AwesomeButton>
+          </View> }
+            
           </View>
 
         </ScrollView>
