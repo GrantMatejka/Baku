@@ -84,6 +84,7 @@ const Styles = StyleSheet.create({
   text_centered: {
     textAlign: 'center'
   },
+  
 
   // Button Stylings
   button: {
@@ -262,7 +263,32 @@ const Styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
-  }
+  },
+  //used for autocomplete dropdown box
+  input: {
+    maxHeight: 40,
+  },
+  autocompleteInputContainer: {
+    //display: "flex",
+    flexShrink: 0,
+    flexGrow: 0,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "center",
+    //borderBottomWidth: 1,
+    borderColor: "#c7c6c1",
+    paddingVertical: 13,
+    paddingLeft: 12,
+    paddingRight: "5%",
+    width: "100%",
+    justifyContent: "flex-start",
+  },
+  
+  iconPos: {
+    position: "absolute",
+    left: 25,
+    top: 25,
+  },
 
 });
 
