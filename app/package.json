@@ -14,7 +14,6 @@
   "jest": {
     "preset": "jest-expo"
   },
-
   "dependencies": {
     "@expo/vector-icons": "~10.0.0",
     "@react-native-community/google-signin": "^4.0.0",
