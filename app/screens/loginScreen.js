@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { ScrollView } from 'react-native-gesture-handler';
 import AwesomeButton from 'react-native-really-awesome-button';
@@ -163,38 +164,33 @@ class Login extends React.Component {
           >
             Forgot Password?
           </AwesomeButton>
-
-
-          {<View style={Styles.p_3}>
-            <AwesomeButton
-              backgroundColor={Colors.like}
-              width={200}
-              height={50}
-              onPress={() => {
-                this.setState({ error: '' });
-                this.signInWithGoogleAsync();
-              }}
-            >
-              Sign in with Google!
-            </AwesomeButton>
-          </View>}
-          {<View style={Styles.p_3}>
-            <AwesomeButton
-              backgroundColor={Colors.success}
-              width={200}
-              height={50}
-              onPress={() => {
-                //this.setState({error: ''});
-                this.loginWithFacebook();
-              }}
-            >
-              Sign in with Facebook!
-              </AwesomeButton>
-          </View>}
-
+          <View style={[Styles.p_3, { flexDirection: "row" }]}>
+            <View style={{ marginHorizontal: 10 }}>
+              <Icon
+                color="#3b5998"
+                marginHorizontal={10}
+                size={25}
+                name="facebook"
+                onPress={() => {
+                  this.setState({ error: '' });
+                  this.loginWithFacebook();
+                }}
+              />
+            </View>
+            <View>
+              <Icon
+                size={25}
+                name="google"
+                onPress={() => {
+                  this.setState({ error: '' });
+                  this.signInWithGoogleAsync();
+                }}
+              />
+            </View>
+          </View>
         </View>
 
-      </ScrollView>
+      </ScrollView >
     );
   }
 }

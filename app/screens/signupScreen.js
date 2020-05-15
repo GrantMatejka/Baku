@@ -1,5 +1,5 @@
 import React, { console } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 
 import { Fumi } from 'react-native-textinput-effects';
 import AwesomeButton from 'react-native-really-awesome-button';
@@ -65,7 +65,9 @@ class Signup extends React.Component {
 
   render() {
     return (
-      <View style={Styles.container}>
+      <ScrollView
+        style={Styles.container}
+      >
         <Text testID='signup_sign' style={[Styles.header, Styles.text_large]}>
           Welcome to Baku!
         </Text>
@@ -133,7 +135,7 @@ class Signup extends React.Component {
           </AwesomeButton>
         </View>
 
-      </View>
+      </ScrollView>
     );
   }
 }
