@@ -29,7 +29,7 @@ class ResetPassword extends React.Component {
 
     render() {
       return (
-        <View style={Styles.container_content}>
+        <View style={Styles.container}>
           <Text style={[Styles.header, Styles.text_large]}>
             Trouble Logging In?
           </Text>

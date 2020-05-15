@@ -7,17 +7,23 @@ import Colors from './colors';
 const Styles = StyleSheet.create({
   // Container styles
   container: {
-    flex: 1,
+    display: 'flex',
     backgroundColor: Colors.background
   },
   // Container for any horizontally centered child content
   // Useful for with ScrollView
   container_content: {
     paddingTop: 10,
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
   },
-
+  row: {
+    flexDirection: 'row',
+  },
+  column: {
+    flexDirection: 'column',
+  },
   // Card styles WIP
   card: {
     alignItems: 'center',
@@ -78,7 +84,7 @@ const Styles = StyleSheet.create({
   text_centered: {
     textAlign: 'center'
   },
-  
+
 
   // Button Stylings
   button: {
@@ -91,7 +97,8 @@ const Styles = StyleSheet.create({
     backgroundColor: Colors.warning,
     borderColor: Colors.warning,
     borderWidth: 1,
-    borderRadius: 5
+    borderRadius: 5,
+    flex: 2
   },
 
   // Padding Levels
@@ -185,6 +192,31 @@ const Styles = StyleSheet.create({
     height: 200,
     resizeMode: 'contain',
   },
+  image_icon: {
+    width: 50,
+    height: 50,
+    borderRadius: 15,
+  },
+
+  // PostCard styles
+  postCardContainer: {
+    flexWrap: 'wrap',
+    height: 450,
+    width: '85%',
+    maxWidth: 450,
+    marginHorizontal: 5,
+    marginVertical: 15,
+    backgroundColor: Colors.tan,
+    borderRadius: 10,
+    borderColor: Colors.tandark,
+    borderWidth: 1,
+  },
+  postCardLocationText: {
+    textAlign: 'center',
+    fontWeight: '500',
+    color: Colors.primary,
+    fontSize: 35
+  },
 
 
   // TODO continue transitioning these out
@@ -232,53 +264,34 @@ const Styles = StyleSheet.create({
     marginRight: 0
     // this needs work
   },
-  postCardLocation: {
-    fontWeight: 'bold',
-    fontSize: 20,
-    textAlign: 'center',
-    color: '#DD8627'
-  },
-  postCardUserContainer: {
-    alignSelf: 'flex-end',
-    marginRight: 15,
-    marginTop: -40
-  },
-  postCardContainer: {
-    backgroundColor: '#FFF9F1',
-    height: 450,
-    marginHorizontal: 15,
-    marginVertical: 30,
-    borderColor: 'rgba(0,0,0,0.05)',
-    borderWidth: 2
-  },
   testDBContainer: {
     height: 50,
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
   },
-  //used for autocomplete dropdown box
+  // used for autocomplete dropdown box
   input: {
     maxHeight: 40,
   },
   autocompleteInputContainer: {
-    //display: "flex",
+    // display: "flex",
     flexShrink: 0,
     flexGrow: 0,
-    flexDirection: "row",
-    flexWrap: "wrap",
-    alignItems: "center",
-    //borderBottomWidth: 1,
-    borderColor: "#c7c6c1",
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    // borderBottomWidth: 1,
+    borderColor: '#c7c6c1',
     paddingVertical: 13,
     paddingLeft: 12,
-    paddingRight: "5%",
-    width: "100%",
-    justifyContent: "flex-start",
+    paddingRight: '5%',
+    width: '100%',
+    justifyContent: 'flex-start',
   },
-  
+
   iconPos: {
-    position: "absolute",
+    position: 'absolute',
     left: 25,
     top: 25,
   },
