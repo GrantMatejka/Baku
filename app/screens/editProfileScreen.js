@@ -95,7 +95,6 @@ class EditProfile extends React.Component {
           merge: true
         }
     )
-
         .then(() => {
           this.props.navigation.navigate('Tabs', {
             screen: 'ProfileTab'
@@ -129,7 +128,7 @@ class EditProfile extends React.Component {
             autoCapitalize="none"
             iconClass={FontAwesomeIcon}
             iconName={'envelope-square'}
-            onChangeText={(email) => this.setState({email})}
+            onChangeText={(username) => this.setState({username})}
           />
 {/* 
           <Fumi
@@ -152,7 +151,7 @@ class EditProfile extends React.Component {
  */}
           <Fumi
             label={'Phone-Number'}
-            value={this.state.data.mobile}
+            value={this.state.mobile}
             iconClass={FontAwesomeIcon}
             iconName={'phone'}
             iconSize={20}
@@ -163,7 +162,7 @@ class EditProfile extends React.Component {
 
           <Fumi
             label={'Birthday'}
-            value={this.state.data.birthday}
+            value={this.state.birthday}
             iconClass={FontAwesomeIcon}
             iconName={'birthday-cake'}
             iconSize={20}
@@ -174,7 +173,7 @@ class EditProfile extends React.Component {
 
           <Fumi
             label={'Short BIO'}
-            value={this.state.data.bio}
+            value={this.state.bio}
             iconClass={FontAwesomeIcon}
             iconName={'pencil'}
             iconSize={20}
@@ -195,7 +194,7 @@ class EditProfile extends React.Component {
 
           <Fumi
             label={'Some Places You\'ve Been'}
-            value={this.state.data.places}
+            value={this.state.places}
             iconClass={FontAwesomeIcon}
             iconName={'location-arrow'}
             iconSize={20}
