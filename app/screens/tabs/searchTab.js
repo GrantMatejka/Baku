@@ -48,7 +48,6 @@ class SearchTab extends React.Component {
 
           <Autocomplete
             key={shortid.generate()}
-            style={Styles.input}
             scrollToInput={(ev) => scrollToInput(ev)}
             handleSelectItem={(item, id) => this.handleSelectItem(item, id)}
             onDropdownClose={() => onDropdownClose()}
