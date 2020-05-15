@@ -29,9 +29,8 @@ export default function ProfileTab({ navigation }) {
   React.useEffect(() => {
     db.collection("users").doc(uid).get()
       .then((doc) => {
-        setData(doc.data())
+        setData(doc.data()), setUsername(doc.data().username), setProfilePic(doc.data().photo)
       })
-      .then(() => { setUsername(data.username), setProfilePic(data.photo) })
       .catch((error) => {
         console.log("Error getting documents: ", error);
       });

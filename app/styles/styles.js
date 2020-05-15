@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import normalize from 'react-native-normalize';
 
@@ -78,7 +78,7 @@ const Styles = StyleSheet.create({
   text_centered: {
     textAlign: 'center'
   },
-  
+
 
   // Button Stylings
   button: {
@@ -232,6 +232,13 @@ const Styles = StyleSheet.create({
     marginRight: 0
     // this needs work
   },
+  postCardHeader: {
+    fontWeight: "400",
+    fontStyle: "italic",
+    fontSize: 13,
+    textAlign: "center",
+    paddingTop: 12
+  },
   postCardLocation: {
     fontWeight: 'bold',
     fontSize: 20,
@@ -276,7 +283,7 @@ const Styles = StyleSheet.create({
     width: "100%",
     justifyContent: "flex-start",
   },
-  
+
   iconPos: {
     position: "absolute",
     left: 25,

@@ -26,8 +26,6 @@ class CreateProfile extends React.Component {
     data: '',
     name: '',
     uri: '',
-    // this.dbRef needs to be looked at as linter don't like it
-    // dbRef: this.dbRef,
     photo: ''
   };
 
