@@ -10,7 +10,6 @@ export default function Feed() {
       <Header headerTitle="Feed" />
 
       <FeedList />
-
     </View>
   );
 }
