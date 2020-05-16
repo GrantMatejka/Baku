@@ -1,9 +1,10 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import { View, Text, Image } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-import {ScrollView} from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native-gesture-handler';
 import AwesomeButton from 'react-native-really-awesome-button';
-import {Hoshi} from 'react-native-textinput-effects';
+import { Hoshi } from 'react-native-textinput-effects';
 
 import Firebase from '../config/firebase';
 import Styles from '../styles/styles';
@@ -22,31 +23,31 @@ class Login extends React.Component {
   };
 
   componentDidMount() {
-    Firebase.auth().onAuthStateChanged((user)=> {
-      if (user!= null) {
-        console.log(user);
+    Firebase.auth().onAuthStateChanged((user) => {
+      if (user == null) {
+        console.log("Error User is null")
       }
-    });
+    })
   }
 
   handleLogin(state) {
-    const {email, password} = state;
+    const { email, password } = state;
 
     Firebase.auth()
-        .signInWithEmailAndPassword(email, password)
-        .then(
-            () => {
-              this.props.navigation.navigate('Tabs', {
-                screen: 'FeedTab'
-              });
-              this.setState({error: ''});
-            })
-        .catch((error) => {
-          this.setState({error: error.message});
-        });
+      .signInWithEmailAndPassword(email, password)
+      .then(
+        () => {
+          this.props.navigation.navigate('Tabs', {
+            screen: 'FeedTab'
+          });
+          this.setState({ error: '' });
+        })
+      .catch((error) => {
+        this.setState({ error: error.message });
+      });
   }
 
-  // googleauth
+  //googleauth
   signInWithGoogleAsync = async () => {
     try {
       const result = await Google.logInAsync({
@@ -58,31 +59,32 @@ class Login extends React.Component {
 
       if (result.type === 'success') {
         return result.accessToken,
-        this.props.navigation.navigate('Tabs', {
-          screen: 'FeedTab'
-        });
+          this.props.navigation.navigate('Tabs', {
+            screen: 'FeedTab'
+          });
       } else {
-        return {cancelled: true};
+        return { cancelled: true };
       }
     } catch (e) {
-      return {error: true};
+      return { error: true };
     }
-  }
+  };
   async loginWithFacebook() {
     await Facebook.initializeAsync('269105660797641');
-    const {type, token} = await Facebook.logInWithReadPermissionsAsync(
-        {permissions: ['public_profile', 'email']},
+    const { type, token } = await Facebook.logInWithReadPermissionsAsync(
+      { permissions: ['public_profile', 'email'] },
     );
     if (type === 'success') {
       this.props.navigation.navigate('Tabs', {
         screen: 'FeedTab'
       });
-      const credential = Firebase.auth.FacebookAuthProvider.credential(token);
+      const credential = Firebase.auth.FacebookAuthProvider.credential(token)
       Firebase.auth().signInWithCredential(credential).catch((error) => {
-        console.log(error);
+        console.log(error)
       });
     }
-  }
+  };
+
   render() {
     return (
       <ScrollView style={Styles.container}>
@@ -96,21 +98,23 @@ class Login extends React.Component {
         <Hoshi
           label={'Email'}
           value={this.state.email}
-          onChangeText={(email) => this.setState({email})}
+          onChangeText={(email) => this.setState({ email })}
           borderColor={Colors.light}
           borderHeight={5}
           inputPadding={18}
           autoCapitalize="none"
+          testID='email_text_box'
         />
 
         <Hoshi
           label={'Password'}
           value={this.state.password}
-          onChangeText={(password) => this.setState({password})}
+          onChangeText={(password) => this.setState({ password })}
           borderColor={Colors.warning}
           borderHeight={5}
           inputPadding={16}
           secureTextEntry={true}
+          testID='pass_text_box'
         />
 
         <View style={Styles.container_content}>
@@ -118,13 +122,13 @@ class Login extends React.Component {
             {this.state.error}
           </Text>
 
-          <View style={Styles.p_3}>
+          <View style={Styles.p_2}>
             <AwesomeButton
               backgroundColor={Colors.light}
               width={200}
               height={50}
               onPress={() => {
-                this.setState({error: ''});
+                this.setState({ error: '' });
                 this.handleLogin(this.state);
               }}
             >
@@ -132,13 +136,14 @@ class Login extends React.Component {
             </AwesomeButton>
           </View>
 
-          <View style={Styles.p_3}>
+          <View style={Styles.p_2} testID='signup_button'>
             <AwesomeButton
               backgroundColor={Colors.warning}
               width={200}
               height={50}
+              testID='signup_button'
               onPress={() => {
-                this.setState({email: '', password: '', error: ''});
+                this.setState({ email: '', password: '', error: '' });
                 this.props.navigation.navigate('Create');
               }}
             >
@@ -146,7 +151,7 @@ class Login extends React.Component {
             </AwesomeButton>
           </View>
 
-          <Text style={Styles.p_2}>
+          <Text style={Styles.p_2} testID="login">
             New user? Sign up now!
           </Text>
 
@@ -160,38 +165,32 @@ class Login extends React.Component {
           >
             Forgot Password?
           </AwesomeButton>
-
-
-          {<View style={Styles.p_3}>
-            <AwesomeButton
-              backgroundColor={Colors.like}
-              width={200}
-              height={50}
-              onPress={() => {
-                this.setState({error: ''});
-                this.signInWithGoogleAsync();
-              }}
-            >
-              Sign in with Google!
-            </AwesomeButton>
-          </View> }
-          {<View style={Styles.p_3}>
-            <AwesomeButton
-              backgroundColor={Colors.success}
-              width={200}
-              height={50}
-              onPress={() => {
-                // this.setState({error: ''});
-                this.loginWithFacebook();
-              }}
-            >
-                  Sign in with Facebook!
-            </AwesomeButton>
-          </View> }
-
+          <View style={[Styles.p_3, { flexDirection: "row" }]}>
+            <View style={{ marginHorizontal: 10 }}>
+              <Icon
+                color="#3b5998"
+                marginHorizontal={10}
+                size={25}
+                name="facebook"
+                onPress={() => {
+                  this.setState({ error: '' });
+                  this.loginWithFacebook();
+                }}
+              />
+            </View>
+            <View>
+              <Icon
+                size={25}
+                name="google"
+                onPress={() => {
+                  this.setState({ error: '' });
+                  this.signInWithGoogleAsync();
+                }}
+              />
+            </View>
+          </View>
         </View>
-
-      </ScrollView>
+      </ScrollView >
     );
   }
 }
