@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import React, {Component} from 'react';
+import {View} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
 
 import datas from '../assets/data/data';
 import styles from '../styles/styles';
@@ -21,15 +21,8 @@ export default class ProfilePosts extends Component {
 
   render() {
     return (
-      <ScrollView
-        contentContainerStyle={
-          {
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            flexWrap: 'wrap'
-          }
-        }>
-        {this.getPhotos()}
+      <ScrollView>
+        <View style={styles.container}>{this.getPhotos()}</View>
       </ScrollView>
     );
   }

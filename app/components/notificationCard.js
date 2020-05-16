@@ -1,43 +1,34 @@
-import React, { Component } from 'react';
-import { Image, Text, View } from 'react-native';
+import React, {Component} from 'react';
+import {Image, Text, View} from 'react-native';
 
 import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
-import Styles from '../styles/styles';
+import styles from '../styles/styles';
 
 export default class NotificationCard extends Component {
-  // Using this way so easy transition to dynamic data
-  type = {
-    likeIcon: 'heart-o',
-    followIcon: 'user-plus',
-    likeText: 'has liked your post',
-    followText: 'has followed you'
-  };
+    type = {
+      likeIcon: 'heart-o',
+      followIcon: 'user-plus',
+      likeText: 'has liked your post',
+      followText: 'has followed you'
+    };
 
-  render() {
-    return (
-      <View style={Styles.notificationCardContainer}>
-        <View style={{ flexDirection: 'row', margin: 5, justifyContent: 'space-between' }}>
-
-          <Image style={Styles.image_icon}
-            source={{ uri: this.props.detail.user_avatar }} />
-
-          <View style={{ flexDirection: 'column', marginHorizontal: 10, flex: 1 }}>
-            <Text style={{ fontSize: 20 }}>
-              {this.props.detail.username} {this.type.followText}
-            </Text>
-            <Text >
-              #Timestamp#
-              {/* TODO add time here */}
-            </Text>
-          </View>
-
-          <AwesomeIcon
+    render() {
+      return (
+        <View style={styles.NotificationCardContainer}>
+          <Image style={styles.NotificationUserProfile}
+            source={{uri: this.props.detail.user_avatar}} />
+          <Text style={styles.NotificationCardTimeStamp}>
+            make: this.props.detail.timestamp
+          </Text>
+          <Text style={styles.NotificationCardMainText}>
+            {this.props.detail.username} {this.type.followText}
+          </Text>
+          <AwesomeIcon style={styles.NotificationTypeIcon}
             name={this.type.followIcon}
             size={35}
           ></AwesomeIcon>
         </View>
-      </View>
-    );
-  }
+      );
+    }
 }

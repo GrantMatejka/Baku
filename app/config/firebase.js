@@ -23,26 +23,9 @@ const firebaseConfig = {
   appId: APP_ID
 };
 
-
-// class fire {
-//   constructor() {
-//     firebase.initializeApp(firebaseConfig);
-//   }
-
-//   get uid() {
-//     return firebase.firestore();
-//   }
-
-//   get firestore() {
-//     firebase.firestore();
-//   }
-
-
-// }
-
 const Firebase = firebase.initializeApp(firebaseConfig);
-firebase.firestore();
-export default Firebase;
-// fire.shared = new fire()
 
-// export default fire;
+firebase.firestore();
+
+
+export default Firebase;

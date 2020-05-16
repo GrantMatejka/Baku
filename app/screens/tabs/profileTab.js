@@ -1,53 +1,41 @@
-import * as React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
-import { DrawerActions } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import AwesomeButton from 'react-native-really-awesome-button';
+import * as React from "react";
+import { Image, StyleSheet, Text, View } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
+import { DrawerActions } from "@react-navigation/native";
+import Icon from "react-native-vector-icons/FontAwesome";
+import AwesomeButton from "react-native-really-awesome-button";
 import { createMaterialTopTabNavigator }
   from '@react-navigation/material-top-tabs';
-import ProfilePosts from '../../components/profilePosts';
-import Favorites from '../../components/favorites';
+import ProfilePosts from "../../components/profilePosts";
+import Favorites from "../../components/favorites"
 
-import Header from '../../components/header';
-import Styles from '../../styles/styles';
-import Colors from '../../styles/colors';
-import Drawer from '../../components/drawerNav';
-import firebase from '../../config/firebase';
+import Header from "../../components/header";
+import Styles from "../../styles/styles";
+import Colors from "../../styles/colors";
+import Drawer from "../../components/drawerNav";
+import firebase from "../../config/firebase";
 
 const TopTab = createMaterialTopTabNavigator();
 
 export default function ProfileTab({ navigation }) {
-  const db = firebase.firestore();
-  const uid = firebase.auth().currentUser.uid;
-  // let path = 'photos/' + (uid) + '/profile';
-  // let store = firebase.storage().ref(path);
-  const [data, setData] = React.useState('');
-  const [username, setUsername] = React.useState('');
-  const [profilePic, setProfilePic] = React.useState('');
-
-  React.useEffect(() => {
-    db.collection("users").doc(uid).get()
-      .then((doc) => {
-        setData(doc.data()), setUsername(doc.data().username), setProfilePic(doc.data().photo)
-      })
-      .catch((error) => {
-        console.log("Error getting documents: ", error);
-      });
-  })
+  // let db = firebase.firestore();
+  // let user = firebase.auth().currentUser;
+  //   return console.log("User email: ", user.email);
+  // }
   return (
     <View style={Styles.container}>
-      <Header headerTitle={username} />
+      <Header headerTitle="Profile" />
       <ScrollView>
         <View style={styles2.thumbnailSection}>
           <View>
             <Image
               source={{
                 uri:
-                  profilePic
+                  "https://drive.google.com/uc?id=1DTPPv-4QHmQfFo8IqjekH4EuSHgflPNr"
               }}
               style={styles2.thumbnail}
             />
+            <Text style={styles2.username}> {firebase.auth().currentUser.username} </Text>
           </View>
           <View style={styles2.postCardCont}>
             <Text style={styles2.postCount}> 100 </Text>
@@ -67,12 +55,12 @@ export default function ProfileTab({ navigation }) {
           />
         </View>
 
-        <View style={{ alignItems: 'center', padding: 24 }}>
+        <View style={{ alignItems: "center", padding: 24 }}>
           <AwesomeButton
-            backgroundColor={'#ffbc26'}
+            backgroundColor={"#ffbc26"}
             width={340}
             height={40}
-            onPress={() => navigation.navigate('EditProfile')}
+            onPress={() => navigation.navigate("EditProfile")}
           >
             Edit Profile
           </AwesomeButton>
@@ -82,7 +70,7 @@ export default function ProfileTab({ navigation }) {
           <TopTab.Navigator
             tabBarOptions={{
               labelStyle: { fontWeight: 'bold', fontSize: 12 },
-              indicatorStyle: { backgroundColor: Colors.warning },
+              indicatorStyle: { backgroundColor: Colors.background },
               style: { backgroundColor: Colors.info },
               inactiveBackgroundColor: Colors.info,
               activeBackgroundColor: Colors.warning,
@@ -105,9 +93,10 @@ const styles2 = StyleSheet.create({
     margin: 10
   },
   thumbnailSection: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#A0C9CF',
+    flexDirection: "row",
+    // flex: 2,
+    alignItems: "center",
+    backgroundColor: "#A0C9CF",
     height: 114
   },
   thumbnail: {
@@ -118,13 +107,13 @@ const styles2 = StyleSheet.create({
     marginLeft: 16
   },
   postCardCont: {
-    flexDirection: 'column',
-    alignItems: 'center'
+    flexDirection: "column",
+    alignItems: "center"
   },
   postCount: {
     fontSize: 13,
     marginLeft: 26,
-    fontWeight: 'bold'
+    fontWeight: "bold"
   },
   postCards: {
     fontSize: 12,
@@ -132,13 +121,13 @@ const styles2 = StyleSheet.create({
     paddingTop: 2
   },
   followerCont: {
-    flexDirection: 'column',
-    alignItems: 'center'
+    flexDirection: "column",
+    alignItems: "center"
   },
   followerCount: {
     fontSize: 13,
     marginLeft: 26,
-    fontWeight: 'bold'
+    fontWeight: "bold"
   },
   follower: {
     fontSize: 12,
@@ -149,17 +138,17 @@ const styles2 = StyleSheet.create({
     paddingVertical: 12
   },
   imageMeta: {
-    display: 'flex',
-    flexDirection: 'row'
+    display: "flex",
+    flexDirection: "row"
   },
   username: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     paddingTop: 0,
     marginLeft: 16,
-    color: 'white'
+    color: "white"
   },
   hambuger: {
-    marginLeft: 80,
+    marginLeft: 75,
     paddingBottom: 70
   }
 });
