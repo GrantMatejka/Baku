@@ -1,18 +1,15 @@
-/* eslint-disable no-invalid-this */
+import React, { console } from 'react';
+import { View, Text, ScrollView } from 'react-native';
 
-import React, {console} from 'react';
-import {View, Text} from 'react-native';
-
-import {Fumi} from 'react-native-textinput-effects';
+import { Fumi } from 'react-native-textinput-effects';
 import AwesomeButton from 'react-native-really-awesome-button';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import * as firebase from 'firebase';
-// import firebase from '../config/firebase'
+import firebase from '../config/firebase';
 import Colors from '../styles/colors.js';
 import Styles from '../styles/styles.js';
 
 class Signup extends React.Component {
-  dbRef = firebase.firestore().collection('users');
+  db = firebase.firestore().collection('users');
 
   state = {
     name: '',
@@ -20,73 +17,58 @@ class Signup extends React.Component {
     email: '',
     password: '',
     error: '',
-    // this.dbRef needs to be looked at as linter don't like it
-    dbRef: this.dbRef
   };
 
-  // storeUser = () => {
-  //   const { name, email, isLoading } = this.state;
-  //   this.setState({
-  //     isLoading: true
-  //   });
-  //   this.dbRef
-  //     .add({
-  //       name: this.state.name,
-  //       email: this.state.email
-  //     })
-  //     .catch(err => {
-  //       console.error("Error found: ", err);
-  //       this.setState({
-  //         isLoading: false
-  //       });
-  //     });
-  // };
 
   handleSignUp() {
-    const {name, username, email, password, confirmPassword} = this.state;
+    const { name, username, email,
+      password, confirmPassword, error } = this.state;
 
     if (name.length == 0) {
-      this.setState({error: 'Necessary to enter name'});
+      this.setState({ error: 'Necessary to enter name' });
       return false;
     }
 
     if (username.length == 0) {
-      this.setState({error: 'Necessary to enter username'});
+      this.setState({ error: 'Necessary to enter username' });
       return false;
     }
 
     if (password !== confirmPassword) {
-      this.setState({error: 'Passwords don\'t match'});
+      this.setState({ error: 'Passwords don\'t match' });
       return false;
     }
     if (password.length < 6) {
-      this.setState({error: 'Password should be at least 6 characters'});
+      this.setState({ error: 'Password should be at least 6 characters' });
       return false;
     }
 
     firebase
-        .auth()
-        .createUserWithEmailAndPassword(email, password)
-        .then((cred) => {
-          this.dbRef.doc(cred.user.uid).set({
-            name: this.state.name,
-            username: this.state.username
-          });
-        })
-        .then(() => {
-          this.props.navigation.navigate('Additional Info', {
-            state: this.state
-          });
-        })
-        .catch((error) => {
-          console.log(error), this.setState({error: 'Invalid Credentials'});
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((cred) => {
+        this.db.doc(cred.user.uid).set({
+          name: this.state.name,
+          username: this.state.username
         });
+      })
+      .then(() => {
+        this.props.navigation.navigate('Additional Info', {
+          state: this.state
+        });
+      })
+      .catch((err) => {
+        this.setState({ error: 'Invalid Credentials' }),
+          console.log(error);
+      });
   }
 
   render() {
     return (
-      <View style={Styles.container}>
-        <Text style={[Styles.header, Styles.text_large]}>
+      <ScrollView
+        style={Styles.container}
+      >
+        <Text testID='signup_sign' style={[Styles.header, Styles.text_large]}>
           Welcome to Baku!
         </Text>
 
@@ -95,14 +77,14 @@ class Signup extends React.Component {
           value={this.state.name}
           iconClass={FontAwesomeIcon}
           iconName={'user'}
-          onChangeText={(name) => this.setState({name})}
+          onChangeText={(name) => this.setState({ name })}
         />
         <Fumi
           label={'Username'}
           value={this.state.username}
           iconClass={FontAwesomeIcon}
           iconName={'user'}
-          onChangeText={(username) => this.setState({username})}
+          onChangeText={(username) => this.setState({ username })}
         />
 
         <Fumi
@@ -111,7 +93,7 @@ class Signup extends React.Component {
           autoCapitalize="none"
           iconClass={FontAwesomeIcon}
           iconName={'envelope-square'}
-          onChangeText={(email) => this.setState({email})}
+          onChangeText={(email) => this.setState({ email })}
         />
 
         <Fumi
@@ -120,7 +102,7 @@ class Signup extends React.Component {
           secureTextEntry={true}
           iconClass={FontAwesomeIcon}
           iconName={'unlock-alt'}
-          onChangeText={(password) => this.setState({password})}
+          onChangeText={(password) => this.setState({ password })}
         />
 
         <Fumi
@@ -129,7 +111,7 @@ class Signup extends React.Component {
           secureTextEntry={true}
           iconClass={FontAwesomeIcon}
           iconName={'lock'}
-          onChangeText={(confirmPassword) => this.setState({confirmPassword})}
+          onChangeText={(confirmPassword) => this.setState({ confirmPassword })}
 
         />
 
@@ -145,7 +127,7 @@ class Signup extends React.Component {
             width={200}
             height={50}
             onPress={() => {
-              this.setState({error: ''});
+              this.setState({ error: '' });
               this.handleSignUp();
             }}
           >
@@ -153,7 +135,7 @@ class Signup extends React.Component {
           </AwesomeButton>
         </View>
 
-      </View>
+      </ScrollView>
     );
   }
 }
