@@ -118,7 +118,7 @@ class CreateProfile extends React.Component {
     return (
       <ScrollView style={Styles.container}>
 
-<Text style={[Styles.header, Styles.text_medium, Styles.mt_5]}>
+        <Text style={[Styles.header, Styles.text_medium, Styles.mt_5]}>
           Hey {this.state.data.name}! Let&apos;s get to know who you really are!
       </Text>
         <TouchableOpacity

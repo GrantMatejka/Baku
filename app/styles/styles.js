@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import normalize from 'react-native-normalize';
 
@@ -17,11 +17,17 @@ const Styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-
+  row: {
+    flexDirection: 'row',
+  },
+  column: {
+    flexDirection: 'column',
+  },
   // Card styles WIP
   card: {
     alignItems: 'center',
-    marginHorizontal: 50
+    marginHorizontal: 50,
+    marginBottom: 15
   },
   card_complex: {
     display: 'flex',
@@ -78,6 +84,7 @@ const Styles = StyleSheet.create({
     textAlign: 'center'
   },
 
+
   // Button Stylings
   button: {
     marginTop: 30,
@@ -89,7 +96,8 @@ const Styles = StyleSheet.create({
     backgroundColor: Colors.warning,
     borderColor: Colors.warning,
     borderWidth: 1,
-    borderRadius: 5
+    borderRadius: 5,
+    flex: 2
   },
 
   // Padding Levels
@@ -183,78 +191,77 @@ const Styles = StyleSheet.create({
     height: 200,
     resizeMode: 'contain',
   },
+  image_icon: {
+    width: 50,
+    height: 50,
+    borderRadius: 15,
+  },
+
+
+  // PostCard styles
+  postCardContainer: {
+    flexWrap: 'wrap',
+    height: 450,
+    width: '85%',
+    maxWidth: 450,
+    marginHorizontal: 5,
+    marginVertical: 15,
+    backgroundColor: Colors.tan,
+    borderRadius: 10,
+    borderColor: Colors.tandark,
+    borderWidth: 1,
+  },
+  postCardLocationText: {
+    textAlign: 'center',
+    fontWeight: '500',
+    color: Colors.primary,
+    fontSize: 35
+  },
+
+  // Notification Styles
+  notificationCardContainer: {
+    height: 60,
+    width: '100%',
+    maxWidth: 500,
+    marginHorizontal: 5,
+    marginVertical: 10,
+    backgroundColor: Colors.primary,
+    borderRadius: 15,
+    borderColor: Colors.tandark,
+    borderWidth: 1,
+  },
 
 
   // TODO continue transitioning these out
-
-  NotificationCardContainer: {
-    flexDirection: 'row',
-    backgroundColor: '#a0c9cf',
-    height: 60,
-    marginHorizontal: 15,
-    marginVertical: 0,
-    borderColor: 'rgba(0,0,0,0.05)',
-    borderWidth: 2,
-    borderRadius: 5
-  },
-  NotificationCardTimeStamp: {
-    fontWeight: '400',
-    fontStyle: 'italic',
-    fontSize: 13,
-    textAlign: 'left',
-    paddingTop: 33,
-    marginLeft: 20
-  },
-  NotificationCardMainText: {
-    flex: 4,
-    fontWeight: '400',
-    fontSize: 15,
-    textAlign: 'left',
-    paddingTop: 12,
-    marginLeft: -195,
-    marginRight: -15
-  },
-  NotificationUserProfile: {
-    flex: .75,
-    alignItems: 'center',
-    height: 55,
-    borderRadius: 2,
-    borderWidth: 1,
-    borderColor: 'black'
-    // this needs work
-  },
-  NotificationTypeIcon: {
-    flex: .8,
-    color: 'black',
-    marginTop: 10,
-    marginRight: 0
-    // this needs work
-  },
-  postCardLocation: {
-    fontWeight: 'bold',
-    fontSize: 20,
-    textAlign: 'center',
-    color: '#DD8627'
-  },
-  postCardUserContainer: {
-    alignSelf: 'flex-end',
-    marginRight: 15,
-    marginTop: -40
-  },
-  postCardContainer: {
-    backgroundColor: '#FFF9F1',
-    height: 450,
-    marginHorizontal: 15,
-    marginVertical: 30,
-    borderColor: 'rgba(0,0,0,0.05)',
-    borderWidth: 2
-  },
   testDBContainer: {
     height: 50,
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
-  }
+  },
+  // used for autocomplete dropdown box
+
+  autocompleteInputContainer: {
+    // display: "flex",
+    flexShrink: 0,
+    flexGrow: 0,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    // borderBottomWidth: 1,
+    borderColor: '#c7c6c1',
+    paddingVertical: 13,
+    paddingLeft: 12,
+    paddingRight: '5%',
+    width: '100%',
+    justifyContent: 'flex-start',
+  },
+
+  iconPos: {
+    position: 'absolute',
+    left: 25,
+    top: 25,
+  },
 
 });
 
