@@ -1,5 +1,5 @@
 import * as React from "../../node_modules/react";
-import { Text, View, FlatList, ScrollView, ActivityIndicator, Button, Image } from "react-native";
+import { Text, View, FlatList, ScrollView, ActivityIndicator, Button, Image, TouchableOpacity } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 
 import AwesomeButton from "react-native-really-awesome-button";
@@ -15,7 +15,7 @@ export default function CreatePost({ navigation }) {
   const [cityx, setCity] = React.useState("");
   const [countryx, setCountry] = React.useState("");
   const [captionx, setCaption] = React.useState("");
-  const [photosx, setPhotos] = React.useState("");
+  const [photosx, setPhotos] = React.useState('https://drive.google.com/uc?id=1IlnqOsoEVi9ASVb0WihFRxtMu2z2BLT5');
   // const [post_timex, setPostTime] = React.useState("");
   // const [userx, setUserID] = React.useState("");
   const [loading, setLoading] = React.useState(true);
@@ -129,7 +129,16 @@ export default function CreatePost({ navigation }) {
       <ScrollView
         style={Styles.container}
       >
-        <View>
+        <TouchableOpacity 
+          style={{
+            width: 200, height: 300,
+            alignSelf: 'center',
+            marginBottom: 10,
+            marginTop: 10
+          }}
+          onPress={() => {
+            pick_image();
+        }}>
           <Image
             source={{uri: photosx}}
             style={{
@@ -142,19 +151,7 @@ export default function CreatePost({ navigation }) {
               marginTop: 10
             }}
           />
-        </View>
-
-        <View style={Styles.card}>
-          <AwesomeButton
-            backgroundColor={'#478a91'}
-            width={340}
-            height={40}
-            onPress={() => pick_image()}
-          >
-            Choose Photo
-          </AwesomeButton>
-        </View>
-
+        </TouchableOpacity>
         <View style={Styles.p_3}>
           <Fumi
             label={'City'}
