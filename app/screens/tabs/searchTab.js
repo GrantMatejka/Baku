@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {Text, View, FlatList, StyleSheet, SafeAreaView} from 'react-native';
+import { Text, View, FlatList, StyleSheet, SafeAreaView } from 'react-native';
 
-import {ScrollView} from 'react-native-gesture-handler';
-import {Fumi} from 'react-native-textinput-effects';
+import { ScrollView } from 'react-native-gesture-handler';
+import { Fumi } from 'react-native-textinput-effects';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import AwesomeButton from 'react-native-really-awesome-button';
 
@@ -12,19 +12,19 @@ import firebase from '../../config/firebase';
 
 import Countries from '../../assets/data/countries';
 
-import {Ionicons} from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import shortid from 'shortid';
-import {Autocomplete, withKeyboardAwareScrollView} from 'react-native-dropdown-autocomplete';
+import { Autocomplete, withKeyboardAwareScrollView } from 'react-native-dropdown-autocomplete';
 
 class SearchTab extends React.Component {
   handleSelectItem(item, index) {
-    const {onDropdownClose} = this.props;
+    const { onDropdownClose } = this.props;
     onDropdownClose();
     console.log(item);
   }
 
   render() {
-    const {scrollToInput, onDropdownClose, onDropdownShow} = this.props;
+    const { scrollToInput, onDropdownClose, onDropdownShow } = this.props;
 
     return (
 
