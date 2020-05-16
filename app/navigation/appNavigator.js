@@ -120,7 +120,8 @@ const Navigator = ({ loggedIn }) => {
               title: 'Change Password Screen'
             }}
           />
-          
+                    
+          <Stack.Screen
             name="Preview Post Screen"
             component={previewPostScreen}
             options={{
