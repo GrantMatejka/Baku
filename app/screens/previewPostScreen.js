@@ -105,7 +105,13 @@ export default function previewPostScreen({ route, navigation }) {
       <ScrollView
         style={Styles.container}
       >
-        <View>
+        <View style={
+          {
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            flexWrap: 'wrap'
+          }
+        }>
           <PostCard detail={data} key={data.id} />
         </View>
         <View style={Styles.card}>
