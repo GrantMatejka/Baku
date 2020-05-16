@@ -1,39 +1,31 @@
-name: Baku Build Check
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Baku CI
 
 on:
   push:
-    branches:
-      - develop
-      - master
+    branches: [ master, develop, davidj ]
+  pull_request:
+    branches: [ master, develop, davidj ]
+
 jobs:
-  install-and-test:
-    runs-on: ubuntu-latest
-    steps: 
-      - uses: actions/checkout@v2
-      - name: Install npm dependencies
-        run: |
-          npm install
-      - name: Run tests
-        run: |
-          npm test
   build:
+
     runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [windows-latest, macos-latest, ubuntu-latest ]
         node-version: [8.x, 10.x, 12.x]
 
     steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - working-directory: ./app
-        run: npm ci
-
-      - working-directory: ./app
-        run: npm run lint:fix
-
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: cd app
+    - run: npm install
+    - run: npm ci
+    - run: npm test

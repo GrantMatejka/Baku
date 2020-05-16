@@ -134,44 +134,9 @@ class Login extends React.Component {
             >
               Login
             </AwesomeButton>
-
-            <View style={Styles.p_1}>
-              <Text style={Styles.text_centered}>
-                Or login with these accounts
-              </Text>
-            </View>
-
-            <View style={Styles.row}>
-              <AwesomeButton
-                backgroundColor={"#666666"}
-                width={100}
-                height={50}
-                onPress={() => {
-                  this.setState({ error: '' });
-                  this.signInWithGoogleAsync();
-                }}
-              >
-                Google
-              </AwesomeButton>
-              <AwesomeButton
-                backgroundColor={"#333333"}
-                width={100}
-                height={50}
-                onPress={() => {
-                  this.setState({ error: '' });
-                  this.loginWithFacebook();
-                }}
-              >
-                Facebook
-              </AwesomeButton>
-            </View>
           </View>
 
           <View style={Styles.p_2} testID='signup_button'>
-            <Text style={Styles.p_2, Styles.text_centered} testID="login">
-              New user? Sign up now!
-            </Text>
-
             <AwesomeButton
               backgroundColor={Colors.warning}
               width={200}
@@ -225,7 +190,6 @@ class Login extends React.Component {
             </View>
           </View>
         </View>
-
       </ScrollView >
     );
   }
