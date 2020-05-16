@@ -9,6 +9,7 @@ import SearchTab from '../screens/tabs/searchTab';
 import CreatePostTab from '../screens/tabs/createPostTab';
 import Drawer from './drawerNav';
 import Colors from '../styles/colors';
+import ProfileTab from '../screens/tabs/profileTab';
 
 const Tab = createBottomTabNavigator();
 
@@ -23,7 +24,7 @@ const Navigator = () => {
         inactiveBackgroundColor: Colors.primary,
         activeBackgroundColor: Colors.primary,
         inactiveTintColor: Colors.background,
-        activeTintColor: Colors.background
+        activeTintColor: Colors.warning
       }}
     >
       <Tab.Screen
@@ -48,7 +49,7 @@ const Navigator = () => {
         }}
       />
       <Tab.Screen
-        name="CreatePostTab"
+        name="CreateTab"
         component={CreatePostTab}
         options={{
           tabBarIcon: ({color}) => (

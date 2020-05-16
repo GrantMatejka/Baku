@@ -8,14 +8,16 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "jest --watchAll -u",
-    "lint": "eslint *.js **/*.js",
-    "lint:fix": "eslint *.js **/*.js --fix"
+    "lint": "eslint *.js styles/*.js screens/**/*.js navigation/*.js styles/*.js assets/**/*.js components/*.js",
+    "lint:fix": "eslint *.js styles/*.js screens/**/*.js navigation/*.js styles/*.js assets/**/*.js components/*.js --fix"
   },
   "jest": {
     "preset": "jest-expo"
   },
   "dependencies": {
     "@expo/vector-icons": "~10.0.0",
+    "@material-ui/core": "^4.9.14",
+    "@material-ui/lab": "^4.0.0-alpha.53",
     "@react-native-community/google-signin": "^4.0.0",
     "@react-native-community/masked-view": "^0.1.9",
     "@react-native-firebase/app": "^6.4.0",
@@ -29,7 +31,10 @@
     "@react-navigation/native": "^5.1.5",
     "@react-navigation/stack": "^5.2.10",
     "@react-navigation/web": "~1.0.0-alpha.9",
+    "axios": "^0.19.2",
     "base-64": "^0.1.0",
+    "ci": "^1.0.0",
+    "detox-expo-helpers": "^0.6.0",
     "eslint-plugin-react-native": "^3.8.1",
     "expo": "~36.0.0",
     "expo-app-auth": "~8.0.0",
@@ -52,6 +57,7 @@
     "react-native-gesture-handler": "^1.6.1",
     "react-native-google-signin": "^2.1.1",
     "react-native-hide-with-keyboard": "^1.2.1",
+    "react-native-image-picker": "^2.3.1",
     "react-native-normalize": "^1.0.1",
     "react-native-paper": "^3.8.0",
     "react-native-really-awesome-button": "^1.6.0",

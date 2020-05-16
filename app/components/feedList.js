@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {ScrollView} from 'react-native';
+import React, { Component } from 'react';
+import { ScrollView } from 'react-native';
 
 import PostCard from './postCard';
 // We need to replace this
@@ -17,6 +17,12 @@ export default class PhotoList extends Component {
   }
 
   render() {
-    return <ScrollView>{this.getPhotos()}</ScrollView>;
+    return <ScrollView contentContainerStyle={{
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      flexWrap: 'wrap'
+    }}>
+      {this.getPhotos()}
+    </ScrollView>;
   }
 }
