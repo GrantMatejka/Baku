@@ -33,9 +33,9 @@ export default function previewPostScreen({ route, navigation }) {
 
   async function submitPost() {
     try {
-      console.log('Submit 1')
+      // console.log('Submit 1')
       const photoRef = await uploadPhotoAsync(photosx);
-      console.log('Submit 1.1')
+      // console.log('Submit 1.1')
       await dbRef.add({
         city: cityx,
         country: countryx,
@@ -44,7 +44,7 @@ export default function previewPostScreen({ route, navigation }) {
         post_time: new Date().toLocaleString(),
         user: uid
       }).then(
-        console.log('Submit 1.2'),
+        // console.log('Submit 1.2'),
 
         navigation.navigate('Tabs', {
           screen: 'FeedTab'
