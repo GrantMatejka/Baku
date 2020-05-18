@@ -59,7 +59,7 @@ class Signup extends React.Component {
       })
       .catch((err) => {
         this.setState({ error: 'Invalid Credentials' }),
-          console.log(error);
+          //console.log(error);
       });
   }
 
