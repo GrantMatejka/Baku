@@ -127,7 +127,7 @@ class CreateProfile extends React.Component {
             width: 172, height: 172,
             alignSelf: 'center',
             marginBottom: 18,
-            borderRadius: "86%",
+            borderRadius: 86,
           }}
           onPress={() => {
             this.getPhotoPermission(),
@@ -140,7 +140,7 @@ class CreateProfile extends React.Component {
             style={{
               width: 172, height: 172,
               alignSelf: 'center',
-              borderRadius: "86%",
+              borderRadius: 86,
               borderWidth: 1,
               borderColor: 'black',
               marginBottom: 18,
