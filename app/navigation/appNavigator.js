@@ -11,7 +11,7 @@ import Signup from '../screens/signupScreen';
 import ResetPassword from '../screens/resetPasswordScreen';
 import EditProfile from '../screens/editProfileScreen';
 import previewPostScreen from '../screens/previewPostScreen';
-
+import ChangePassword from '../screens/changePasswordScreen';
 const Stack = createStackNavigator();
 
 const Navigator = ({ loggedIn }) => {
@@ -110,6 +110,13 @@ const Navigator = ({ loggedIn }) => {
             component={ResetPassword}
             options={{
               title: 'Reset Password Screen'
+            }}
+          />
+          <Stack.Screen
+            name="ChangePassword"
+            component={ChangePassword}
+            options={{
+              title: 'Change Password Screen'
             }}
           />
           <Stack.Screen

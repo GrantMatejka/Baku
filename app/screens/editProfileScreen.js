@@ -125,7 +125,7 @@ class EditProfile extends React.Component {
             width: 172, height: 172,
             alignSelf: 'center',
             marginBottom: 18,
-            borderRadius: 86,
+            borderRadius: 32,
           }}
           onPress={() => {
             this.pickImage();
@@ -137,7 +137,7 @@ class EditProfile extends React.Component {
             style={{
               width: 172, height: 172,
               alignSelf: 'center',
-              borderRadius: 86,
+              borderRadius: 32,
               borderWidth: 1,
               borderColor: 'black',
               marginBottom: 18,
