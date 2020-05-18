@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, Button, Image, ScrollView } from 'react-native';
+import { Text, View, Button, Image, ScrollView, TouchableOpacity } from 'react-native';
 
 import { Fumi } from 'react-native-textinput-effects';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
@@ -10,7 +10,6 @@ import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions';
 import * as ImagePicker from 'expo-image-picker';
 import firebase from '../config/firebase';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 class CreateProfile extends React.Component {
@@ -26,26 +25,19 @@ class CreateProfile extends React.Component {
     data: '',
     name: '',
     uri: '',
-    // this.dbRef needs to be looked at as linter don't like it
-    // dbRef: this.dbRef,
-    photo: ''
+    photo: 'https://drive.google.com/uc?id=10636HqgLPNXx1FFMxkK2ik0T4KmfAw30'
   };
 
 
   componentDidMount() {
     firebase.firestore().collection("users").doc(this.uid).get()
       .then((doc) => {
-        this.setState({ data: doc.data() })
+        this.setState({ data: doc.data(), name: doc.data().name })
       })
-      .then(
-        this.setState({ name: this.state.data.name }),
-        console.log(this.state.name)
-      )
       .catch((error) => {
         console.log("Error getting documents: ", error);
       });
   }
-
 
   getPhotoPermission = async () => {
     if (Constants.platform.ios) {
@@ -129,17 +121,25 @@ class CreateProfile extends React.Component {
         <Text style={[Styles.header, Styles.text_medium, Styles.mt_5]}>
           Hey {this.state.data.name}! Let&apos;s get to know who you really are!
       </Text>
-        <TouchableOpacity onPress={() => {
-          this.getPhotoPermission(),
-            this.pickImage();
-        }}>
+        <TouchableOpacity
+          style={{
+            width: 172, height: 172,
+            alignSelf: 'center',
+            marginBottom: 18,
+            borderRadius: 86,
+          }}
+          onPress={() => {
+            this.getPhotoPermission(),
+              this.pickImage();
+          }}
+        >
           <Image
             source={{ uri: this.state.photo }}
-            placeholder
+            // placeholder
             style={{
               width: 172, height: 172,
               alignSelf: 'center',
-              borderRadius: "86%",
+              borderRadius: 86,
               borderWidth: 1,
               borderColor: 'black',
               marginBottom: 18,

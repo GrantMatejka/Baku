@@ -1,7 +1,7 @@
 import React from 'react';
 
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import CreateProfileScreen from '../screens/createProfileScreen';
@@ -10,25 +10,27 @@ import Login from '../screens/loginScreen';
 import Signup from '../screens/signupScreen';
 import ResetPassword from '../screens/resetPasswordScreen';
 import EditProfile from '../screens/editProfileScreen';
+import ChangePassword from '../screens/changePasswordScreen';
+import previewPostScreen from '../screens/previewPostScreen';
 
 const Stack = createStackNavigator();
 
-const Navigator = ({loggedIn}) => {
+const Navigator = ({ loggedIn }) => {
   if (loggedIn) {
     return (
       <NavigationContainer
-        screenOptions={{gestureEnabled: false}}
+        screenOptions={{ gestureEnabled: false }}
         initialRouteName="Welcome"
       >
 
-        <Stack.Navigator screenOptions={{gestureEnabled: false}}>
+        <Stack.Navigator screenOptions={{ gestureEnabled: false }}>
           <Stack.Screen
             name="Tabs"
             children={Tabs}
             options={{
               title: 'Tabs',
               headerShown: false,
-              tabBarIcon: ({focused}) => (
+              tabBarIcon: ({ focused }) => (
                 <Icon name="md-book" size={25} focused={focused} />
               )
             }}
@@ -58,7 +60,7 @@ const Navigator = ({loggedIn}) => {
     return (
       <NavigationContainer initialRouteName="Welcome">
         <Stack.Navigator
-          screenOptions={{gestureEnabled: false}}
+          screenOptions={{ gestureEnabled: false }}
         >
           <Stack.Screen
             name="Login"
@@ -99,8 +101,8 @@ const Navigator = ({loggedIn}) => {
             options={{
               title: 'Tabs',
               headerShown: false,
-              tabBarIcon: ({focused}) => (
-                <Icon name="md-book" size={25} focused={focused}/>
+              tabBarIcon: ({ focused }) => (
+                <Icon name="md-book" size={25} focused={focused} />
               )
             }}
           />
@@ -109,6 +111,22 @@ const Navigator = ({loggedIn}) => {
             component={ResetPassword}
             options={{
               title: 'Reset Password Screen'
+            }}
+          />
+          <Stack.Screen
+            name="ChangePassword"
+            component={ChangePassword}
+            options={{
+              title: 'Change Password Screen'
+            }}
+          />
+                    
+          <Stack.Screen
+            name="Preview Post Screen"
+            component={previewPostScreen}
+            options={{
+              title: 'Preview Post Screen',
+              // headerShown: false
             }}
           />
         </Stack.Navigator>
