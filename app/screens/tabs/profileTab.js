@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
-import {DrawerActions} from '@react-navigation/native';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
+import { DrawerActions } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AwesomeButton from 'react-native-really-awesome-button';
-import {createMaterialTopTabNavigator}
+import { createMaterialTopTabNavigator }
   from '@react-navigation/material-top-tabs';
 import ProfilePosts from '../../components/profilePosts';
 import Favorites from '../../components/favorites';
@@ -17,7 +17,7 @@ import firebase from '../../config/firebase';
 
 const TopTab = createMaterialTopTabNavigator();
 
-export default function ProfileTab({navigation}) {
+export default function ProfileTab({ navigation }) {
   const db = firebase.firestore();
   const uid = firebase.auth().currentUser.uid;
   // let path = 'photos/' + (uid) + '/profile';
@@ -27,17 +27,14 @@ export default function ProfileTab({navigation}) {
   const [profilePic, setProfilePic] = React.useState('');
 
   React.useEffect(() => {
-    db.collection('users').doc(uid).get()
-        .then((doc) => {
-          setData(doc.data());
-        })
-        .then(() => {
-          setUsername(data.username), setProfilePic(data.photo);
-        })
-        .catch((error) => {
-          console.log('Error getting documents: ', error);
-        });
-  });
+    db.collection("users").doc(uid).get()
+      .then((doc) => {
+        setData(doc.data()), setUsername(doc.data().username), setProfilePic(doc.data().photo)
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+  })
   return (
     <View style={Styles.container}>
       <Header headerTitle={username} />
@@ -51,6 +48,8 @@ export default function ProfileTab({navigation}) {
               }}
               style={styles2.thumbnail}
             />
+            {/* Displays Name as well as Username in feed */}
+            <Text style={styles2.username}>  {data.name} </Text>
           </View>
           <View style={styles2.postCardCont}>
             <Text style={styles2.postCount}> 100 </Text>
@@ -70,7 +69,7 @@ export default function ProfileTab({navigation}) {
           />
         </View>
 
-        <View style={{alignItems: 'center', padding: 24}}>
+        <View style={{ alignItems: 'center', padding: 24 }}>
           <AwesomeButton
             backgroundColor={'#ffbc26'}
             width={340}
@@ -84,9 +83,9 @@ export default function ProfileTab({navigation}) {
           {/* Tab to switch between profile posts and favorites */}
           <TopTab.Navigator
             tabBarOptions={{
-              labelStyle: {fontWeight: 'bold', fontSize: 12},
-              indicatorStyle: {backgroundColor: Colors.warning},
-              style: {backgroundColor: Colors.info},
+              labelStyle: { fontWeight: 'bold', fontSize: 12 },
+              indicatorStyle: { backgroundColor: Colors.warning },
+              style: { backgroundColor: Colors.info },
               inactiveBackgroundColor: Colors.info,
               activeBackgroundColor: Colors.warning,
               inactiveTintColor: Colors.background,
