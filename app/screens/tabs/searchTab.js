@@ -30,52 +30,52 @@ class SearchTab extends React.Component {
 
       <View style={Styles.container}>
         <Header headerTitle="Search" />
-        <ScrollView
+        {/* <ScrollView
           style={Styles.container}
+        > */}
+        <Text
+          style={{
+            fontSize: 25,
+            fontStyle: 'normal',
+            padding: 30,
+            color: 'rgba(96,100,109, 1)',
+            lineHeight: 40,
+            textAlign: 'center',
+            paddingTop: 100
+          }}
         >
-          <Text
-            style={{
-              fontSize: 25,
-              fontStyle: 'normal',
-              padding: 30,
-              color: 'rgba(96,100,109, 1)',
-              lineHeight: 40,
-              textAlign: 'center',
-              paddingTop: 100
-            }}
-          >
-            Where would you like to go?
+          Where would you like to go?
           </Text>
 
-          <View style={Styles.container}>
+        <View style={Styles.container}>
 
-            <Autocomplete
-              key={shortid.generate()}
-              scrollToInput={(ev) => scrollToInput(ev)}
-              handleSelectItem={(item, id) => this.handleSelectItem(item, id)}
-              onDropdownClose={() => onDropdownClose()}
-              onDropdownShow={() => onDropdownShow()}
-              renderIcon={() => (
-                <FontAwesomeIcon name="search" size={20} color="#c7c6c1"
-                  style={Styles.iconPos} />
-              )}
-              data={Countries}
-              minimumCharactersCount={2}
-              highlightText
-              highLightColor={'#ffbc27'}
-              spinnerColor={'#ffbc27'}
-              spinnerSize={35}
-              inputContainerStyle={Styles.autocompleteInputContainer}
-              valueExtractor={(item) => item.label}
-              placeholder="Search by country"
+          <Autocomplete
+            key={shortid.generate()}
+            scrollToInput={(ev) => scrollToInput(ev)}
+            handleSelectItem={(item, id) => this.handleSelectItem(item, id)}
+            onDropdownClose={() => onDropdownClose()}
+            onDropdownShow={() => onDropdownShow()}
+            renderIcon={() => (
+              <FontAwesomeIcon name="search" size={20} color="#c7c6c1"
+                style={Styles.iconPos} />
+            )}
+            data={Countries}
+            minimumCharactersCount={2}
+            highlightText
+            highLightColor={'#ffbc27'}
+            spinnerColor={'#ffbc27'}
+            spinnerSize={35}
+            inputContainerStyle={Styles.autocompleteInputContainer}
+            valueExtractor={(item) => item.label}
+            placeholder="Search by country"
 
-            />
+          />
 
-          </View>
-        </ScrollView>
+        </View>
+        {/* </ScrollView> */}
       </View>
     );
   }
 }
 
-export default SearchTab;
+export default withKeyboardAwareScrollView(SearchTab);
