@@ -14,14 +14,97 @@ import AwesomeButton from 'react-native-really-awesome-button';
 import Styles from '../styles/styles';
 import Colors from '../styles/colors';
 
+import firebase from '../config/firebase';
+
 class EditProfile extends React.Component {
+
+  uid = firebase.auth().currentUser.uid;
+  dbRef = firebase.firestore().collection('users');
+  state = {
+    name: '',
+    username: '',
+    mobile: '',
+    birthday: '',
+    //photo: '',
+    bio: '',
+    places: '',
+    data: ''
+    //uri: '',
+    // this.dbRef needs to be looked at as linter don't like it
+    // dbRef: this.dbRef,
+    //photo: ''
+  };
+
+  componentDidMount() {
+    firebase.firestore().collection("users").doc(this.uid).get()
+      .then((doc) => {
+        this.setState({ data: doc.data() }),
+        this.setState({ name: doc.data().name }),
+        this.setState({ username: doc.data().username }),
+        this.setState({ mobile: doc.data().mobile }),
+        this.setState({ birthday: doc.data().birthday }),
+        this.setState({ bio: doc.data().bio }),
+        this.setState({ places: doc.data().places })
+      })
+      /*
+      .then(
+        this.setState({ name: this.state.data.name }),
+        console.log(this.state.name),
+        this.setState({ email: this.state.data.email }),
+        console.log(this.state.email),
+        this.setState({ mobile: this.state.data.mobile }),
+        console.log(this.state.mobile),
+        this.setState({ birthday: this.state.data.birthday }),
+        console.log(this.state.birthday),
+        this.setState({ bio: this.state.data.bio }),
+        console.log(this.state.bio),
+        this.setState({ places: this.state.data.places }),
+        console.log(this.state.places)
+      )*/
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+  }
+
+  //firename = this.state.data.name;
+
+    /*
     state = {
       name: '',
       email: '',
       password: '',
       error: ''
     };
+    */
 
+  handleProfile() {
+    // const {mobile, birthday, photo, bio, places} = this.state;
+    const uid = firebase.auth().currentUser.uid;
+    const user = this.dbRef.doc(uid);
+    this.dbRef.doc(uid).set(
+        {
+          name: this.state.name,
+          username: this.state.username,
+          mobile: this.state.mobile,
+          birthday: this.state.birthday,
+          //photo: this.state.photo,
+          bio: this.state.bio,
+          places: this.state.places
+        },
+        {
+          merge: true
+        }
+    )
+        .then(() => {
+          this.props.navigation.navigate('Tabs', {
+            screen: 'ProfileTab'
+          }
+          );
+        });
+  }
+
+
+    
     render() {
       return (
         <ScrollView style={Styles.container}>
@@ -31,6 +114,7 @@ class EditProfile extends React.Component {
           </Text>
 
           <Fumi
+            //label={'Current Name: ' + this.state.data.name}
             label={'Full Name'}
             value={this.state.name}
             iconClass={FontAwesomeIcon}
@@ -39,14 +123,14 @@ class EditProfile extends React.Component {
           />
 
           <Fumi
-            label={'Email'}
-            value={this.state.email}
+            label={'Username'}
+            value={this.state.username}
             autoCapitalize="none"
             iconClass={FontAwesomeIcon}
             iconName={'envelope-square'}
-            onChangeText={(email) => this.setState({email})}
+            onChangeText={(username) => this.setState({username})}
           />
-
+{/* 
           <Fumi
             label={'Password'}
             value={this.state.password}
@@ -64,9 +148,10 @@ class EditProfile extends React.Component {
             iconName={'lock'}
             onChangeText={(confirmPassword) => this.setState({confirmPassword})}
           />
-
+ */}
           <Fumi
             label={'Phone-Number'}
+            value={this.state.mobile}
             iconClass={FontAwesomeIcon}
             iconName={'phone'}
             iconSize={20}
@@ -77,6 +162,7 @@ class EditProfile extends React.Component {
 
           <Fumi
             label={'Birthday'}
+            value={this.state.birthday}
             iconClass={FontAwesomeIcon}
             iconName={'birthday-cake'}
             iconSize={20}
@@ -87,6 +173,7 @@ class EditProfile extends React.Component {
 
           <Fumi
             label={'Short BIO'}
+            value={this.state.bio}
             iconClass={FontAwesomeIcon}
             iconName={'pencil'}
             iconSize={20}
@@ -107,6 +194,7 @@ class EditProfile extends React.Component {
 
           <Fumi
             label={'Some Places You\'ve Been'}
+            value={this.state.places}
             iconClass={FontAwesomeIcon}
             iconName={'location-arrow'}
             iconSize={20}
@@ -122,18 +210,34 @@ class EditProfile extends React.Component {
           </View>
 
           <View style={Styles.container_content}>
+            
             <AwesomeButton
               backgroundColor={Colors.warning}
               width={200}
               height={50}
               onPress={() => {
-                this.props.navigation.navigate('Tabs', {
-                  screen: 'ProfileTab'
-                });
+                this.handleProfile();
               }}
             >
               Submit
             </AwesomeButton>
+
+            {<View style={Styles.p_3}>
+            <AwesomeButton
+              backgroundColor={Colors.success}
+              width={200}
+              height={50}
+              onPress={() => {
+                // this.setState({error: ''});
+                //this.loginWithFacebook();
+                //this.changePassword();
+                this.props.navigation.navigate('ChangePassword');
+              }}
+            >
+                  Change Password
+            </AwesomeButton>
+          </View> }
+            
           </View>
 
         </ScrollView>
