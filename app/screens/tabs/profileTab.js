@@ -25,11 +25,13 @@ export default function ProfileTab({ navigation }) {
   const [data, setData] = React.useState('');
   const [username, setUsername] = React.useState('');
   const [profilePic, setProfilePic] = React.useState('');
+  const [name, setName] = React.useState('');
+  const [bio, setBio] = React.useState('');
 
   React.useEffect(() => {
     db.collection("users").doc(uid).get()
       .then((doc) => {
-        setData(doc.data()), setUsername(doc.data().username), setProfilePic(doc.data().photo)
+        setData(doc.data()), setName(doc.data().name), setBio(doc.data().bio), setUsername(doc.data().username), setProfilePic(doc.data().photo)
       })
       .catch((error) => {
         console.log("Error getting documents: ", error);
@@ -65,6 +67,10 @@ export default function ProfileTab({ navigation }) {
               navigation.dispatch(DrawerActions.openDrawer(Drawer))
             }
           />
+        </View>
+        <View style={styles2.thumbnailName}>
+          <Text style={{ fontSize: 12.5, fontWeight: "bold", color: "#FFFF" }}> {name} </Text>
+          {/* <Text > {bio} </Text> */}
         </View>
 
         <View style={{ alignItems: 'center', padding: 24 }}>
@@ -108,12 +114,20 @@ const styles2 = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#A0C9CF',
-    height: 114
+    height: 94
+  },
+  thumbnailName: {
+    flexDirection: 'column',
+    // alignItems: 'center',
+    backgroundColor: '#A0C9CF',
+    paddingTop: 4,
+    paddingLeft: 5,
+    height: 30
   },
   thumbnail: {
     width: 70,
     height: 70,
-    borderRadius: 40,
+    borderRadius: 18,
     marginVertical: 6,
     marginLeft: 16
   },
@@ -159,6 +173,7 @@ const styles2 = StyleSheet.create({
     color: 'white'
   },
   hambuger: {
+    marginTop: 10,
     marginLeft: 80,
     paddingBottom: 70
   }
