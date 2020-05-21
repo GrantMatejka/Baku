@@ -137,9 +137,9 @@ class CreateProfile extends React.Component {
             source={{ uri: this.state.photo }}
             // placeholder
             style={{
-              width: 172, height: 172,
+              width: 132, height: 132,
               alignSelf: 'center',
-              borderRadius: 86,
+              borderRadius: 36,
               borderWidth: 1,
               borderColor: 'black',
               marginBottom: 18,

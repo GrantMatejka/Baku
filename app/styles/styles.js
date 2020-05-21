@@ -10,6 +10,10 @@ const Styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.background
   },
+  container2: {
+    flex: 1,
+    backgroundColor: "#FFFF"
+  },
   // Container for any horizontally centered child content
   // Useful for with ScrollView
   container_content: {
@@ -249,7 +253,9 @@ const Styles = StyleSheet.create({
     flexWrap: 'wrap',
     alignItems: 'center',
     // borderBottomWidth: 1,
-    borderColor: '#c7c6c1',
+    backgroundColor: "#FFFF",
+    color: "#FFFF",
+    borderColor: '#FFFF',
     paddingVertical: 13,
     paddingLeft: 12,
     paddingRight: '5%',

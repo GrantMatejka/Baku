@@ -12,7 +12,6 @@ import ResetPassword from '../screens/resetPasswordScreen';
 import EditProfile from '../screens/editProfileScreen';
 import ChangePassword from '../screens/changePasswordScreen';
 import previewPostScreen from '../screens/previewPostScreen';
-
 const Stack = createStackNavigator();
 
 const Navigator = ({ loggedIn }) => {
@@ -83,8 +82,8 @@ const Navigator = ({ loggedIn }) => {
             name="Additional Info"
             component={CreateProfileScreen}
             options={{
-              title: 'Create Profile'
-
+              title: 'Create Profile',
+              headerShown: false
             }}
           />
           <Stack.Screen
@@ -92,7 +91,6 @@ const Navigator = ({ loggedIn }) => {
             component={EditProfile}
             options={{
               title: 'Edit Profile'
-
             }}
           />
           <Stack.Screen
@@ -120,7 +118,6 @@ const Navigator = ({ loggedIn }) => {
               title: 'Change Password Screen'
             }}
           />
-                    
           <Stack.Screen
             name="Preview Post Screen"
             component={previewPostScreen}
