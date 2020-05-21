@@ -13,7 +13,6 @@ import AwesomeButton from 'react-native-really-awesome-button';
 import Styles from '../styles/styles';
 import Colors from '../styles/colors';
 import * as ImagePicker from 'expo-image-picker';
-
 import firebase from '../config/firebase';
 
 class EditProfile extends React.Component {
@@ -195,17 +194,6 @@ class EditProfile extends React.Component {
           inputStyle={{ padding: 5 }}
           onChangeText={(bio) => this.setState({ bio })}
         />
-
-        {/* <Fumi
-          label={'Photo of Yourself :)'}
-          iconClass={FontAwesomeIcon}
-          iconName={'camera'}
-          iconSize={20}
-          iconWidth={40}
-          inputPadding={16}
-          inputStyle={{ padding: 5 }}
-        /> */}
-
         <Fumi
           label={'Some Places You\'ve Been'}
           value={this.state.places}
@@ -243,9 +231,6 @@ class EditProfile extends React.Component {
               width={200}
               height={50}
               onPress={() => {
-                // this.setState({error: ''});
-                //this.loginWithFacebook();
-                //this.changePassword();
                 this.props.navigation.navigate('ChangePassword');
               }}
             >

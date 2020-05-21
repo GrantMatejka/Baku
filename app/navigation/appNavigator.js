@@ -10,8 +10,8 @@ import Login from '../screens/loginScreen';
 import Signup from '../screens/signupScreen';
 import ResetPassword from '../screens/resetPasswordScreen';
 import EditProfile from '../screens/editProfileScreen';
-import previewPostScreen from '../screens/previewPostScreen';
 import ChangePassword from '../screens/changePasswordScreen';
+import previewPostScreen from '../screens/previewPostScreen';
 const Stack = createStackNavigator();
 
 const Navigator = ({ loggedIn }) => {
