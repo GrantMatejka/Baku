@@ -1,26 +1,60 @@
 import * as React from 'react';
-import { Text, View, ScrollView, FlatList, StyleSheet, SafeAreaView } from 'react-native';
-
-// import { ScrollView } from 'react-native-gesture-handler';
-import { Fumi } from 'react-native-textinput-effects';
+import { Text, View, ScrollView, FlatList } from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import AwesomeButton from 'react-native-really-awesome-button';
-
 import Styles from '../../styles/styles';
+import Colors from '../../styles/colors';
 import Header from '../../components/header';
 import firebase from '../../config/firebase';
-
 import Countries from '../../assets/data/countries';
-
-import { Ionicons } from '@expo/vector-icons';
 import shortid from 'shortid';
 import { Autocomplete, withKeyboardAwareScrollView } from 'react-native-dropdown-autocomplete';
 
 class SearchTab extends React.Component {
+
+  db = firebase.firestore().collection("location_test");
+  constructor(props) {
+    super(props);
+    this.state = {
+      location: '',
+      locList: []
+    };
+
+  }
+
   handleSelectItem(item, index) {
     const { onDropdownClose } = this.props;
     onDropdownClose();
-    console.log(item);
+  }
+
+  updateState(item) {
+    this.setState({ location: item.label });
+  }
+
+  handleSearchDB = async (location) => {
+
+    this.db
+      .where("country", "==", location)
+      .get()
+      .then(snapshot => {
+        const list = [];
+        snapshot.docs.forEach(doc => {
+          const { city, country } = doc.data();
+          list.push({
+            id: doc.id,
+            city,
+            country
+          });
+        });
+
+        this.setState({ locList: list });
+
+        if (loading) {
+          setLoading(false);
+        }
+      });
+
+
   }
 
   render() {
@@ -28,31 +62,20 @@ class SearchTab extends React.Component {
 
     return (
 
-      <View style={Styles.container}>
+      <View style={Styles.container2}>
         <Header headerTitle="Search" />
-        {/* <ScrollView
-          style={Styles.container}
-        > */}
-        <Text
-          style={{
-            fontSize: 25,
-            fontStyle: 'normal',
-            padding: 30,
-            color: 'rgba(96,100,109, 1)',
-            lineHeight: 40,
-            textAlign: 'center',
-            paddingTop: 100
-          }}
-        >
-          Where would you like to go?
-          </Text>
 
-        <View style={Styles.container}>
+        <Text style={[Styles.header, Styles.text_medium]}> Where would you like to go?</Text>
 
+        <View style={Styles.container_content}>
           <Autocomplete
             key={shortid.generate()}
             scrollToInput={(ev) => scrollToInput(ev)}
-            handleSelectItem={(item, id) => this.handleSelectItem(item, id)}
+            handleSelectItem={(item, id) => {
+              this.handleSelectItem(item, id);
+              this.updateState(item);
+            }
+            }
             onDropdownClose={() => onDropdownClose()}
             onDropdownShow={() => onDropdownShow()}
             renderIcon={() => (
@@ -62,20 +85,46 @@ class SearchTab extends React.Component {
             data={Countries}
             minimumCharactersCount={2}
             highlightText
-            highLightColor={'#ffbc27'}
-            spinnerColor={'#ffbc27'}
+            highLightColor={Colors.warning}
+            spinnerColor={Colors.warning}
             spinnerSize={35}
             inputContainerStyle={Styles.autocompleteInputContainer}
             valueExtractor={(item) => item.label}
             placeholder="Search by country"
-
+            initialValue={this.state.location}
           />
 
+          <View style={Styles.container_content}>
+            <AwesomeButton
+              backgroundColor={Colors.warning}
+              width={200}
+              height={50}
+              onPress={() => {
+                this.setState({ error: '' });
+                this.handleSearchDB(this.state.location);
+              }}
+            >
+              Let's Explore
+              </AwesomeButton>
+          </View>
+
         </View>
-        {/* </ScrollView> */}
+
+        <FlatList
+          data={this.state.locList}
+          renderItem={({ item }) => (
+            <View style={Styles.container_content}>
+
+              <Text>City: {item.city}</Text>
+              <Text>Country: {item.country}</Text>
+            </View>
+          )}
+        />
+
+
       </View>
     );
   }
 }
-
 export default withKeyboardAwareScrollView(SearchTab);
+//export default SearchTab;

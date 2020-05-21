@@ -82,8 +82,8 @@ const Navigator = ({ loggedIn }) => {
             name="Additional Info"
             component={CreateProfileScreen}
             options={{
-              title: 'Create Profile'
-
+              title: 'Create Profile',
+              headerShown: false
             }}
           />
           <Stack.Screen
@@ -91,7 +91,6 @@ const Navigator = ({ loggedIn }) => {
             component={EditProfile}
             options={{
               title: 'Edit Profile'
-
             }}
           />
           <Stack.Screen
