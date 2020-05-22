@@ -3,7 +3,6 @@
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
-    "cypress:open": "cypress open",
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
@@ -52,7 +51,6 @@
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
     "react-native-dotenv": "^0.2.0",
-    "react-native-fbsdk": "^1.1.2",
     "react-native-dropdown-autocomplete": "^1.0.18",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-google-signin": "^2.1.1",
@@ -68,7 +66,6 @@
     "react-native-textinput-effects": "^0.5.1",
     "react-native-vector-icons": "^6.6.0",
     "react-native-web": "~0.11.7",
-    "react-native-webview": "^9.4.0",
     "react-navigation": "^4.3.7"
   },
   "devDependencies": {
@@ -85,7 +82,7 @@
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
-    "jest": "^25.5.4",
+    "jest": "^25.3.0",
     "jest-expo": "~36.0.1",
     "jest-react-native": "^18.0.0",
     "react-test-renderer": "^16.13.1",
