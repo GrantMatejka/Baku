@@ -17,6 +17,7 @@ class CreateProfile extends React.Component {
   uid = firebase.auth().currentUser.uid;
   dbRef = firebase.firestore().collection('users');
   state = {
+    error: '',
     mobile: '',
     birthday: '',
     photo: '',
@@ -83,7 +84,11 @@ class CreateProfile extends React.Component {
           res(url);
         }
       )
-    })
+    }).catch(function (error) {
+      console.log('There has been a problem with your fetch operation: ' + error.message);
+      // ADD THIS THROW error
+      throw error;
+    });
   }
 
   handleProfile = async () => {
@@ -110,7 +115,7 @@ class CreateProfile extends React.Component {
         }
         );
       }).catch(err => {
-        rej(err)
+        rej(err);
       })
     })
   }
@@ -197,6 +202,7 @@ class CreateProfile extends React.Component {
           inputStyle={{ padding: 5 }}
           onChangeText={(places) => this.setState({ places })}
         />
+        <Text>{this.state.error}</Text>
         <View style={Styles.SignupButton}>
           <Button
             title="Create Profile"

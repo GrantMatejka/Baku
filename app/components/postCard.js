@@ -9,7 +9,7 @@ import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import Styles from '../styles/styles';
 import Colors from '../styles/colors';
 
-export default class FeedCard extends Component {
+export default class PostCard extends Component {
   state = {
     heartIcon: 'heart-o',
     saveIcon: 'bookmark-o',
@@ -144,7 +144,7 @@ export default class FeedCard extends Component {
               width={120}
               height={30}
               onPress={() => {
-                // TODO itinerary would open now
+                this.props.navigation.navigate('Post Detailed View');
               }}
             >
               View Itinerary
