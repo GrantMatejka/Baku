@@ -24,40 +24,13 @@ export default function CreatePost({ navigation }) {
   const db = Firebase.firestore().collection('posts');
   const uid = Firebase.auth().currentUser.uid;
 
-  // async function previewPost() {
-  //   try {
-  //     const photoRef = await uploadPhotoAsync(photosx);
-  //     await db.add({
-  //       city: cityx,
-  //       country: countryx,
-  //       caption: captionx,
-  //       photos: photoRef,
-  //       post_time: new Date().toLocaleString(),
-  //       user: getUser()
-  //     }).then(
-  //       () => { navigation.navigate("Preview Post Screen", { caption: captionx, image: photosx, location: cityx }) }
-  //     )
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
-  // function getUser() {
-  //   if (Firebase.auth().currentUser.uid != null) {
-  //     return Firebase.auth().currentUser.uid
-  //   }
-  //   else {
-  //     return "n/a"
-  //   }
-  // }
-
 
   // adds docs from db to locations list
   React.useEffect(() => {
     return db.orderBy('city', 'asc').onSnapshot((querySnapshot) => {
       const list = [];
       querySnapshot.forEach((doc) => {
-        const {city, country} = doc.data();
+        const { city, country } = doc.data();
         list.push({
           id: doc.id,
           city,
@@ -75,35 +48,6 @@ export default function CreatePost({ navigation }) {
   if (loading) {
     return <ActivityIndicator />;
   }
-
-  // function Item({ city }, { country }) {
-  //   return (
-  //     <View style={Styles.container_content}>
-  //       <Text>City: {city}</Text>
-  //       <Text>Country: {country}</Text>
-  //     </View>
-  //   );
-  // }
-
-  // uploadPhotoAsync = async uri => {
-  //   const path = 'photos/' + (uid) + '/' + Date.now();
-  //   return new Promise(async (res, rej) => {
-  //     const response = await fetch(uri);
-  //     const file = await response.blob();
-  //     let upload = Firebase.storage().ref(path).put(file);
-  //     // console.log(path)
-  //     upload.on("state_changed",
-  //       snapshot => { },
-  //       err => {
-  //         rej(err)
-  //       },
-  //       async () => {
-  //         const url = await upload.snapshot.ref.getDownloadURL();
-  //         res(url);
-  //       }
-  //     )
-  //   })
-  // }
 
   async function pick_image() {
     try {
@@ -129,7 +73,7 @@ export default function CreatePost({ navigation }) {
       <ScrollView
         style={Styles.container}
       >
-        <TouchableOpacity 
+        <TouchableOpacity
           style={{
             width: 200, height: 300,
             alignSelf: 'center',
@@ -138,9 +82,9 @@ export default function CreatePost({ navigation }) {
           }}
           onPress={() => {
             pick_image();
-        }}>
+          }}>
           <Image
-            source={{uri: photosx}}
+            source={{ uri: photosx }}
             style={{
               width: 200, height: 300,
               alignSelf: 'center',
@@ -162,7 +106,7 @@ export default function CreatePost({ navigation }) {
             iconSize={18}
             iconWidth={40}
             inputPadding={16}
-            inputStyle={{padding: 5}}
+            inputStyle={{ padding: 5 }}
           />
         </View>
 
@@ -176,7 +120,7 @@ export default function CreatePost({ navigation }) {
             iconSize={18}
             iconWidth={40}
             inputPadding={16}
-            inputStyle={{padding: 5}}
+            inputStyle={{ padding: 5 }}
           />
         </View>
 
@@ -190,7 +134,7 @@ export default function CreatePost({ navigation }) {
             iconSize={18}
             iconWidth={40}
             inputPadding={16}
-            inputStyle={{padding: 5}}
+            inputStyle={{ padding: 5 }}
           />
         </View>
 

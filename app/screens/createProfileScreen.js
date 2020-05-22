@@ -185,20 +185,6 @@ class CreateProfile extends React.Component {
           inputStyle={{ padding: 5 }}
           onChangeText={(bio) => this.setState({ bio })}
         />
-
-        {/* <Fumi
-          label={'Photo of Yourself :)'}
-          value={this.state.photo}
-          iconClass={FontAwesomeIcon}
-          iconName={'camera'}
-          iconSize={20}
-          iconWidth={40}
-          iconColor={Colors.danger}
-          inputPadding={16}
-          inputStyle={{ padding: 5 }}
-          onChangeText={(photo) => this.setState({ photo })}
-        /> */}
-
         <Fumi
           label={'Some Places You\'ve Been'}
           value={this.state.places}
