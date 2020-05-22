@@ -4,12 +4,12 @@ import {View} from 'react-native';
 import FeedList from '../../components/feedList';
 import Header from '../../components/header';
 
-export default function Feed() {
+export default function Feed({navigation}) {
   return (
     <View style={{flex: 1}}>
       <Header headerTitle="Feed" />
 
-      <FeedList />
+      <FeedList navigation={navigation}/>
     </View>
   );
 }
