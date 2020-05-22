@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, ScrollView, FlatList } from 'react-native';
+import {Text, View, ScrollView, FlatList} from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import AwesomeButton from 'react-native-really-awesome-button';
 import Styles from '../../styles/styles';
@@ -8,57 +8,52 @@ import Header from '../../components/header';
 import firebase from '../../config/firebase';
 import Countries from '../../assets/data/countries';
 import shortid from 'shortid';
-import { Autocomplete, withKeyboardAwareScrollView } from 'react-native-dropdown-autocomplete';
+import {Autocomplete, withKeyboardAwareScrollView} from 'react-native-dropdown-autocomplete';
 
 class SearchTab extends React.Component {
-
-  db = firebase.firestore().collection("location_test");
+  db = firebase.firestore().collection('location_test');
   constructor(props) {
     super(props);
     this.state = {
       location: '',
       locList: []
     };
-
   }
 
   handleSelectItem(item, index) {
-    const { onDropdownClose } = this.props;
+    const {onDropdownClose} = this.props;
     onDropdownClose();
   }
 
   updateState(item) {
-    this.setState({ location: item.label });
+    this.setState({location: item.label});
   }
 
   handleSearchDB = async (location) => {
-
     this.db
-      .where("country", "==", location)
-      .get()
-      .then(snapshot => {
-        const list = [];
-        snapshot.docs.forEach(doc => {
-          const { city, country } = doc.data();
-          list.push({
-            id: doc.id,
-            city,
-            country
+        .where('country', '==', location)
+        .get()
+        .then((snapshot) => {
+          const list = [];
+          snapshot.docs.forEach((doc) => {
+            const {city, country} = doc.data();
+            list.push({
+              id: doc.id,
+              city,
+              country
+            });
           });
+
+          this.setState({locList: list});
+
+          if (loading) {
+            setLoading(false);
+          }
         });
-
-        this.setState({ locList: list });
-
-        if (loading) {
-          setLoading(false);
-        }
-      });
-
-
   }
 
   render() {
-    const { scrollToInput, onDropdownClose, onDropdownShow } = this.props;
+    const {scrollToInput, onDropdownClose, onDropdownShow} = this.props;
 
     return (
 
@@ -100,19 +95,19 @@ class SearchTab extends React.Component {
               width={200}
               height={50}
               onPress={() => {
-                this.setState({ error: '' });
+                this.setState({error: ''});
                 this.handleSearchDB(this.state.location);
               }}
             >
               Let's Explore
-              </AwesomeButton>
+            </AwesomeButton>
           </View>
 
         </View>
 
         <FlatList
           data={this.state.locList}
-          renderItem={({ item }) => (
+          renderItem={({item}) => (
             <View style={Styles.container_content}>
 
               <Text>City: {item.city}</Text>
@@ -127,4 +122,4 @@ class SearchTab extends React.Component {
   }
 }
 export default withKeyboardAwareScrollView(SearchTab);
-//export default SearchTab;
+// export default SearchTab;

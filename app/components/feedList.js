@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
+import React, {Component} from 'react';
+import {ScrollView} from 'react-native';
 
 import PostCard from './postCard';
 // We need to replace this
@@ -12,7 +12,10 @@ export default class PhotoList extends Component {
 
   getPhotos() {
     return this.state.datas.map((data) => {
-      return <PostCard detail={data} key={data.id} />;
+      return <PostCard
+        detail={data}
+        key={data.id}
+        navigation={this.props.navigation}/>;
     });
   }
 
