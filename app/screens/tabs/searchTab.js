@@ -1,5 +1,6 @@
+/* eslint-disable no-invalid-this */
 import * as React from 'react';
-import {Text, View, ScrollView, FlatList} from 'react-native';
+import {Text, View, FlatList} from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import AwesomeButton from 'react-native-really-awesome-button';
 import Styles from '../../styles/styles';
@@ -8,7 +9,8 @@ import Header from '../../components/header';
 import firebase from '../../config/firebase';
 import Countries from '../../assets/data/countries';
 import shortid from 'shortid';
-import {Autocomplete, withKeyboardAwareScrollView} from 'react-native-dropdown-autocomplete';
+import {Autocomplete, withKeyboardAwareScrollView}
+  from 'react-native-dropdown-autocomplete';
 
 class SearchTab extends React.Component {
   db = firebase.firestore().collection('location_test');
@@ -45,10 +47,6 @@ class SearchTab extends React.Component {
           });
 
           this.setState({locList: list});
-
-          if (loading) {
-            setLoading(false);
-          }
         });
   }
 
@@ -60,7 +58,9 @@ class SearchTab extends React.Component {
       <View style={Styles.container2}>
         <Header headerTitle="Search" />
 
-        <Text style={[Styles.header, Styles.text_medium]}> Where would you like to go?</Text>
+        <Text style={[Styles.header, Styles.text_medium]}>
+          Where would you like to go?
+        </Text>
 
         <View style={Styles.container_content}>
           <Autocomplete
@@ -99,7 +99,7 @@ class SearchTab extends React.Component {
                 this.handleSearchDB(this.state.location);
               }}
             >
-              Let's Explore
+              Let`&apos;`s Explore
             </AwesomeButton>
           </View>
 
