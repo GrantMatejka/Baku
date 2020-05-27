@@ -1,6 +1,5 @@
-let Countries;
 // From https://bitbucket.org/atlassian/atlaskit-mk-2/raw/4ad0e56649c3e6c973e226b7efaeb28cb240ccb0/packages/core/select/src/data/countries.js
-export default Countries = [
+const Countries = [
   {code: 'AD', label: 'Andorra', phone: '376'},
   {code: 'AE', label: 'United Arab Emirates', phone: '971'},
   {code: 'AF', label: 'Afghanistan', phone: '93'},
@@ -89,7 +88,9 @@ export default Countries = [
   {code: 'GP', label: 'Guadeloupe', phone: '590'},
   {code: 'GQ', label: 'Equatorial Guinea', phone: '240'},
   {code: 'GR', label: 'Greece', phone: '30'},
-  {code: 'GS', label: 'South Georgia and the South Sandwich Islands', phone: '500'},
+  {code: 'GS',
+    label: 'South Georgia and the South Sandwich Islands',
+    phone: '500'},
   {code: 'GT', label: 'Guatemala', phone: '502'},
   {code: 'GU', label: 'Guam', phone: '1-671'},
   {code: 'GW', label: 'Guinea-Bissau', phone: '245'},
@@ -143,7 +144,9 @@ export default Countries = [
   {code: 'MF', label: 'Saint Martin (French part)', phone: '590'},
   {code: 'MG', label: 'Madagascar', phone: '261'},
   {code: 'MH', label: 'Marshall Islands', phone: '692'},
-  {code: 'MK', label: 'Macedonia, the Former Yugoslav Republic of', phone: '389'},
+  {code: 'MK',
+    label: 'Macedonia, the Former Yugoslav Republic of',
+    phone: '389'},
   {code: 'ML', label: 'Mali', phone: '223'},
   {code: 'MM', label: 'Myanmar', phone: '95'},
   {code: 'MN', label: 'Mongolia', phone: '976'},
@@ -250,3 +253,5 @@ export default Countries = [
   {code: 'ZM', label: 'Zambia', phone: '260'},
   {code: 'ZW', label: 'Zimbabwe', phone: '263'},
 ];
+
+export default Countries;

@@ -9,7 +9,6 @@ import SearchTab from '../screens/tabs/searchTab';
 import CreatePostTab from '../screens/tabs/createPostTab';
 import Drawer from './drawerNav';
 import Colors from '../styles/colors';
-import ProfileTab from '../screens/tabs/profileTab';
 
 const Tab = createBottomTabNavigator();
 

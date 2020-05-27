@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, View, console} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {DrawerActions} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -22,16 +22,20 @@ export default function ProfileTab({navigation}) {
   const uid = firebase.auth().currentUser.uid;
   // let path = 'photos/' + (uid) + '/profile';
   // let store = firebase.storage().ref(path);
-  const [data, setData] = React.useState('');
+  const [setData] = React.useState('');
   const [username, setUsername] = React.useState('');
   const [profilePic, setProfilePic] = React.useState('');
   const [name, setName] = React.useState('');
-  const [bio, setBio] = React.useState('');
+  const [setBio] = React.useState('');
 
   React.useEffect(() => {
     db.collection('users').doc(uid).get()
         .then((doc) => {
-          setData(doc.data()), setName(doc.data().name), setBio(doc.data().bio), setUsername(doc.data().username), setProfilePic(doc.data().photo);
+          setData(doc.data()),
+          setName(doc.data().name),
+          setBio(doc.data().bio),
+          setUsername(doc.data().username),
+          setProfilePic(doc.data().photo);
         })
         .catch((error) => {
           console.log('Error getting documents: ', error);
@@ -71,7 +75,10 @@ export default function ProfileTab({navigation}) {
           />
         </View>
         <View style={styles2.thumbnailName}>
-          <Text style={{fontSize: 12.5, fontWeight: 'bold', color: '#FFFF'}}> {name} </Text>
+          <Text style={{
+            fontSize: 12.5,
+            fontWeight: 'bold',
+            color: '#FFFF'}}> {name} </Text>
           {/* <Text > {bio} </Text> */}
         </View>
 
