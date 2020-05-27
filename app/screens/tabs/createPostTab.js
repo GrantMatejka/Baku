@@ -1,17 +1,19 @@
 import * as React from '../../node_modules/react';
-import {Text, View, FlatList, ScrollView, ActivityIndicator, Button, Image, TouchableOpacity} from 'react-native';
+import { View, ScrollView, ActivityIndicator, Image, TouchableOpacity, console }
+  from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
 import AwesomeButton from 'react-native-really-awesome-button';
-import {Fumi} from '../../node_modules/react-native-textinput-effects/lib';
-import FontAwesomeIcon from '../../node_modules/react-native-vector-icons/FontAwesome';
+import { Fumi } from '../../node_modules/react-native-textinput-effects/lib';
+import FontAwesomeIcon
+  from '../../node_modules/react-native-vector-icons/FontAwesome';
 
 import Header from '../../components/header';
 import Firebase from '../../config/firebase';
 import Styles from '../../styles/styles';
 import Colors from '../../styles/colors';
 
-export default function CreatePost({navigation}) {
+export default function CreatePost({ navigation }) {
   const [cityx, setCity] = React.useState('');
   const [countryx, setCountry] = React.useState('');
   const [captionx, setCaption] = React.useState('');
@@ -19,10 +21,10 @@ export default function CreatePost({navigation}) {
   // const [post_timex, setPostTime] = React.useState("");
   // const [userx, setUserID] = React.useState("");
   const [loading, setLoading] = React.useState(true);
-  const [locations, setLocations] = React.useState([]);
+  const [setLocations] = React.useState([]);
 
   const db = Firebase.firestore().collection('posts');
-  const uid = Firebase.auth().currentUser.uid;
+  // const uid = Firebase.auth().currentUser.uid;
 
 
   // adds docs from db to locations list
@@ -81,7 +83,7 @@ export default function CreatePost({navigation}) {
             marginTop: 10
           }}
           onPress={() => {
-            pick_image();
+            pickImage();
           }}>
           <Image
             source={{ uri: photosx }}
@@ -144,7 +146,13 @@ export default function CreatePost({navigation}) {
             width={340}
             height={40}
             onPress={() => {
-              navigation.navigate('Preview Post Screen', {captionx: captionx, photosx: photosx, cityx: cityx, countryx: countryx});
+              navigation.navigate('Preview Post Screen',
+                {
+                  captionx: captionx,
+                  photosx: photosx,
+                  cityx: cityx,
+                  countryx: countryx
+                });
             }}
           >
             Preview

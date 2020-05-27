@@ -12,6 +12,7 @@ import Colors from '../styles/colors';
 export default class PostCard extends Component {
   state = {
     heartIcon: 'heart-o',
+    // eslint-disable-next-line sonarjs/no-duplicate-string
     saveIcon: 'bookmark-o',
     like: false,
     save: false
