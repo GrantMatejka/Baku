@@ -1,20 +1,20 @@
-import * as React from "../../node_modules/react";
-import { Text, View, FlatList, ScrollView, ActivityIndicator, Button, Image, TouchableOpacity } from "react-native";
-import * as ImagePicker from "expo-image-picker";
+import * as React from '../../node_modules/react';
+import {Text, View, FlatList, ScrollView, ActivityIndicator, Button, Image, TouchableOpacity} from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 
-import AwesomeButton from "react-native-really-awesome-button";
-import { Fumi } from "../../node_modules/react-native-textinput-effects/lib";
-import FontAwesomeIcon from "../../node_modules/react-native-vector-icons/FontAwesome";
+import AwesomeButton from 'react-native-really-awesome-button';
+import {Fumi} from '../../node_modules/react-native-textinput-effects/lib';
+import FontAwesomeIcon from '../../node_modules/react-native-vector-icons/FontAwesome';
 
-import Header from "../../components/header";
-import Firebase from "../../config/firebase";
-import Styles from "../../styles/styles";
-import Colors from "../../styles/colors";
+import Header from '../../components/header';
+import Firebase from '../../config/firebase';
+import Styles from '../../styles/styles';
+import Colors from '../../styles/colors';
 
-export default function CreatePost({ navigation }) {
-  const [cityx, setCity] = React.useState("");
-  const [countryx, setCountry] = React.useState("");
-  const [captionx, setCaption] = React.useState("");
+export default function CreatePost({navigation}) {
+  const [cityx, setCity] = React.useState('');
+  const [countryx, setCountry] = React.useState('');
+  const [captionx, setCaption] = React.useState('');
   const [photosx, setPhotos] = React.useState('https://drive.google.com/uc?id=1IlnqOsoEVi9ASVb0WihFRxtMu2z2BLT5');
   // const [post_timex, setPostTime] = React.useState("");
   // const [userx, setUserID] = React.useState("");
@@ -129,7 +129,7 @@ export default function CreatePost({ navigation }) {
       <ScrollView
         style={Styles.container}
       >
-        <TouchableOpacity 
+        <TouchableOpacity
           style={{
             width: 200, height: 300,
             alignSelf: 'center',
@@ -138,7 +138,7 @@ export default function CreatePost({ navigation }) {
           }}
           onPress={() => {
             pick_image();
-        }}>
+          }}>
           <Image
             source={{uri: photosx}}
             style={{
@@ -199,7 +199,9 @@ export default function CreatePost({ navigation }) {
             backgroundColor={'#ffbc26'}
             width={340}
             height={40}
-            onPress={() => { navigation.navigate("Preview Post Screen", { captionx: captionx, photosx: photosx, cityx: cityx, countryx: countryx }) }}
+            onPress={() => {
+              navigation.navigate('Preview Post Screen', {captionx: captionx, photosx: photosx, cityx: cityx, countryx: countryx});
+            }}
           >
             Preview
           </AwesomeButton>
