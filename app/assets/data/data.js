@@ -1,6 +1,4 @@
-let data;
-
-export default data = [
+const data = [
   {
     id: 1,
     username: 'ericzowie',
@@ -55,3 +53,5 @@ export default data = [
     location: 'Los Angeles'
   }
 ];
+
+export default data;

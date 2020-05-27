@@ -17,12 +17,18 @@ export default class NotificationCard extends Component {
   render() {
     return (
       <View style={Styles.notificationCardContainer}>
-        <View style={{flexDirection: 'row', margin: 5, justifyContent: 'space-between'}}>
+        <View style={{
+          flexDirection: 'row',
+          margin: 5,
+          justifyContent: 'space-between'}}>
 
           <Image style={Styles.image_icon}
             source={{uri: this.props.detail.user_avatar}} />
 
-          <View style={{flexDirection: 'column', marginHorizontal: 10, flex: 1}}>
+          <View style={{
+            flexDirection: 'column',
+            marginHorizontal: 10,
+            flex: 1}}>
             <Text style={{fontSize: 20}}>
               {this.props.detail.username} {this.type.followText}
             </Text>
