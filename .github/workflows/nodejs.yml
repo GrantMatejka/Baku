@@ -28,6 +28,7 @@ jobs:
     - run: cd App
     - run: ls
     - run: cd app
+    - run: ls
     - run: npm install
     - run: npm ci
     - run: npm test
