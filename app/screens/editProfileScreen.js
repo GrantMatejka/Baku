@@ -31,7 +31,7 @@ class EditProfile extends React.Component {
   };
 
   componentDidMount() {
-    firebase.firestore().collection("users").doc(this.uid).get()
+    this.dbRef.doc(this.uid).get()
       .then((doc) => {
         this.setState({ data: doc.data() }),
           this.setState({ name: doc.data().name }),
