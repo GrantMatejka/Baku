@@ -3,6 +3,8 @@ import { View, Text, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { ScrollView } from 'react-native-gesture-handler';
+// import AButton from '../components/AwesomeButton';
+
 import AwesomeButton from 'react-native-really-awesome-button';
 import { Hoshi } from 'react-native-textinput-effects';
 
@@ -103,7 +105,7 @@ class Login extends React.Component {
           borderHeight={5}
           inputPadding={18}
           autoCapitalize="none"
-          testID='email_text_box'
+          testID='input-login'
         />
 
         <Hoshi
@@ -114,7 +116,7 @@ class Login extends React.Component {
           borderHeight={5}
           inputPadding={16}
           secureTextEntry={true}
-          testID='pass_text_box'
+          testID='input-password'
         />
 
         <View style={Styles.container_content}>
@@ -122,11 +124,13 @@ class Login extends React.Component {
             {this.state.error}
           </Text>
 
-          <View style={Styles.p_2}>
+          <View style={Styles.p_2} testID='button-login'
+          >
             <AwesomeButton
               backgroundColor={Colors.light}
               width={200}
               height={50}
+              testID='button-login'
               onPress={() => {
                 this.setState({ error: '' });
                 this.handleLogin(this.state);
@@ -136,12 +140,12 @@ class Login extends React.Component {
             </AwesomeButton>
           </View>
 
-          <View style={Styles.p_2} testID='signup_button'>
+          <View style={Styles.p_2}>
             <AwesomeButton
               backgroundColor={Colors.warning}
               width={200}
               height={50}
-              testID='signup_button'
+              testID='button-signup'
               onPress={() => {
                 this.setState({ email: '', password: '', error: '' });
                 this.props.navigation.navigate('Create');
@@ -151,7 +155,7 @@ class Login extends React.Component {
             </AwesomeButton>
           </View>
 
-          <Text style={Styles.p_2} testID="login">
+          <Text style={Styles.p_2} testID="new-user">
             New user? Sign up now!
           </Text>
 
@@ -172,6 +176,7 @@ class Login extends React.Component {
                 marginHorizontal={10}
                 size={25}
                 name="facebook"
+                testID="icon-facebook"
                 onPress={() => {
                   this.setState({ error: '' });
                   this.loginWithFacebook();
@@ -182,6 +187,7 @@ class Login extends React.Component {
               <Icon
                 size={25}
                 name="google"
+                testID="icon-google"
                 onPress={() => {
                   this.setState({ error: '' });
                   this.signInWithGoogleAsync();
