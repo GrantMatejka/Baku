@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {Image, StyleSheet, Text, View, console} from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
-import {DrawerActions} from '@react-navigation/native';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
+import { DrawerActions } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AwesomeButton from 'react-native-really-awesome-button';
-import {createMaterialTopTabNavigator}
+import { createMaterialTopTabNavigator }
   from '@react-navigation/material-top-tabs';
 import ProfilePosts from '../../components/profilePosts';
 import Favorites from '../../components/favorites';
@@ -17,8 +17,8 @@ import firebase from '../../config/firebase';
 
 const TopTab = createMaterialTopTabNavigator();
 
-export default function ProfileTab({navigation}) {
-  const db = firebase.firestore();
+export default function ProfileTab({ navigation }) {
+  const db = firebase.firestore().collection('users');
   const uid = firebase.auth().currentUser.uid;
   // const [data, setData] = React.useState('');
   const [username, setUsername] = React.useState('');
@@ -27,17 +27,17 @@ export default function ProfileTab({navigation}) {
   const [setBio] = React.useState('');
 
   React.useEffect(() => {
-    db.collection('users').doc(uid).get()
-        .then((doc) => {
+    db.doc(uid).get()
+      .then((doc) => {
         // setData(doc.data()),
-          setName(doc.data().name),
-          setBio(doc.data().bio),
+        setName(doc.data().name),
+          // setBio(doc.data().bio),
           setUsername(doc.data().username),
-          setProfilePic(doc.data().photo);
-        })
-        .catch((error) => {
-          console.log('Error getting documents: ', error);
-        });
+          setProfilePic(doc.data().photo)
+      })
+      .catch((error) => {
+        console.log('Error getting documents: ', error);
+      });
   });
   return (
     <View style={Styles.container}>
@@ -81,7 +81,7 @@ export default function ProfileTab({navigation}) {
           {/* <Text > {bio} </Text> */}
         </View>
 
-        <View style={{alignItems: 'center', padding: 24}}>
+        <View style={{ alignItems: 'center', padding: 24 }}>
           <AwesomeButton
             backgroundColor={'#ffbc26'}
             width={340}
@@ -95,9 +95,9 @@ export default function ProfileTab({navigation}) {
           {/* Tab to switch between profile posts and favorites */}
           <TopTab.Navigator
             tabBarOptions={{
-              labelStyle: {fontWeight: 'bold', fontSize: 12},
-              indicatorStyle: {backgroundColor: Colors.warning},
-              style: {backgroundColor: Colors.info},
+              labelStyle: { fontWeight: 'bold', fontSize: 12 },
+              indicatorStyle: { backgroundColor: Colors.warning },
+              style: { backgroundColor: Colors.info },
               inactiveBackgroundColor: Colors.info,
               activeBackgroundColor: Colors.warning,
               inactiveTintColor: Colors.background,
