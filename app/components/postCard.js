@@ -146,7 +146,8 @@ export default class PostCard extends Component {
               width={120}
               height={30}
               onPress={() => {
-                this.props.navigation.navigate('Post Detailed View');
+                this.props.navigation.navigate('Post Detailed View',
+                    {details: this.props.detail});
               }}
             >
               View Itinerary
