@@ -54,7 +54,8 @@ export default class PostCard extends Component {
               Hello From
             </Text>
 
-            <Text style={Styles.postCardLocationText}>
+            <Text adjustsFontSizeToFit numberOfLines={1}
+              style={Styles.postCardLocationText}>
               {this.props.detail.location}
             </Text>
 
@@ -73,9 +74,9 @@ export default class PostCard extends Component {
               }}
             />
 
-            <Text style={{
+            <Text adjustsFontSizeToFit numberOfLines={1} style={{
               fontWeight: 'bold',
-              fontSize: 12,
+              textAlignVertical: 'center',
               textAlign: 'center'
             }}
             >
