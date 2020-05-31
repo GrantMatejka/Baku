@@ -59,7 +59,7 @@ class Signup extends React.Component {
       })
       .catch((err) => {
         this.setState({ error: 'Invalid Credentials' })
-          // console.log(error);
+        // console.log(error);
       });
   }
 
@@ -77,6 +77,7 @@ class Signup extends React.Component {
           value={this.state.name}
           iconClass={FontAwesomeIcon}
           iconName={'user'}
+          testID="input-fullname"
           onChangeText={(name) => this.setState({ name })}
         />
         <Fumi
@@ -84,6 +85,7 @@ class Signup extends React.Component {
           value={this.state.username}
           iconClass={FontAwesomeIcon}
           iconName={'user'}
+          testID="input-username"
           onChangeText={(username) => this.setState({ username })}
         />
 
@@ -93,6 +95,7 @@ class Signup extends React.Component {
           autoCapitalize="none"
           iconClass={FontAwesomeIcon}
           iconName={'envelope-square'}
+          testID="input-email"
           onChangeText={(email) => this.setState({ email })}
         />
 
@@ -102,6 +105,7 @@ class Signup extends React.Component {
           secureTextEntry={true}
           iconClass={FontAwesomeIcon}
           iconName={'unlock-alt'}
+          testID="input-password"
           onChangeText={(password) => this.setState({ password })}
         />
 
@@ -111,6 +115,7 @@ class Signup extends React.Component {
           secureTextEntry={true}
           iconClass={FontAwesomeIcon}
           iconName={'lock'}
+          testID="input-confirm-password"
           onChangeText={(confirmPassword) => this.setState({ confirmPassword })}
 
         />
