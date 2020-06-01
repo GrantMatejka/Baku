@@ -24,7 +24,7 @@ export default function ProfileTab({navigation}) {
   const [username, setUsername] = React.useState('');
   const [profilePic, setProfilePic] = React.useState('');
   const [name, setName] = React.useState('');
-  const [setBio] = React.useState('');
+  // const [bio, setBio] = React.useState('');
 
   React.useEffect(() => {
     db.doc(uid).get()
@@ -36,7 +36,7 @@ export default function ProfileTab({navigation}) {
           setProfilePic(doc.data().photo);
         })
         .catch((error) => {
-          console.log('Error getting documents: ', error);
+        // console.log('Error getting documents: ', error);
         });
   });
   return (
