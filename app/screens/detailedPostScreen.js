@@ -13,15 +13,18 @@ import ItineraryList from "../components/itineraryList";
 
 function detailedPostScreen({ route, navigation }) {
 
-  let details = {
+  const details = {
     location: route.params.details.location,
     user_avatar: route.params.details.user_avatar,
     username: route.params.details.username,
     image: route.params.details.image,
+    caption: route.params.details.caption,
+    postId: route.params.details.uid,
   };
 
   return (
-    <ScrollView style={Styles.detailedPostContainer}>
+    <View style={{flex: 1}}>
+    <ScrollView style={Styles.detailedPostContainer} >
 
       <View style={{
         flexDirection: 'row',
@@ -83,15 +86,20 @@ function detailedPostScreen({ route, navigation }) {
                     uri: details.image
                   }}
                 />
+          <View style={{ flexDirection: 'row', margin: 5, alignContent: 'center' }}>
+            <Text adjustsFontSizeToFit style={Styles.text_large}>{details.caption}</Text>
+          </View>
           </View>
         <View style={{ flexDirection: 'column', minWidth: 200 }}>
           <View style={{ flex: 0.7 }}>
-            <ItineraryList />
+            <ItineraryList uid={details.postId}/>
           </View>
         </View>
       </View>
 
-    </ScrollView>
+      </ScrollView>
+
+    </View>
   );
 }
 
