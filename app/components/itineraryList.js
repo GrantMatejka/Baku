@@ -10,9 +10,10 @@ import Firebase from '../config/firebase';
 import Styles from '../styles/styles';
 import Colors from '../styles/colors';
 import ItineraryActivity from './itineraryActivity';
+import { ScrollView } from 'react-native-gesture-handler';
 
-export default function ItineraryList() {
-  const postId = '9aCTWlODvQKj64ekNW9s';
+export default function ItineraryList({uid}) {
+  const postId = uid;
   const [data, setData] = React.useState('');
   const [itinerary, setItinerary] = React.useState([]);
 
@@ -39,8 +40,8 @@ export default function ItineraryList() {
   };
 
   return (
-    <View style={{flex: 1, alignSelf: 'flex-start'}}>
+    <ScrollView style={{flex: 1, alignSelf: 'flex-start'}}>
       {getActivities()}
-    </View>
+    </ScrollView>
   );
 }
