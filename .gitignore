@@ -10,6 +10,11 @@ idea
 *.DS_STORE
 DS_STORE
 Exponent
+babel-loader
+cache
+fixtures
+plugins
+support
 #/App
 
 #FaceBook's gitignore for good measure
