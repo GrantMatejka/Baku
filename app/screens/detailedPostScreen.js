@@ -8,60 +8,99 @@ import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
 import Styles from "../styles/styles";
 import Colors from '../styles/colors';
+import PostCard from "../components/postCard";
+import ItineraryList from "../components/itineraryList";
 
-export default function detailedPostScreen({ route, navigation }) {
+function detailedPostScreen({ route, navigation }) {
 
-   var state = {
-      heartIcon: 'heart-o',
-      saveIcon: 'bookmark-o',
-      like: false,
-      save: false
-   };
+  const details = {
+    location: route.params.details.location,
+    user_avatar: route.params.details.user_avatar,
+    username: route.params.details.username,
+    image: route.params.details.image,
+    caption: route.params.details.caption,
+    postId: route.params.details.uid,
+  };
 
-   var toggleLike = () => {
-      this.state.like ?
-         this.setState({ heartIcon: 'heart-o' }) :
-         this.setState({ heartIcon: 'heart' });
+  return (
+    <View style={{flex: 1}}>
+    <ScrollView style={Styles.detailedPostContainer} >
 
-      this.setState({
-         like: !this.state.like
-      });
-   }
+      <View style={{
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        flexWrap: 'wrap'
+      }}>
+        <View style={{ flexDirection: 'column', minWidth: 200, flex: 0.3 }}>
 
-   var toggleSave = () => {
-      this.state.save ?
-         this.setState({ saveIcon: 'bookmark-o' }) :
-         this.setState({ saveIcon: 'bookmark' });
+              <View style={{ flexDirection: 'row', margin: 5 }}>
 
-      this.setState({
-         save: !this.state.save
-      });
-   }
-
-   return (
-      <ScrollView style={Styles.detailedPostContainer}>
-
-         <View style={{
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            flexWrap: 'wrap'
-         }}>
-            <View style={{ flexDirection: 'column', minWidth: 200 }}>
-               <View style={{ flex: 0.5, borderColor: Colors.danger }}>
-                  <Text>
-                     Post Front Face Here
+                <View style={{
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  flex: 0.75,
+                }}>
+                  <Text style={{ fontSize: 15, textAlign: 'center' }}>
+                    Hello From
                   </Text>
-               </View>
-            </View>
-            <View style={{ flexDirection: 'column', minWidth: 200 }}>
-               <View style={{ flex: 0.5 }}>
-                  <Text >
-                     Post itinerary here
+
+                  <Text adjustsFontSizeToFit numberOfLines={1}
+                    style={Styles.postCardLocationText}>
+                    {details.location}
                   </Text>
-               </View>
-            </View>
-         </View>
+
+                </View>
+
+                <View style={{
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  flex: 0.25
+                }}>
+                  <Image
+                    style={Styles.image_icon}
+                    source={{
+                      uri: details.user_avatar
+                    }}
+                  />
+
+                  <Text adjustsFontSizeToFit numberOfLines={1} style={{
+                    fontWeight: 'bold',
+                    textAlignVertical: 'center',
+                    textAlign: 'center'
+                  }}
+                  >
+                    {details.username}
+                  </Text>
+                </View>
+
+              </View>
+                <Image
+                  style={{
+                    flex: 1,
+                    height: 400,
+                    resizeMode: 'contain'
+                  }}
+                  source={{
+                    uri: details.image
+                  }}
+                />
+          <View style={{ flexDirection: 'row', margin: 5, alignContent: 'center' }}>
+            <Text adjustsFontSizeToFit style={Styles.text_large}>{details.caption}</Text>
+          </View>
+          </View>
+        <View style={{ flexDirection: 'column', minWidth: 200 }}>
+          <View style={{ flex: 0.7 }}>
+            <ItineraryList uid={details.postId}/>
+          </View>
+        </View>
+      </View>
 
       </ScrollView>
-   );
+
+    </View>
+  );
 }
+
+export default detailedPostScreen;
