@@ -49,7 +49,7 @@ class ResetPassword extends React.Component {
           inputPadding={16}
           inputStyle={Styles.p_2}
           value={this.state.email}
-          testID="input-email"
+          testID="reset-input-email"
           onChangeText={(email) => this.setState({ email })}
         />
 
