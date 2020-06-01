@@ -67,6 +67,7 @@ export default function ProfileTab({navigation}) {
             style={styles2.hambuger}
             name="bars"
             size={25}
+            testID='profile-hamburger'
             onPress={() =>
               navigation.dispatch(DrawerActions.openDrawer(Drawer))
             }

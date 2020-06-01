@@ -63,7 +63,7 @@ class SearchTab extends React.Component {
           Where would you like to go?
         </Text>
 
-        <View style={Styles.container_content}>
+        <View style={Styles.container_content} testID='search-input-country'>
           <Autocomplete
             key={shortid.generate()}
             scrollToInput={(ev) => scrollToInput(ev)}
@@ -91,6 +91,7 @@ class SearchTab extends React.Component {
             valueExtractor={(item) => item.label}
             placeholder="Search by country"
             initialValue={this.state.location}
+            testID='search-input-country'
           />
 
           <View style={Styles.container_content}>
