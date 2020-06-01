@@ -81,6 +81,7 @@ describe('Register Screen', function () {
       cy.contains('Password should be at least 6 characters');
    });
 
+   //ADDITIONAL SCREEN
    it("Submit with good credentials", function () {
       cy.get('[data-testid="register-input-fullname"]').type('test cypress')
       cy.get('[data-testid="register-input-username"]').type('test_cypress')
@@ -90,10 +91,13 @@ describe('Register Screen', function () {
       cy.get('img')
       cy.contains('Submit').click();
       cy.contains('Hey test cypress! Let\'s get to know who you really are!');
-      cy.contains('Phone-Number');
-      cy.contains('Birthday');
-      cy.contains('Short BIO');
-      cy.contains('Some Places You\'ve Been');
-      cy.contains('Create Profile');
+      cy.contains('Phone-Number').type('911');
+      cy.contains('Birthday').type('05/24');
+      cy.contains('Short BIO').type('I am not tall');
+      cy.contains('Some Places You\'ve Been').type('No Where');
+      cy.contains('Create Profile').click();
+
+      //FEED TAB
+      cy.contains('Feed Tab');
    });
 });
