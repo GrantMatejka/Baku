@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Text, ScrollView} from 'react-native';
 
-import Styles from '../styles/styles';
+// import Styles from '../styles/styles';
 import Colors from '../styles/colors';
 
 export default class ItineraryActivity extends Component {
@@ -12,7 +12,8 @@ export default class ItineraryActivity extends Component {
         <Text style={{
           color: Colors.primary,
           fontSize: 25,
-          fontWeight: '500'}}>
+          fontWeight: '500'
+        }}>
           {this.props.time}
         </Text>
         <Text> {this.props.activity} </Text>
