@@ -10,7 +10,7 @@ import {
 import * as ImagePicker from 'expo-image-picker';
 
 import AwesomeButton from 'react-native-really-awesome-button';
-import { Fumi } from '../../node_modules/react-native-textinput-effects/lib';
+import {Fumi} from '../../node_modules/react-native-textinput-effects/lib';
 import FontAwesomeIcon from
   '../../node_modules/react-native-vector-icons/FontAwesome';
 
@@ -19,12 +19,12 @@ import Header from '../../components/header';
 import Styles from '../../styles/styles';
 import Colors from '../../styles/colors';
 
-export default function CreatePost({ navigation }) {
+export default function CreatePost({navigation}) {
   const [cityx, setCity] = React.useState('');
   const [countryx, setCountry] = React.useState('');
   const [captionx, setCaption] = React.useState('');
   const [photosx, setPhotos] = React.useState(
-    'https://drive.google.com/uc?id=1IlnqOsoEVi9ASVb0WihFRxtMu2z2BLT5'
+      'https://drive.google.com/uc?id=1IlnqOsoEVi9ASVb0WihFRxtMu2z2BLT5'
   );
   // const [post_timex, setPostTime] = React.useState("");
   // const [userx, setUserID] = React.useState("");
@@ -92,7 +92,7 @@ export default function CreatePost({ navigation }) {
           }}
         >
           <Image
-            source={{ uri: photosx }}
+            source={{uri: photosx}}
             style={{
               width: 200,
               height: 300,
@@ -116,7 +116,7 @@ export default function CreatePost({ navigation }) {
             iconSize={18}
             iconWidth={40}
             inputPadding={16}
-            inputStyle={{ padding: 5 }}
+            inputStyle={{padding: 5}}
             testID='create-city'
           />
         </View>
@@ -131,7 +131,7 @@ export default function CreatePost({ navigation }) {
             iconSize={18}
             iconWidth={40}
             inputPadding={16}
-            inputStyle={{ padding: 5 }}
+            inputStyle={{padding: 5}}
             testID='create-country'
           />
         </View>
@@ -146,7 +146,7 @@ export default function CreatePost({ navigation }) {
             iconSize={18}
             iconWidth={40}
             inputPadding={16}
-            inputStyle={{ padding: 5 }}
+            inputStyle={{padding: 5}}
             testID='create-caption'
           />
         </View>
