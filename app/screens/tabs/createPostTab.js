@@ -103,6 +103,7 @@ export default function CreatePost({ navigation }) {
               marginBottom: 10,
               marginTop: 10
             }}
+            testID='create-photo'
           />
         </TouchableOpacity>
         <View style={Styles.p_3}>
@@ -116,6 +117,7 @@ export default function CreatePost({ navigation }) {
             iconWidth={40}
             inputPadding={16}
             inputStyle={{ padding: 5 }}
+            testID='create-city'
           />
         </View>
 
@@ -130,6 +132,7 @@ export default function CreatePost({ navigation }) {
             iconWidth={40}
             inputPadding={16}
             inputStyle={{ padding: 5 }}
+            testID='create-country'
           />
         </View>
 
@@ -144,6 +147,7 @@ export default function CreatePost({ navigation }) {
             iconWidth={40}
             inputPadding={16}
             inputStyle={{ padding: 5 }}
+            testID='create-caption'
           />
         </View>
 

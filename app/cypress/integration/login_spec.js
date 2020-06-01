@@ -77,6 +77,7 @@ describe('Login Screen', function () {
         cy.get('[data-testid="login-input-email"]').type('test@test.com')
         cy.get('[data-testid="login-input-password"]').type('password')
         cy.contains(/login/i).click();
+        cy.contains('Feed Tab');
     });
 
 });
