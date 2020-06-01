@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 import normalize from 'react-native-normalize';
 
@@ -9,6 +9,10 @@ const Styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.background
+  },
+  container2: {
+    flex: 1,
+    backgroundColor: '#FFFF'
   },
   // Container for any horizontally centered child content
   // Useful for with ScrollView
@@ -218,8 +222,19 @@ const Styles = StyleSheet.create({
     fontSize: 35
   },
 
+  // Detailed Post View
+  detailedPostContainer: {
+    marginHorizontal: 5,
+    marginVertical: 15,
+    backgroundColor: Colors.tan,
+    borderRadius: 10,
+    borderColor: Colors.tandark,
+    borderWidth: 1,
+  },
+
   // Notification Styles
   notificationCardContainer: {
+    flex: 1,
     height: 60,
     width: '100%',
     maxWidth: 500,
@@ -249,7 +264,9 @@ const Styles = StyleSheet.create({
     flexWrap: 'wrap',
     alignItems: 'center',
     // borderBottomWidth: 1,
-    borderColor: '#c7c6c1',
+    backgroundColor: '#FFFF',
+    color: '#FFFF',
+    borderColor: '#FFFF',
     paddingVertical: 13,
     paddingLeft: 12,
     paddingRight: '5%',

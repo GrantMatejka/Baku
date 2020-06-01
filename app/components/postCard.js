@@ -9,9 +9,10 @@ import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import Styles from '../styles/styles';
 import Colors from '../styles/colors';
 
-export default class FeedCard extends Component {
+export default class PostCard extends Component {
   state = {
     heartIcon: 'heart-o',
+    // eslint-disable-next-line sonarjs/no-duplicate-string
     saveIcon: 'bookmark-o',
     like: false,
     save: false
@@ -53,7 +54,8 @@ export default class FeedCard extends Component {
               Hello From
             </Text>
 
-            <Text style={Styles.postCardLocationText}>
+            <Text adjustsFontSizeToFit numberOfLines={1}
+              style={Styles.postCardLocationText}>
               {this.props.detail.location}
             </Text>
 
@@ -72,9 +74,9 @@ export default class FeedCard extends Component {
               }}
             />
 
-            <Text style={{
+            <Text adjustsFontSizeToFit numberOfLines={1} style={{
               fontWeight: 'bold',
-              fontSize: 12,
+              textAlignVertical: 'center',
               textAlign: 'center'
             }}
             >
@@ -144,7 +146,8 @@ export default class FeedCard extends Component {
               width={120}
               height={30}
               onPress={() => {
-                // TODO itinerary would open now
+                this.props.navigation.navigate('Post Detailed View',
+                    {details: this.props.detail});
               }}
             >
               View Itinerary

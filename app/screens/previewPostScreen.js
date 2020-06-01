@@ -9,12 +9,12 @@ import AwesomeButton from "react-native-really-awesome-button";
 
 
 export default function previewPostScreen({ route, navigation }) {
-  const photosx = route.params.photosx
-  const captionx = route.params.captionx
-  const cityx = route.params.cityx
-  const countryx = route.params.countryx
+  const photosx = route.params.photosx;
+  const captionx = route.params.captionx;
+  const cityx = route.params.cityx;
+  const countryx = route.params.countryx;
   const dbRef = Firebase.firestore().collection('posts');
-  const db = Firebase.firestore()
+  const db = Firebase.firestore();
   const uid = Firebase.auth().currentUser.uid;
   const [userData, setData] = React.useState('');
   const [username, setUsername] = React.useState('');
@@ -33,9 +33,9 @@ export default function previewPostScreen({ route, navigation }) {
 
   async function submitPost() {
     try {
-      console.log('Submit 1')
+      // console.log('Submit 1')
       const photoRef = await uploadPhotoAsync(photosx);
-      console.log('Submit 1.1')
+      // console.log('Submit 1.1')
       await dbRef.add({
         city: cityx,
         country: countryx,
@@ -44,7 +44,7 @@ export default function previewPostScreen({ route, navigation }) {
         post_time: new Date().toLocaleString(),
         user: uid
       }).then(
-        console.log('Submit 1.2'),
+        // console.log('Submit 1.2'),
 
         navigation.navigate('Tabs', {
           screen: 'FeedTab'
@@ -55,21 +55,6 @@ export default function previewPostScreen({ route, navigation }) {
     }
   }
 
-  // async function submitPost2() {
-  //   try {
-  //     console.log('Submit 2'),
-  //       // const photoRef = await uploadPhotoAsync(photosx).then(
-  //       navigation.navigate('Tabs', {
-  //         screen: 'FeedTab'
-  //       })
-
-  //     // ).then(
-  //     //   console.log("HI")
-  //     // )
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
 
   async function uploadPhotoAsync(uri) {
     const path = 'photos/' + (uid) + '/' + Date.now();
@@ -77,7 +62,6 @@ export default function previewPostScreen({ route, navigation }) {
       const response = await fetch(uri);
       const file = await response.blob();
       let upload = Firebase.storage().ref(path).put(file);
-      // console.log(path)
       upload.on("state_changed",
         snapshot => { },
         err => {
@@ -124,16 +108,6 @@ export default function previewPostScreen({ route, navigation }) {
             Submit Post
           </AwesomeButton>
         </View>
-        {/* <View style={Styles.card}>
-          <AwesomeButton
-            backgroundColor={"#ffbc26"}
-            width={340}
-            height={40}
-            onPress={() => submitPost2()}
-          >
-            Submit Post 2
-          </AwesomeButton>
-        </View> */}
       </ScrollView>
     </View>
   );

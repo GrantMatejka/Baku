@@ -40,8 +40,32 @@ class ResetPassword extends React.Component {
             }
             );
           })
+          //.catch((error) => { console.log(error.message), Alert.alert(error.message); })
         }).catch((error) => { console.log(error.message), Alert.alert(error.message); });
       }
+          
+        //   catch((error) => {
+        //     //console.log(error), 
+        //     this.setState({error: 'Invalid Credentials'});
+        //   });
+        // // })
+        // .then(() => {
+        //     this.props.navigation.navigate('Tabs', {
+        //       screen: 'ProfileTab'
+        //     }
+        //     );
+        //   }); 
+        
+        //   this.reauthenticate(this.state.currentPassword).then(() => {
+        //     var user = firebase.auth().currentUser;
+        //     user.updatePassword(this.state.newPassword).then(() => {
+        //       Alert.alert("Password was changed");
+        //     }).catch((error) => { console.log(error.message); });
+        //   }).catch((error) => { console.log(error.message) });
+        // }
+      
+
+      //}
       /*
       changeEmail = (currentPassword, newEmail) => {
         this.reauthenticate(currentPassword).then(() => {
