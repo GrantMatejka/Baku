@@ -105,7 +105,7 @@ class Login extends React.Component {
           borderHeight={5}
           inputPadding={18}
           autoCapitalize="none"
-          testID='input-login'
+          testID='login-input-email'
         />
 
         <Hoshi
@@ -116,7 +116,7 @@ class Login extends React.Component {
           borderHeight={5}
           inputPadding={16}
           secureTextEntry={true}
-          testID='input-password'
+          testID='login-input-password'
         />
 
         <View style={Styles.container_content}>
@@ -176,7 +176,7 @@ class Login extends React.Component {
                 marginHorizontal={10}
                 size={25}
                 name="facebook"
-                testID="icon-facebook"
+                testID="login-icon-facebook"
                 onPress={() => {
                   this.setState({ error: '' });
                   this.loginWithFacebook();
@@ -187,7 +187,7 @@ class Login extends React.Component {
               <Icon
                 size={25}
                 name="google"
-                testID="icon-google"
+                testID="login-icon-google"
                 onPress={() => {
                   this.setState({ error: '' });
                   this.signInWithGoogleAsync();
