@@ -5,9 +5,9 @@ name: Baku CI
 
 on:
   push:
-    branches: [ master, develop, davidj ]
+    branches: [ master, develop ]
   pull_request:
-    branches: [ master, develop, davidj ]
+    branches: [ master, develop ]
 
 jobs:
   build:
@@ -25,5 +25,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: cd app
-    - run: npm ci
+    - run: cd app && npm ci
+    - run: cd app && npm test
+

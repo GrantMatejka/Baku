@@ -7,7 +7,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "jest --watchAll -u",
+    "test": "jest -u",
     "lint": "eslint *.js styles/*.js screens/**/*.js navigation/*.js styles/*.js assets/**/*.js components/*.js",
     "lint:fix": "eslint *.js styles/*.js screens/**/*.js navigation/*.js styles/*.js assets/**/*.js components/*.js --fix"
   },
