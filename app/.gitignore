@@ -10,7 +10,7 @@ idea
 *.DS_STORE
 DS_STORE
 Exponent
-/App
+# /App
 
 #FaceBook's gitignore for good measure
 # Xcode
