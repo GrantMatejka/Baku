@@ -133,14 +133,14 @@ class EditProfile extends React.Component {
           <Image
             source={{ uri: this.state.photo }}
             // placeholder
+            testID = 'picture'
             style={{
               width: 172, height: 172,
               alignSelf: 'center',
               borderRadius: 32,
               borderWidth: 1,
               borderColor: 'black',
-              marginBottom: 18,
-              //testID = 'picture'
+              marginBottom: 18
             }}
 
           />

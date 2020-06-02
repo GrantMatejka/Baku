@@ -147,7 +147,7 @@ class CreateProfile extends React.Component {
               borderRadius: 36,
               borderWidth: 1,
               borderColor: 'black',
-              marginBottom: 18,
+              marginBottom: 18
             }}
 
           />
