@@ -91,6 +91,7 @@ class ResetPassword extends React.Component {
             secureTextEntry={true}
             iconClass={FontAwesomeIcon}
             iconName={'unlock-alt'}
+            testID = 'old'
             onChangeText={(currentPassword) => this.setState({currentPassword})}
           />
 
@@ -100,6 +101,7 @@ class ResetPassword extends React.Component {
             secureTextEntry={true}
             iconClass={FontAwesomeIcon}
             iconName={'lock'}
+            testID = 'new'
             onChangeText={(newPassword) => this.setState({newPassword})}
           />
 
@@ -108,11 +110,12 @@ class ResetPassword extends React.Component {
               backgroundColor={Colors.warning}
               width={200}
               height={50}
+              testID = 'change'
               onPress={() => {
                 this.changePassword();
               }}
             >
-              Change Password
+              Magic
             </AwesomeButton>
           </View>
         </ScrollView>          
