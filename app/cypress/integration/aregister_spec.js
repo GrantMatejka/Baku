@@ -115,8 +115,25 @@ describe('Register Screen', function () {
       cy.contains('Short BIO').type('I am not tall');
       cy.contains('Some Places You\'ve Been').type('No Where');
       cy.contains('Create Profile').click();
+   });
 
-      //FEED TAB
+   //DELETE PROFILE
+   it("Feed Loaded", function () {
       cy.contains('Feed');
+      cy.contains('Profile').click();
+   });
+   it("Click Hamburger", function () {
+      cy.get('[data-testid="profile-hamburger"]').click();
+      cy.contains('Profile')
+      cy.contains('Settings')
+   });
+   it("Click Settings", function () {
+      cy.contains('Settings').click();
+      cy.contains('Back')
+      cy.contains('Log Out')
+      cy.contains('Delete')
+   });
+   it("Click Delete", function () {
+      cy.contains('Delete').click()
    });
 });
