@@ -13,7 +13,7 @@ import Colors from "../../../styles/colors";
 const deleteAccount = () => {
   console.log('hi');
   let account = Firebase.auth().currentUser;
-  let uid = account.uid;
+  let uid = Firebase.auth().currentUser.uid;
   let user = Firebase.firestore().collection('users').doc(uid);
   // let upload = Firebase.storage().ref(path).put(file);
 
@@ -22,9 +22,9 @@ const deleteAccount = () => {
   // let path = 'photos/' + (uid) + '/';
   // let photos = storageRef.child(path);
   // let pfp = storageRef.child(path2);
-  account.delete()
-  user.delete()
   photos.delete()
+  user.delete()
+  account.delete()
 }
 
 
@@ -72,7 +72,7 @@ export default function Settings({ navigation }) {
             backgroundColor={Colors.danger}
             width={120}
             height={40}
-            onPress={deleteAccount()}
+          // onPress={deleteAccount()}
           >
             Delete Account
           </AwesomeButton>
