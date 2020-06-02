@@ -2,9 +2,31 @@ import React from "react";
 import { Text, View, ScrollView } from "react-native";
 
 import AwesomeButton from "react-native-really-awesome-button";
+import Firebase from '../../../config/firebase';
 
 import Styles from "../../../styles/styles";
 import Colors from "../../../styles/colors";
+
+
+
+
+const deleteAccount = () => {
+  console.log('hi');
+  let account = Firebase.auth().currentUser;
+  let uid = account.uid;
+  let user = Firebase.firestore().collection('users').doc(uid);
+  // let upload = Firebase.storage().ref(path).put(file);
+
+  let path = 'photos/' + (uid) + '/';
+  let photos = Firebase.storage().ref(path);
+  // let path = 'photos/' + (uid) + '/';
+  // let photos = storageRef.child(path);
+  // let pfp = storageRef.child(path2);
+  account.delete()
+  user.delete()
+  photos.delete()
+}
+
 
 export default function Settings({ navigation }) {
   return (
@@ -34,6 +56,7 @@ export default function Settings({ navigation }) {
         </View>
 
         <View style={Styles.p_3}>
+          {/* NEED AN ACTUAL LOGOUT FUNCTION */}
           <AwesomeButton
             backgroundColor={Colors.danger}
             width={120}
@@ -43,6 +66,19 @@ export default function Settings({ navigation }) {
             Log Out
           </AwesomeButton>
         </View>
+        <View style={Styles.p_3}>
+          {/* NEED AN ACTUAL LOGOUT FUNCTION */}
+          <AwesomeButton
+            backgroundColor={Colors.danger}
+            width={120}
+            height={40}
+            onPress={deleteAccount()}
+          >
+            Delete Account
+          </AwesomeButton>
+        </View>
+
+
       </View>
     </ScrollView>
   );
