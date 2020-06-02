@@ -50,6 +50,7 @@ Static Source Code Analysis https://github.com/GrantMatejka/Baku/wiki/Static-Sou
 
 Unit/Integration Tests https://github.com/GrantMatejka/Baku/wiki/Unit-Integration-Tests
 
+To see our CI server for our current build and build history, please check out the GitHub Actions tab or follow this link https://github.com/GrantMatejka/Baku/actions
 
 Now you are ready to help contribute to Baku!
 
