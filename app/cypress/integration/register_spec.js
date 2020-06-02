@@ -1,10 +1,13 @@
 describe('Register Screen', function () {
-   beforeEach(() => {
-      cy.visit('http://localhost:19006/')
-      expect(cy.contains("Sign Up").click());
-   });
+   // beforeEach(() => {
+   //    cy.visit('http://localhost:19006/')
+   //    expect(cy.contains("Sign Up").click());
+   // });
 
    it("Assets Load", function () {
+      cy.exec('npm run web', { failOnNonZeroExit: false }).then((result) => { })
+      cy.visit('http://localhost:19006/')
+      expect(cy.contains("Sign Up").click());
       cy.contains(/welcome to baku/i).click();
       cy.get('[data-testid="register-input-fullname"]')
       cy.get('[data-testid="register-input-username"]')
@@ -15,6 +18,8 @@ describe('Register Screen', function () {
    });
 
    it("No Name", function () {
+      cy.visit('http://localhost:19006/')
+      expect(cy.contains("Sign Up").click());
       cy.get('[data-testid="register-input-username"]').type('test')
       cy.get('[data-testid="register-input-email"]').type('test@test.com')
       cy.get('[data-testid="register-input-password"]').type('password')
@@ -25,6 +30,8 @@ describe('Register Screen', function () {
    });
 
    it("No Username", function () {
+      cy.visit('http://localhost:19006/')
+      expect(cy.contains("Sign Up").click());
       cy.get('[data-testid="register-input-fullname"]').type('test')
       cy.get('[data-testid="register-input-email"]').type('test@test.com')
       cy.get('[data-testid="register-input-password"]').type('password')
@@ -34,6 +41,8 @@ describe('Register Screen', function () {
    });
 
    it("No Email", function () {
+      cy.visit('http://localhost:19006/')
+      expect(cy.contains("Sign Up").click());
       cy.get('[data-testid="register-input-fullname"]').type('test')
       cy.get('[data-testid="register-input-username"]').type('test')
       cy.get('[data-testid="register-input-password"]').type('password')
@@ -43,6 +52,8 @@ describe('Register Screen', function () {
    });
 
    it("Badly Formatted Email", function () {
+      cy.visit('http://localhost:19006/')
+      expect(cy.contains("Sign Up").click());
       cy.get('[data-testid="register-input-fullname"]').type('test')
       cy.get('[data-testid="register-input-username"]').type('test')
       cy.get('[data-testid="register-input-email"]').type('testtest.com')
@@ -54,6 +65,8 @@ describe('Register Screen', function () {
    });
 
    it("No Password", function () {
+      cy.visit('http://localhost:19006/')
+      expect(cy.contains("Sign Up").click());
       cy.get('[data-testid="register-input-fullname"]').type('test')
       cy.get('[data-testid="register-input-username"]').type('test')
       cy.get('[data-testid="register-input-email"]').type('test@test.com')
@@ -63,6 +76,8 @@ describe('Register Screen', function () {
    });
 
    it("Not Matched Passwords", function () {
+      cy.visit('http://localhost:19006/')
+      expect(cy.contains("Sign Up").click());
       cy.get('[data-testid="register-input-fullname"]').type('test')
       cy.get('[data-testid="register-input-username"]').type('test')
       cy.get('[data-testid="register-input-email"]').type('test@test.com')
@@ -72,6 +87,8 @@ describe('Register Screen', function () {
    });
 
    it("Password Too Short", function () {
+      cy.visit('http://localhost:19006/')
+      expect(cy.contains("Sign Up").click());
       cy.get('[data-testid="register-input-fullname"]').type('test')
       cy.get('[data-testid="register-input-username"]').type('test')
       cy.get('[data-testid="register-input-email"]').type('test@test.com')
@@ -83,6 +100,8 @@ describe('Register Screen', function () {
 
    //ADDITIONAL SCREEN
    it("Submit with good credentials", function () {
+      cy.visit('http://localhost:19006/')
+      expect(cy.contains("Sign Up").click());
       cy.get('[data-testid="register-input-fullname"]').type('test cypress')
       cy.get('[data-testid="register-input-username"]').type('test_cypress')
       cy.get('[data-testid="register-input-email"]').type('test@cypress.com')

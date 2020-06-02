@@ -3,6 +3,7 @@ describe('Create Post', function () {
    // });
 
    it("Login", function () {
+      cy.exec('npm run web', { failOnNonZeroExit: false }).then((result) => { })
       cy.visit('http://localhost:19006/')
       cy.get('[data-testid="login-input-email"]').type('test@test.com')
       cy.get('[data-testid="login-input-password"]').type('password')

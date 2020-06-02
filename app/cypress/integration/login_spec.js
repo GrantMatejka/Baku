@@ -1,10 +1,12 @@
 describe('Login Screen', function () {
-    beforeEach(() => {
-        cy.visit('http://localhost:19006/')
-        expect(true).to.equal(true);
-    });
+    // beforeEach(() => {
+    //     cy.visit('http://localhost:19006/')
+    //     expect(true).to.equal(true);
+    // });
 
     it("Assets Load", function () {
+        cy.exec('npm run web', { failOnNonZeroExit: false }).then((result) => { })
+        cy.visit('http://localhost:19006/')
         cy.get("img");
         cy.contains(/email/i);
         cy.contains(/password/i);
@@ -23,6 +25,7 @@ describe('Login Screen', function () {
     });
 
     it("Badly formatted Email", function () {
+        cy.visit('http://localhost:19006/')
         cy.get('[data-testid="login-input-email"]').type('testtest.com')
         cy.get('[data-testid="login-input-password"]').type('wrongpassword')
         cy.contains(/login/i).click();
@@ -31,6 +34,7 @@ describe('Login Screen', function () {
 
     it("Non-existent Email", function () {
         //EMAIL DOESNT EXIST
+        cy.visit('http://localhost:19006/')
         cy.get('[data-testid="login-input-email"]').type('idontexist@iamnotarealemail.com')
         cy.get('[data-testid="login-input-password"]').type('password')
         cy.contains(/login/i).click();
@@ -39,6 +43,7 @@ describe('Login Screen', function () {
 
     it("Bad Password", function () {
         //BAD PASSWORD
+        cy.visit('http://localhost:19006/')
         cy.get('[data-testid="login-input-email"]').type('test@test.com')
         cy.get('[data-testid="login-input-password"]').type('wrongpassword')
         cy.contains(/login/i).click();
@@ -46,14 +51,17 @@ describe('Login Screen', function () {
     });
 
     it("FB Icon", function () {
+        cy.visit('http://localhost:19006/')
         cy.get('[data-testid="login-icon-google"]').click()
     });
 
     it("Google Icon", function () {
+        cy.visit('http://localhost:19006/')
         cy.get('[data-testid="login-icon-facebook"]').click()
     });
 
     it("Navigate to Sign Up", function () {
+        cy.visit('http://localhost:19006/')
         cy.contains(/sign up/i).click();
         cy.contains(/welcome to baku/i).click();
         cy.get('[data-testid="register-input-fullname"]')
@@ -65,6 +73,7 @@ describe('Login Screen', function () {
     });
 
     it("Forgot Password Button", function () {
+        cy.visit('http://localhost:19006/')
         cy.contains(/forgot password/i).click();
         // cy.get('[data-testid="button-forgot-password"]').click()
         cy.contains('Trouble Logging In?');
@@ -74,10 +83,11 @@ describe('Login Screen', function () {
 
     it("Login with Good Credentials", function () {
         //GOOD LOGIN/PASSWORD
+        cy.visit('http://localhost:19006/')
         cy.get('[data-testid="login-input-email"]').type('test@test.com')
         cy.get('[data-testid="login-input-password"]').type('password')
         cy.contains(/login/i).click();
-        cy.contains('Feed Tab');
+        cy.contains('Feed');
     });
 
 });
