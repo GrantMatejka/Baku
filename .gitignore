@@ -15,6 +15,7 @@ cache
 fixtures
 plugins
 support
+packager-info.json
 #/App
 
 #FaceBook's gitignore for good measure
