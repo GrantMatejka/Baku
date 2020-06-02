@@ -18,7 +18,7 @@ const deleteAccount = () => {
   // let upload = Firebase.storage().ref(path).put(file);
 
   let path = 'photos/' + (uid) + '/';
-  let photos = Firebase.storage().ref(path);
+  let photos = Firebase.storage().ref().child(path);
   // let path = 'photos/' + (uid) + '/';
   // let photos = storageRef.child(path);
   // let pfp = storageRef.child(path2);

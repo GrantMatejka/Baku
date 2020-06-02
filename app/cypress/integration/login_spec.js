@@ -44,7 +44,7 @@ describe('Login Screen', function () {
     it("Bad Password", function () {
         //BAD PASSWORD
         cy.visit('http://localhost:19006/')
-        cy.get('[data-testid="login-input-email"]').type('test@cypress.com')
+        cy.get('[data-testid="login-input-email"]').type('eric@cypress.com')
         cy.get('[data-testid="login-input-password"]').type('wrongpassword')
         cy.contains(/login/i).click();
         cy.contains(/the password is invalid or the user does not have a password./i);
@@ -84,7 +84,7 @@ describe('Login Screen', function () {
     it("Login with Good Credentials", function () {
         //GOOD LOGIN/PASSWORD
         cy.visit('http://localhost:19006/')
-        cy.get('[data-testid="login-input-email"]').type('test@cypress.com')
+        cy.get('[data-testid="login-input-email"]').type('eric@cypress.com')
         cy.get('[data-testid="login-input-password"]').type('password')
         cy.contains(/login/i).click();
         cy.contains('Feed');
