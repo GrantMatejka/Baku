@@ -117,6 +117,6 @@ describe('Register Screen', function () {
       cy.contains('Create Profile').click();
 
       //FEED TAB
-      cy.contains('Feed Tab');
+      cy.contains('Feed');
    });
 });
