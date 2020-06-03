@@ -117,23 +117,23 @@ describe('Register Screen', function () {
       cy.contains('Create Profile').click();
    });
 
-   //DELETE PROFILE
-   it("Feed Loaded", function () {
-      cy.contains('Feed');
-      cy.contains('Profile').click();
-   });
-   it("Click Hamburger", function () {
-      cy.get('[data-testid="profile-hamburger"]').click();
-      cy.contains('Profile')
-      cy.contains('Settings')
-   });
-   it("Click Settings", function () {
-      cy.contains('Settings').click();
-      cy.contains('Back')
-      cy.contains('Log Out')
-      cy.contains('Delete')
-   });
-   it("Click Delete", function () {
-      cy.contains('Delete').click()
-   });
+   // //DELETE PROFILE
+   // it("Feed Loaded", function () {
+   //    cy.contains('Feed');
+   //    cy.contains('Profile').click();
+   // });
+   // it("Click Hamburger", function () {
+   //    cy.get('[data-testid="profile-hamburger"]').click();
+   //    cy.contains('Profile')
+   //    cy.contains('Settings')
+   // });
+   // it("Click Settings", function () {
+   //    cy.contains('Settings').click();
+   //    cy.contains('Back')
+   //    cy.contains('Log Out')
+   //    cy.contains('Delete')
+   // });
+   // it("Click Delete", function () {
+   //    cy.contains('Delete').click()
+   // });
 });
