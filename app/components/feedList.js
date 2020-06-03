@@ -22,6 +22,7 @@ export default class PhotoList extends Component {
   render() {
     return <ScrollView contentContainerStyle={{
       flexDirection: 'row',
+      flexGrow: 1,
       justifyContent: 'space-around',
       flexWrap: 'wrap'
     }}>

@@ -1,23 +1,27 @@
 import React, {Component} from 'react';
-import {Text, ScrollView} from 'react-native';
+import {Text, View} from 'react-native';
 
-import Styles from '../styles/styles';
 import Colors from '../styles/colors';
 
 export default class ItineraryActivity extends Component {
   render() {
     return (
-        <ScrollView style={{flex: 1, alignSelf: 'flex-start'}}>
+      <View style={{alignSelf: 'flex-start'}}>
 
-          <Text style={{
-            color: Colors.primary,
-            fontSize: 25,
-            fontWeight: '500'}}>
-            {this.props.time}
-          </Text>
-          <Text> {this.props.activity} </Text>
+        <Text style={{
+          color: Colors.primary,
+          fontSize: 30,
+          fontWeight: '700'}}>
+          {this.props.time}
+        </Text>
+        <Text style={{
+          color: Colors.warning,
+          fontSize: 20,
+          fontWeight: '500'}}>
+          {'\t'}{this.props.activity}
+        </Text>
 
-      </ScrollView>
+      </View>
     );
   }
 }
