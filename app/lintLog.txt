@@ -1,0 +1,13 @@
+[0m[0m
+[0m[4m/Users/grantmatejka/Desktop/Baku/app/components/itineraryList.js[24m[0m
+[0m  [2m16:1[22m  [31merror[39m  Expected indentation of 6 spaces but found 4    [2mindent[22m[0m
+[0m  [2m17:1[22m  [31merror[39m  Expected indentation of 10 spaces but found 8   [2mindent[22m[0m
+[0m  [2m18:1[22m  [31merror[39m  Expected indentation of 12 spaces but found 10  [2mindent[22m[0m
+[0m  [2m19:1[22m  [31merror[39m  Expected indentation of 10 spaces but found 8   [2mindent[22m[0m
+[0m  [2m20:1[22m  [31merror[39m  Expected indentation of 10 spaces but found 8   [2mindent[22m[0m
+[0m  [2m21:1[22m  [31merror[39m  Expected indentation of 12 spaces but found 10  [2mindent[22m[0m
+[0m  [2m22:1[22m  [31merror[39m  Expected indentation of 10 spaces but found 8   [2mindent[22m[0m
+[0m[0m
+[0m[31m[1m✖ 7 problems (7 errors, 0 warnings)[22m[39m[0m
+[0m[31m[1m[22m[39m[31m[1m  7 errors and 0 warnings potentially fixable with the `--fix` option.[22m[39m[0m
+[0m[31m[1m[22m[39m[0m
