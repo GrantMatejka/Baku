@@ -1,10 +1,10 @@
 describe('Edit Password', function () {
 
    it("Login", function () {
-      //cy.exec('npm run web', { failOnNonZeroExit: false }).then((result) => { })
+      cy.exec('npm run web', { failOnNonZeroExit: false }).then((result) => { })
       cy.visit('http://localhost:19006/')
-      cy.get('[data-testid="email_text_box"]').type('abhi@test.com')
-      cy.get('[data-testid="pass_text_box"]').type('yuhyuh')
+      cy.get('[data-testid="login-input-email"]').type('eric@cypress.com')
+      cy.get('[data-testid="login-input-password"]').type('password')
       cy.contains(/login/i).click();
       cy.contains('Feed');
    });
