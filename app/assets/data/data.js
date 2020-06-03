@@ -16,7 +16,7 @@ const data = [
       'https://drive.google.com/uc?id=183virFraB3g8ytPU4qSsW7KKp8XyUuL6',
 
     image: 'https://drive.google.com/uc?id=1zjGLKdHuTpuQgtO_MsCxKKMPbPjCzOOS',
-    caption: '#RipeTomotoes,#ProudGardenDaddy ',
+    caption: '#RipeTomotoes, #ProudGardenDaddy ',
     location: 'Amsterdam',
     uid: 'CjhqmNbtYTDw7yG8xnj9',
   },
@@ -26,7 +26,7 @@ const data = [
     user_avatar:
       'https://drive.google.com/uc?id=1chMx_l-DYRxi2p7ZTxVBzpveapWFH2TT',
     image: 'https://drive.google.com/uc?id=1fOelD7QzFZVAZvHkoSWZcr9OWuzUZzhc',
-    caption: '#GoodMorning,#seeme ',
+    caption: '#GoodMorning, #seeme ',
     location: 'Paris',
     uid: 'KV2pscOn4bAcO3TCSPx9',
   },
@@ -45,7 +45,7 @@ const data = [
     user_avatar:
       'https://drive.google.com/uc?id=10ZYNEdNne72GMqCh0gzlAi4CZLIJKTZr',
     image: 'https://drive.google.com/uc?id=10cUqlx6kJx0sqG5H2Cf0ws-AbU0GQGtB',
-    caption: '#beauty,#selfie ',
+    caption: '#beauty, #selfie ',
     location: 'New York',
     uid: 'rvBytxiapRrc7AwApNUY',
   },

@@ -8,7 +8,7 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "jest -u",
-    "lint": "eslint *.js styles/*.js screens/**/*.js navigation/*.js styles/*.js assets/**/*.js components/*.js",
+    "lint": "eslint *.js styles/*.js screens/**/*.js navigation/*.js styles/*.js assets/**/*.js components/*.js -o lintLog.txt --color",
     "lint:fix": "eslint *.js styles/*.js screens/**/*.js navigation/*.js styles/*.js assets/**/*.js components/*.js --fix"
   },
   "jest": {
