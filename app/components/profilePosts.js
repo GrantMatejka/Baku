@@ -16,7 +16,7 @@ export default class ProfilePosts extends Component {
       return <PostCard
         detail={data}
         key={data.id}
-        navigation={this.props.navigation}/>;
+        navigation={this.props.navigation} />;
     });
   }
 
@@ -29,7 +29,7 @@ export default class ProfilePosts extends Component {
             justifyContent: 'space-around',
             flexWrap: 'wrap'
           }
-        }>
+        } testID='profile-posts'>
         {this.getPhotos()}
       </ScrollView>
     );

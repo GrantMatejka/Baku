@@ -12,111 +12,114 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 
 class ResetPassword extends React.Component {
-   state = {
-      currentPassword: '',
-      newPassword: '',
-   };
+  state = {
+    currentPassword: '',
+    newPassword: '',
+  };
 
-   reauthenticate = (currentPassword) => {
+  reauthenticate = (currentPassword) => {
+    var user = firebase.auth().currentUser;
+    var cred = firebase.auth.EmailAuthProvider.credential(
+      user.email, currentPassword);
+    return user.reauthenticateWithCredential(cred);
+  }
+
+  changePassword() {
+
+    //   changePassword = (currentPassword, newPassword) => {
+    this.reauthenticate(this.state.currentPassword).then(() => {
       var user = firebase.auth().currentUser;
-      var cred = firebase.auth.EmailAuthProvider.credential(
-         user.email, currentPassword);
-      return user.reauthenticateWithCredential(cred);
-   }
+      user.updatePassword(this.state.newPassword).then(() => {
+        Alert.alert("Password was changed");
+        console.log("Password updated!");
+      })
+        .then(() => {
+          this.props.navigation.navigate('Tabs', {
+            screen: 'ProfileTab'
+          }
+          );
+        })
+      //.catch((error) => { console.log(error.message), Alert.alert(error.message); })
+    }).catch((error) => { console.log(error.message), Alert.alert(error.message); });
+  }
 
-   changePassword() {
+  //   catch((error) => {
+  //     //console.log(error), 
+  //     this.setState({error: 'Invalid Credentials'});
+  //   });
+  // // })
+  // .then(() => {
+  //     this.props.navigation.navigate('Tabs', {
+  //       screen: 'ProfileTab'
+  //     }
+  //     );
+  //   }); 
 
-      //   changePassword = (currentPassword, newPassword) => {
-      this.reauthenticate(this.state.currentPassword).then(() => {
-         var user = firebase.auth().currentUser;
-         user.updatePassword(this.state.newPassword).then(() => {
-            Alert.alert("Password was changed");
-            console.log("Password updated!");
-         })
-            .then(() => {
-               this.props.navigation.navigate('Tabs', {
-                  screen: 'ProfileTab'
-               }
-               );
-            })
-         //.catch((error) => { console.log(error.message), Alert.alert(error.message); })
-      }).catch((error) => { console.log(error.message), Alert.alert(error.message); });
-   }
-
-   //   catch((error) => {
-   //     //console.log(error), 
-   //     this.setState({error: 'Invalid Credentials'});
-   //   });
-   // // })
-   // .then(() => {
-   //     this.props.navigation.navigate('Tabs', {
-   //       screen: 'ProfileTab'
-   //     }
-   //     );
-   //   }); 
-
-   //   this.reauthenticate(this.state.currentPassword).then(() => {
-   //     var user = firebase.auth().currentUser;
-   //     user.updatePassword(this.state.newPassword).then(() => {
-   //       Alert.alert("Password was changed");
-   //     }).catch((error) => { console.log(error.message); });
-   //   }).catch((error) => { console.log(error.message) });
-   // }
+  //   this.reauthenticate(this.state.currentPassword).then(() => {
+  //     var user = firebase.auth().currentUser;
+  //     user.updatePassword(this.state.newPassword).then(() => {
+  //       Alert.alert("Password was changed");
+  //     }).catch((error) => { console.log(error.message); });
+  //   }).catch((error) => { console.log(error.message) });
+  // }
 
 
-   //}
-   /*
-   changeEmail = (currentPassword, newEmail) => {
-     this.reauthenticate(currentPassword).then(() => {
-       var user = firebase.auth().currentUser;
-       user.updateEmail(newEmail).then(() => {
-         console.log("Email updated!");
-       }).catch((error) => { console.log(error); });
-     }).catch((error) => { console.log(error); });
-   }*/
+  //}
+  /*
+  changeEmail = (currentPassword, newEmail) => {
+    this.reauthenticate(currentPassword).then(() => {
+      var user = firebase.auth().currentUser;
+      user.updateEmail(newEmail).then(() => {
+        console.log("Email updated!");
+      }).catch((error) => { console.log(error); });
+    }).catch((error) => { console.log(error); });
+  }*/
 
 
-   render() {
-      return (
-         <ScrollView style={Styles.container}>
+  render() {
+    return (
+      <ScrollView style={Styles.container}>
 
-            <Text style={[Styles.header, Styles.text_medium]}>
-               Enter Old and New Password
+        <Text style={[Styles.header, Styles.text_medium]}>
+          Enter Old and New Password
           </Text>
 
-            <Fumi
-               label={'Old Password'}
-               value={this.state.currentPassword}
-               secureTextEntry={true}
-               iconClass={FontAwesomeIcon}
-               iconName={'unlock-alt'}
-               onChangeText={(currentPassword) => this.setState({ currentPassword })}
-            />
+        <Fumi
+          label={'Old Password'}
+          value={this.state.currentPassword}
+          secureTextEntry={true}
+          iconClass={FontAwesomeIcon}
+          iconName={'unlock-alt'}
+          onChangeText={(currentPassword) => this.setState({ currentPassword })}
+          testID='old-password'
+        />
 
-            <Fumi
-               label={'New Password'}
-               value={this.state.newPassword}
-               secureTextEntry={true}
-               iconClass={FontAwesomeIcon}
-               iconName={'lock'}
-               onChangeText={(newPassword) => this.setState({ newPassword })}
-            />
+        <Fumi
+          label={'New Password'}
+          value={this.state.newPassword}
+          secureTextEntry={true}
+          iconClass={FontAwesomeIcon}
+          iconName={'lock'}
+          onChangeText={(newPassword) => this.setState({ newPassword })}
+          testID='new-password'
 
-            <View style={Styles.container_content}>
-               <AwesomeButton
-                  backgroundColor={Colors.warning}
-                  width={200}
-                  height={50}
-                  onPress={() => {
-                     this.changePassword();
-                  }}
-               >
-                  Change Password
+        />
+
+        <View style={Styles.container_content}>
+          <AwesomeButton
+            backgroundColor={Colors.warning}
+            width={200}
+            height={50}
+            onPress={() => {
+              this.changePassword();
+            }}
+          >
+            Change Password
             </AwesomeButton>
-            </View>
-         </ScrollView>
-      );
-   }
+        </View>
+      </ScrollView>
+    );
+  }
 }
 
 export default ResetPassword;
