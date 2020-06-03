@@ -21,7 +21,8 @@ export default function CreatePost({navigation}) {
   // const [post_timex, setPostTime] = React.useState("");
   // const [userx, setUserID] = React.useState("");
   const [loading, setLoading] = React.useState(true);
-  const [setLocations] = React.useState([]);
+  // eslint-disable-next-line no-unused-vars
+  const [locations, setLocations] = React.useState([]);
 
   const db = Firebase.firestore().collection('posts');
   // const uid = Firebase.auth().currentUser.uid;
