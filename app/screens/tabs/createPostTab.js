@@ -1,114 +1,61 @@
 import * as React from '../../node_modules/react';
-import {View, ScrollView, ActivityIndicator, Image, TouchableOpacity, console}
-  from 'react-native';
+import {
+  View,
+  ScrollView,
+  // ActivityIndicator,
+  Image,
+  TouchableOpacity,
+  console
+} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
 import AwesomeButton from 'react-native-really-awesome-button';
-import {Fumi} from '../../node_modules/react-native-textinput-effects/lib';
-import FontAwesomeIcon
-  from '../../node_modules/react-native-vector-icons/FontAwesome';
+import { Fumi } from '../../node_modules/react-native-textinput-effects/lib';
+import FontAwesomeIcon from
+  '../../node_modules/react-native-vector-icons/FontAwesome';
 
 import Header from '../../components/header';
-import Firebase from '../../config/firebase';
+// import Firebase from '../../config/firebase';
 import Styles from '../../styles/styles';
 import Colors from '../../styles/colors';
 
-export default function CreatePost({navigation}) {
+export default function CreatePost({ navigation }) {
   const [cityx, setCity] = React.useState('');
   const [countryx, setCountry] = React.useState('');
   const [captionx, setCaption] = React.useState('');
-  const [photosx, setPhotos] = React.useState('https://drive.google.com/uc?id=1IlnqOsoEVi9ASVb0WihFRxtMu2z2BLT5');
+  const [photosx, setPhotos] = React.useState(
+    'https://drive.google.com/uc?id=1IlnqOsoEVi9ASVb0WihFRxtMu2z2BLT5'
+  );
   // const [post_timex, setPostTime] = React.useState("");
   // const [userx, setUserID] = React.useState("");
-  const [loading, setLoading] = React.useState(true);
-  // eslint-disable-next-line no-unused-vars
-  const [locations, setLocations] = React.useState([]);
+  // const [loading, setLoading] = React.useState(true);
+  // const [setLocations] = React.useState([]);
 
-  const db = Firebase.firestore().collection('posts');
+  // const db = Firebase.firestore().collection("posts");
   // const uid = Firebase.auth().currentUser.uid;
 
-  // async function previewPost() {
-  //   try {
-  //     const photoRef = await uploadPhotoAsync(photosx);
-  //     await db.add({
-  //       city: cityx,
-  //       country: countryx,
-  //       caption: captionx,
-  //       photos: photoRef,
-  //       post_time: new Date().toLocaleString(),
-  //       user: getUser()
-  //     }).then(
-  //       () => {
-  //         navigation.navigate("Preview Post Screen",
-  //          { caption: captionx, image: photosx, location: cityx })
-  //        }
-  //     )
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
-  // function getUser() {
-  //   if (Firebase.auth().currentUser.uid != null) {
-  //     return Firebase.auth().currentUser.uid
-  //   }
-  //   else {
-  //     return "n/a"
-  //   }
-  // }
-
-
   // adds docs from db to locations list
-  React.useEffect(() => {
-    return db.orderBy('city', 'asc').onSnapshot((querySnapshot) => {
-      const list = [];
-      querySnapshot.forEach((doc) => {
-        const {city, country} = doc.data();
-        list.push({
-          id: doc.id,
-          city,
-          country
-        });
-      });
+  // React.useEffect(() => {
+  //   return db.orderBy('city', 'asc').onSnapshot((querySnapshot) => {
+  //     const list = [];
+  //     querySnapshot.forEach((doc) => {
+  //       const { city, country } = doc.data();
+  //       list.push({
+  //         id: doc.id,
+  //         city,
+  //         country
+  //       });
+  //     });
 
-      setLocations(list);
-      if (loading) {
-        setLoading(false);
-      }
-    });
-  }, []);
+  //     setLocations(list);
+  //     if (loading) {
+  //       setLoading(false);
+  //     }
+  //   });
+  // }, []);
 
-  if (loading) {
-    return <ActivityIndicator />;
-  }
-
-  // function Item({ city }, { country }) {
-  //   return (
-  //     <View style={Styles.container_content}>
-  //       <Text>City: {city}</Text>
-  //       <Text>Country: {country}</Text>
-  //     </View>
-  //   );
-  // }
-
-  // uploadPhotoAsync = async uri => {
-  //   const path = 'photos/' + (uid) + '/' + Date.now();
-  //   return new Promise(async (res, rej) => {
-  //     const response = await fetch(uri);
-  //     const file = await response.blob();
-  //     let upload = Firebase.storage().ref(path).put(file);
-  //     // console.log(path)
-  //     upload.on("state_changed",
-  //       snapshot => { },
-  //       err => {
-  //         rej(err)
-  //       },
-  //       async () => {
-  //         const url = await upload.snapshot.ref.getDownloadURL();
-  //         res(url);
-  //       }
-  //     )
-  //   })
+  // if (loading) {
+  //   return <ActivityIndicator />;
   // }
 
   async function pickImage() {
@@ -117,7 +64,7 @@ export default function CreatePost({navigation}) {
         mediaTypes: ImagePicker.MediaTypeOptions.All,
         allowsEditing: true,
         aspect: [4, 3],
-        quality: 1,
+        quality: 1
       });
       if (!result.cancelled) {
         setPhotos(result.uri);
@@ -127,28 +74,28 @@ export default function CreatePost({navigation}) {
     }
   }
 
-
   return (
     <View style={Styles.container}>
       <Header headerTitle="Create Post" />
 
-      <ScrollView
-        style={Styles.container}
-      >
+      <ScrollView style={Styles.container}>
         <TouchableOpacity
           style={{
-            width: 200, height: 300,
+            width: 200,
+            height: 300,
             alignSelf: 'center',
             marginBottom: 10,
             marginTop: 10
           }}
           onPress={() => {
             pickImage();
-          }}>
+          }}
+        >
           <Image
-            source={{uri: photosx}}
+            source={{ uri: photosx }}
             style={{
-              width: 200, height: 300,
+              width: 200,
+              height: 300,
               alignSelf: 'center',
               borderRadius: 2,
               borderWidth: 1,
@@ -156,6 +103,7 @@ export default function CreatePost({navigation}) {
               marginBottom: 10,
               marginTop: 10
             }}
+            testID='create-photo'
           />
         </TouchableOpacity>
         <View style={Styles.p_3}>
@@ -168,7 +116,8 @@ export default function CreatePost({navigation}) {
             iconSize={18}
             iconWidth={40}
             inputPadding={16}
-            inputStyle={{padding: 5}}
+            inputStyle={{ padding: 5 }}
+            testID='create-city'
           />
         </View>
 
@@ -182,7 +131,8 @@ export default function CreatePost({navigation}) {
             iconSize={18}
             iconWidth={40}
             inputPadding={16}
-            inputStyle={{padding: 5}}
+            inputStyle={{ padding: 5 }}
+            testID='create-country'
           />
         </View>
 
@@ -196,7 +146,8 @@ export default function CreatePost({navigation}) {
             iconSize={18}
             iconWidth={40}
             inputPadding={16}
-            inputStyle={{padding: 5}}
+            inputStyle={{ padding: 5 }}
+            testID='create-caption'
           />
         </View>
 
@@ -206,11 +157,12 @@ export default function CreatePost({navigation}) {
             width={340}
             height={40}
             onPress={() => {
-              navigation.navigate('Preview Post Screen',
-                  {captionx: captionx,
-                    photosx: photosx,
-                    cityx: cityx,
-                    countryx: countryx});
+              navigation.navigate('Preview Post Screen', {
+                captionx: captionx,
+                photosx: photosx,
+                cityx: cityx,
+                countryx: countryx
+              });
             }}
           >
             Preview
