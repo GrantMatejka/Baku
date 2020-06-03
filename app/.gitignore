@@ -11,6 +11,7 @@ idea
 DS_STORE
 Exponent
 # /App
+cypress.json
 
 #FaceBook's gitignore for good measure
 # Xcode
