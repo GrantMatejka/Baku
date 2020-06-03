@@ -35,8 +35,8 @@ describe('Edit Password', function () {
    });
 
    it("Change Password", function () {
-      cy.get('[data-testid="old"]').clear().type('yuhyuh')
-      cy.get('[data-testid="new"]').clear().type('password')
+      cy.get('[data-testid="old-password"]').clear().type('yuhyuh')
+      cy.get('[data-testid="new-password"]').clear().type('password')
       cy.contains('Magic').click()
    });
 
@@ -54,8 +54,8 @@ describe('Edit Password', function () {
 
    it("Re-Login to check new Password", function () {
       cy.visit('http://localhost:19006/')
-      cy.get('[data-testid="email_text_box"]').type('abhi@test.com')
-      cy.get('[data-testid="pass_text_box"]').type('password')
+      cy.get('[data-testid="login-input-email"]').type('abhi@test.com')
+      cy.get('[data-testid="login-input-password"]').type('password')
       cy.contains(/login/i).click();
       cy.contains('Feed');
    });

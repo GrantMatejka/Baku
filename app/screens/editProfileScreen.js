@@ -150,6 +150,7 @@ class EditProfile extends React.Component {
           iconClass={FontAwesomeIcon}
           iconName={'user'}
           onChangeText={(name) => this.setState({ name })}
+          testID='edit-fullname'
         />
         <Fumi
           label={'Username'}
@@ -158,6 +159,7 @@ class EditProfile extends React.Component {
           iconClass={FontAwesomeIcon}
           iconName={'envelope-square'}
           onChangeText={(username) => this.setState({ username })}
+          testID='edit-username'
         />
         <Fumi
           label={'Phone-Number'}
@@ -169,6 +171,7 @@ class EditProfile extends React.Component {
           inputPadding={16}
           inputStyle={{ padding: 5 }}
           onChangeText={(mobile) => this.setState({ mobile })}
+          testID='edit-number'
         />
 
         <Fumi
@@ -181,6 +184,7 @@ class EditProfile extends React.Component {
           inputPadding={16}
           inputStyle={{ padding: 5 }}
           onChangeText={(birthday) => this.setState({ birthday })}
+          testID='edit-birthday'
         />
 
         <Fumi
@@ -193,6 +197,7 @@ class EditProfile extends React.Component {
           inputPadding={16}
           inputStyle={{ padding: 5 }}
           onChangeText={(bio) => this.setState({ bio })}
+          testID='edit-bio'
         />
         <Fumi
           label={'Some Places You\'ve Been'}
@@ -204,6 +209,7 @@ class EditProfile extends React.Component {
           inputPadding={16}
           inputStyle={{ padding: 5 }}
           onChangeText={(places) => this.setState({ places })}
+          testID='edit-places'
         />
 
         <View style={Styles.container_content}>
