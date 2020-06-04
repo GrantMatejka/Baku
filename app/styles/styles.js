@@ -87,7 +87,17 @@ const Styles = StyleSheet.create({
   text_centered: {
     textAlign: 'center'
   },
-
+  text_title: {
+    textAlign: 'center',
+    fontWeight: "bold",
+    color: Colors.primary,
+    fontSize: 35,
+    fontStyle: 'normal',
+    padding: 20,
+    lineHeight: 20,
+    textAlign: 'center',
+    paddingTop: 100
+  },
 
   // Button Stylings
   button: {
