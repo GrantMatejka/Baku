@@ -4,6 +4,9 @@ import React from 'react';
 import App from '../App';
 import CreatePostTab from '../screens/tabs/createPostTab';
 import SearchTab from '../screens/tabs/searchTab';
+import FeedTab from '../screens/tabs/feedTab'
+import NotificationsTab from '../screens/tabs/notificationsTab';
+import ProfileTab from '../screens/tabs/profileTab';
 import Login from '../screens/loginScreen';
 import Signup from '../screens/signupScreen';
 import CreateProfile from '../screens/createProfileScreen';
@@ -12,6 +15,7 @@ import ResetPassword  from '../screens/resetPasswordScreen';
 import PreviewPost from '../screens/previewPostScreen';
 import DetailedPost  from '../screens/detailedPostScreen';
 import EditProfile from '../screens/editProfileScreen';
+import SettingsDrawer from '../screens/tabs/drawers/settingsDrawer'
 import firebase from '../config/firebase';
 var assert = require('assert');
 describe('Array', function() {
@@ -45,11 +49,33 @@ describe('App', () => {
     expect(tree).toMatchSnapshot();
   });
   describe('Tabs', () => {
-
+   beforeEach(() => {
+      NavigationTestUtils.resetInternalState();
+    });
    it(`renders the Search tab`, () => {
      const tree = renderer.create(<SearchTab />).toJSON();
      expect(tree).toMatchSnapshot();
    });
+   /*it(`renders the Profile tab`, () => {
+      const tree = renderer.create(<ProfileTab />).toJSON();
+      expect(tree).toMatchSnapshot();
+    });*/
+    it(`renders the Notifications tab`, () => {
+      const tree = renderer.create(<NotificationsTab />).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+    it(`renders the Feed tab`, () => {
+      const tree = renderer.create(<FeedTab />).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+    it(`renders the Create Post tab`, () => {
+      const tree = renderer.create(<CreatePostTab />).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+    it(`renders the Settings Drawer`, () => {
+      const tree = renderer.create(<SettingsDrawer />).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
  });
  
  describe('Screens', () => {
@@ -110,10 +136,6 @@ describe('App', () => {
    //uid is null
 
    it(`renders the Create Profile screen`, () => {
-      state = {
-         email: 'test@test.com',
-         password: 'password'};
-         firebase.auth().signInWithEmailAndPassword('test@test.com', 'password');
       //this.uid = this.currentUser.uid;
      const tree = renderer.create(<CreateProfile />).toJSON();
      expect(tree).toMatchSnapshot();
@@ -123,7 +145,7 @@ describe('App', () => {
      const tree = renderer.create(<ResetPassword />).toJSON();
      expect(tree).toMatchSnapshot();
    }); 
- /*
+ 
    //params undefined
    it(`renders the Preview Post screen`, () => {
      const tree = renderer.create(<PreviewPost />).toJSON();
@@ -133,14 +155,14 @@ describe('App', () => {
      const tree = renderer.create(<DetailedPost />).toJSON();
      expect(tree).toMatchSnapshot();
    }); 
- */
- /*
+ 
+ 
  //uid is null
  it(`renders the Edit Profile screen`, () => {
    const tree = renderer.create(<EditProfile />).toJSON();
    expect(tree).toMatchSnapshot();
  }); 
- */
+
  
  });
 });
