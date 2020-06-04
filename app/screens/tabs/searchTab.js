@@ -1,6 +1,6 @@
 /* eslint-disable no-invalid-this */
 import * as React from 'react';
-import {Text, View, FlatList} from 'react-native';
+import { Text, View, FlatList } from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import AwesomeButton from 'react-native-really-awesome-button';
 import Styles from '../../styles/styles';
@@ -25,35 +25,35 @@ class SearchTab extends React.Component {
   }
 
   handleSelectItem(item, index) {
-    const {onDropdownClose} = this.props;
+    const { onDropdownClose } = this.props;
     onDropdownClose();
   }
 
   updateState(item) {
-    this.setState({location: item.label});
+    this.setState({ location: item.label });
   }
 
   handleSearchDB = async (location) => {
     this.db
-        .where('country', '==', location)
-        .get()
-        .then((snapshot) => {
-          const list = [];
-          snapshot.docs.forEach((doc) => {
-            const {city, country} = doc.data();
-            list.push({
-              id: doc.id,
-              city,
-              country
-            });
+      .where('country', '==', location)
+      .get()
+      .then((snapshot) => {
+        const list = [];
+        snapshot.docs.forEach((doc) => {
+          const { city, country } = doc.data();
+          list.push({
+            id: doc.id,
+            city,
+            country
           });
-
-          this.setState({locList: list});
         });
+
+        this.setState({ locList: list });
+      });
   };
 
   render() {
-    const {scrollToInput, onDropdownClose, onDropdownShow} = this.props;
+    const { scrollToInput, onDropdownClose, onDropdownShow } = this.props;
 
     return (
       <View style={Styles.container2}>
@@ -100,7 +100,7 @@ class SearchTab extends React.Component {
               width={200}
               height={50}
               onPress={() => {
-                this.setState({error: ''});
+                this.setState({ error: '' });
                 this.handleSearchDB(this.state.location);
               }}
             >
@@ -111,7 +111,7 @@ class SearchTab extends React.Component {
 
         <FlatList
           data={this.state.locList}
-          renderItem={({item}) => (
+          renderItem={({ item }) => (
             <View style={Styles.container_content}>
               <Text>City: {item.city}</Text>
               <Text>Country: {item.country}</Text>
