@@ -1,6 +1,6 @@
 /* eslint-disable no-invalid-this */
 import * as React from 'react';
-import {Text, View, FlatList} from 'react-native';
+import { Text, View, FlatList } from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import AwesomeButton from 'react-native-really-awesome-button';
 import Styles from '../../styles/styles';
@@ -29,12 +29,12 @@ class SearchTab extends React.Component {
   }
 
   handleSelectItem(item, index) {
-    const {onDropdownClose} = this.props;
+    const { onDropdownClose } = this.props;
     onDropdownClose();
   }
 
   updateState(item) {
-    this.setState({location: item.label});
+    this.setState({ location: item.label });
   }
 
   handleSearchDB = async (location) => {
