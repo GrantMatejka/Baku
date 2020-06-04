@@ -84,39 +84,6 @@ class ResetPassword extends React.Component {
           Enter Old and New Password
           </Text>
 
-<<<<<<< HEAD
-          <Fumi
-            label={'Old Password'}
-            value={this.state.currentPassword}
-            secureTextEntry={true}
-            iconClass={FontAwesomeIcon}
-            iconName={'unlock-alt'}
-            testID = 'old'
-            onChangeText={(currentPassword) => this.setState({currentPassword})}
-          />
-
-          <Fumi
-            label={'New Password'}
-            value = {this.state.newPassword}
-            secureTextEntry={true}
-            iconClass={FontAwesomeIcon}
-            iconName={'lock'}
-            testID = 'new'
-            onChangeText={(newPassword) => this.setState({newPassword})}
-          />
-
-        <View style={Styles.container_content}>
-        <AwesomeButton
-              backgroundColor={Colors.warning}
-              width={200}
-              height={50}
-              testID = 'change'
-              onPress={() => {
-                this.changePassword();
-              }}
-            >
-              Magic
-=======
         <Fumi
           label={'Old Password'}
           value={this.state.currentPassword}
@@ -148,7 +115,6 @@ class ResetPassword extends React.Component {
             }}
           >
             Change Password
->>>>>>> c530678a83b63c8ca864c8a903429065e63794e7
             </AwesomeButton>
         </View>
       </ScrollView>
