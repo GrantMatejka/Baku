@@ -17,11 +17,21 @@ export default class ProfilePosts extends React.Component {
   // photo = firebase.firestore().collection('users').get().doc(this.uid).data().photo
   posts = firebase.firestore().collection('posts');
 
-  // componentDidMount() {
-  //   this.setState({ loading: true })
-  //   this.getPosts();
-  //   this.setState({ loading: false })
-  // };
+  state = {
+    datas: datas,
+    posts: [],
+    loading: true,
+    username: "",
+    profilePic: ""
+  };
+
+  componentDidMount() {
+    firebase.firestore().collection('users').doc(this.uid).get()
+      .then((doc) => {
+        this.setState({ username: doc.data().username });
+        this.setState({ profilePic: doc.data().photo });
+      })
+  };
 
   getPosts = async () => {
     this.posts.where("user", "==", this.uid).get().then((snapshot) => {
@@ -29,8 +39,8 @@ export default class ProfilePosts extends React.Component {
         const tempList = []
         const { caption, city, country, photos, post_time, user } = doc.data();
         tempList.push({
-          // username: this.username,
-          // photo: this.photo,
+          username: this.state.username,
+          photo: this.state.profilePic,
           post: photos,
           caption: caption,
           city: city,
@@ -45,41 +55,6 @@ export default class ProfilePosts extends React.Component {
     })
   }
 
-
-  state = {
-    datas: datas,
-    posts: [],
-    loading: true
-  };
-
-  // getPhotos() {
-  //   return (
-  //     <FlatList
-  //       data={this.getPosts()}
-  //       renderItem={({ item }) => (
-
-  //         <View style={Styles.container_content}>
-
-  //           <PostCard
-  //             detail={{
-  //               id: item.user,
-  //               username: item.username,
-  //               user_avatar: item.photo,
-  //               image: item.post,
-  //               caption: item.caption,
-  //               location: item.country
-  //             }}
-  //             key={item.user}
-  //           />
-  //         </View>
-
-  //       )}
-  //     />)
-  // }
-
-
-
-
   render() {
     return (
       <ScrollView
@@ -90,27 +65,14 @@ export default class ProfilePosts extends React.Component {
             flexWrap: 'wrap'
           }
         } testID='profile-posts'>
-        <FlatList
-          data={this.getPosts()}
-          renderItem={({ item }) => (
-
-            <View style={Styles.container_content}>
-
-              <PostCard
-                detail={{
-                  id: item.user,
-                  username: item.username,
-                  user_avatar: item.photo,
-                  image: item.post,
-                  caption: item.caption,
-                  location: item.country
-                }}
-                key={item.user}
-              />
-            </View>
-
-          )}
-        />
+        <Text>Hi</Text>
+        <AwesomeButton
+          backgroundColor={'#ffbc26'}
+          width={340}
+          height={40}
+          onPress={() => { this.getPosts() }}
+        >
+          Add          </AwesomeButton>
       </ScrollView>
     )
   }
