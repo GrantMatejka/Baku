@@ -21,11 +21,6 @@ export default function ProfileTab({ navigation }) {
   const db = firebase.firestore().collection('users');
 
   const uid = firebase.auth().currentUser.uid;
-<<<<<<< HEAD
-  // let path = 'photos/' + (uid) + '/profile';
-  // let store = firebase.storage().ref(path);
-=======
->>>>>>> c530678a83b63c8ca864c8a903429065e63794e7
   const [data, setData] = React.useState('');
   const [username, setUsername] = React.useState('');
   const [profilePic, setProfilePic] = React.useState('');
@@ -35,19 +30,6 @@ export default function ProfileTab({ navigation }) {
   // const [bio, setBio] = React.useState('');
 
   React.useEffect(() => {
-<<<<<<< HEAD
-    db.collection('users').doc(uid).get()
-        .then((doc) => {
-          setData(doc.data()),
-          setName(data.name),
-          //setBio(doc.data().bio),
-          setUsername(data.username),
-          setProfilePic(data.photo);
-        })
-        .catch((error) => {
-          console.log('Error getting documents: ', error);
-        });
-=======
     db.doc(uid).get()
       .then((doc) => {
         setData(doc.data()),
@@ -57,7 +39,6 @@ export default function ProfileTab({ navigation }) {
           setProfilePic(data.photo);
       })
 
->>>>>>> c530678a83b63c8ca864c8a903429065e63794e7
   });
   return (
     <View style={Styles.container}>
@@ -87,11 +68,7 @@ export default function ProfileTab({ navigation }) {
             style={styles2.hambuger}
             name="bars"
             size={25}
-<<<<<<< HEAD
-            testID = 'profile-hamburger'
-=======
             testID='profile-hamburger'
->>>>>>> c530678a83b63c8ca864c8a903429065e63794e7
             onPress={() =>
               navigation.dispatch(DrawerActions.openDrawer(Drawer))
             }
