@@ -151,7 +151,6 @@ class EditProfile extends React.Component {
           iconClass={FontAwesomeIcon}
           iconName={'user'}
           onChangeText={(name) => this.setState({ name })}
-//<<<<<<< HEAD
           testID = 'fullname'
           onChangeText={(name) => this.setState({ name })}
         />
