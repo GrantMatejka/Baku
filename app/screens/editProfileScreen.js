@@ -31,7 +31,7 @@ class EditProfile extends React.Component {
   };
 
   componentDidMount() {
-    firebase.firestore().collection("users").doc(this.uid).get()
+    this.dbRef.doc(this.uid).get()
       .then((doc) => {
         this.setState({ data: doc.data() }),
           this.setState({ name: doc.data().name }),
@@ -151,7 +151,11 @@ class EditProfile extends React.Component {
           iconClass={FontAwesomeIcon}
           iconName={'user'}
           onChangeText={(name) => this.setState({ name })}
+<<<<<<< HEAD
           testID = 'fullname'
+=======
+          testID='edit-fullname'
+>>>>>>> c530678a83b63c8ca864c8a903429065e63794e7
         />
         <Fumi
           label={'Username'}
@@ -161,6 +165,7 @@ class EditProfile extends React.Component {
           iconName={'envelope-square'}
           testID = 'username'
           onChangeText={(username) => this.setState({ username })}
+          testID='edit-username'
         />
         <Fumi
           label={'Phone-Number'}
@@ -173,6 +178,7 @@ class EditProfile extends React.Component {
           inputStyle={{ padding: 5 }}
           testID = 'number'
           onChangeText={(mobile) => this.setState({ mobile })}
+          testID='edit-number'
         />
 
         <Fumi
@@ -186,6 +192,7 @@ class EditProfile extends React.Component {
           inputStyle={{ padding: 5 }}
           testID = 'birthday'
           onChangeText={(birthday) => this.setState({ birthday })}
+          testID='edit-birthday'
         />
 
         <Fumi
@@ -199,6 +206,7 @@ class EditProfile extends React.Component {
           inputStyle={{ padding: 5 }}
           testID = 'bio'
           onChangeText={(bio) => this.setState({ bio })}
+          testID='edit-bio'
         />
         <Fumi
           label={'Some Places You\'ve Been'}
@@ -211,6 +219,7 @@ class EditProfile extends React.Component {
           inputStyle={{ padding: 5 }}
           testID = 'places'
           onChangeText={(places) => this.setState({ places })}
+          testID='edit-places'
         />
 
         <View style={Styles.container_content}>

@@ -29,12 +29,13 @@
 //       firebase.initializeApp(firebaseConfig);
 
 //    }
-//    uploadTest = async uri => {
-//       const path = 'photos' / $(this.uid) / $(Date.now()).jpg;
+
+//    uploadPhotoAsync = async (uri) => {
+//       const path = 'photos/' + (this.uid) + '/' + Date.now();
 //       return new Promise(async (res, rej) => {
 //          const response = await fetch(uri);
 //          const file = await response.blob();
-//          let upload = firebase.storage().ref(path).put(file);
+//          let upload = Firebase.storage().ref(path).put(file);
 //          upload.on("state_changed",
 //             snapshot => { },
 //             err => {
@@ -48,24 +49,29 @@
 //       })
 //    }
 
-
-//    uploadPhotoAsync = async uri => {
-//       const path = 'photos' / $(this.uid) / $(Date.now()).jpg;
-//       return new Promise(async (res, rej) => {
-//          const response = await fetch(uri);
-//          const file = await response.blob();
-//          let upload = firebase.storage().ref(path).put(file);
-//          upload.on("state_changed",
-//             snapshot => { },
-//             err => {
-//                rej(err)
-//             },
-//             async () => {
-//                const url = await upload.snapshot.ref.getDownloadURL();
-//                res(url);
-//             }
-//          )
-//       })
+//    submitPost = async (cityx, countryx, captionx, photosx) => {
+//       try {
+//          // console.log('Submit 1')
+//          const photoRef = await uploadPhotoAsync(photosx);
+//          // console.log('Submit 1.1')
+//          await dbRef.add({
+//             city: cityx,
+//             country: countryx,
+//             caption: captionx,
+//             photos: photoRef,
+//             post_time: this.timestamp,
+//             user: this.uid
+//          })
+//          //.then( //TODO Remove this from every submit and 
+//          //          //add it as a then() sequence
+//          //    // console.log('Submit 1.2'),
+//          //    navigation.navigate('Tabs', {
+//          //       screen: 'FeedTab'
+//          //    })
+//          // )
+//       } catch (error) {
+//          console.log(error);
+//       }
 //    }
 
 //    get uid() {
@@ -81,7 +87,7 @@
 //    }
 
 //    get timestamp() {
-//       return Date.now();
+//       return Date().toLocaleString();
 //    }
 
 

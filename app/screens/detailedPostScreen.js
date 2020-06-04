@@ -23,15 +23,13 @@ function detailedPostScreen({ route, navigation }) {
   };
 
   return (
-    <View style={{flex: 1}}>
-    <ScrollView style={Styles.detailedPostContainer} >
-
-      <View style={{
+    <ScrollView style={Styles.detailedPostContainer} contentContainerStyle={{
         flexDirection: 'row',
-        justifyContent: 'space-around',
-        flexWrap: 'wrap'
-      }}>
-        <View style={{ flexDirection: 'column', minWidth: 200, flex: 0.3 }}>
+        flexGrow: 1,
+        justifyContent: 'center',
+        flexWrap: 'wrap'}}>
+
+        <View style={{ flexDirection: 'column', minWidth: 200 }}>
 
               <View style={{ flexDirection: 'row', margin: 5 }}>
 
@@ -86,20 +84,15 @@ function detailedPostScreen({ route, navigation }) {
                     uri: details.image
                   }}
                 />
-          <View style={{ flexDirection: 'row', margin: 5, alignContent: 'center' }}>
+          <View style={{ flexDirection: 'row', alignContent: 'center', justifyContent: 'center' }}>
             <Text adjustsFontSizeToFit style={Styles.text_large}>{details.caption}</Text>
           </View>
           </View>
-        <View style={{ flexDirection: 'column', minWidth: 200 }}>
-          <View style={{ flex: 0.7 }}>
+        <View style={{ flexDirection: 'column', minWidth: 200, margin: 5 }}>
+          
             <ItineraryList uid={details.postId}/>
-          </View>
         </View>
-      </View>
-
       </ScrollView>
-
-    </View>
   );
 }
 

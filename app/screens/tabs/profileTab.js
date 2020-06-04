@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {Image, StyleSheet, Text, View, console} from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
-import {DrawerActions} from '@react-navigation/native';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
+import { DrawerActions } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AwesomeButton from 'react-native-really-awesome-button';
-import {createMaterialTopTabNavigator}
+import { createMaterialTopTabNavigator }
   from '@react-navigation/material-top-tabs';
 import ProfilePosts from '../../components/profilePosts';
 import Favorites from '../../components/favorites';
@@ -17,18 +17,25 @@ import firebase from '../../config/firebase';
 
 const TopTab = createMaterialTopTabNavigator();
 
-export default function ProfileTab({navigation}) {
-  const db = firebase.firestore();
+export default function ProfileTab({ navigation }) {
+  const db = firebase.firestore().collection('users');
+
   const uid = firebase.auth().currentUser.uid;
+<<<<<<< HEAD
   // let path = 'photos/' + (uid) + '/profile';
   // let store = firebase.storage().ref(path);
+=======
+>>>>>>> c530678a83b63c8ca864c8a903429065e63794e7
   const [data, setData] = React.useState('');
   const [username, setUsername] = React.useState('');
   const [profilePic, setProfilePic] = React.useState('');
   const [name, setName] = React.useState('');
-  const [setBio] = React.useState('');
+  // const posts = firebase.firestore().collection('posts').where("uid", "==", uid);
+  // const [postList, setList] = React.useState([]);
+  // const [bio, setBio] = React.useState('');
 
   React.useEffect(() => {
+<<<<<<< HEAD
     db.collection('users').doc(uid).get()
         .then((doc) => {
           setData(doc.data()),
@@ -40,6 +47,17 @@ export default function ProfileTab({navigation}) {
         .catch((error) => {
           console.log('Error getting documents: ', error);
         });
+=======
+    db.doc(uid).get()
+      .then((doc) => {
+        setData(doc.data()),
+          setName(data.name),
+          // setBio(doc.data().bio),
+          setUsername(data.username),
+          setProfilePic(data.photo);
+      })
+
+>>>>>>> c530678a83b63c8ca864c8a903429065e63794e7
   });
   return (
     <View style={Styles.container}>
@@ -69,7 +87,11 @@ export default function ProfileTab({navigation}) {
             style={styles2.hambuger}
             name="bars"
             size={25}
+<<<<<<< HEAD
             testID = 'profile-hamburger'
+=======
+            testID='profile-hamburger'
+>>>>>>> c530678a83b63c8ca864c8a903429065e63794e7
             onPress={() =>
               navigation.dispatch(DrawerActions.openDrawer(Drawer))
             }
@@ -79,11 +101,12 @@ export default function ProfileTab({navigation}) {
           <Text style={{
             fontSize: 12.5,
             fontWeight: 'bold',
-            color: '#FFFF'}}> {name} </Text>
+            color: '#FFFF'
+          }}> {name} </Text>
           {/* <Text > {bio} </Text> */}
         </View>
 
-        <View style={{alignItems: 'center', padding: 24}}>
+        <View style={{ alignItems: 'center', padding: 24 }}>
           <AwesomeButton
             backgroundColor={'#ffbc26'}
             width={340}
@@ -97,9 +120,9 @@ export default function ProfileTab({navigation}) {
           {/* Tab to switch between profile posts and favorites */}
           <TopTab.Navigator
             tabBarOptions={{
-              labelStyle: {fontWeight: 'bold', fontSize: 12},
-              indicatorStyle: {backgroundColor: Colors.warning},
-              style: {backgroundColor: Colors.info},
+              labelStyle: { fontWeight: 'bold', fontSize: 12 },
+              indicatorStyle: { backgroundColor: Colors.warning },
+              style: { backgroundColor: Colors.info },
               inactiveBackgroundColor: Colors.info,
               activeBackgroundColor: Colors.warning,
               inactiveTintColor: Colors.background,
