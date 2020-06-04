@@ -151,11 +151,9 @@ class EditProfile extends React.Component {
           iconClass={FontAwesomeIcon}
           iconName={'user'}
           onChangeText={(name) => this.setState({ name })}
-<<<<<<< HEAD
+//<<<<<<< HEAD
           testID = 'fullname'
-=======
-          testID='edit-fullname'
->>>>>>> c530678a83b63c8ca864c8a903429065e63794e7
+          onChangeText={(name) => this.setState({ name })}
         />
         <Fumi
           label={'Username'}
