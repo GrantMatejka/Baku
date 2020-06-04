@@ -22,7 +22,7 @@ export default function ProfileTab({navigation}) {
   const uid = firebase.auth().currentUser.uid;
   // let path = 'photos/' + (uid) + '/profile';
   // let store = firebase.storage().ref(path);
-  const [setData] = React.useState('');
+  const [data, setData] = React.useState('');
   const [username, setUsername] = React.useState('');
   const [profilePic, setProfilePic] = React.useState('');
   const [name, setName] = React.useState('');
@@ -32,13 +32,13 @@ export default function ProfileTab({navigation}) {
     db.collection('users').doc(uid).get()
         .then((doc) => {
           setData(doc.data()),
-          setName(doc.data().name),
-          setBio(doc.data().bio),
-          setUsername(doc.data().username),
-          setProfilePic(doc.data().photo);
+          setName(data.name),
+          //setBio(doc.data().bio),
+          setUsername(data.username),
+          setProfilePic(data.photo);
         })
         .catch((error) => {
-          //console.log('Error getting documents: ', error);
+          console.log('Error getting documents: ', error);
         });
   });
   return (
