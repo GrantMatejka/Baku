@@ -10,6 +10,7 @@ idea
 *.DS_STORE
 DS_STORE
 Exponent
+test/sauce-god-1067d7c0b9ef.json
 # /App
 cypress.json
 
