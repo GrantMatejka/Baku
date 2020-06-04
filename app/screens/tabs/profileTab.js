@@ -19,8 +19,8 @@ const TopTab = createMaterialTopTabNavigator();
 
 export default function ProfileTab({ navigation }) {
   const db = firebase.firestore().collection('users');
-uid = '123';
-  //const uid = firebase.auth().currentUser.uid;
+//uid = '123';
+  const uid = firebase.auth().currentUser.uid;
   const [data, setData] = React.useState('');
   const [username, setUsername] = React.useState('');
   const [profilePic, setProfilePic] = React.useState('');

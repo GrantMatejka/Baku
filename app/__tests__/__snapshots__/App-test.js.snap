@@ -956,6 +956,177 @@ exports[`App Screens renders the Create Profile screen 1`] = `
 </RCTScrollView>
 `;
 
+exports[`App Screens renders the Detailed Post screen 1`] = `
+<RCTScrollView
+  collapsable={false}
+  contentContainerStyle={
+    Object {
+      "flexDirection": "row",
+      "flexGrow": 1,
+      "flexWrap": "wrap",
+      "justifyContent": "center",
+    }
+  }
+  onGestureHandlerEvent={[Function]}
+  onGestureHandlerStateChange={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#fff9f1",
+      "borderColor": "#fff0db",
+      "borderRadius": 10,
+      "borderWidth": 1,
+      "marginHorizontal": 5,
+      "marginVertical": 15,
+    }
+  }
+>
+  <View>
+    <View
+      style={
+        Object {
+          "flexDirection": "column",
+          "minWidth": 200,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+            "margin": 5,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "flex": 0.75,
+              "flexDirection": "column",
+              "justifyContent": "center",
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "fontSize": 15,
+                "textAlign": "center",
+              }
+            }
+          >
+            Hello From
+          </Text>
+          <Text
+            adjustsFontSizeToFit={true}
+            numberOfLines={1}
+            style={
+              Object {
+                "color": "#478a91",
+                "fontSize": 35,
+                "fontWeight": "500",
+                "textAlign": "center",
+              }
+            }
+          />
+        </View>
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "flex": 0.25,
+              "flexDirection": "column",
+              "justifyContent": "center",
+            }
+          }
+        >
+          <Image
+            source={
+              Object {
+                "uri": undefined,
+              }
+            }
+            style={
+              Object {
+                "borderRadius": 15,
+                "height": 50,
+                "width": 50,
+              }
+            }
+          />
+          <Text
+            adjustsFontSizeToFit={true}
+            numberOfLines={1}
+            style={
+              Object {
+                "fontWeight": "bold",
+                "textAlign": "center",
+                "textAlignVertical": "center",
+              }
+            }
+          />
+        </View>
+      </View>
+      <Image
+        source={
+          Object {
+            "uri": undefined,
+          }
+        }
+        style={
+          Object {
+            "flex": 1,
+            "height": 400,
+            "resizeMode": "contain",
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "alignContent": "center",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          adjustsFontSizeToFit={true}
+          style={
+            Object {
+              "fontSize": 35,
+            }
+          }
+        />
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "flexDirection": "column",
+          "margin": 5,
+          "minWidth": 200,
+        }
+      }
+    >
+      <RCTScrollView
+        collapsable={false}
+        contentContainerStyle={
+          Object {
+            "alignSelf": "flex-start",
+            "flexGrow": 1,
+          }
+        }
+        onGestureHandlerEvent={[Function]}
+        onGestureHandlerStateChange={[Function]}
+      >
+        <View />
+      </RCTScrollView>
+    </View>
+  </View>
+</RCTScrollView>
+`;
+
 exports[`App Screens renders the Edit Profile screen 1`] = `
 <RCTScrollView
   collapsable={false}
@@ -2806,6 +2977,504 @@ exports[`App Screens renders the Log in screen 1`] = `
     </View>
   </View>
 </RCTScrollView>
+`;
+
+exports[`App Screens renders the Preview Post screen 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#f0efef",
+      "flex": 1,
+    }
+  }
+>
+  <RCTScrollView
+    collapsable={false}
+    onGestureHandlerEvent={[Function]}
+    onGestureHandlerStateChange={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#f0efef",
+        "flex": 1,
+      }
+    }
+  >
+    <View>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+            "justifyContent": "space-around",
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "#fff9f1",
+              "borderColor": "#fff0db",
+              "borderRadius": 10,
+              "borderWidth": 1,
+              "flexWrap": "wrap",
+              "height": 450,
+              "marginHorizontal": 5,
+              "marginVertical": 15,
+              "maxWidth": 450,
+              "width": "85%",
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+                "margin": 5,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flex": 0.75,
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "fontSize": 15,
+                    "textAlign": "center",
+                  }
+                }
+              >
+                Hello From
+              </Text>
+              <Text
+                adjustsFontSizeToFit={true}
+                numberOfLines={1}
+                style={
+                  Object {
+                    "color": "#478a91",
+                    "fontSize": 35,
+                    "fontWeight": "500",
+                    "textAlign": "center",
+                  }
+                }
+              />
+            </View>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flex": 0.25,
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <Image
+                source={
+                  Object {
+                    "uri": "",
+                  }
+                }
+                style={
+                  Object {
+                    "borderRadius": 15,
+                    "height": 50,
+                    "width": 50,
+                  }
+                }
+              />
+              <Text
+                adjustsFontSizeToFit={true}
+                numberOfLines={1}
+                style={
+                  Object {
+                    "fontWeight": "bold",
+                    "textAlign": "center",
+                    "textAlignVertical": "center",
+                  }
+                }
+              >
+                
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              Object {
+                "flexDirection": "column",
+              }
+            }
+          >
+            <Image
+              source={
+                Object {
+                  "uri": undefined,
+                }
+              }
+              style={
+                Object {
+                  "alignSelf": "center",
+                  "height": 300,
+                  "resizeMode": "contain",
+                  "width": 300,
+                }
+              }
+            />
+            <View
+              style={
+                Object {
+                  "flexDirection": "row",
+                  "justifyContent": "space-around",
+                  "marginTop": 5,
+                }
+              }
+            >
+              <View
+                style={
+                  Object {
+                    "alignSelf": "flex-start",
+                    "flex": 0.4,
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <Text />
+                <Text />
+              </View>
+              <View
+                accessible={true}
+                focusable={false}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "backgroundColor": "transparent",
+                    "height": 30,
+                    "opacity": 1,
+                    "width": 120,
+                    "zIndex": 10,
+                  }
+                }
+                testID="aws-btn-content-view"
+              >
+                <View
+                  style={
+                    Object {
+                      "backgroundColor": "rgba(0, 0, 0, 0.15)",
+                      "borderBottomLeftRadius": null,
+                      "borderBottomRightRadius": null,
+                      "borderRadius": 4,
+                      "borderTopLeftRadius": null,
+                      "borderTopRightRadius": null,
+                      "bottom": -2,
+                      "height": 26,
+                      "left": "1%",
+                      "position": "absolute",
+                      "transform": Array [
+                        Object {
+                          "translateY": 0,
+                        },
+                      ],
+                      "width": "98%",
+                    }
+                  }
+                  testID="aws-btn-shadow"
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                      },
+                      Object {
+                        "backgroundColor": "#9f9f9f",
+                        "borderBottomLeftRadius": null,
+                        "borderBottomRightRadius": null,
+                        "borderRadius": 4,
+                        "borderTopLeftRadius": null,
+                        "borderTopRightRadius": null,
+                        "height": 26,
+                        "width": 120,
+                      },
+                    ]
+                  }
+                  testID="aws-btn-bottom"
+                />
+                <View
+                  style={
+                    Object {
+                      "borderBottomLeftRadius": null,
+                      "borderBottomRightRadius": null,
+                      "borderRadius": 4,
+                      "borderTopLeftRadius": null,
+                      "borderTopRightRadius": null,
+                      "height": 26,
+                      "left": 0,
+                      "position": "absolute",
+                      "top": 0,
+                      "transform": Array [
+                        Object {
+                          "translateY": 0,
+                        },
+                      ],
+                      "width": 120,
+                    }
+                  }
+                  testID="aws-btn-content"
+                >
+                  <View
+                    onLayout={[Function]}
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "flex": 1,
+                          "justifyContent": "center",
+                          "overflow": "hidden",
+                          "zIndex": 3,
+                        },
+                        Object {
+                          "backgroundColor": "#A5D6D9",
+                          "borderBottomLeftRadius": null,
+                          "borderBottomRightRadius": null,
+                          "borderColor": null,
+                          "borderRadius": 4,
+                          "borderTopLeftRadius": null,
+                          "borderTopRightRadius": null,
+                          "borderWidth": 0,
+                        },
+                      ]
+                    }
+                    testID="aws-btn-text"
+                  >
+                    <View
+                      style={
+                        Object {
+                          "backgroundColor": "rgba(0, 0, 0, 0.15)",
+                          "height": 26,
+                          "left": 0,
+                          "opacity": 0,
+                          "position": "absolute",
+                          "top": 0,
+                          "width": 120,
+                        }
+                      }
+                      testID="aws-btn-active-background"
+                    />
+                    <Text
+                      style={
+                        Object {
+                          "color": "#FFFFFF",
+                          "fontFamily": null,
+                          "fontSize": 14,
+                          "fontWeight": "bold",
+                          "opacity": 1,
+                          "paddingBottom": 0,
+                          "paddingHorizontal": 12,
+                          "paddingTop": 0,
+                          "textAlign": "center",
+                          "transform": Array [
+                            Object {
+                              "scale": 1,
+                            },
+                          ],
+                          "width": "100%",
+                          "zIndex": 10,
+                        }
+                      }
+                      testID="aws-btn-content-text"
+                    >
+                      View Itinerary
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "marginBottom": 15,
+            "marginHorizontal": 50,
+          }
+        }
+      >
+        <View
+          accessible={true}
+          focusable={false}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "backgroundColor": "transparent",
+              "height": 40,
+              "opacity": 1,
+              "width": 340,
+              "zIndex": 10,
+            }
+          }
+          testID="aws-btn-content-view"
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "rgba(0, 0, 0, 0.15)",
+                "borderBottomLeftRadius": null,
+                "borderBottomRightRadius": null,
+                "borderRadius": 4,
+                "borderTopLeftRadius": null,
+                "borderTopRightRadius": null,
+                "bottom": -2,
+                "height": 36,
+                "left": "1%",
+                "position": "absolute",
+                "transform": Array [
+                  Object {
+                    "translateY": 0,
+                  },
+                ],
+                "width": "98%",
+              }
+            }
+            testID="aws-btn-shadow"
+          />
+          <View
+            style={
+              Array [
+                Object {
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                },
+                Object {
+                  "backgroundColor": "#9f9f9f",
+                  "borderBottomLeftRadius": null,
+                  "borderBottomRightRadius": null,
+                  "borderRadius": 4,
+                  "borderTopLeftRadius": null,
+                  "borderTopRightRadius": null,
+                  "height": 36,
+                  "width": 340,
+                },
+              ]
+            }
+            testID="aws-btn-bottom"
+          />
+          <View
+            style={
+              Object {
+                "borderBottomLeftRadius": null,
+                "borderBottomRightRadius": null,
+                "borderRadius": 4,
+                "borderTopLeftRadius": null,
+                "borderTopRightRadius": null,
+                "height": 36,
+                "left": 0,
+                "position": "absolute",
+                "top": 0,
+                "transform": Array [
+                  Object {
+                    "translateY": 0,
+                  },
+                ],
+                "width": 340,
+              }
+            }
+            testID="aws-btn-content"
+          >
+            <View
+              onLayout={[Function]}
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flex": 1,
+                    "justifyContent": "center",
+                    "overflow": "hidden",
+                    "zIndex": 3,
+                  },
+                  Object {
+                    "backgroundColor": "#ffbc26",
+                    "borderBottomLeftRadius": null,
+                    "borderBottomRightRadius": null,
+                    "borderColor": null,
+                    "borderRadius": 4,
+                    "borderTopLeftRadius": null,
+                    "borderTopRightRadius": null,
+                    "borderWidth": 0,
+                  },
+                ]
+              }
+              testID="aws-btn-text"
+            >
+              <View
+                style={
+                  Object {
+                    "backgroundColor": "rgba(0, 0, 0, 0.15)",
+                    "height": 36,
+                    "left": 0,
+                    "opacity": 0,
+                    "position": "absolute",
+                    "top": 0,
+                    "width": 340,
+                  }
+                }
+                testID="aws-btn-active-background"
+              />
+              <Text
+                style={
+                  Object {
+                    "color": "#FFFFFF",
+                    "fontFamily": null,
+                    "fontSize": 14,
+                    "fontWeight": "bold",
+                    "opacity": 1,
+                    "paddingBottom": 0,
+                    "paddingHorizontal": 12,
+                    "paddingTop": 0,
+                    "textAlign": "center",
+                    "transform": Array [
+                      Object {
+                        "scale": 1,
+                      },
+                    ],
+                    "width": "100%",
+                    "zIndex": 10,
+                  }
+                }
+                testID="aws-btn-content-text"
+              >
+                Submit Post
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
 `;
 
 exports[`App Screens renders the Reset Password screen 1`] = `

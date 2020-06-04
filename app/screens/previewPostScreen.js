@@ -9,12 +9,18 @@ import AwesomeButton from "react-native-really-awesome-button";
 
 
 export default function previewPostScreen({ route, navigation }) {
+  // params = 'test';
+  /*const photosx = this.photosx;
+  const captionx = captionx;
+  const cityx = cityx;
+  const countryx = countryx;*/
   const photosx = route.params.photosx;
   const captionx = route.params.captionx;
   const cityx = route.params.cityx;
   const countryx = route.params.countryx;
   const dbRef = Firebase.firestore().collection('posts');
   const db = Firebase.firestore();
+  //uid = '123';
   const uid = Firebase.auth().currentUser.uid;
   const [userData, setData] = React.useState('');
   const [username, setUsername] = React.useState('');

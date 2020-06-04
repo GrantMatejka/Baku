@@ -14,12 +14,19 @@ import ItineraryList from "../components/itineraryList";
 function detailedPostScreen({ route, navigation }) {
 
   const details = {
+   /*location: this.location,
+    user_avatar: this.user_avatar,
+    username: this.username,
+    image: this.image,
+    caption: this.caption,
+    postId: this.uid,*/
     location: route.params.details.location,
     user_avatar: route.params.details.user_avatar,
     username: route.params.details.username,
     image: route.params.details.image,
     caption: route.params.details.caption,
     postId: route.params.details.uid,
+    
   };
 
   return (
