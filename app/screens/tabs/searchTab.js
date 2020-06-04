@@ -9,8 +9,10 @@ import Header from '../../components/header';
 import firebase from '../../config/firebase';
 import Countries from '../../assets/data/countries';
 import shortid from 'shortid';
-import {Autocomplete, withKeyboardAwareScrollView}
-  from 'react-native-dropdown-autocomplete';
+import {
+  Autocomplete,
+  withKeyboardAwareScrollView
+} from 'react-native-dropdown-autocomplete';
 
 class SearchTab extends React.Component {
   db = firebase.firestore().collection('location_test');
@@ -48,13 +50,12 @@ class SearchTab extends React.Component {
 
           this.setState({locList: list});
         });
-  }
+  };
 
   render() {
     const {scrollToInput, onDropdownClose, onDropdownShow} = this.props;
 
     return (
-
       <View style={Styles.container2}>
         <Header headerTitle="Search" />
 
@@ -62,20 +63,23 @@ class SearchTab extends React.Component {
           Where would you like to go?
         </Text>
 
-        <View style={Styles.container_content}>
+        <View style={Styles.container_content} testID='search-input-country'>
           <Autocomplete
             key={shortid.generate()}
             scrollToInput={(ev) => scrollToInput(ev)}
             handleSelectItem={(item, id) => {
               this.handleSelectItem(item, id);
               this.updateState(item);
-            }
-            }
+            }}
             onDropdownClose={() => onDropdownClose()}
             onDropdownShow={() => onDropdownShow()}
             renderIcon={() => (
-              <FontAwesomeIcon name="search" size={20} color="#c7c6c1"
-                style={Styles.iconPos} />
+              <FontAwesomeIcon
+                name="search"
+                size={20}
+                color="#c7c6c1"
+                style={Styles.iconPos}
+              />
             )}
             data={Countries}
             minimumCharactersCount={2}
@@ -87,6 +91,7 @@ class SearchTab extends React.Component {
             valueExtractor={(item) => item.label}
             placeholder="Search by country"
             initialValue={this.state.location}
+            testID='search-input-country'
           />
 
           <View style={Styles.container_content}>
@@ -99,24 +104,20 @@ class SearchTab extends React.Component {
                 this.handleSearchDB(this.state.location);
               }}
             >
-              Let`&apos;`s Explore
+              Let&apos;s Explore
             </AwesomeButton>
           </View>
-
         </View>
 
         <FlatList
           data={this.state.locList}
           renderItem={({item}) => (
             <View style={Styles.container_content}>
-
               <Text>City: {item.city}</Text>
               <Text>Country: {item.country}</Text>
             </View>
           )}
         />
-
-
       </View>
     );
   }

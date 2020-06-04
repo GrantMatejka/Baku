@@ -10,7 +10,13 @@ idea
 *.DS_STORE
 DS_STORE
 Exponent
-/App
+babel-loader
+cache
+fixtures
+plugins
+support
+.expo/packager-info.json
+#/App
 
 #FaceBook's gitignore for good measure
 # Xcode

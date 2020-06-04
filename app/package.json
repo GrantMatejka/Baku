@@ -7,8 +7,13 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
+<<<<<<< HEAD
     "test": "jest --watchAll -u",
     "lint": "eslint *.js styles/*.js screens/**/*.js navigation/*.js styles/*.js assets/**/*.js components/*.js",
+=======
+    "test": "jest -u",
+    "lint": "eslint *.js styles/*.js screens/**/*.js navigation/*.js styles/*.js assets/**/*.js components/*.js -o lintLog.txt --color",
+>>>>>>> c530678a83b63c8ca864c8a903429065e63794e7
     "lint:fix": "eslint *.js styles/*.js screens/**/*.js navigation/*.js styles/*.js assets/**/*.js components/*.js --fix"
   },
   "jest": {
