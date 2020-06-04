@@ -113,6 +113,7 @@ class Login extends React.Component {
           borderColor={Colors.warning}
           borderHeight={5}
           inputPadding={16}
+          autoCapitalize="none"
           secureTextEntry={true}
           testID='pass_text_box'
         />
