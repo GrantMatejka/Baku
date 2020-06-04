@@ -3,6 +3,7 @@ import { Text, View, FlatList } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import AwesomeButton from 'react-native-really-awesome-button';
 
+import Styles from '../styles/styles';
 import datas from '../assets/data/data';
 import PostCard from './postCard';
 import firebase from '../config/firebase';
@@ -12,18 +13,23 @@ import firebase from '../config/firebase';
 
 export default class ProfilePosts extends React.Component {
 
+  constructor() {
+    super();
+    this.state = {
+      datas: datas,
+      posts: [],
+      loading: true,
+      username: "",
+      profilePic: ""
+    };
+  }
+
   uid = firebase.auth().currentUser.uid;
-  // username = firebase.firestore().collection('users').get().doc(this.uid).data().username
-  // photo = firebase.firestore().collection('users').get().doc(this.uid).data().photo
   posts = firebase.firestore().collection('posts');
 
-  state = {
-    datas: datas,
-    posts: [],
-    loading: true,
-    username: "",
-    profilePic: ""
-  };
+  componentWillMount() {
+    this.setState({ post: this.getPosts() })
+  }
 
   componentDidMount() {
     firebase.firestore().collection('users').doc(this.uid).get()
@@ -34,9 +40,10 @@ export default class ProfilePosts extends React.Component {
   };
 
   getPosts = async () => {
-    this.posts.where("user", "==", this.uid).get().then((snapshot) => {
+    await this.posts.where("user", "==", this.uid).get().then((snapshot) => {
+      const tempList = [];
       snapshot.docs.forEach((doc) => {
-        const tempList = []
+        // const tempList = [];
         const { caption, city, country, photos, post_time, user } = doc.data();
         tempList.push({
           username: this.state.username,
@@ -48,32 +55,37 @@ export default class ProfilePosts extends React.Component {
           post_time: post_time,
           user: user,
         });
-        this.setState({ posts: tempList });
-        console.log(this.state.posts);
-        return tempList
       });
+      this.setState({ posts: tempList });
+      console.log("Post 1");
+      console.log(this.state.posts);
+      return (tempList);
+
     })
+    console.log("Post 2");
+    console.log(this.state.posts);
+    return (this.state.posts);
   }
 
   render() {
     return (
-      <ScrollView
-        contentContainerStyle={
-          {
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            flexWrap: 'wrap'
-          }
-        } testID='profile-posts'>
-        <Text>Hi</Text>
-        <AwesomeButton
-          backgroundColor={'#ffbc26'}
-          width={340}
-          height={40}
-          onPress={() => { this.getPosts() }}
-        >
-          Add          </AwesomeButton>
-      </ScrollView>
+      <FlatList
+        data={this.state.posts}
+        renderItem={({ item }) => (
+          <View style={Styles.container_content}>
+            <PostCard
+              detail={{
+                id: item.user,
+                username: item.username,
+                user_avatar: item.photo,
+                image: item.post,
+                caption: item.caption,
+                location: item.country
+              }}
+              key={item.user}
+            />
+          </View>
+        )} />
     )
   }
 }
@@ -88,3 +100,23 @@ export default class ProfilePosts extends React.Component {
   } testID='profile-posts'>
   {this.getPhotos()}
 </ScrollView> */
+
+/* <ScrollView
+        contentContainerStyle={
+          {
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            flexWrap: 'wrap'
+          }
+        } testID='profile-posts'>
+        <Text>Hi</Text>
+        <AwesomeButton
+          backgroundColor={'#ffbc26'}
+          width={340}
+          height={40}
+          onPress={() => { this.getPhotos() }}
+        > Add
+        </AwesomeButton>
+
+
+      </ScrollView> */
