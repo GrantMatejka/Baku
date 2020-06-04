@@ -19,11 +19,14 @@ const TopTab = createMaterialTopTabNavigator();
 
 export default function ProfileTab({ navigation }) {
   const db = firebase.firestore().collection('users');
+
   const uid = firebase.auth().currentUser.uid;
   const [data, setData] = React.useState('');
   const [username, setUsername] = React.useState('');
   const [profilePic, setProfilePic] = React.useState('');
   const [name, setName] = React.useState('');
+  // const posts = firebase.firestore().collection('posts').where("uid", "==", uid);
+  // const [postList, setList] = React.useState([]);
   // const [bio, setBio] = React.useState('');
 
   React.useEffect(() => {
@@ -35,9 +38,7 @@ export default function ProfileTab({ navigation }) {
           setUsername(data.username),
           setProfilePic(data.photo);
       })
-      .catch((error) => {
-        // console.log('Error getting documents: ', error);
-      });
+
   });
   return (
     <View style={Styles.container}>
