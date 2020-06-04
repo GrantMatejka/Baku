@@ -91,7 +91,7 @@ class SearchTab extends React.Component {
                  
           var joined = this.state.userList.concat(uList);
           this.setState({userList: joined});
-          //console.log(this.state.userList);
+          console.log(this.state.userList);
         });
   }
 

@@ -235,7 +235,9 @@ const Styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: '500',
     color: Colors.primary,
-    fontSize: 10
+    fontSize: 10,
+    paddingTop: 5
+
   },
 
   // Detailed Post View

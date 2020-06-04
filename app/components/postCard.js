@@ -57,14 +57,13 @@ export default class PostCard extends Component {
 
             <Text adjustsFontSizeToFit numberOfLines={1}
               style={Styles.postCardLocationText}>
-              {this.props.detail.location}
+              {this.props.detail.city}
             </Text>
 
           
           <Text adjustsFontSizeToFit numberOfLines={1}
-            style={Styles.postCardCityText}
-            color={Colors.warning}>
-            {this.props.detail.city}
+            style={Styles.postCardCityText}>
+            {this.props.detail.location}
           </Text>
 
           
