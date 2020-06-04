@@ -28,6 +28,7 @@ export default class PhotoList extends Component {
 
   getData = () => {
     console.log('refresh')
+    this.wait(2000)
     this.setState({ refreshing: false });
 
   }
