@@ -1,26 +1,21 @@
 import * as React from 'react';
-import { Text, View, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import AwesomeButton from 'react-native-really-awesome-button';
 
 import Styles from '../styles/styles';
-import datas from '../assets/data/data';
 import PostCard from './postCard';
 import firebase from '../config/firebase';
-
-
-// We need to consolidate all 'postcards'
 
 export default class ProfilePosts extends React.Component {
 
   constructor() {
     super();
     this.state = {
-      datas: datas,
       posts: [],
       loading: true,
       username: "",
-      profilePic: ""
+      profilePic: "",
     };
   }
 
@@ -29,25 +24,31 @@ export default class ProfilePosts extends React.Component {
 
   componentWillMount() {
     this.setState({ post: this.getPosts() })
-  }
-
-  componentDidMount() {
     firebase.firestore().collection('users').doc(this.uid).get()
       .then((doc) => {
         this.setState({ username: doc.data().username });
         this.setState({ profilePic: doc.data().photo });
       })
-  };
+  }
+
+  // updatePosts() {
+  //   this.posts.where("user", "==", this.uid).onSnapshot(function (snapshot) {
+  //     snapshot.docChanges().forEach(function (change) {
+  //       if (change.type === "added") {
+  //         console.log("NEW CHange", change.doc.data());
+  //       }
+  //     })
+  //   })
+  // }
 
   getPosts = async () => {
-    await this.posts.where("user", "==", this.uid).get().then((snapshot) => {
+    await this.posts.where("user", "==", this.uid).onSnapshot((snapshot) => {
       const tempList = [];
       snapshot.docs.forEach((doc) => {
-        // const tempList = [];
         const { caption, city, country, photos, post_time, user } = doc.data();
         tempList.push({
-          username: this.state.username,
-          photo: this.state.profilePic,
+          // username: this.state.username,
+          // photo: this.state.profilePic,
           post: photos,
           caption: caption,
           city: city,
@@ -76,11 +77,11 @@ export default class ProfilePosts extends React.Component {
             <PostCard
               detail={{
                 id: item.user,
-                username: item.username,
-                user_avatar: item.photo,
+                // username: item.username,
+                // user_avatar: item.photo,
                 image: item.post,
                 caption: item.caption,
-                location: item.country
+                location: item.city
               }}
               key={item.user}
             />
@@ -89,34 +90,3 @@ export default class ProfilePosts extends React.Component {
     )
   }
 }
-
-/* <ScrollView
-  contentContainerStyle={
-    {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      flexWrap: 'wrap'
-    }
-  } testID='profile-posts'>
-  {this.getPhotos()}
-</ScrollView> */
-
-/* <ScrollView
-        contentContainerStyle={
-          {
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            flexWrap: 'wrap'
-          }
-        } testID='profile-posts'>
-        <Text>Hi</Text>
-        <AwesomeButton
-          backgroundColor={'#ffbc26'}
-          width={340}
-          height={40}
-          onPress={() => { this.getPhotos() }}
-        > Add
-        </AwesomeButton>
-
-
-      </ScrollView> */

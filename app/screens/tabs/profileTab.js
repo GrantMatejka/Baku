@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View, RefreshControl } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { DrawerActions } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -19,14 +19,12 @@ const TopTab = createMaterialTopTabNavigator();
 
 export default function ProfileTab({ navigation }) {
   const db = firebase.firestore().collection('users');
-//uid = '123';
   const uid = firebase.auth().currentUser.uid;
   const [data, setData] = React.useState('');
   const [username, setUsername] = React.useState('');
   const [profilePic, setProfilePic] = React.useState('');
   const [name, setName] = React.useState('');
-  // const posts = firebase.firestore().collection('posts').where("uid", "==", uid);
-  // const [postList, setList] = React.useState([]);
+  const [refreshing, setRefreshing] = React.useState(false);
   // const [bio, setBio] = React.useState('');
 
   React.useEffect(() => {
@@ -40,10 +38,25 @@ export default function ProfileTab({ navigation }) {
       })
 
   });
+  const wait = (timeout) => {
+    return new Promise(resolve => {
+      setTimeout(resolve, timeout);
+    });
+  }
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+
+    wait(2000).then(() => setRefreshing(false));
+  }, [refreshing]);
+
+
   return (
     <View style={Styles.container}>
       <Header headerTitle={username} />
-      <ScrollView>
+      <ScrollView refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }>
         <View style={styles2.thumbnailSection}>
           <View>
             <Image

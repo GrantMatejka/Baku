@@ -16,7 +16,11 @@ import * as ImagePicker from 'expo-image-picker';
 import firebase from '../config/firebase';
 
 class EditProfile extends React.Component {
+<<<<<<< HEAD
 //uid = '123';
+=======
+
+>>>>>>> d1fe62b0704d9ca5fa67f55f00900a4ec6ae63ef
   uid = firebase.auth().currentUser.uid;
   dbRef = firebase.firestore().collection('users');
   state = {

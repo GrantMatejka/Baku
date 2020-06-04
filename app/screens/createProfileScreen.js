@@ -14,8 +14,7 @@ import firebase from '../config/firebase';
 
 class CreateProfile extends React.Component {
 
-  //uid = firebase.auth().currentUser.uid;
-  uid = '123';
+  uid = firebase.auth().currentUser.uid;
   dbRef = firebase.firestore().collection('users');
   state = {
     error: '',

@@ -2,7 +2,7 @@ import * as React from '../../node_modules/react';
 import {
   View,
   ScrollView,
-  // ActivityIndicator,
+  RefreshControl,
   Image,
   TouchableOpacity,
   console
@@ -20,45 +20,16 @@ import Styles from '../../styles/styles';
 import Colors from '../../styles/colors';
 
 export default function CreatePost({ navigation }) {
+  const [refreshing, setRefreshing] = React.useState(false);
   const [cityx, setCity] = React.useState('');
   const [countryx, setCountry] = React.useState('');
   const [captionx, setCaption] = React.useState('');
   const [photosx, setPhotos] = React.useState(
     'https://drive.google.com/uc?id=1IlnqOsoEVi9ASVb0WihFRxtMu2z2BLT5'
   );
-  // const [post_timex, setPostTime] = React.useState("");
-  // const [userx, setUserID] = React.useState("");
-  // const [loading, setLoading] = React.useState(true);
-  // const [setLocations] = React.useState([]);
 
-  // const db = Firebase.firestore().collection("posts");
-  // const uid = Firebase.auth().currentUser.uid;
 
-  // adds docs from db to locations list
-  // React.useEffect(() => {
-  //   return db.orderBy('city', 'asc').onSnapshot((querySnapshot) => {
-  //     const list = [];
-  //     querySnapshot.forEach((doc) => {
-  //       const { city, country } = doc.data();
-  //       list.push({
-  //         id: doc.id,
-  //         city,
-  //         country
-  //       });
-  //     });
-
-  //     setLocations(list);
-  //     if (loading) {
-  //       setLoading(false);
-  //     }
-  //   });
-  // }, []);
-
-  // if (loading) {
-  //   return <ActivityIndicator />;
-  // }
-
-  async function pick_image() {
+  async function pickImage() {
     try {
       const result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -74,11 +45,26 @@ export default function CreatePost({ navigation }) {
     }
   }
 
+  const wait = (timeout) => {
+    return new Promise(resolve => {
+      setTimeout(resolve, timeout);
+    });
+  }
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+
+    wait(2000).then(() => setRefreshing(false));
+  }, [refreshing]);
+
+
   return (
     <View style={Styles.container}>
       <Header headerTitle="Create Post" />
 
-      <ScrollView style={Styles.container}>
+      <ScrollView refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+        style={Styles.container}>
         <TouchableOpacity
           style={{
             width: 200,

@@ -1,5 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+<<<<<<< HEAD
 exports[`App Screens renders the Change Password screen 1`] = `
 <RCTScrollView
   collapsable={false}
@@ -8420,6 +8421,8 @@ exports[`App Tabs renders the Settings Drawer 1`] = `
 </RCTScrollView>
 `;
 
+=======
+>>>>>>> d1fe62b0704d9ca5fa67f55f00900a4ec6ae63ef
 exports[`App renders the loading screen 1`] = `null`;
 
 exports[`App renders the root without loading screen 1`] = `

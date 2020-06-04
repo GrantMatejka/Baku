@@ -6,6 +6,7 @@ import PostCard from '../components/postCard'
 import Styles from "../styles/styles";
 import Firebase from "../config/firebase"
 import AwesomeButton from "react-native-really-awesome-button";
+<<<<<<< HEAD
 
 
 export default function previewPostScreen({ route, navigation }) {
@@ -14,13 +15,24 @@ export default function previewPostScreen({ route, navigation }) {
   const captionx = captionx;
   const cityx = cityx;
   const countryx = countryx;*/
+=======
+import Tabs from "../components/tabs";
+import ProfileTab from "./tabs/profileTab";
+import ProfilePosts from "../components/profilePosts";
+
+
+export default function previewPostScreen({ route, navigation }) {
+>>>>>>> d1fe62b0704d9ca5fa67f55f00900a4ec6ae63ef
   const photosx = route.params.photosx;
   const captionx = route.params.captionx;
   const cityx = route.params.cityx;
   const countryx = route.params.countryx;
   const dbRef = Firebase.firestore().collection('posts');
   const db = Firebase.firestore();
+<<<<<<< HEAD
   //uid = '123';
+=======
+>>>>>>> d1fe62b0704d9ca5fa67f55f00900a4ec6ae63ef
   const uid = Firebase.auth().currentUser.uid;
   const [userData, setData] = React.useState('');
   const [username, setUsername] = React.useState('');
@@ -54,7 +66,12 @@ export default function previewPostScreen({ route, navigation }) {
 
         navigation.navigate('Tabs', {
           screen: 'FeedTab'
+<<<<<<< HEAD
         })
+=======
+        }).then(ProfilePosts.forceUpdate(callback)
+        )
+>>>>>>> d1fe62b0704d9ca5fa67f55f00900a4ec6ae63ef
       )
     } catch (error) {
       console.log(error);
