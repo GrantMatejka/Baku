@@ -229,7 +229,7 @@ const Styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: '500',
     color: Colors.primary,
-    fontSize: 35
+    fontSize: 20
   },
   postCardCityText: {
     textAlign: 'center',
