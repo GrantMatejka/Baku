@@ -81,7 +81,9 @@ export default function previewPostScreen({ route, navigation }) {
     user_avatar: user_avatar,
     image: photosx,
     caption: captionx,
-    location: cityx
+    location: countryx,
+    city: cityx
+
   }
 
   return (

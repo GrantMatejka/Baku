@@ -166,7 +166,8 @@ class SearchTab extends React.Component {
                   user_avatar: item.photo,
                   image: item.post,
                   caption: item.caption,
-                  location: item.country
+                  location: item.country,
+                  city: item.city
                 }}
                 key={item.user}
                 />

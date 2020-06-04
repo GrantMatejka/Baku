@@ -231,6 +231,12 @@ const Styles = StyleSheet.create({
     color: Colors.primary,
     fontSize: 35
   },
+  postCardCityText: {
+    textAlign: 'center',
+    fontWeight: '500',
+    color: Colors.primary,
+    fontSize: 10
+  },
 
   // Detailed Post View
   detailedPostContainer: {
