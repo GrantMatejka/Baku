@@ -6,6 +6,9 @@ import AwesomeButton from "react-native-really-awesome-button";
 import { Fumi } from "../../node_modules/react-native-textinput-effects/lib";
 import FontAwesomeIcon from "../../node_modules/react-native-vector-icons/FontAwesome";
 
+import CountryPicker from "../../components/countryPicker"; 
+import CityPicker from "../../components/cityPicker";
+
 import Header from "../../components/header";
 import Firebase from "../../config/firebase";
 import Styles from "../../styles/styles";
@@ -24,32 +27,6 @@ export default function CreatePost({ navigation }) {
   const db = Firebase.firestore().collection('posts');
   const uid = Firebase.auth().currentUser.uid;
 
-  // async function previewPost() {
-  //   try {
-  //     const photoRef = await uploadPhotoAsync(photosx);
-  //     await db.add({
-  //       city: cityx,
-  //       country: countryx,
-  //       caption: captionx,
-  //       photos: photoRef,
-  //       post_time: new Date().toLocaleString(),
-  //       user: getUser()
-  //     }).then(
-  //       () => { navigation.navigate("Preview Post Screen", { caption: captionx, image: photosx, location: cityx }) }
-  //     )
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
-  // function getUser() {
-  //   if (Firebase.auth().currentUser.uid != null) {
-  //     return Firebase.auth().currentUser.uid
-  //   }
-  //   else {
-  //     return "n/a"
-  //   }
-  // }
 
 
   // adds docs from db to locations list
@@ -76,34 +53,6 @@ export default function CreatePost({ navigation }) {
     return <ActivityIndicator />;
   }
 
-  // function Item({ city }, { country }) {
-  //   return (
-  //     <View style={Styles.container_content}>
-  //       <Text>City: {city}</Text>
-  //       <Text>Country: {country}</Text>
-  //     </View>
-  //   );
-  // }
-
-  // uploadPhotoAsync = async uri => {
-  //   const path = 'photos/' + (uid) + '/' + Date.now();
-  //   return new Promise(async (res, rej) => {
-  //     const response = await fetch(uri);
-  //     const file = await response.blob();
-  //     let upload = Firebase.storage().ref(path).put(file);
-  //     // console.log(path)
-  //     upload.on("state_changed",
-  //       snapshot => { },
-  //       err => {
-  //         rej(err)
-  //       },
-  //       async () => {
-  //         const url = await upload.snapshot.ref.getDownloadURL();
-  //         res(url);
-  //       }
-  //     )
-  //   })
-  // }
 
   async function pick_image() {
     try {
@@ -152,33 +101,16 @@ export default function CreatePost({ navigation }) {
             }}
           />
         </TouchableOpacity>
-        <View style={Styles.p_3}>
-          <Fumi
-            label={'City'}
-            onChangeText={setCity}
-            iconClass={FontAwesomeIcon}
-            iconName={'map-pin'}
-            iconColor={Colors.warning}
-            iconSize={18}
-            iconWidth={40}
-            inputPadding={16}
-            inputStyle={{padding: 5}}
+
+        <View>
+          <CountryPicker
+          //selectedLabel={setCountry}
+          />
+          <CityPicker
+          //selectedLabel = {setCity}
           />
         </View>
 
-        <View style={Styles.p_3}>
-          <Fumi
-            label={'Country'}
-            onChangeText={setCountry}
-            iconClass={FontAwesomeIcon}
-            iconName={'globe'}
-            iconColor={Colors.warning}
-            iconSize={18}
-            iconWidth={40}
-            inputPadding={16}
-            inputStyle={{padding: 5}}
-          />
-        </View>
 
         <View style={Styles.p_3}>
           <Fumi
@@ -209,20 +141,3 @@ export default function CreatePost({ navigation }) {
   );
 }
 
-/*
-<FlatList
-          //lists DB to screen in alphabetical order by city
-          data={locations}
-          renderItem={({ item }) => (
-            <View style={Styles.container_content}>
-              <Text>City: {item.city}</Text>
-              <Text>Country: {item.country}</Text>
-            </View>
-          )}
-        />
-
-      </ScrollView>
-    </View>
-  );
-}
-*/
