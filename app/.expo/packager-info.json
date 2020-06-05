@@ -1,10 +1,10 @@
 {
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerPort": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "packagerPort": 19001,
+  "packagerPid": 50964,
+  "expoServerPort": 19000,
+  "expoServerNgrokUrl": "https://m8-6nd.stumma.app.exp.direct",
+  "packagerNgrokUrl": "https://packager.m8-6nd.stumma.app.exp.direct",
+  "ngrokPid": 79328,
   "webpackServerPort": null,
   "devToolsPort": 19002
 }
