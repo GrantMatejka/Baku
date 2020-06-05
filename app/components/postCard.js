@@ -1,7 +1,7 @@
 /* eslint-disable no-invalid-this */
 // It'd be great to figure out how to enable this again^^^
-import React, {Component} from 'react';
-import {Image, Text, View, TouchableWithoutFeedback} from 'react-native';
+import React, { Component } from 'react';
+import { Image, Text, View, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 
 import AwesomeButton from 'react-native-really-awesome-button';
 import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
@@ -59,8 +59,8 @@ await this.AddFollowers()
 
   toggleLike = () => {
     this.state.like ?
-      this.setState({heartIcon: 'heart-o'}) :
-      this.setState({heartIcon: 'heart'});
+      this.setState({ heartIcon: 'heart-o' }) :
+      this.setState({ heartIcon: 'heart' });
 
     this.setState({
       like: !this.state.like
@@ -69,8 +69,8 @@ await this.AddFollowers()
 
   toggleSave = () => {
     this.state.save ?
-      this.setState({saveIcon: 'bookmark-o'}) :
-      this.setState({saveIcon: 'bookmark'});
+      this.setState({ saveIcon: 'bookmark-o' }) :
+      this.setState({ saveIcon: 'bookmark' });
 
     this.setState({
       save: !this.state.save
@@ -81,7 +81,7 @@ await this.AddFollowers()
     return (
       <View style={Styles.postCardContainer}>
 
-        <View style={{flexDirection: 'row', margin: 5}}>
+        <View style={{ flexDirection: 'row', margin: 5 }}>
 
           <View style={{
             flexDirection: 'column',
@@ -89,12 +89,18 @@ await this.AddFollowers()
             alignItems: 'center',
             flex: 0.75,
           }}>
-            <Text style={{fontSize: 15, textAlign: 'center'}}>
+            <Text style={{ fontSize: 15, textAlign: 'center' }}>
               Hello From
             </Text>
 
             <Text adjustsFontSizeToFit numberOfLines={1}
               style={Styles.postCardLocationText}>
+              {this.props.detail.location}
+            </Text>
+
+
+            <Text adjustsFontSizeToFit numberOfLines={1}
+              style={Styles.postCardCityText}>
               {this.props.detail.location}
             </Text>
 
@@ -106,12 +112,18 @@ await this.AddFollowers()
             alignItems: 'center',
             flex: 0.25
           }}>
-            <Image
-              style={Styles.image_icon}
-              source={{
-                uri: this.props.detail.user_avatar
-              }}
-            />
+            <TouchableOpacity onPress={() => {
+              //console.log("Error getting documents: ", this.state.friends);
+              //this.AddFollowers();
+              this.UpdateFriends();
+            }}>
+              <Image
+                style={Styles.image_icon}
+                source={{
+                  uri: this.props.detail.user_avatar
+                }}
+              />
+            </TouchableOpacity>
 
             <Text adjustsFontSizeToFit numberOfLines={1} style={{
               fontWeight: 'bold',
@@ -125,7 +137,7 @@ await this.AddFollowers()
 
         </View>
 
-        <View style={{flexDirection: 'column'}}>
+        <View style={{ flexDirection: 'column' }}>
 
           <Image
             style={{
@@ -138,6 +150,12 @@ await this.AddFollowers()
               uri: this.props.detail.image
             }}
           />
+          <View style={{ paddingLeft: 25, paddingTop: 5 }}>
+            <Text adjustsFontSizeToFit numberOfLines={1}
+              style={Styles.text_xsmall}>
+              {this.props.detail.caption}
+            </Text>
+          </View>
 
           <View style={{
             flexDirection: 'row',
@@ -186,7 +204,7 @@ await this.AddFollowers()
               height={30}
               onPress={() => {
                 this.props.navigation.navigate('Post Detailed View',
-                    {details: this.props.detail});
+                  { details: this.props.detail });
               }}
             >
               View Itinerary

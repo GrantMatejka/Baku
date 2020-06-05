@@ -1,7 +1,7 @@
 import NavigationTestUtils from 'react-navigation/NavigationTestUtils';
 import renderer from 'react-test-renderer';
 import React from 'react';
-import App from '../App';
+import App from '../app';
 jest.setTimeout(150);
 
 jest.mock('expo', () => ({
