@@ -40,7 +40,7 @@ export default class PhotoList extends React.Component {
       .then(doc => {
         const uList = [];
         const { username, photo } = doc.data();
-        console.log(doc.data())
+        // console.log(doc.data())
         uList.push({
           username,
           photo,

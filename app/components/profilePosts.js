@@ -6,7 +6,7 @@ import datas from '../assets/data/data';
 
 
 import Styles from '../styles/styles';
-import PostCard from './postCard';
+import ProfilePostCard from './profilePostCard';
 import firebase from '../config/firebase';
 
 export default class ProfilePosts extends React.Component {
@@ -52,13 +52,13 @@ export default class ProfilePosts extends React.Component {
         });
       });
       this.setState({ posts: tempList });
-      console.log("Post 1");
-      console.log(this.state.posts);
+      // console.log("Post 1");
+      // console.log(this.state.posts);
       return (tempList);
 
     })
-    console.log("Post 2");
-    console.log(this.state.posts);
+    // console.log("Post 2");
+    // console.log(this.state.posts);
     return (this.state.posts);
   }
 
@@ -68,7 +68,7 @@ export default class ProfilePosts extends React.Component {
         data={datas}
         renderItem={({ item }) => (
           <View style={Styles.container_content}>
-            <PostCard
+            <ProfilePostCard
               detail={{
                 uid: item.postID,
                 // username: item.username,

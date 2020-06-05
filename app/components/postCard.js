@@ -8,16 +8,54 @@ import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
 import Styles from '../styles/styles';
 import Colors from '../styles/colors';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import firebase from '../config/firebase';
 
 export default class PostCard extends Component {
+  uid = firebase.auth().currentUser.uid;
+  dbRef = firebase.firestore().collection('users');
   state = {
     heartIcon: 'heart-o',
     // eslint-disable-next-line sonarjs/no-duplicate-string
     saveIcon: 'bookmark-o',
     like: false,
-    save: false
+    save: false,
+    friends: [],
+    username: this.props.detail.username
   };
+
+  componentDidMount() {
+    this.dbRef.doc(this.uid).onSnapshot((snapshot) => {
+      this.setState({ data: snapshot.data() }),
+        this.setState({ friends: snapshot.data().friends })
+    })
+  }
+
+
+  AddFollowers = async () => {
+    //console.log("Friends: ", this.state.friends);    
+    const uid = firebase.auth().currentUser.uid;
+    const user = this.dbRef.doc(uid);
+    const tempList = [];
+    // console.log("Error getting documents: ", this.state.friends);
+    tempList.push({ username: this.state.username })
+    var joined = this.state.friends.concat(tempList)
+    this.setState({ friends: joined })
+
+  }
+
+  UpdateFriends = async () => {
+    await this.AddFollowers()
+    this.dbRef.doc(this.uid).set(
+      {
+        //friends: []
+        friends: this.state.friends
+        //.push({friends: this.state.username})
+      },
+      {
+        merge: true
+      }
+    )
+  }
 
   toggleLike = () => {
     this.state.like ?
@@ -66,10 +104,7 @@ export default class PostCard extends Component {
               {this.props.detail.location}
             </Text>
 
-
-
           </View>
-
 
           <View style={{
             flexDirection: 'column',
@@ -115,7 +150,6 @@ export default class PostCard extends Component {
               {this.props.detail.caption}
             </Text>
           </View>
-
 
           <View style={{
             flexDirection: 'row',
@@ -170,6 +204,20 @@ export default class PostCard extends Component {
               View Itinerary
             </AwesomeButton>
           </View>
+
+          <AwesomeButton
+            backgroundColor={'#A5D6D9'}
+            width={120}
+            height={30}
+            onPress={() => {
+              //console.log("Error getting documents: ", this.state.friends);
+              //this.AddFollowers();
+              this.UpdateFriends();
+            }}
+          >
+            Follow User
+            </AwesomeButton>
+
         </View>
 
       </View>
