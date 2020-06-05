@@ -84,8 +84,8 @@ export default class PhotoList extends React.Component {
   render() {
     return (
       <FlatList
-        data={datas}
-        // data={this.state.posts}
+        // data={datas}
+        data={this.state.posts}
         renderItem={({ item }) => (
           <View style={Styles.container_content}>
             <PostCard

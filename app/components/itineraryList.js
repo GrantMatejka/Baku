@@ -12,7 +12,7 @@ export default function ItineraryList({ uid }) {
   const db = Firebase.firestore();
 
   React.useEffect(() => {
-    if (itinerary.length === 0) {
+    if (itinerary === []) {
       db.collection('posts').doc(postId).get()
         .then((doc) => {
           setItinerary(doc.data().itinerary);
