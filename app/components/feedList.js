@@ -1,52 +1,108 @@
-import React, { Component } from 'react';
-import { ScrollView, RefreshControl } from 'react-native';
+import * as React from 'react';
+import { View, FlatList } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 
+import Styles from '../styles/styles';
 import PostCard from './postCard';
-// We need to replace this
+import firebase from '../config/firebase';
 import datas from '../assets/data/data';
 
-export default class PhotoList extends Component {
-  state = {
-    datas: datas,
-    refreshing: false
-  };
+export default class PhotoList extends React.Component {
 
-  getPhotos() {
-    return this.state.datas.map((data) => {
-      return <PostCard
-        detail={data}
-        key={data.id}
-        navigation={this.props.navigation} />;
-    });
+  constructor() {
+    super();
+    this.state = {
+      posts: [],
+      feedList: [],
+      loading: true,
+      username: "",
+      profilePic: "",
+    };
   }
 
-  wait = (timeout) => {
-    return new Promise(resolve => {
-      setTimeout(resolve, timeout);
-    });
+  uid = firebase.auth().currentUser.uid;
+  posts = firebase.firestore().collection('posts');
+  users = firebase.firestore().collection('users');
+
+  componentWillMount() {
+    this.setState({ post: this.getPosts() })
+    //   firebase.firestore().collection('users').doc(this.uid).get()
+    //     .then((doc) => {
+    //       this.setState({ username: doc.data().username });
+    //       this.setState({ profilePic: doc.data().photo });
+    //     })
   }
 
-  getData = () => {
-    console.log('refresh')
-    this.wait(2000)
-    this.setState({ refreshing: false });
+  handleUser = async (uid, item) => {
+    this.users
+      .doc(uid)
+      .get()
+      .then(doc => {
+        const uList = [];
+        const { username, photo } = doc.data();
+        // console.log(doc.data())
+        uList.push({
+          username,
+          photo,
+          post: item.photos,
+          caption: item.caption,
+          city: item.city,
+          country: item.country,
+          post_time: item.post_time,
+          user: uid,
+        });
 
+        var joined = this.state.feedList.concat(uList);
+        this.setState({ feedList: joined });
+      });
   }
 
-  _onRefresh = () => {
-    this.setState({ refreshing: true });
-    this.getData();
+  getPosts = async () => {
+    await this.posts.onSnapshot((snapshot) => {
+      const tempList = [];
+      snapshot.docs.forEach((doc) => {
+        const { caption, city, country, photos, post_time, user } = doc.data();
+        tempList.push({
+          postID: doc.id,
+          post: photos,
+          caption: caption,
+          city: city,
+          country: country,
+          post_time: post_time,
+          user: user,
+        });
+      });
+      this.setState({ posts: tempList })
+      // this.state.posts.map((item) => {
+      //   this.handleUser(item.user, item);
+      // });
+      return (tempList);
+    })
+    return (this.state.posts);
   }
 
   render() {
-    return <ScrollView refreshControl={
-      <RefreshControl refreshing={this.state.refreshing} onRefresh={this._onRefresh} />} contentContainerStyle={{
-        flexDirection: 'row',
-        flexGrow: 1,
-        justifyContent: 'space-around',
-        flexWrap: 'wrap'
-      }}>
-      {this.getPhotos()}
-    </ScrollView>;
+    return (
+      <FlatList
+        // data={datas}
+        data={this.state.posts}
+        renderItem={({ item }) => (
+          <View style={Styles.container_content}>
+            <PostCard
+              detail={{
+                uid: item.postID,
+                username: item.username,
+                user_avatar: item.photo,
+                image: item.post,
+                caption: item.caption,
+                location: item.country,
+                city: item.city
+              }}
+              key={item.uid}
+              navigation={this.props.navigation}
+            />
+          </View>
+        )} />
+    )
   }
 }
