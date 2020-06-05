@@ -87,17 +87,7 @@ const Styles = StyleSheet.create({
   text_centered: {
     textAlign: 'center'
   },
-  text_title: {
-    textAlign: 'center',
-    fontWeight: "bold",
-    color: Colors.primary,
-    fontSize: 35,
-    fontStyle: 'normal',
-    padding: 20,
-    lineHeight: 20,
-    textAlign: 'center',
-    paddingTop: 100
-  },
+
 
   // Button Stylings
   button: {
@@ -229,15 +219,7 @@ const Styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: '500',
     color: Colors.primary,
-    fontSize: 20
-  },
-  postCardCityText: {
-    textAlign: 'center',
-    fontWeight: '500',
-    color: Colors.primary,
-    fontSize: 10,
-    paddingTop: 5
-
+    fontSize: 35
   },
 
   // Detailed Post View

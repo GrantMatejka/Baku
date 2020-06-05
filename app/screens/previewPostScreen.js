@@ -6,9 +6,6 @@ import PostCard from '../components/postCard'
 import Styles from "../styles/styles";
 import Firebase from "../config/firebase"
 import AwesomeButton from "react-native-really-awesome-button";
-import Tabs from "../components/tabs";
-import ProfileTab from "./tabs/profileTab";
-import ProfilePosts from "../components/profilePosts";
 
 
 export default function previewPostScreen({ route, navigation }) {
@@ -51,8 +48,7 @@ export default function previewPostScreen({ route, navigation }) {
 
         navigation.navigate('Tabs', {
           screen: 'FeedTab'
-        }).then(ProfilePosts.forceUpdate(callback)
-        )
+        })
       )
     } catch (error) {
       console.log(error);
@@ -85,9 +81,7 @@ export default function previewPostScreen({ route, navigation }) {
     user_avatar: user_avatar,
     image: photosx,
     caption: captionx,
-    location: countryx,
-    city: cityx
-
+    location: cityx
   }
 
   return (

@@ -1,23 +1,26 @@
 import * as React from 'react';
-import { View, FlatList } from 'react-native';
+import { Text, View, FlatList } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import AwesomeButton from 'react-native-really-awesome-button';
-import datas from '../assets/data/data';
-
 
 import Styles from '../styles/styles';
-import ProfilePostCard from './profilePostCard';
+import datas from '../assets/data/data';
+import PostCard from './postCard';
 import firebase from '../config/firebase';
+
+
+// We need to consolidate all 'postcards'
 
 export default class ProfilePosts extends React.Component {
 
   constructor() {
     super();
     this.state = {
+      datas: datas,
       posts: [],
       loading: true,
       username: "",
-      profilePic: "",
+      profilePic: ""
     };
   }
 
@@ -26,23 +29,25 @@ export default class ProfilePosts extends React.Component {
 
   componentWillMount() {
     this.setState({ post: this.getPosts() })
+  }
+
+  componentDidMount() {
     firebase.firestore().collection('users').doc(this.uid).get()
       .then((doc) => {
         this.setState({ username: doc.data().username });
         this.setState({ profilePic: doc.data().photo });
       })
-  }
-
+  };
 
   getPosts = async () => {
-    await this.posts.where("user", "==", this.uid).onSnapshot((snapshot) => {
+    await this.posts.where("user", "==", this.uid).get().then((snapshot) => {
       const tempList = [];
       snapshot.docs.forEach((doc) => {
+        // const tempList = [];
         const { caption, city, country, photos, post_time, user } = doc.data();
         tempList.push({
-          // username: this.state.username,
-          // photo: this.state.profilePic,
-          postID: doc.id,
+          username: this.state.username,
+          photo: this.state.profilePic,
           post: photos,
           caption: caption,
           city: city,
@@ -52,13 +57,13 @@ export default class ProfilePosts extends React.Component {
         });
       });
       this.setState({ posts: tempList });
-      // console.log("Post 1");
-      // console.log(this.state.posts);
+      console.log("Post 1");
+      console.log(this.state.posts);
       return (tempList);
 
     })
-    // console.log("Post 2");
-    // console.log(this.state.posts);
+    console.log("Post 2");
+    console.log(this.state.posts);
     return (this.state.posts);
   }
 
@@ -68,21 +73,50 @@ export default class ProfilePosts extends React.Component {
         data={this.state.posts}
         renderItem={({ item }) => (
           <View style={Styles.container_content}>
-            <ProfilePostCard
+            <PostCard
               detail={{
-                uid: item.postID,
-                // username: item.username,
-                // user_avatar: item.photo,
+                id: item.user,
+                username: item.username,
+                user_avatar: item.photo,
                 image: item.post,
                 caption: item.caption,
-                location: item.country,
-                city: item.city
+                location: item.country
               }}
-              key={item.uid}
-              navigation={this.props.navigation}
+              key={item.user}
             />
           </View>
         )} />
     )
   }
 }
+
+/* <ScrollView
+  contentContainerStyle={
+    {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      flexWrap: 'wrap'
+    }
+  } testID='profile-posts'>
+  {this.getPhotos()}
+</ScrollView> */
+
+/* <ScrollView
+        contentContainerStyle={
+          {
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            flexWrap: 'wrap'
+          }
+        } testID='profile-posts'>
+        <Text>Hi</Text>
+        <AwesomeButton
+          backgroundColor={'#ffbc26'}
+          width={340}
+          height={40}
+          onPress={() => { this.getPhotos() }}
+        > Add
+        </AwesomeButton>
+
+
+      </ScrollView> */
