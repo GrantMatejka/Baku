@@ -2,9 +2,11 @@ import * as React from 'react';
 import { View, FlatList } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import AwesomeButton from 'react-native-really-awesome-button';
+import datas from '../assets/data/data';
+
 
 import Styles from '../styles/styles';
-import PostCard from './postCard';
+import ProfilePostCard from './profilePostCard';
 import firebase from '../config/firebase';
 
 export default class ProfilePosts extends React.Component {
@@ -31,15 +33,6 @@ export default class ProfilePosts extends React.Component {
       })
   }
 
-  // updatePosts() {
-  //   this.posts.where("user", "==", this.uid).onSnapshot(function (snapshot) {
-  //     snapshot.docChanges().forEach(function (change) {
-  //       if (change.type === "added") {
-  //         console.log("NEW CHange", change.doc.data());
-  //       }
-  //     })
-  //   })
-  // }
 
   getPosts = async () => {
     await this.posts.where("user", "==", this.uid).onSnapshot((snapshot) => {
@@ -49,6 +42,7 @@ export default class ProfilePosts extends React.Component {
         tempList.push({
           // username: this.state.username,
           // photo: this.state.profilePic,
+          postID: doc.id,
           post: photos,
           caption: caption,
           city: city,
@@ -58,25 +52,25 @@ export default class ProfilePosts extends React.Component {
         });
       });
       this.setState({ posts: tempList });
-      console.log("Post 1");
-      console.log(this.state.posts);
+      // console.log("Post 1");
+      // console.log(this.state.posts);
       return (tempList);
 
     })
-    console.log("Post 2");
-    console.log(this.state.posts);
+    // console.log("Post 2");
+    // console.log(this.state.posts);
     return (this.state.posts);
   }
 
   render() {
     return (
       <FlatList
-        data={this.state.posts}
+        data={datas}
         renderItem={({ item }) => (
           <View style={Styles.container_content}>
-            <PostCard
+            <ProfilePostCard
               detail={{
-                id: item.user,
+                uid: item.postID,
                 // username: item.username,
                 // user_avatar: item.photo,
                 image: item.post,
@@ -84,7 +78,8 @@ export default class ProfilePosts extends React.Component {
                 location: item.country,
                 city: item.city
               }}
-              key={item.user}
+              key={item.uid}
+              navigation={this.props.navigation}
             />
           </View>
         )} />
