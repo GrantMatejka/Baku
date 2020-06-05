@@ -47,6 +47,7 @@ UpdateFriends = async () => {
 await this.AddFollowers()
   this.dbRef.doc(this.uid).set(
     {
+      //friends: []
       friends: this.state.friends
       //.push({friends: this.state.username})
     },

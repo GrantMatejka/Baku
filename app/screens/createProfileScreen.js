@@ -101,8 +101,8 @@ class CreateProfile extends React.Component {
           photo: this.state.photo,
           bio: this.state.bio,
           places: this.state.places,
-          photo: photoRef
-
+          photo: photoRef,
+          friends: []
         },
         {
           merge: true
