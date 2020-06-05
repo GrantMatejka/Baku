@@ -7,6 +7,9 @@ describe('Profile Tabs', function () {
       cy.contains(/login/i).click();
       cy.contains('Feed');
    });
+   it("Add Friend", function () {
+      cy.get('[data-testid="avatar"]').click();
+   });
    it("Nav to Profile Tab", function () {
       cy.contains('Profile').click();
       cy.contains('PostCards');
