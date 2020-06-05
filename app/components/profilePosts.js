@@ -65,7 +65,7 @@ export default class ProfilePosts extends React.Component {
   render() {
     return (
       <FlatList
-        data={datas}
+        data={this.state.posts}
         renderItem={({ item }) => (
           <View style={Styles.container_content}>
             <ProfilePostCard

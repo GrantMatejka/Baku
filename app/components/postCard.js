@@ -1,7 +1,7 @@
 /* eslint-disable no-invalid-this */
 // It'd be great to figure out how to enable this again^^^
 import React, { Component } from 'react';
-import { Image, Text, View, TouchableWithoutFeedback } from 'react-native';
+import { Image, Text, View, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 
 import AwesomeButton from 'react-native-really-awesome-button';
 import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
@@ -112,12 +112,18 @@ export default class PostCard extends Component {
             alignItems: 'center',
             flex: 0.25
           }}>
-            <Image
-              style={Styles.image_icon}
-              source={{
-                uri: this.props.detail.user_avatar
-              }}
-            />
+            <TouchableOpacity onPress={() => {
+              //console.log("Error getting documents: ", this.state.friends);
+              //this.AddFollowers();
+              this.UpdateFriends();
+            }}>
+              <Image
+                style={Styles.image_icon}
+                source={{
+                  uri: this.props.detail.user_avatar
+                }}
+              />
+            </TouchableOpacity>
 
             <Text adjustsFontSizeToFit numberOfLines={1} style={{
               fontWeight: 'bold',
@@ -205,7 +211,7 @@ export default class PostCard extends Component {
             </AwesomeButton>
           </View>
 
-          <AwesomeButton
+          {/* <AwesomeButton
             backgroundColor={'#A5D6D9'}
             width={120}
             height={30}
@@ -216,7 +222,7 @@ export default class PostCard extends Component {
             }}
           >
             Follow User
-            </AwesomeButton>
+            </AwesomeButton> */}
 
         </View>
 
