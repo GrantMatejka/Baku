@@ -8,6 +8,7 @@ import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
 import Styles from '../styles/styles';
 import Colors from '../styles/colors';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class PostCard extends Component {
   state = {
@@ -54,22 +55,21 @@ export default class PostCard extends Component {
               Hello From
             </Text>
 
-            <View adjustsFontSizeToFit numberOfLines={1}
+            <Text adjustsFontSizeToFit numberOfLines={1}
               style={Styles.postCardLocationText}>
-              <Text >
-                {this.props.detail.location}
-              </Text>
-              <Text>
-                {this.props.detail.country}
-              </Text>
-            </View>
+              {this.props.detail.city}
+            </Text>
 
-            {/* <Text adjustsFontSizeToFit numberOfLines={2}
-              style={Styles.postCardLocationText}>
-              {this.props.detail.country}
-            </Text> */}
+
+            <Text adjustsFontSizeToFit numberOfLines={1}
+              style={Styles.postCardCityText}>
+              {this.props.detail.location}
+            </Text>
+
+
 
           </View>
+
 
           <View style={{
             flexDirection: 'column',
@@ -109,6 +109,13 @@ export default class PostCard extends Component {
               uri: this.props.detail.image
             }}
           />
+          <View style={{ paddingLeft: 25, paddingTop: 5 }}>
+            <Text adjustsFontSizeToFit numberOfLines={1}
+              style={Styles.text_xsmall}>
+              {this.props.detail.caption}
+            </Text>
+          </View>
+
 
           <View style={{
             flexDirection: 'row',

@@ -83,10 +83,8 @@ export default class ProfilePosts extends React.Component {
                 // user_avatar: item.photo,
                 image: item.post,
                 caption: item.caption,
-                location: item.city,
-                country: item.country
-
-
+                location: item.country,
+                city: item.city
               }}
               key={item.uid}
               navigation={this.props.navigation}
