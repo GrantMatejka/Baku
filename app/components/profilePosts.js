@@ -2,6 +2,8 @@ import * as React from 'react';
 import { View, FlatList } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import AwesomeButton from 'react-native-really-awesome-button';
+import datas from '../assets/data/data';
+
 
 import Styles from '../styles/styles';
 import PostCard from './postCard';
@@ -31,26 +33,16 @@ export default class ProfilePosts extends React.Component {
       })
   }
 
-  // updatePosts() {
-  //   this.posts.where("user", "==", this.uid).onSnapshot(function (snapshot) {
-  //     snapshot.docChanges().forEach(function (change) {
-  //       if (change.type === "added") {
-  //         console.log("NEW CHange", change.doc.data());
-  //       }
-  //     })
-  //   })
-  // }
 
   getPosts = async () => {
     await this.posts.where("user", "==", this.uid).onSnapshot((snapshot) => {
       const tempList = [];
       snapshot.docs.forEach((doc) => {
         const { caption, city, country, photos, post_time, user } = doc.data();
-        // const { postID } = doc.id
         tempList.push({
           // username: this.state.username,
           // photo: this.state.profilePic,
-          postID: postID,
+          postID: doc.id,
           post: photos,
           caption: caption,
           city: city,
@@ -73,12 +65,12 @@ export default class ProfilePosts extends React.Component {
   render() {
     return (
       <FlatList
-        data={this.state.posts}
+        data={datas}
         renderItem={({ item }) => (
           <View style={Styles.container_content}>
             <PostCard
               detail={{
-                id: item.user,
+                uid: item.postID,
                 // username: item.username,
                 // user_avatar: item.photo,
                 image: item.post,

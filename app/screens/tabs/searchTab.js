@@ -105,7 +105,7 @@ class SearchTab extends React.Component {
         <Header headerTitle="Search" />
 
         <View style={Styles.pt_5}>
-          <Text style={Styles.text_title}> Thinking of travelling? </Text>
+          <Text style={Styles.text_title}> Thinking of traveling? </Text>
         </View>
         <View style={Styles.container_content}>
 
