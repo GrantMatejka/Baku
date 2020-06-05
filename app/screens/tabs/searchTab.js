@@ -9,18 +9,22 @@ import Header from '../../components/header';
 import firebase from '../../config/firebase';
 import Countries from '../../assets/data/countries';
 import shortid from 'shortid';
-import {
-  Autocomplete,
-  withKeyboardAwareScrollView
-} from 'react-native-dropdown-autocomplete';
+import { Autocomplete, withKeyboardAwareScrollView }
+  from 'react-native-dropdown-autocomplete';
+import PostCard from '../../components/postCard';
+
 
 class SearchTab extends React.Component {
-  db = firebase.firestore().collection('location_test');
+
+  db = firebase.firestore().collection('posts');
+  db_users = firebase.firestore().collection('users');
+
   constructor(props) {
     super(props);
     this.state = {
       location: '',
-      locList: []
+      locList: [],
+      userList: []
     };
   }
 
@@ -39,47 +43,86 @@ class SearchTab extends React.Component {
       .get()
       .then((snapshot) => {
         const list = [];
+
         snapshot.docs.forEach((doc) => {
-          const { city, country } = doc.data();
+          const { caption, city, country, photos, post_time, user, itinerary } = doc.data();
+
           list.push({
             id: doc.id,
+            caption,
             city,
-            country
+            country,
+            photos,
+            post_time,
+            user,
+            itinerary
           });
         });
 
         this.setState({ locList: list });
+
+        this.state.locList.map((item) => {
+          this.handleUser(item.user, item);
+
+        });
       });
-  };
+  }
+
+  handleUser = async (uid, item) => {
+    this.db_users
+      .doc(uid)
+      .get()
+      .then(doc => {
+        const uList = [];
+        const { username, photo } = doc.data();
+
+        uList.push({
+          username,
+          photo,
+          post: item.photos,
+          caption: item.caption,
+          city: item.city,
+          country: item.country,
+          post_time: item.post_time,
+          postID: item.id,
+          // itinerary: item.itinerary
+
+        });
+
+        var joined = this.state.userList.concat(uList);
+        this.setState({ userList: joined });
+        // console.log(this.state.userList);
+      });
+  }
 
   render() {
     const { scrollToInput, onDropdownClose, onDropdownShow } = this.props;
 
+
     return (
+
       <View style={Styles.container2}>
         <Header headerTitle="Search" />
 
-        <Text style={[Styles.header, Styles.text_medium]}>
-          Where would you like to go?
-        </Text>
+        <View style={Styles.pt_5}>
+          <Text style={Styles.text_title}> Thinking of traveling? </Text>
+        </View>
+        <View style={Styles.container_content}>
 
-        <View style={Styles.container_content} testID='search-input-country'>
           <Autocomplete
             key={shortid.generate()}
             scrollToInput={(ev) => scrollToInput(ev)}
             handleSelectItem={(item, id) => {
+              this.setState({ userList: [] });
               this.handleSelectItem(item, id);
               this.updateState(item);
-            }}
+            }
+            }
             onDropdownClose={() => onDropdownClose()}
             onDropdownShow={() => onDropdownShow()}
             renderIcon={() => (
-              <FontAwesomeIcon
-                name="search"
-                size={20}
-                color="#c7c6c1"
-                style={Styles.iconPos}
-              />
+              <FontAwesomeIcon name="search" size={20} color="#c7c6c1"
+                style={Styles.iconPos} />
             )}
             data={Countries}
             minimumCharactersCount={2}
@@ -91,7 +134,6 @@ class SearchTab extends React.Component {
             valueExtractor={(item) => item.label}
             placeholder="Search by country"
             initialValue={this.state.location}
-            testID='search-input-country'
           />
 
           <View style={Styles.container_content}>
@@ -101,21 +143,37 @@ class SearchTab extends React.Component {
               height={50}
               onPress={() => {
                 this.setState({ error: '' });
+
                 this.handleSearchDB(this.state.location);
+
               }}
             >
-              Let&apos;s Explore
-            </AwesomeButton>
+              Let's Explore
+              </AwesomeButton>
           </View>
         </View>
 
         <FlatList
-          data={this.state.locList}
+          data={this.state.userList}
           renderItem={({ item }) => (
+
             <View style={Styles.container_content}>
-              <Text>City: {item.city}</Text>
-              <Text>Country: {item.country}</Text>
+
+              <PostCard
+                detail={{
+                  uid: item.postID,
+                  username: item.username,
+                  user_avatar: item.photo,
+                  image: item.post,
+                  caption: item.caption,
+                  location: item.country,
+                  city: item.city
+                }}
+                key={item.user}
+                navigation={this.props.navigation}
+              />
             </View>
+
           )}
         />
       </View>
@@ -123,4 +181,3 @@ class SearchTab extends React.Component {
   }
 }
 export default withKeyboardAwareScrollView(SearchTab);
-// export default SearchTab;
