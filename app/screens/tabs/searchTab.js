@@ -77,6 +77,7 @@ class SearchTab extends React.Component {
           const {username, photo} = doc.data();
           
           uList.push({
+            pid: item.id,
             username,
             photo,
             post: item.photos,
@@ -161,7 +162,7 @@ class SearchTab extends React.Component {
               
               <PostCard 
                 detail={{
-                  id: item.user,
+                  uid: item.pid,
                   username: item.username,
                   user_avatar: item.photo,
                   image: item.post,
@@ -169,7 +170,8 @@ class SearchTab extends React.Component {
                   location: item.country,
                   city: item.city
                 }}
-                key={item.user}
+                key={item.pid}
+                navigation={this.props.navigation}
                 />
             </View>
             
