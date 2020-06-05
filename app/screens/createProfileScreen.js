@@ -39,6 +39,23 @@ class CreateProfile extends React.Component {
         console.log("Error getting documents: ", error);
       });
   }
+  _onChangeText = (text) => {
+    let formattedmobile = this.formatMobileNumber(text);
+    this.setState({ mobile: formattedmobile });
+  };
+
+  formatMobileNumber = (text => {
+    var cleaned = ("" + text).replace(/\D/g, "");
+    var match = cleaned.match(/^(1|)?(\d{3})(\d{3})(\d{4})$/);
+    if (match) {
+      var intlCode = match[1] ? "+1 " : "",
+        number = [intlCode, "(", match[2], ") ", match[3], "-", match[4]].join(
+          ""
+        );
+      return number;
+    }
+    return text;
+  })
 
   getPhotoPermission = async () => {
     if (Constants.platform.ios) {
@@ -162,7 +179,10 @@ class CreateProfile extends React.Component {
           iconColor={Colors.success}
           inputPadding={16}
           inputStyle={{ padding: 5 }}
-          onChangeText={(mobile) => this.setState({ mobile })}
+          onChangeText={(mobile) => this._onChangeText(mobile)}
+          value={this.state.mobile}
+          keyboardType='phone-pad'
+          maxLength={14}
         />
 
         <Fumi
@@ -185,7 +205,6 @@ class CreateProfile extends React.Component {
           iconName={'pencil'}
           iconSize={20}
           iconWidth={40}
-          iconColor={Colors.light}
           inputPadding={16}
           inputStyle={{ padding: 5 }}
           onChangeText={(bio) => this.setState({ bio })}
