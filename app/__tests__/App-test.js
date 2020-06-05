@@ -2,7 +2,6 @@ import NavigationTestUtils from 'react-navigation/NavigationTestUtils';
 import renderer from 'react-test-renderer';
 import React from 'react';
 import App from '../App';
-<<<<<<< HEAD
 import CreatePostTab from '../screens/tabs/createPostTab';
 import SearchTab from '../screens/tabs/searchTab';
 import FeedTab from '../screens/tabs/feedTab'
@@ -26,8 +25,6 @@ describe('Array', function() {
     });
   });
 });
-=======
->>>>>>> d1fe62b0704d9ca5fa67f55f00900a4ec6ae63ef
 jest.setTimeout(150);
 
 jest.mock('expo', () => ({
@@ -42,10 +39,6 @@ describe('App', () => {
   beforeEach(() => {
     NavigationTestUtils.resetInternalState();
   });
-<<<<<<< HEAD
-=======
-
->>>>>>> d1fe62b0704d9ca5fa67f55f00900a4ec6ae63ef
   it(`renders the loading screen`, () => {
     const tree = renderer.create(<App />).toJSON();
     expect(tree).toMatchSnapshot();
@@ -55,7 +48,6 @@ describe('App', () => {
     const tree = renderer.create(<App skipLoadingScreen />).toJSON();
     expect(tree).toMatchSnapshot();
   });
-<<<<<<< HEAD
   describe('Tabs', () => {
    beforeEach(() => {
       NavigationTestUtils.resetInternalState();
@@ -174,6 +166,3 @@ describe('App', () => {
  
  });
 });
-=======
-});
->>>>>>> d1fe62b0704d9ca5fa67f55f00900a4ec6ae63ef

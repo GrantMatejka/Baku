@@ -1,1 +1,9 @@
-{}
+{
+  "devToolsPort": 19002,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 39008,
+  "expoServerNgrokUrl": "https://79-b2z.shauryamago12.app.exp.direct",
+  "packagerNgrokUrl": "https://packager.79-b2z.shauryamago12.app.exp.direct",
+  "ngrokPid": 39020
+}

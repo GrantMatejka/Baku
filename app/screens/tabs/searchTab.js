@@ -1,10 +1,6 @@
 /* eslint-disable no-invalid-this */
 import * as React from 'react';
-<<<<<<< HEAD
-import {Text, View, FlatList} from 'react-native';
-=======
 import { Text, View, FlatList } from 'react-native';
->>>>>>> d1fe62b0704d9ca5fa67f55f00900a4ec6ae63ef
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import AwesomeButton from 'react-native-really-awesome-button';
 import Styles from '../../styles/styles';
@@ -29,45 +25,16 @@ class SearchTab extends React.Component {
   }
 
   handleSelectItem(item, index) {
-<<<<<<< HEAD
-    const {onDropdownClose} = this.props;
-=======
     const { onDropdownClose } = this.props;
->>>>>>> d1fe62b0704d9ca5fa67f55f00900a4ec6ae63ef
     onDropdownClose();
   }
 
   updateState(item) {
-<<<<<<< HEAD
-    this.setState({location: item.label});
-=======
     this.setState({ location: item.label });
->>>>>>> d1fe62b0704d9ca5fa67f55f00900a4ec6ae63ef
   }
 
   handleSearchDB = async (location) => {
     this.db
-<<<<<<< HEAD
-        .where('country', '==', location)
-        .get()
-        .then((snapshot) => {
-          const list = [];
-          snapshot.docs.forEach((doc) => {
-            const {city, country} = doc.data();
-            list.push({
-              id: doc.id,
-              city,
-              country
-            });
-          });
-
-          this.setState({locList: list});
-        });
-  };
-
-  render() {
-    const {scrollToInput, onDropdownClose, onDropdownShow} = this.props;
-=======
       .where('country', '==', location)
       .get()
       .then((snapshot) => {
@@ -87,7 +54,6 @@ class SearchTab extends React.Component {
 
   render() {
     const { scrollToInput, onDropdownClose, onDropdownShow } = this.props;
->>>>>>> d1fe62b0704d9ca5fa67f55f00900a4ec6ae63ef
 
     return (
       <View style={Styles.container2}>
@@ -134,11 +100,7 @@ class SearchTab extends React.Component {
               width={200}
               height={50}
               onPress={() => {
-<<<<<<< HEAD
-                this.setState({error: ''});
-=======
                 this.setState({ error: '' });
->>>>>>> d1fe62b0704d9ca5fa67f55f00900a4ec6ae63ef
                 this.handleSearchDB(this.state.location);
               }}
             >
@@ -149,11 +111,7 @@ class SearchTab extends React.Component {
 
         <FlatList
           data={this.state.locList}
-<<<<<<< HEAD
-          renderItem={({item}) => (
-=======
           renderItem={({ item }) => (
->>>>>>> d1fe62b0704d9ca5fa67f55f00900a4ec6ae63ef
             <View style={Styles.container_content}>
               <Text>City: {item.city}</Text>
               <Text>Country: {item.country}</Text>
@@ -165,8 +123,4 @@ class SearchTab extends React.Component {
   }
 }
 export default withKeyboardAwareScrollView(SearchTab);
-<<<<<<< HEAD
 // export default SearchTab;
-=======
-// export default SearchTab;
->>>>>>> d1fe62b0704d9ca5fa67f55f00900a4ec6ae63ef

@@ -25,14 +25,14 @@ export default function ProfileTab({ navigation }) {
   const [profilePic, setProfilePic] = React.useState('');
   const [name, setName] = React.useState('');
   const [refreshing, setRefreshing] = React.useState(false);
-  // const [bio, setBio] = React.useState('');
+  const [bio, setBio] = React.useState('');
 
   React.useEffect(() => {
     db.doc(uid).get()
       .then((doc) => {
         setData(doc.data()),
           setName(data.name),
-          // setBio(doc.data().bio),
+          setBio(doc.data().bio),
           setUsername(data.username),
           setProfilePic(data.photo);
       })
@@ -93,9 +93,14 @@ export default function ProfileTab({ navigation }) {
             fontWeight: 'bold',
             color: '#FFFF'
           }}> {name} </Text>
-          {/* <Text > {bio} </Text> */}
-        </View>
-
+         </View>
+         
+         <Text style={{
+            fontSize: 12.5,
+            fontWeight: 'bold',
+            color: '#000000'
+          }}> {bio} </Text>
+        
         <View style={{ alignItems: 'center', padding: 24 }}>
           <AwesomeButton
             backgroundColor={'#ffbc26'}
