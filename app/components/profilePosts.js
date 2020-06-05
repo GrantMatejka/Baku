@@ -46,9 +46,11 @@ export default class ProfilePosts extends React.Component {
       const tempList = [];
       snapshot.docs.forEach((doc) => {
         const { caption, city, country, photos, post_time, user } = doc.data();
+        // const { postID } = doc.id
         tempList.push({
           // username: this.state.username,
           // photo: this.state.profilePic,
+          postID: postID,
           post: photos,
           caption: caption,
           city: city,
@@ -81,9 +83,13 @@ export default class ProfilePosts extends React.Component {
                 // user_avatar: item.photo,
                 image: item.post,
                 caption: item.caption,
-                location: item.city
+                location: item.city,
+                country: item.country
+
+
               }}
-              key={item.user}
+              key={item.uid}
+              navigation={this.props.navigation}
             />
           </View>
         )} />

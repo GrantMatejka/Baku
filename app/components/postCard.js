@@ -1,7 +1,7 @@
 /* eslint-disable no-invalid-this */
 // It'd be great to figure out how to enable this again^^^
-import React, {Component} from 'react';
-import {Image, Text, View, TouchableWithoutFeedback} from 'react-native';
+import React, { Component } from 'react';
+import { Image, Text, View, TouchableWithoutFeedback } from 'react-native';
 
 import AwesomeButton from 'react-native-really-awesome-button';
 import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
@@ -20,8 +20,8 @@ export default class PostCard extends Component {
 
   toggleLike = () => {
     this.state.like ?
-      this.setState({heartIcon: 'heart-o'}) :
-      this.setState({heartIcon: 'heart'});
+      this.setState({ heartIcon: 'heart-o' }) :
+      this.setState({ heartIcon: 'heart' });
 
     this.setState({
       like: !this.state.like
@@ -30,8 +30,8 @@ export default class PostCard extends Component {
 
   toggleSave = () => {
     this.state.save ?
-      this.setState({saveIcon: 'bookmark-o'}) :
-      this.setState({saveIcon: 'bookmark'});
+      this.setState({ saveIcon: 'bookmark-o' }) :
+      this.setState({ saveIcon: 'bookmark' });
 
     this.setState({
       save: !this.state.save
@@ -42,7 +42,7 @@ export default class PostCard extends Component {
     return (
       <View style={Styles.postCardContainer}>
 
-        <View style={{flexDirection: 'row', margin: 5}}>
+        <View style={{ flexDirection: 'row', margin: 5 }}>
 
           <View style={{
             flexDirection: 'column',
@@ -50,14 +50,24 @@ export default class PostCard extends Component {
             alignItems: 'center',
             flex: 0.75,
           }}>
-            <Text style={{fontSize: 15, textAlign: 'center'}}>
+            <Text style={{ fontSize: 15, textAlign: 'center' }}>
               Hello From
             </Text>
 
-            <Text adjustsFontSizeToFit numberOfLines={1}
+            <View adjustsFontSizeToFit numberOfLines={1}
               style={Styles.postCardLocationText}>
-              {this.props.detail.location}
-            </Text>
+              <Text >
+                {this.props.detail.location}
+              </Text>
+              <Text>
+                {this.props.detail.country}
+              </Text>
+            </View>
+
+            {/* <Text adjustsFontSizeToFit numberOfLines={2}
+              style={Styles.postCardLocationText}>
+              {this.props.detail.country}
+            </Text> */}
 
           </View>
 
@@ -86,7 +96,7 @@ export default class PostCard extends Component {
 
         </View>
 
-        <View style={{flexDirection: 'column'}}>
+        <View style={{ flexDirection: 'column' }}>
 
           <Image
             style={{
@@ -147,7 +157,7 @@ export default class PostCard extends Component {
               height={30}
               onPress={() => {
                 this.props.navigation.navigate('Post Detailed View',
-                    {details: this.props.detail});
+                  { details: this.props.detail });
               }}
             >
               View Itinerary
