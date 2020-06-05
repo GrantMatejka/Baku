@@ -13,7 +13,7 @@ describe('Search Location', function () {
    it("View Search", function () {
       cy.contains('Search').click();
       cy.contains('Search');
-      cy.contains('Where would you like to go?');
+      cy.contains('Thinking of Travelling?');
       cy.get('[data-testid="search-input-country"]').get('input').last().focus().type('Uni', { force: true })
       cy.contains('United States').click({ force: true })
       cy.contains('Let\'s Explore').dblclick();
