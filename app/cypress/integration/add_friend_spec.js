@@ -8,7 +8,7 @@ describe('Profile Tabs', function () {
       cy.contains('Feed');
    });
    it("Add Friend", function () {
-      cy.get('[data-testid="avatar"]').click();
+      cy.get('[data-testid="avatar"]');
    });
    it("Nav to Profile Tab", function () {
       cy.contains('Profile').click();
