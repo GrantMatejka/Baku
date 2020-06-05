@@ -23,68 +23,24 @@ export default class PostCard extends Component {
     username: this.props.detail.username
   };
 
-  // componentDidMount() {
-  //   this.dbRef.doc(this.uid).get()
-  //     .then((doc) => {
-  //       this.setState({ friends: doc.data().friends })
-  //     })
-  //     .catch((error) => {
-  //       console.log("Error getting documents: ", error);
-  //     });
-  // }
-
-  
-//   washingtonRef.update({
-//     regions: firebase.firestore.FieldValue.arrayUnion("greater_virginia")
-// });
-// var joined = this.state.myArray.concat('new value');
-// this.setState({ myArray: joined })
-
 componentDidMount() {
   this.dbRef.doc(this.uid).onSnapshot((snapshot) => {
     this.setState({ data: snapshot.data() }),
       this.setState({ friends: snapshot.data().friends })
   })
-    // .then((doc) => {
-    //   this.setState({ data: doc.data() }),
-    //     this.setState({ friends: doc.data().friends })
-    // })
-    // .catch((error) => {
-    //   console.log("Error getting documents: ", error);
-    // });
 }
 
 
   AddFollowers = async () => {
-    console.log("Friends: ", this.state.friends);    
-    // this.dbRef.doc(this.uid).get()
-    // .then((doc) => {
-    //   this.setState({ data: doc.data() }),
-    //     this.setState({ friends: doc.data().friends })
-    // })
-    // .catch((error) => {
-    //   console.log("Friends: ", error);
-    // });
-
+    //console.log("Friends: ", this.state.friends);    
     const uid = firebase.auth().currentUser.uid;
     const user = this.dbRef.doc(uid);
     const tempList = [];
     // console.log("Error getting documents: ", this.state.friends);
-    //tempList = tempList.concat(this.state.friends)
-    //const follower = this.state.friends.concat(this.state.username)
     tempList.push({username: this.state.username})
-    //tempList.concat({friends: this.state.username})
     var joined = this.state.friends.concat(tempList)
     this.setState({friends: joined})
 
-    
-
-    //this.setState({ friends: this.state.friends })
-    // this.dbRef.doc(uid).update(
-    //   {
-    //     "friends": firebase.firestore().FieldValue.arrayUnion("Abhi")
-    //   }
-    // )
   }
 
 UpdateFriends = async () => {
