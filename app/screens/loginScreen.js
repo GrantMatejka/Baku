@@ -130,7 +130,6 @@ class Login extends React.Component {
           onChangeText={(password) => this.setState({ password })
           }
         />
-
         <View style={Styles.container_content}>
           <Text style={Styles.text_error}>
             {this.state.error}

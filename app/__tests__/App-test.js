@@ -161,7 +161,5 @@ describe('App', () => {
       const tree = renderer.create(<EditProfile />).toJSON();
       expect(tree).toMatchSnapshot();
     });
-
-
   });
 });

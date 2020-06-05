@@ -258,4 +258,3 @@ const Countries = [
   { code: 'ZW', label: 'Zimbabwe', phone: '263' },
 ];
 
-export default Countries;
