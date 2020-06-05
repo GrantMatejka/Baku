@@ -1,9 +1,8 @@
 import * as React from 'react';
 import {Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
-
+import firebase from '../config/firebase';
 import Styles from '../styles/styles';
-
 export default function Favorites() {
   return (
     <View style={Styles.container}>
@@ -15,6 +14,7 @@ export default function Favorites() {
 
           <Text style={Styles.mainHeader} testID='profile-favorites'>
             Favorites!</Text>
+            
           {/* Populate this eventually with post cards */}
         </View>
       </ScrollView>

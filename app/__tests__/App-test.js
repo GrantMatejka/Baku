@@ -91,7 +91,6 @@ describe('App', () => {
                       email: 'test@test.com',
                       uid: '12345678abcdefg'
                     });
-
                     reject({ message: 'error!' });
                   });
                 }),
