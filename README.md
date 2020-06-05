@@ -2,6 +2,9 @@
 
 Team Members: Grant Matejka, Shreya Tumma, Abhishu Rawka, David Juliano, Shaurya Mago, Eric Zhou
 
+Check out our demo video!
+https://drive.google.com/file/d/1uPW27ohe0MmlReD3rNcXF36R6dvJyjFT/view?usp=sharing
+
 ![Baku Logo](https://raw.githubusercontent.com/GrantMatejka/Baku/master/app/assets/images/baku3-full-blue.png)
 
 # What is Baku?
