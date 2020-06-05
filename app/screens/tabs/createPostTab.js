@@ -49,9 +49,6 @@ export default function CreatePost({ navigation }) {
     });
   }, []);
 
-  if (loading) {
-    return <ActivityIndicator />;
-  }
 
 
   async function pick_image() {
@@ -60,7 +57,7 @@ export default function CreatePost({ navigation }) {
         mediaTypes: ImagePicker.MediaTypeOptions.All,
         allowsEditing: true,
         aspect: [4, 3],
-        quality: 1,
+        quality: 1
       });
       if (!result.cancelled) {
         setPhotos(result.uri);
@@ -70,28 +67,43 @@ export default function CreatePost({ navigation }) {
     }
   }
 
+  const wait = (timeout) => {
+    return new Promise(resolve => {
+      setTimeout(resolve, timeout);
+    });
+  }
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+
+    wait(2000).then(() => setRefreshing(false));
+  }, [refreshing]);
+
 
   return (
     <View style={Styles.container}>
       <Header headerTitle="Create Post" />
 
-      <ScrollView
-        style={Styles.container}
-      >
-        <TouchableOpacity 
+      <ScrollView refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+        style={Styles.container}>
+        <TouchableOpacity
           style={{
-            width: 200, height: 300,
+            width: 200,
+            height: 300,
             alignSelf: 'center',
             marginBottom: 10,
             marginTop: 10
           }}
           onPress={() => {
-            pick_image();
-        }}>
+            pickImage();
+          }}
+        >
           <Image
-            source={{uri: photosx}}
+            source={{ uri: photosx }}
             style={{
-              width: 200, height: 300,
+              width: 200,
+              height: 300,
               alignSelf: 'center',
               borderRadius: 2,
               borderWidth: 1,
@@ -99,6 +111,7 @@ export default function CreatePost({ navigation }) {
               marginBottom: 10,
               marginTop: 10
             }}
+            testID='create-photo'
           />
         </TouchableOpacity>
 
@@ -122,7 +135,8 @@ export default function CreatePost({ navigation }) {
             iconSize={18}
             iconWidth={40}
             inputPadding={16}
-            inputStyle={{padding: 5}}
+            inputStyle={{ padding: 5 }}
+            testID='create-caption'
           />
         </View>
 
@@ -131,7 +145,14 @@ export default function CreatePost({ navigation }) {
             backgroundColor={'#ffbc26'}
             width={340}
             height={40}
-            onPress={() => { navigation.navigate("Preview Post Screen", { captionx: captionx, photosx: photosx, cityx: cityx, countryx: countryx }) }}
+            onPress={() => {
+              navigation.navigate('Preview Post Screen', {
+                captionx: captionx,
+                photosx: photosx,
+                cityx: cityx,
+                countryx: countryx
+              });
+            }}
           >
             Preview
           </AwesomeButton>

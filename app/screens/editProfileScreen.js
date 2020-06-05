@@ -1,19 +1,18 @@
-
-import {View, Text} from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
 
 // TODO Implement Firebase into this page
 // TODO import Firebase from '../config/Firebase';
 
 
-import {ScrollView} from 'react-native-gesture-handler';
-import {Fumi} from 'react-native-textinput-effects';
+import { ScrollView } from 'react-native-gesture-handler';
+import { Fumi } from 'react-native-textinput-effects';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import AwesomeButton from 'react-native-really-awesome-button';
 
 import Styles from '../styles/styles';
 import Colors from '../styles/colors';
-
+import * as ImagePicker from 'expo-image-picker';
 import firebase from '../config/firebase';
 
 class EditProfile extends React.Component {
@@ -25,224 +24,231 @@ class EditProfile extends React.Component {
     username: '',
     mobile: '',
     birthday: '',
-    //photo: '',
+    photo: '',
     bio: '',
     places: '',
     data: ''
-    //uri: '',
-    // this.dbRef needs to be looked at as linter don't like it
-    // dbRef: this.dbRef,
-    //photo: ''
   };
 
   componentDidMount() {
-    firebase.firestore().collection("users").doc(this.uid).get()
+    this.dbRef.doc(this.uid).get()
       .then((doc) => {
         this.setState({ data: doc.data() }),
-        this.setState({ name: doc.data().name }),
-        this.setState({ username: doc.data().username }),
-        this.setState({ mobile: doc.data().mobile }),
-        this.setState({ birthday: doc.data().birthday }),
-        this.setState({ bio: doc.data().bio }),
-        this.setState({ places: doc.data().places })
+          this.setState({ name: doc.data().name }),
+          this.setState({ username: doc.data().username }),
+          this.setState({ mobile: doc.data().mobile }),
+          this.setState({ birthday: doc.data().birthday }),
+          this.setState({ bio: doc.data().bio }),
+          this.setState({ places: doc.data().places }),
+          this.setState({ photo: doc.data().photo })
       })
-      /*
-      .then(
-        this.setState({ name: this.state.data.name }),
-        console.log(this.state.name),
-        this.setState({ email: this.state.data.email }),
-        console.log(this.state.email),
-        this.setState({ mobile: this.state.data.mobile }),
-        console.log(this.state.mobile),
-        this.setState({ birthday: this.state.data.birthday }),
-        console.log(this.state.birthday),
-        this.setState({ bio: this.state.data.bio }),
-        console.log(this.state.bio),
-        this.setState({ places: this.state.data.places }),
-        console.log(this.state.places)
-      )*/
       .catch((error) => {
         console.log("Error getting documents: ", error);
       });
   }
 
-  //firename = this.state.data.name;
+  pickImage = async () => {
+    try {
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [4, 3]
+      });
+      if (!result.cancelled) {
+        this.setState({ photo: result.uri });
+      }
+    }
+    catch (err) {
+      console.log(err + ": image not found");
+    }
 
-    /*
-    state = {
-      name: '',
-      email: '',
-      password: '',
-      error: ''
-    };
-    */
+  }
 
-  handleProfile() {
-    // const {mobile, birthday, photo, bio, places} = this.state;
+  uploadPhotoAsync = async uri => {
+    const path = 'photos/' + (this.uid) + '/profile';
+    return new Promise(async (res, rej) => {
+      const response = await fetch(uri);
+      const file = await response.blob();
+      let upload = firebase.storage().ref(path).put(file);
+      console.log(path)
+      upload.on("state_changed",
+        snapshot => { },
+        err => {
+          rej(err)
+        },
+        async () => {
+          const url = await upload.snapshot.ref.getDownloadURL();
+          res(url);
+        }
+      )
+    })
+  }
+
+  handleProfile = async () => {
     const uid = firebase.auth().currentUser.uid;
     const user = this.dbRef.doc(uid);
+    const photoRef = await this.uploadPhotoAsync(this.state.photo);
     this.dbRef.doc(uid).set(
-        {
-          name: this.state.name,
-          username: this.state.username,
-          mobile: this.state.mobile,
-          birthday: this.state.birthday,
-          //photo: this.state.photo,
-          bio: this.state.bio,
-          places: this.state.places
-        },
-        {
-          merge: true
-        }
+      {
+        name: this.state.name,
+        username: this.state.username,
+        mobile: this.state.mobile,
+        birthday: this.state.birthday,
+        photo: photoRef,
+        bio: this.state.bio,
+        places: this.state.places
+      },
+      {
+        merge: true
+      }
     )
-        .then(() => {
-          this.props.navigation.navigate('Tabs', {
-            screen: 'ProfileTab'
-          }
-          );
-        });
+      .then(() => {
+        this.props.navigation.navigate('Tabs', {
+          screen: 'ProfileTab'
+        }
+        );
+      });
   }
 
 
-    
-    render() {
-      return (
-        <ScrollView style={Styles.container}>
 
-          <Text
-            style={[Styles.header, Styles.text_large]}>
+  render() {
+    return (
+      <ScrollView style={Styles.container}>
+
+        <Text
+          style={[Styles.header, Styles.text_large]}>
+        </Text>
+        <TouchableOpacity
+          style={{
+            width: 172, height: 172,
+            alignSelf: 'center',
+            marginBottom: 18,
+            borderRadius: 32,
+          }}
+          onPress={() => {
+            this.pickImage();
+          }}
+        >
+          <Image
+            source={{ uri: this.state.photo }}
+            // placeholder
+            style={{
+              width: 172, height: 172,
+              alignSelf: 'center',
+              borderRadius: 32,
+              borderWidth: 1,
+              borderColor: 'black',
+              marginBottom: 18,
+            }}
+
+          />
+        </TouchableOpacity>
+        <Fumi
+          label={'Full Name'}
+          value={this.state.name}
+          iconClass={FontAwesomeIcon}
+          iconName={'user'}
+          onChangeText={(name) => this.setState({ name })}
+          testID='edit-fullname'
+        />
+        <Fumi
+          label={'Username'}
+          value={this.state.username}
+          autoCapitalize="none"
+          iconClass={FontAwesomeIcon}
+          iconName={'envelope-square'}
+          onChangeText={(username) => this.setState({ username })}
+          testID='edit-username'
+        />
+        <Fumi
+          label={'Phone-Number'}
+          value={this.state.mobile}
+          iconClass={FontAwesomeIcon}
+          iconName={'phone'}
+          iconSize={20}
+          iconWidth={40}
+          inputPadding={16}
+          inputStyle={{ padding: 5 }}
+          onChangeText={(mobile) => this.setState({ mobile })}
+          testID='edit-number'
+        />
+
+        <Fumi
+          label={'Birthday'}
+          value={this.state.birthday}
+          iconClass={FontAwesomeIcon}
+          iconName={'birthday-cake'}
+          iconSize={20}
+          iconWidth={40}
+          inputPadding={16}
+          inputStyle={{ padding: 5 }}
+          onChangeText={(birthday) => this.setState({ birthday })}
+          testID='edit-birthday'
+        />
+
+        <Fumi
+          label={'Short BIO'}
+          value={this.state.bio}
+          iconClass={FontAwesomeIcon}
+          iconName={'pencil'}
+          iconSize={20}
+          iconWidth={40}
+          inputPadding={16}
+          inputStyle={{ padding: 5 }}
+          onChangeText={(bio) => this.setState({ bio })}
+          testID='edit-bio'
+        />
+        <Fumi
+          label={'Some Places You\'ve Been'}
+          value={this.state.places}
+          iconClass={FontAwesomeIcon}
+          iconName={'location-arrow'}
+          iconSize={20}
+          iconWidth={40}
+          inputPadding={16}
+          inputStyle={{ padding: 5 }}
+          onChangeText={(places) => this.setState({ places })}
+          testID='edit-places'
+        />
+
+        <View style={Styles.container_content}>
+          <Text style={Styles.text_error}>
+            {this.state.error}
           </Text>
+        </View>
 
-          <Fumi
-            //label={'Current Name: ' + this.state.data.name}
-            label={'Full Name'}
-            value={this.state.name}
-            iconClass={FontAwesomeIcon}
-            iconName={'user'}
-            onChangeText={(name) => this.setState({name})}
-          />
+        <View style={Styles.container_content}>
 
-          <Fumi
-            label={'Username'}
-            value={this.state.username}
-            autoCapitalize="none"
-            iconClass={FontAwesomeIcon}
-            iconName={'envelope-square'}
-            onChangeText={(username) => this.setState({username})}
-          />
-{/* 
-          <Fumi
-            label={'Password'}
-            value={this.state.password}
-            secureTextEntry={true}
-            iconClass={FontAwesomeIcon}
-            iconName={'unlock-alt'}
-            onChangeText={(password) => this.setState({password})}
-          />
-
-          <Fumi
-            label={'Confirm Password'}
-            value = {this.state.confirmPassword}
-            secureTextEntry={true}
-            iconClass={FontAwesomeIcon}
-            iconName={'lock'}
-            onChangeText={(confirmPassword) => this.setState({confirmPassword})}
-          />
- */}
-          <Fumi
-            label={'Phone-Number'}
-            value={this.state.mobile}
-            iconClass={FontAwesomeIcon}
-            iconName={'phone'}
-            iconSize={20}
-            iconWidth={40}
-            inputPadding={16}
-            inputStyle={{padding: 5}}
-          />
-
-          <Fumi
-            label={'Birthday'}
-            value={this.state.birthday}
-            iconClass={FontAwesomeIcon}
-            iconName={'birthday-cake'}
-            iconSize={20}
-            iconWidth={40}
-            inputPadding={16}
-            inputStyle={{padding: 5}}
-          />
-
-          <Fumi
-            label={'Short BIO'}
-            value={this.state.bio}
-            iconClass={FontAwesomeIcon}
-            iconName={'pencil'}
-            iconSize={20}
-            iconWidth={40}
-            inputPadding={16}
-            inputStyle={{padding: 5}}
-          />
-
-          <Fumi
-            label={'Photo of Yourself :)'}
-            iconClass={FontAwesomeIcon}
-            iconName={'camera'}
-            iconSize={20}
-            iconWidth={40}
-            inputPadding={16}
-            inputStyle={{padding: 5}}
-          />
-
-          <Fumi
-            label={'Some Places You\'ve Been'}
-            value={this.state.places}
-            iconClass={FontAwesomeIcon}
-            iconName={'location-arrow'}
-            iconSize={20}
-            iconWidth={40}
-            inputPadding={16}
-            inputStyle={{padding: 5}}
-          />
-
-          <View style={Styles.container_content}>
-            <Text style={Styles.text_error}>
-              {this.state.error}
-            </Text>
-          </View>
-
-          <View style={Styles.container_content}>
-            
-            <AwesomeButton
-              backgroundColor={Colors.warning}
-              width={200}
-              height={50}
-              onPress={() => {
-                this.handleProfile();
-              }}
-            >
-              Submit
+          <AwesomeButton
+            backgroundColor={Colors.warning}
+            width={200}
+            height={50}
+            onPress={() => {
+              this.handleProfile();
+            }}
+          >
+            Submit
             </AwesomeButton>
 
-            {<View style={Styles.p_3}>
+          {<View style={Styles.p_3}>
             <AwesomeButton
               backgroundColor={Colors.success}
               width={200}
               height={50}
               onPress={() => {
-                // this.setState({error: ''});
-                //this.loginWithFacebook();
-                //this.changePassword();
                 this.props.navigation.navigate('ChangePassword');
               }}
             >
-                  Change Password
+              Change Password
             </AwesomeButton>
-          </View> }
-            
-          </View>
+          </View>}
 
-        </ScrollView>
-      );
-    }
+        </View>
+
+      </ScrollView>
+    );
+  }
 }
 
 export default EditProfile;

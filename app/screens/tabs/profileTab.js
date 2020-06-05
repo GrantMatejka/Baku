@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View, RefreshControl } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { DrawerActions } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -18,27 +18,46 @@ import firebase from '../../config/firebase';
 const TopTab = createMaterialTopTabNavigator();
 
 export default function ProfileTab({ navigation }) {
-  const db = firebase.firestore();
+  const db = firebase.firestore().collection('users');
+
   const uid = firebase.auth().currentUser.uid;
-  // let path = 'photos/' + (uid) + '/profile';
-  // let store = firebase.storage().ref(path);
   const [data, setData] = React.useState('');
   const [username, setUsername] = React.useState('');
   const [profilePic, setProfilePic] = React.useState('');
+  const [name, setName] = React.useState('');
+  const [refreshing, setRefreshing] = React.useState(false);
+  // const [bio, setBio] = React.useState('');
 
   React.useEffect(() => {
-    db.collection("users").doc(uid).get()
+    db.doc(uid).get()
       .then((doc) => {
-        setData(doc.data()), setUsername(doc.data().username), setProfilePic(doc.data().photo)
+        setData(doc.data()),
+          setName(data.name),
+          // setBio(doc.data().bio),
+          setUsername(data.username),
+          setProfilePic(data.photo);
       })
-      .catch((error) => {
-        console.log("Error getting documents: ", error);
-      });
-  })
+
+  });
+  const wait = (timeout) => {
+    return new Promise(resolve => {
+      setTimeout(resolve, timeout);
+    });
+  }
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+
+    wait(2000).then(() => setRefreshing(false));
+  }, [refreshing]);
+
+
   return (
     <View style={Styles.container}>
       <Header headerTitle={username} />
-      <ScrollView>
+      <ScrollView refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }>
         <View style={styles2.thumbnailSection}>
           <View>
             <Image
@@ -49,7 +68,7 @@ export default function ProfileTab({ navigation }) {
               style={styles2.thumbnail}
             />
             {/* Displays Name as well as Username in feed */}
-            <Text style={styles2.username}>  {data.name} </Text>
+            {/* <Text style={styles2.username}>  {data.name} </Text> */}
           </View>
           <View style={styles2.postCardCont}>
             <Text style={styles2.postCount}> 100 </Text>
@@ -63,10 +82,19 @@ export default function ProfileTab({ navigation }) {
             style={styles2.hambuger}
             name="bars"
             size={25}
+            testID='profile-hamburger'
             onPress={() =>
               navigation.dispatch(DrawerActions.openDrawer(Drawer))
             }
           />
+        </View>
+        <View style={styles2.thumbnailName}>
+          <Text style={{
+            fontSize: 12.5,
+            fontWeight: 'bold',
+            color: '#FFFF'
+          }}> {name} </Text>
+          {/* <Text > {bio} </Text> */}
         </View>
 
         <View style={{ alignItems: 'center', padding: 24 }}>
@@ -110,12 +138,20 @@ const styles2 = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#A0C9CF',
-    height: 114
+    height: 94
+  },
+  thumbnailName: {
+    flexDirection: 'column',
+    // alignItems: 'center',
+    backgroundColor: '#A0C9CF',
+    paddingTop: 4,
+    paddingLeft: 5,
+    height: 30
   },
   thumbnail: {
     width: 70,
     height: 70,
-    borderRadius: 40,
+    borderRadius: 18,
     marginVertical: 6,
     marginLeft: 16
   },
@@ -161,7 +197,9 @@ const styles2 = StyleSheet.create({
     color: 'white'
   },
   hambuger: {
+    marginTop: 10,
     marginLeft: 80,
     paddingBottom: 70
+    // position:'absolute'
   }
 });

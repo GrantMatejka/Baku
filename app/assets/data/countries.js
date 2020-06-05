@@ -1,4 +1,3 @@
-let Countries;
 // From https://bitbucket.org/atlassian/atlaskit-mk-2/raw/4ad0e56649c3e6c973e226b7efaeb28cb240ccb0/packages/core/select/src/data/countries.js
 export default Countries = [
   {id: 'AD', name: 'Andorra', phone: '376'},
@@ -250,3 +249,5 @@ export default Countries = [
   {id: 'ZM', name: 'Zambia', phone: '260'},
   {id: 'ZW', name: 'Zimbabwe', phone: '263'},
 ];
+
+export default Countries;

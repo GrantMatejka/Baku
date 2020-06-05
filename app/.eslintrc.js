@@ -1,9 +1,10 @@
 module.exports = {
    "plugins": [
       "react",
-      "react-native"
+      "react-native",
+      "sonarjs"
    ],
-   'extends': ["eslint:recommended", "plugin:react/recommended", "google"],
+   'extends': ["plugin:sonarjs/recommended", "eslint:recommended", "plugin:react/recommended", "google"],
    'parser': 'babel-eslint',
    'env': {
       'jest': true,

@@ -8,10 +8,12 @@ import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
 import Styles from '../styles/styles';
 import Colors from '../styles/colors';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-export default class FeedCard extends Component {
+export default class PostCard extends Component {
   state = {
     heartIcon: 'heart-o',
+    // eslint-disable-next-line sonarjs/no-duplicate-string
     saveIcon: 'bookmark-o',
     like: false,
     save: false
@@ -53,11 +55,21 @@ export default class FeedCard extends Component {
               Hello From
             </Text>
 
-            <Text style={Styles.postCardLocationText}>
-              {this.props.detail.location}
+            <Text adjustsFontSizeToFit numberOfLines={1}
+              style={Styles.postCardLocationText}>
+              {this.props.detail.city}
             </Text>
 
+          
+          <Text adjustsFontSizeToFit numberOfLines={1}
+            style={Styles.postCardCityText}>
+            {this.props.detail.location}
+          </Text>
+
+          
+
           </View>
+          
 
           <View style={{
             flexDirection: 'column',
@@ -72,9 +84,9 @@ export default class FeedCard extends Component {
               }}
             />
 
-            <Text style={{
+            <Text adjustsFontSizeToFit numberOfLines={1} style={{
               fontWeight: 'bold',
-              fontSize: 12,
+              textAlignVertical: 'center',
               textAlign: 'center'
             }}
             >
@@ -97,6 +109,13 @@ export default class FeedCard extends Component {
               uri: this.props.detail.image
             }}
           />
+          <View style={{paddingLeft: 25, paddingTop: 5}}>
+          <Text adjustsFontSizeToFit numberOfLines={1}
+              style={Styles.text_xsmall}>
+              {this.props.detail.caption}
+          </Text>
+          </View>
+
 
           <View style={{
             flexDirection: 'row',
@@ -144,7 +163,8 @@ export default class FeedCard extends Component {
               width={120}
               height={30}
               onPress={() => {
-                // TODO itinerary would open now
+                this.props.navigation.navigate('Post Detailed View',
+                    {details: this.props.detail});
               }}
             >
               View Itinerary
