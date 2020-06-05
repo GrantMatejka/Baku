@@ -118,19 +118,18 @@ class Login extends React.Component {
           secureTextEntry={true}
           testID='login-input-password'
         /> */}
-         <HideShowPass
-                   label={'Password'}
-                    value={this.state.password}
-                    borderColor={Colors.warning}
-                    borderHeight={5}
-                    inputPadding={16}
-                    autoCapitalize="none"
-                    secureTextEntry={true}
-                    testID='login-input-password'
-                    onChangeText={ (password) => this.setState({ password })
-                   }
-                />
-
+        <HideShowPass
+          label={'Password'}
+          value={this.state.password}
+          borderColor={Colors.warning}
+          borderHeight={5}
+          inputPadding={16}
+          autoCapitalize="none"
+          secureTextEntry={true}
+          testID='login-input-password'
+          onChangeText={(password) => this.setState({ password })
+          }
+        />
         <View style={Styles.container_content}>
           <Text style={Styles.text_error}>
             {this.state.error}

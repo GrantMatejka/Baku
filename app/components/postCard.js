@@ -112,11 +112,13 @@ export default class PostCard extends Component {
             alignItems: 'center',
             flex: 0.25
           }}>
-            <TouchableOpacity onPress={() => {
-              //console.log("Error getting documents: ", this.state.friends);
-              //this.AddFollowers();
-              this.UpdateFriends();
-            }}>
+            <TouchableOpacity
+              testID="avatar"
+              onPress={() => {
+                //console.log("Error getting documents: ", this.state.friends);
+                //this.AddFollowers();
+                this.UpdateFriends();
+              }}>
               <Image
                 style={Styles.image_icon}
                 source={{
@@ -172,6 +174,7 @@ export default class PostCard extends Component {
                 <AwesomeIcon
                   name={this.state.heartIcon}
                   onPress={this.toggleLike}
+                  testID="heart-icon"
                   style={{
                     marginLeft: 10,
                     marginRight: 5,
@@ -187,6 +190,7 @@ export default class PostCard extends Component {
                 <AwesomeIcon
                   name={this.state.saveIcon}
                   onPress={this.toggleSave}
+                  testID="fav-icon"
                   style={{
                     marginHorizontal: 10,
                     color:

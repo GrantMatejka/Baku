@@ -77,6 +77,7 @@ class SearchTab extends React.Component {
         const { username, photo } = doc.data();
 
         uList.push({
+          pid: item.id,
           username,
           photo,
           post: item.photos,
@@ -84,9 +85,7 @@ class SearchTab extends React.Component {
           city: item.city,
           country: item.country,
           post_time: item.post_time,
-          postID: item.id,
-          // itinerary: item.itinerary
-
+          user: uid,
         });
 
         var joined = this.state.userList.concat(uList);
@@ -161,7 +160,7 @@ class SearchTab extends React.Component {
 
               <PostCard
                 detail={{
-                  uid: item.postID,
+                  uid: item.pid,
                   username: item.username,
                   user_avatar: item.photo,
                   image: item.post,
@@ -169,7 +168,7 @@ class SearchTab extends React.Component {
                   location: item.country,
                   city: item.city
                 }}
-                key={item.user}
+                key={item.pid}
                 navigation={this.props.navigation}
               />
             </View>
