@@ -250,4 +250,3 @@ export default Countries = [
   {id: 'ZW', name: 'Zimbabwe', phone: '263'},
 ];
 
-export default Countries;

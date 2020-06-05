@@ -63,6 +63,7 @@ export default class CountryPicker extends Component {
   }
   _selectedValue(index, item) {
     this.setState({ selectedText: item.name });
+    console.log(item.name);
   }
 
   render() {

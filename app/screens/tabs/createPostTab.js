@@ -29,6 +29,8 @@ export default function CreatePost({ navigation }) {
 
 
 
+
+
   // adds docs from db to locations list
   React.useEffect(() => {
     return db.orderBy('city', 'asc').onSnapshot((querySnapshot) => {
@@ -51,7 +53,7 @@ export default function CreatePost({ navigation }) {
 
 
 
-  async function pick_image() {
+  async function pickImage() {
     try {
       const result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -67,25 +69,12 @@ export default function CreatePost({ navigation }) {
     }
   }
 
-  const wait = (timeout) => {
-    return new Promise(resolve => {
-      setTimeout(resolve, timeout);
-    });
-  }
-
-  const onRefresh = React.useCallback(() => {
-    setRefreshing(true);
-
-    wait(2000).then(() => setRefreshing(false));
-  }, [refreshing]);
-
 
   return (
     <View style={Styles.container}>
       <Header headerTitle="Create Post" />
 
-      <ScrollView refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+      <ScrollView 
         style={Styles.container}>
         <TouchableOpacity
           style={{
@@ -116,12 +105,8 @@ export default function CreatePost({ navigation }) {
         </TouchableOpacity>
 
         <View>
-          <CountryPicker
-          //selectedLabel={setCountry}
-          />
-          <CityPicker
-          //selectedLabel = {setCity}
-          />
+          <CountryPicker/>
+          <CityPicker/>
         </View>
 
 
@@ -149,8 +134,8 @@ export default function CreatePost({ navigation }) {
               navigation.navigate('Preview Post Screen', {
                 captionx: captionx,
                 photosx: photosx,
-                cityx: cityx,
-                countryx: countryx
+                cityx: 'San Francisco',
+                countryx: 'United States'     //this is hard coded for demo, need to find a way to pass value from picker to this create post func
               });
             }}
           >
