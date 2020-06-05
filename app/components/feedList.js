@@ -44,7 +44,7 @@ export default class PhotoList extends React.Component {
         uList.push({
           username,
           photo,
-          post: item.photos,
+          post: item.post,
           caption: item.caption,
           city: item.city,
           country: item.country,
@@ -73,9 +73,9 @@ export default class PhotoList extends React.Component {
         });
       });
       this.setState({ posts: tempList })
-      // this.state.posts.map((item) => {
-      //   this.handleUser(item.user, item);
-      // });
+      this.state.posts.map((item) => {
+        this.handleUser(item.user, item);
+      });
       return (tempList);
     })
     return (this.state.posts);
@@ -85,7 +85,7 @@ export default class PhotoList extends React.Component {
     return (
       <FlatList
         // data={datas}
-        data={this.state.posts}
+        data={this.state.feedList}
         renderItem={({ item }) => (
           <View style={Styles.container_content}>
             <PostCard
