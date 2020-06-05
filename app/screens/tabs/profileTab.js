@@ -25,6 +25,7 @@ export default function ProfileTab({ navigation }) {
   const [username, setUsername] = React.useState('');
   const [profilePic, setProfilePic] = React.useState('');
   const [name, setName] = React.useState('');
+  const [friends, setFriends] = React.useState('');
   const posts = firebase.firestore().collection('posts').where("uid", "==", uid);
   const [postList, setList] = React.useState([]);
   // const [bio, setBio] = React.useState('');
@@ -36,6 +37,7 @@ export default function ProfileTab({ navigation }) {
           setName(data.name),
           // setBio(doc.data().bio),
           setUsername(data.username),
+          setFriends(data.friends),
           setProfilePic(data.photo);
       })
 
