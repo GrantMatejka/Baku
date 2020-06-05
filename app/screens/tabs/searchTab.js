@@ -84,8 +84,8 @@ class SearchTab extends React.Component {
           city: item.city,
           country: item.country,
           post_time: item.post_time,
-          user: uid,
-          itinerary: item.itinerary
+          postID: item.id,
+          // itinerary: item.itinerary
 
         });
 
@@ -161,7 +161,7 @@ class SearchTab extends React.Component {
 
               <PostCard
                 detail={{
-                  id: item.user,
+                  uid: item.postID,
                   username: item.username,
                   user_avatar: item.photo,
                   image: item.post,
@@ -170,6 +170,7 @@ class SearchTab extends React.Component {
                   city: item.city
                 }}
                 key={item.user}
+                navigation={this.props.navigation}
               />
             </View>
 
