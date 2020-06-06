@@ -89,7 +89,7 @@ const Styles = StyleSheet.create({
   },
   text_title: {
     textAlign: 'center',
-    fontWeight: "bold",
+    fontWeight: 'bold',
     color: Colors.primary,
     fontSize: 35,
     fontStyle: 'normal',

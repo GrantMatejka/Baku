@@ -1,7 +1,7 @@
 /* eslint-disable no-invalid-this */
 // It'd be great to figure out how to enable this again^^^
-import React, { Component } from 'react';
-import { Image, Text, View, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import React, {Component} from 'react';
+import {Image, Text, View, TouchableWithoutFeedback, TouchableOpacity} from 'react-native';
 
 import AwesomeButton from 'react-native-really-awesome-button';
 import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
@@ -25,42 +25,41 @@ export default class PostCard extends Component {
 
   componentDidMount() {
     this.dbRef.doc(this.uid).onSnapshot((snapshot) => {
-      this.setState({ data: snapshot.data() }),
-        this.setState({ friends: snapshot.data().friends })
-    })
+      this.setState({data: snapshot.data()}),
+      this.setState({friends: snapshot.data().friends});
+    });
   }
 
 
   AddFollowers = async () => {
-    //console.log("Friends: ", this.state.friends);    
+    // console.log("Friends: ", this.state.friends);
     const uid = firebase.auth().currentUser.uid;
     const user = this.dbRef.doc(uid);
     const tempList = [];
     // console.log("Error getting documents: ", this.state.friends);
-    tempList.push({ username: this.state.username })
-    var joined = this.state.friends.concat(tempList)
-    this.setState({ friends: joined })
-
+    tempList.push({username: this.state.username});
+    const joined = this.state.friends.concat(tempList);
+    this.setState({friends: joined});
   }
 
   UpdateFriends = async () => {
-    await this.AddFollowers()
+    await this.AddFollowers();
     this.dbRef.doc(this.uid).set(
-      {
-        //friends: []
-        friends: this.state.friends
-        //.push({friends: this.state.username})
-      },
-      {
-        merge: true
-      }
-    )
+        {
+        // friends: []
+          friends: this.state.friends
+        // .push({friends: this.state.username})
+        },
+        {
+          merge: true
+        }
+    );
   }
 
   toggleLike = () => {
     this.state.like ?
-      this.setState({ heartIcon: 'heart-o' }) :
-      this.setState({ heartIcon: 'heart' });
+      this.setState({heartIcon: 'heart-o'}) :
+      this.setState({heartIcon: 'heart'});
 
     this.setState({
       like: !this.state.like
@@ -69,8 +68,8 @@ export default class PostCard extends Component {
 
   toggleSave = () => {
     this.state.save ?
-      this.setState({ saveIcon: 'bookmark-o' }) :
-      this.setState({ saveIcon: 'bookmark' });
+      this.setState({saveIcon: 'bookmark-o'}) :
+      this.setState({saveIcon: 'bookmark'});
 
     this.setState({
       save: !this.state.save
@@ -81,7 +80,7 @@ export default class PostCard extends Component {
     return (
       <View style={Styles.postCardContainer}>
 
-        <View style={{ flexDirection: 'row', margin: 5 }}>
+        <View style={{flexDirection: 'row', margin: 5}}>
 
           <View style={{
             flexDirection: 'column',
@@ -89,7 +88,7 @@ export default class PostCard extends Component {
             alignItems: 'center',
             flex: 0.75,
           }}>
-            <Text style={{ fontSize: 15, textAlign: 'center' }}>
+            <Text style={{fontSize: 15, textAlign: 'center'}}>
               Hello From
             </Text>
 
@@ -115,8 +114,8 @@ export default class PostCard extends Component {
             <TouchableOpacity
               testID="avatar"
               onPress={() => {
-                //console.log("Error getting documents: ", this.state.friends);
-                //this.AddFollowers();
+                // console.log("Error getting documents: ", this.state.friends);
+                // this.AddFollowers();
                 this.UpdateFriends();
               }}>
               <Image
@@ -139,7 +138,7 @@ export default class PostCard extends Component {
 
         </View>
 
-        <View style={{ flexDirection: 'column' }}>
+        <View style={{flexDirection: 'column'}}>
 
           <Image
             style={{
@@ -152,7 +151,7 @@ export default class PostCard extends Component {
               uri: this.props.detail.image
             }}
           />
-          <View style={{ paddingLeft: 25, paddingTop: 5 }}>
+          <View style={{paddingLeft: 25, paddingTop: 5}}>
             <Text adjustsFontSizeToFit numberOfLines={1}
               style={Styles.text_xsmall}>
               {this.props.detail.caption}
@@ -208,7 +207,7 @@ export default class PostCard extends Component {
               height={30}
               onPress={() => {
                 this.props.navigation.navigate('Post Detailed View',
-                  { details: this.props.detail });
+                    {details: this.props.detail});
               }}
             >
               View Itinerary

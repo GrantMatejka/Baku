@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import React, {Component} from 'react';
+import {Text, View} from 'react-native';
 
 import Colors from '../styles/colors';
 
 export default class ItineraryActivity extends Component {
   render() {
     return (
-      <View style={{ alignSelf: 'flex-start' }}>
+      <View style={{alignSelf: 'flex-start'}}>
 
         <Text style={{
           color: Colors.primary,

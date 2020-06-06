@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { ScrollView, RefreshControl } from 'react-native';
+import React, {Component} from 'react';
+import {ScrollView, RefreshControl} from 'react-native';
 
 import NotificationCard from './notificationCard';
 import datas from '../assets/data/data';
@@ -11,20 +11,19 @@ export default class NotificationList extends Component {
   };
 
   wait = (timeout) => {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       setTimeout(resolve, timeout);
     });
   }
 
   getData = () => {
-    console.log('refresh')
-    this.wait(40000)
-    this.setState({ refreshing: false });
-
+    console.log('refresh');
+    this.wait(40000);
+    this.setState({refreshing: false});
   }
 
   _onRefresh = () => {
-    this.setState({ refreshing: true });
+    this.setState({refreshing: true});
     this.getData();
   }
 
@@ -37,10 +36,10 @@ export default class NotificationList extends Component {
   render() {
     return <ScrollView refreshControl={
       <RefreshControl refreshing={this.state.refreshing} onRefresh={this._onRefresh} />} contentContainerStyle={{
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        flexWrap: 'wrap'
-      }}>
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      flexWrap: 'wrap'
+    }}>
       {this.listNotifs()}
     </ScrollView>;
   }
