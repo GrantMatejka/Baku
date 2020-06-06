@@ -46,10 +46,10 @@ export default function CreatePost({ navigation }) {
   }
 
   const wait = (timeout) => {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       setTimeout(resolve, timeout);
     });
-  };
+  }
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
@@ -122,7 +122,6 @@ export default function CreatePost({ navigation }) {
           />
         </View>
 
-
         <View style={Styles.p_3}>
           <Fumi
             label={'Caption'}
@@ -147,8 +146,8 @@ export default function CreatePost({ navigation }) {
               navigation.navigate('Preview Post Screen', {
                 captionx: captionx,
                 photosx: photosx,
-                cityx: 'San Francisco',
-                countryx: 'United States'     //this is hard coded for demo, need to find a way to pass value from picker to this create post func
+                cityx: cityx,
+                countryx: countryx
               });
             }}
           >
@@ -160,3 +159,20 @@ export default function CreatePost({ navigation }) {
   );
 }
 
+/*
+<FlatList
+          //lists DB to screen in alphabetical order by city
+          data={locations}
+          renderItem={({ item }) => (
+            <View style={Styles.container_content}>
+              <Text>City: {item.city}</Text>
+              <Text>Country: {item.country}</Text>
+            </View>
+          )}
+        />
+
+      </ScrollView>
+    </View>
+  );
+}
+*/
