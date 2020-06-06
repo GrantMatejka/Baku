@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { View, FlatList } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import {View, FlatList} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
 import AwesomeButton from 'react-native-really-awesome-button';
 import datas from '../assets/data/data';
 
@@ -10,14 +10,13 @@ import ProfilePostCard from './profilePostCard';
 import firebase from '../config/firebase';
 
 export default class ProfilePosts extends React.Component {
-
   constructor() {
     super();
     this.state = {
       posts: [],
       loading: true,
-      username: "",
-      profilePic: "",
+      username: '',
+      profilePic: '',
     };
   }
 
@@ -25,20 +24,20 @@ export default class ProfilePosts extends React.Component {
   posts = firebase.firestore().collection('posts');
 
   componentWillMount() {
-    this.setState({ post: this.getPosts() })
+    this.setState({post: this.getPosts()});
     firebase.firestore().collection('users').doc(this.uid).get()
-      .then((doc) => {
-        this.setState({ username: doc.data().username });
-        this.setState({ profilePic: doc.data().photo });
-      })
+        .then((doc) => {
+          this.setState({username: doc.data().username});
+          this.setState({profilePic: doc.data().photo});
+        });
   }
 
 
   getPosts = async () => {
-    await this.posts.where("user", "==", this.uid).onSnapshot((snapshot) => {
+    await this.posts.where('user', '==', this.uid).onSnapshot((snapshot) => {
       const tempList = [];
       snapshot.docs.forEach((doc) => {
-        const { caption, city, country, photos, post_time, user } = doc.data();
+        const {caption, city, country, photos, post_time, user} = doc.data();
         tempList.push({
           // username: this.state.username,
           // photo: this.state.profilePic,
@@ -51,12 +50,11 @@ export default class ProfilePosts extends React.Component {
           user: user,
         });
       });
-      this.setState({ posts: tempList });
+      this.setState({posts: tempList});
       // console.log("Post 1");
       // console.log(this.state.posts);
       return (tempList);
-
-    })
+    });
     // console.log("Post 2");
     // console.log(this.state.posts);
     return (this.state.posts);
@@ -66,7 +64,7 @@ export default class ProfilePosts extends React.Component {
     return (
       <FlatList
         data={this.state.posts}
-        renderItem={({ item }) => (
+        renderItem={({item}) => (
           <View style={Styles.container_content}>
             <ProfilePostCard
               detail={{
@@ -83,6 +81,6 @@ export default class ProfilePosts extends React.Component {
             />
           </View>
         )} />
-    )
+    );
   }
 }
