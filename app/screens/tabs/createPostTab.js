@@ -10,7 +10,7 @@ import {
 import * as ImagePicker from 'expo-image-picker';
 
 import AwesomeButton from 'react-native-really-awesome-button';
-import {Fumi} from '../../node_modules/react-native-textinput-effects/lib';
+import { Fumi } from '../../node_modules/react-native-textinput-effects/lib';
 import FontAwesomeIcon from
   '../../node_modules/react-native-vector-icons/FontAwesome';
 
@@ -19,13 +19,13 @@ import Header from '../../components/header';
 import Styles from '../../styles/styles';
 import Colors from '../../styles/colors';
 
-export default function CreatePost({navigation}) {
+export default function CreatePost({ navigation }) {
   const [refreshing, setRefreshing] = React.useState(false);
   const [cityx, setCity] = React.useState('');
   const [countryx, setCountry] = React.useState('');
   const [captionx, setCaption] = React.useState('');
   const [photosx, setPhotos] = React.useState(
-      'https://drive.google.com/uc?id=1IlnqOsoEVi9ASVb0WihFRxtMu2z2BLT5'
+    'https://drive.google.com/uc?id=1IlnqOsoEVi9ASVb0WihFRxtMu2z2BLT5'
   );
 
 
@@ -64,7 +64,7 @@ export default function CreatePost({navigation}) {
 
       <ScrollView refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-      style={Styles.container}>
+        style={Styles.container}>
         <TouchableOpacity
           style={{
             width: 200,
@@ -78,7 +78,7 @@ export default function CreatePost({navigation}) {
           }}
         >
           <Image
-            source={{uri: photosx}}
+            source={{ uri: photosx }}
             style={{
               width: 200,
               height: 300,
@@ -102,7 +102,7 @@ export default function CreatePost({navigation}) {
             iconSize={18}
             iconWidth={40}
             inputPadding={16}
-            inputStyle={{padding: 5}}
+            inputStyle={{ padding: 5 }}
             testID='create-city'
           />
         </View>
@@ -117,10 +117,11 @@ export default function CreatePost({navigation}) {
             iconSize={18}
             iconWidth={40}
             inputPadding={16}
-            inputStyle={{padding: 5}}
+            inputStyle={{ padding: 5 }}
             testID='create-country'
           />
         </View>
+
 
         <View style={Styles.p_3}>
           <Fumi
@@ -132,7 +133,7 @@ export default function CreatePost({navigation}) {
             iconSize={18}
             iconWidth={40}
             inputPadding={16}
-            inputStyle={{padding: 5}}
+            inputStyle={{ padding: 5 }}
             testID='create-caption'
           />
         </View>
@@ -146,8 +147,8 @@ export default function CreatePost({navigation}) {
               navigation.navigate('Preview Post Screen', {
                 captionx: captionx,
                 photosx: photosx,
-                cityx: cityx,
-                countryx: countryx
+                cityx: 'San Francisco',
+                countryx: 'United States'     //this is hard coded for demo, need to find a way to pass value from picker to this create post func
               });
             }}
           >
@@ -159,20 +160,3 @@ export default function CreatePost({navigation}) {
   );
 }
 
-/*
-<FlatList
-          //lists DB to screen in alphabetical order by city
-          data={locations}
-          renderItem={({ item }) => (
-            <View style={Styles.container_content}>
-              <Text>City: {item.city}</Text>
-              <Text>Country: {item.country}</Text>
-            </View>
-          )}
-        />
-
-      </ScrollView>
-    </View>
-  );
-}
-*/
