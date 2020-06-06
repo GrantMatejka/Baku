@@ -57,6 +57,7 @@ class CreateProfile extends React.Component {
     return text;
   })
 
+
   getPhotoPermission = async () => {
     if (Constants.platform.ios) {
       const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);

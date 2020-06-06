@@ -91,7 +91,6 @@ describe('App', () => {
                       email: 'test@test.com',
                       uid: '12345678abcdefg'
                     });
-
                     reject({ message: 'error!' });
                   });
                 }),
@@ -162,7 +161,5 @@ describe('App', () => {
       const tree = renderer.create(<EditProfile />).toJSON();
       expect(tree).toMatchSnapshot();
     });
-
-
   });
 });

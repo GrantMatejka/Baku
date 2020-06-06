@@ -89,34 +89,3 @@ export default class ProfilePosts extends React.Component {
     )
   }
 }
-
-/* <ScrollView
-  contentContainerStyle={
-    {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      flexWrap: 'wrap'
-    }
-  } testID='profile-posts'>
-  {this.getPhotos()}
-</ScrollView> */
-
-/* <ScrollView
-        contentContainerStyle={
-          {
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            flexWrap: 'wrap'
-          }
-        } testID='profile-posts'>
-        <Text>Hi</Text>
-        <AwesomeButton
-          backgroundColor={'#ffbc26'}
-          width={340}
-          height={40}
-          onPress={() => { this.getPhotos() }}
-        > Add
-        </AwesomeButton>
-
-
-      </ScrollView> */
