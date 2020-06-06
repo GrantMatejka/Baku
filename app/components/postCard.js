@@ -106,20 +106,12 @@ await this.AddFollowers()
             alignItems: 'center',
             flex: 0.25
           }}>
-            <TouchableOpacity
-              testID="avatar"
-              onPress={() => {
-                //console.log("Error getting documents: ", this.state.friends);
-                //this.AddFollowers();
-                this.UpdateFriends();
-              }}>
-              <Image
-                style={Styles.image_icon}
-                source={{
-                  uri: this.props.detail.user_avatar
-                }}
-              />
-            </TouchableOpacity>
+            <Image
+              style={Styles.image_icon}
+              source={{
+                uri: this.props.detail.user_avatar
+              }}
+            />
 
             <Text adjustsFontSizeToFit numberOfLines={1} style={{
               fontWeight: 'bold',
@@ -162,7 +154,6 @@ await this.AddFollowers()
                 <AwesomeIcon
                   name={this.state.heartIcon}
                   onPress={this.toggleLike}
-                  testID="heart-icon"
                   style={{
                     marginLeft: 10,
                     marginRight: 5,
@@ -178,7 +169,6 @@ await this.AddFollowers()
                 <AwesomeIcon
                   name={this.state.saveIcon}
                   onPress={this.toggleSave}
-                  testID="fav-icon"
                   style={{
                     marginHorizontal: 10,
                     color:

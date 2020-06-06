@@ -3,7 +3,7 @@ import { View, Text, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { ScrollView } from 'react-native-gesture-handler';
-import HideShowPass from '../components/hideShowPass';
+// import AButton from '../components/AwesomeButton';
 
 import AwesomeButton from 'react-native-really-awesome-button';
 import { Hoshi } from 'react-native-textinput-effects';
@@ -11,6 +11,7 @@ import { Hoshi } from 'react-native-textinput-effects';
 import Firebase from '../config/firebase';
 import Styles from '../styles/styles';
 import Colors from '../styles/colors';
+
 import * as Google from 'expo-google-app-auth';
 import * as Expo from 'expo';
 import * as Facebook from 'expo-facebook';
@@ -107,29 +108,17 @@ class Login extends React.Component {
           testID='login-input-email'
         />
 
-        {/* <Hoshi
+        <Hoshi
           label={'Password'}
           value={this.state.password}
           onChangeText={(password) => this.setState({ password })}
           borderColor={Colors.warning}
           borderHeight={5}
           inputPadding={16}
-          autoCapitalize="none"
           secureTextEntry={true}
           testID='login-input-password'
-        /> */}
-        <HideShowPass
-          label={'Password'}
-          value={this.state.password}
-          borderColor={Colors.warning}
-          borderHeight={5}
-          inputPadding={16}
-          autoCapitalize="none"
-          secureTextEntry={true}
-          testID='login-input-password'
-          onChangeText={(password) => this.setState({ password })
-          }
         />
+
         <View style={Styles.container_content}>
           <Text style={Styles.text_error}>
             {this.state.error}

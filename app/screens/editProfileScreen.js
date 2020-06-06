@@ -16,6 +16,7 @@ import * as ImagePicker from 'expo-image-picker';
 import firebase from '../config/firebase';
 
 class EditProfile extends React.Component {
+
   uid = firebase.auth().currentUser.uid;
   dbRef = firebase.firestore().collection('users');
   state = {
@@ -28,23 +29,7 @@ class EditProfile extends React.Component {
     places: '',
     data: ''
   };
-  _onChangeText = (text) => {
-    let formattedmobile = this.formatMobileNumber(text);
-    this.setState({ mobile: formattedmobile });
-  };
 
-  formatMobileNumber = (text => {
-    var cleaned = ("" + text).replace(/\D/g, "");
-    var match = cleaned.match(/^(1|)?(\d{3})(\d{3})(\d{4})$/);
-    if (match) {
-      var intlCode = match[1] ? "+1 " : "",
-        number = [intlCode, "(", match[2], ") ", match[3], "-", match[4]].join(
-          ""
-        );
-      return number;
-    }
-    return text;
-  })
   componentDidMount() {
     this.dbRef.doc(this.uid).get()
       .then((doc) => {
@@ -188,10 +173,9 @@ class EditProfile extends React.Component {
           iconWidth={40}
           inputPadding={16}
           inputStyle={{ padding: 5 }}
-          onChangeText={(mobile) => this._onChangeText(mobile)}
-          value={this.state.mobile}
-          keyboardType='phone-pad'
-          maxLength={14}
+          testID = 'number'
+          onChangeText={(mobile) => this.setState({ mobile })}
+          testID='edit-number'
         />
 
         <Fumi

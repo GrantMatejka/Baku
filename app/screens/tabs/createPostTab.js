@@ -1,57 +1,62 @@
-import * as React from "../../node_modules/react";
-import { Text, View, FlatList, ScrollView, ActivityIndicator, Button, Image, TouchableOpacity } from "react-native";
-import * as ImagePicker from "expo-image-picker";
+import * as React from '../../node_modules/react';
+import {
+  View,
+  ScrollView,
+  // ActivityIndicator,
+  Image,
+  TouchableOpacity,
+  console
+} from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 
-import AwesomeButton from "react-native-really-awesome-button";
-import { Fumi } from "../../node_modules/react-native-textinput-effects/lib";
-import FontAwesomeIcon from "../../node_modules/react-native-vector-icons/FontAwesome";
+import AwesomeButton from 'react-native-really-awesome-button';
+import { Fumi } from '../../node_modules/react-native-textinput-effects/lib';
+import FontAwesomeIcon from
+  '../../node_modules/react-native-vector-icons/FontAwesome';
 
-import CountryPicker from "../../components/countryPicker"; 
-import CityPicker from "../../components/cityPicker";
-
-import Header from "../../components/header";
-import Firebase from "../../config/firebase";
-import Styles from "../../styles/styles";
-import Colors from "../../styles/colors";
+import Header from '../../components/header';
+// import Firebase from '../../config/firebase';
+import Styles from '../../styles/styles';
+import Colors from '../../styles/colors';
 
 export default function CreatePost({ navigation }) {
-  const [cityx, setCity] = React.useState("");
-  const [countryx, setCountry] = React.useState("");
-  const [captionx, setCaption] = React.useState("");
-  const [photosx, setPhotos] = React.useState('https://drive.google.com/uc?id=1IlnqOsoEVi9ASVb0WihFRxtMu2z2BLT5');
+  const [cityx, setCity] = React.useState('');
+  const [countryx, setCountry] = React.useState('');
+  const [captionx, setCaption] = React.useState('');
+  const [photosx, setPhotos] = React.useState(
+    'https://drive.google.com/uc?id=1IlnqOsoEVi9ASVb0WihFRxtMu2z2BLT5'
+  );
   // const [post_timex, setPostTime] = React.useState("");
   // const [userx, setUserID] = React.useState("");
-  const [loading, setLoading] = React.useState(true);
-  const [locations, setLocations] = React.useState([]);
+  // const [loading, setLoading] = React.useState(true);
+  // const [setLocations] = React.useState([]);
 
-  const db = Firebase.firestore().collection('posts');
-  const uid = Firebase.auth().currentUser.uid;
-
-
-
-
+  // const db = Firebase.firestore().collection("posts");
+  // const uid = Firebase.auth().currentUser.uid;
 
   // adds docs from db to locations list
-  React.useEffect(() => {
-    return db.orderBy('city', 'asc').onSnapshot((querySnapshot) => {
-      const list = [];
-      querySnapshot.forEach((doc) => {
-        const {city, country} = doc.data();
-        list.push({
-          id: doc.id,
-          city,
-          country
-        });
-      });
+  // React.useEffect(() => {
+  //   return db.orderBy('city', 'asc').onSnapshot((querySnapshot) => {
+  //     const list = [];
+  //     querySnapshot.forEach((doc) => {
+  //       const { city, country } = doc.data();
+  //       list.push({
+  //         id: doc.id,
+  //         city,
+  //         country
+  //       });
+  //     });
 
-      setLocations(list);
-      if (loading) {
-        setLoading(false);
-      }
-    });
-  }, []);
+  //     setLocations(list);
+  //     if (loading) {
+  //       setLoading(false);
+  //     }
+  //   });
+  // }, []);
 
-
+  // if (loading) {
+  //   return <ActivityIndicator />;
+  // }
 
   async function pickImage() {
     try {
@@ -73,8 +78,7 @@ export default function CreatePost({ navigation }) {
     <View style={Styles.container}>
       <Header headerTitle="Create Post" />
 
-      <ScrollView 
-        style={Styles.container}>
+      <ScrollView style={Styles.container}>
         <TouchableOpacity
           style={{
             width: 200,
@@ -102,12 +106,35 @@ export default function CreatePost({ navigation }) {
             testID='create-photo'
           />
         </TouchableOpacity>
-
-        <View>
-          <CountryPicker/>
-          <CityPicker/>
+        <View style={Styles.p_3}>
+          <Fumi
+            label={'City'}
+            onChangeText={setCity}
+            iconClass={FontAwesomeIcon}
+            iconName={'map-pin'}
+            iconColor={Colors.warning}
+            iconSize={18}
+            iconWidth={40}
+            inputPadding={16}
+            inputStyle={{ padding: 5 }}
+            testID='create-city'
+          />
         </View>
 
+        <View style={Styles.p_3}>
+          <Fumi
+            label={'Country'}
+            onChangeText={setCountry}
+            iconClass={FontAwesomeIcon}
+            iconName={'globe'}
+            iconColor={Colors.warning}
+            iconSize={18}
+            iconWidth={40}
+            inputPadding={16}
+            inputStyle={{ padding: 5 }}
+            testID='create-country'
+          />
+        </View>
 
         <View style={Styles.p_3}>
           <Fumi
@@ -133,8 +160,8 @@ export default function CreatePost({ navigation }) {
               navigation.navigate('Preview Post Screen', {
                 captionx: captionx,
                 photosx: photosx,
-                cityx: 'San Francisco',
-                countryx: 'United States'     //this is hard coded for demo, need to find a way to pass value from picker to this create post func
+                cityx: cityx,
+                countryx: countryx
               });
             }}
           >
@@ -146,3 +173,20 @@ export default function CreatePost({ navigation }) {
   );
 }
 
+/*
+<FlatList
+          //lists DB to screen in alphabetical order by city
+          data={locations}
+          renderItem={({ item }) => (
+            <View style={Styles.container_content}>
+              <Text>City: {item.city}</Text>
+              <Text>Country: {item.country}</Text>
+            </View>
+          )}
+        />
+
+      </ScrollView>
+    </View>
+  );
+}
+*/

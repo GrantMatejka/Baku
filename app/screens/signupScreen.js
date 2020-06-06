@@ -7,7 +7,7 @@ import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import firebase from '../config/firebase';
 import Colors from '../styles/colors.js';
 import Styles from '../styles/styles.js';
-import HideShowPass from '../components/hideShowPass'
+
 class Signup extends React.Component {
   db = firebase.firestore().collection('users');
 
