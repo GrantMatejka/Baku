@@ -1,6 +1,6 @@
 /* eslint-disable no-invalid-this */
 import * as React from 'react';
-import { Text, View, FlatList } from 'react-native';
+import {Text, View, FlatList} from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import AwesomeButton from 'react-native-really-awesome-button';
 import Styles from '../../styles/styles';
@@ -9,13 +9,12 @@ import Header from '../../components/header';
 import firebase from '../../config/firebase';
 import Countries from '../../assets/data/countries';
 import shortid from 'shortid';
-import { Autocomplete, withKeyboardAwareScrollView }
+import {Autocomplete, withKeyboardAwareScrollView}
   from 'react-native-dropdown-autocomplete';
 import PostCard from '../../components/postCard';
 
 
 class SearchTab extends React.Component {
-
   db = firebase.firestore().collection('posts');
   db_users = firebase.firestore().collection('users');
 
@@ -29,73 +28,72 @@ class SearchTab extends React.Component {
   }
 
   handleSelectItem(item, index) {
-    const { onDropdownClose } = this.props;
+    const {onDropdownClose} = this.props;
     onDropdownClose();
   }
 
   updateState(item) {
-    this.setState({ location: item.label });
+    this.setState({location: item.label});
   }
 
   handleSearchDB = async (location) => {
     this.db
-      .where('country', '==', location)
-      .get()
-      .then((snapshot) => {
-        const list = [];
+        .where('country', '==', location)
+        .get()
+        .then((snapshot) => {
+          const list = [];
 
-        snapshot.docs.forEach((doc) => {
-          const { caption, city, country, photos, post_time, user, itinerary } = doc.data();
+          snapshot.docs.forEach((doc) => {
+            const {caption, city, country, photos, post_time, user, itinerary} = doc.data();
 
-          list.push({
-            id: doc.id,
-            caption,
-            city,
-            country,
-            photos,
-            post_time,
-            user,
-            itinerary
+            list.push({
+              id: doc.id,
+              caption,
+              city,
+              country,
+              photos,
+              post_time,
+              user,
+              itinerary
+            });
+          });
+
+          this.setState({locList: list});
+
+          this.state.locList.map((item) => {
+            this.handleUser(item.user, item);
           });
         });
-
-        this.setState({ locList: list });
-
-        this.state.locList.map((item) => {
-          this.handleUser(item.user, item);
-
-        });
-      });
   }
 
   handleUser = async (uid, item) => {
     this.db_users
-      .doc(uid)
-      .get()
-      .then(doc => {
-        const uList = [];
-        const { username, photo } = doc.data();
+        .doc(uid)
+        .get()
+        .then((doc) => {
+          const uList = [];
+          const {username, photo} = doc.data();
 
-        uList.push({
-          pid: item.id,
-          username,
-          photo,
-          post: item.photos,
-          caption: item.caption,
-          city: item.city,
-          country: item.country,
-          post_time: item.post_time,
-          user: uid,
-        });
+          uList.push({
+            pid: item.id,
+            username,
+            photo,
+            post: item.photos,
+            caption: item.caption,
+            city: item.city,
+            country: item.country,
+            post_time: item.post_time,
+            user: uid,
+          });
 
-        var joined = this.state.userList.concat(uList);
-        this.setState({ userList: joined });
+          const joined = this.state.userList.concat(uList);
+          this.setState({userList: joined});
         // console.log(this.state.userList);
-      });
+        });
   }
 
   render() {
-    const { scrollToInput, onDropdownClose, onDropdownShow } = this.props;
+    const {scrollToInput, onDropdownClose, onDropdownShow} = this.props;
 
 
     return (
@@ -112,7 +110,7 @@ class SearchTab extends React.Component {
             key={shortid.generate()}
             scrollToInput={(ev) => scrollToInput(ev)}
             handleSelectItem={(item, id) => {
-              this.setState({ userList: [] });
+              this.setState({userList: []});
               this.handleSelectItem(item, id);
               this.updateState(item);
             }
@@ -141,20 +139,19 @@ class SearchTab extends React.Component {
               width={200}
               height={50}
               onPress={() => {
-                this.setState({ error: '' });
+                this.setState({error: ''});
 
                 this.handleSearchDB(this.state.location);
-
               }}
             >
               Let's Explore
-              </AwesomeButton>
+            </AwesomeButton>
           </View>
         </View>
 
         <FlatList
           data={this.state.userList}
-          renderItem={({ item }) => (
+          renderItem={({item}) => (
 
             <View style={Styles.container_content}>
 

@@ -14,7 +14,7 @@ export default function Favorites() {
 
           <Text style={Styles.mainHeader} testID='profile-favorites'>
             Favorites!</Text>
-            
+
           {/* Populate this eventually with post cards */}
         </View>
       </ScrollView>
