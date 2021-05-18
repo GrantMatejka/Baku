@@ -31,7 +31,7 @@
     "@react-navigation/native": "^5.1.5",
     "@react-navigation/stack": "^5.2.10",
     "@react-navigation/web": "~1.0.0-alpha.9",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "base-64": "^0.1.0",
     "ci": "^1.0.0",
     "detox-expo-helpers": "^0.6.0",
